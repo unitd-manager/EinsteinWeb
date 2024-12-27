@@ -35,6 +35,7 @@ import bg3 from "../assets/img/bg.jpg"
 import scholarshipimage from "../assets/img/scholarshipimage.jpg"
 import aboutFor from "../assets/img/aboutfor.jpg"
 import StudentForr from "../assets/img/StudentForrr.png"
+import StudentForTraing from "../assets/img/training-placement.webp"
 import shapeStu from  "../assets/img/shape-2Stu.png"
 import shapeStu1 from  "../assets/img/shapeStu1.png"
 import bgStu from  "../assets/img/bgStu.jpg"
@@ -141,20 +142,18 @@ const Home = () => {
               <div className="h2_banner-content">
                 <div className="section-area-2 mb-45 ">
                   <h1 className="section-title">
-                    World's Best{" "}
+                    Welcome To Einstein College Of 
                     <span>
-                    Education <img src={line} alt="" />
+                    Arts & Science <img src={line} alt="" />
                     </span>
                 
                     Platform.
                   </h1>
                   <p className="section-text">
-                    Through a combination of lectures, readings, and
-                    discussions, students will gain a solid foundation in
-                    educational psychology.
+                  We are creating an extraordinary and unique college. Einstein College Arts and Science named after the renowned scientist Albert Einstein deserves its reputation as an abode of excellence, a pinnacle of glory whenever there initiates a discussion about the world of Science. The college maintains a royal existence with its marvelous infrastructure and is widely acclaimed for its meticulous planning, resource scheduling, and institutional management.
                   </p>
                 </div>
-                <form action="#" className="h2_banner-form">
+                {/* <form action="#" className="h2_banner-form">
                   <input type="text" placeholder="Search Course" />
                   <button type="submit">
                     <i className="fa-thin fa-magnifying-glass" />
@@ -162,8 +161,8 @@ const Home = () => {
                 </form>
                 <span className="h2_banner-content-text">
                   Have any questions ? <a href="#">Get Free Example</a>
-                </span>
-                <div className="h2_banner-tutor">
+                </span> */}
+                {/* <div className="h2_banner-tutor">
                   <div className="h2_banner-tutor-img">
                     <div className="h2_banner-inner-img">
                       <img src="assets/img/banner/2/tutor-1.png" alt="" />
@@ -183,7 +182,7 @@ const Home = () => {
                     <span>More Than</span>
                     <span>2k+ Tutors</span>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="col-xl-6 col-lg-6 d-none d-lg-block">
@@ -213,7 +212,7 @@ const Home = () => {
                   <div className="h2_banner-meta-rating">
                     <span>
                       <i className="fa-solid fa-star" />
-                      4.5 (3.4k Reviews)
+                      4.5 (50 Reviews)
                     </span>
                     <h5>Congratulations</h5>
                   </div>
@@ -232,11 +231,11 @@ const Home = () => {
             <div className="section-area-6 mb-55 text-center">
             <span className="section-subtitle" style={{fontSize:43, fontWeight:'bold',marginBottom:23}}>Welcome - About Us</span>
               <h2 className="section-title mb-15">
-                university research initiatives
+              “SCIENCE IS THE RELIGION FOR ALL”
               </h2>
               <p className="section-text">
-                Driving discoveries vital to our world, our health, and our
-                intellectual life
+              We Offer The Best Quality Professional Education In Pace With Latest Technology.
+               Our Institution Aims At Academic Excellence And The Overall Development Of Students.
               </p>
             </div>
           </div>
@@ -251,12 +250,18 @@ const Home = () => {
             <div className="h6_research-wrap mb-50">
               <div className="h6_research-content">
                 <h4>
-                  We are dedicated to academic excellence, diversity &amp;
-                  inclusion, research
+                  About Einstein College Of Arts &amp; Science
                 </h4>
                 <p>
-                  From Nobel Prize winners to undergraduates, all members of the
-                  Stanford community are engaged in the creation of knowledge.
+                Greetings from Einstein Family! To keep up the tradition of 100 years of excellence in education and maintain 
+                the legacy of our visionary founder Thiru. AladiAruna M.A., B.L. We as Einstein Family sustain a home of excellence with values. 
+                The prime of youth is shaped by the alma-mater
+                 and we in Einstein Family provide a conducive atmosphere where learning nurtures one to be ethical and responsible oriented
+                </p>
+                <p>
+                We foster our students to become better personalities to confront the world. Along with academic and technical skills,
+                 we kindle our students’ interest in research, sports, cultural, co-curricular,
+                  and naturally to be a social being incorporated with values.
                 </p>
                 <div className="h6_research-content-bottom">
                   <div className="h6_research-content-left">
@@ -356,7 +361,7 @@ const Home = () => {
                         </svg>
                       </div>
                       <div className="single-item-info">
-                        <h5>15 Institutes</h5>
+                        <h5>5 Institutes</h5>
                         <p>Cross interdisciplinary boundaries</p>
                       </div>
                     </div>
@@ -407,19 +412,19 @@ const Home = () => {
                       </div>
                       <div className="single-item-info">
                         <h5>Feldman Lab</h5>
-                        <p>The EMF 36 study investigates</p>
+                        <p>The EMF 6 study investigates</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="research-text-wrap mt-25">
+              {/* <div className="research-text-wrap mt-25">
                 <div className="research-text-ticker" id="research-text-ticker">
                   <marquee>
-                  <h1 className="h6_research-bottom-text">Research</h1>
+                  <h1 className="h6_research-bottom-text">About Us</h1>
                   </marquee>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -434,14 +439,12 @@ const Home = () => {
                 <div className="section-area-6 mb-55">
                   <span className="section-subtitle" style={{fontSize:43, fontWeight:'bold',marginBottom:23}}>CAMPUS</span>
                   <h2 className="section-title mb-15">
-                    Experience in School Leadership &amp; Teaching
+                  The Einstein College Of Arts & Science
                   </h2>
                   <p className="section-text">
-                    Mauris sit amet lacinia est, vitae tristique metus. Nulla
-                    facilisi. Mauris tempor nibh vitae pulvinar ultricies. Sed
-                    malesuada placerat metus. Vivamus sagittis arcu eu elit
-                    semper, eget varius turpis posuere. Suspendisse ac nibh
-                    cursus, dignissim urna a, porttitor nisi.
+                  At Einstein College Of Arts & Science, Choose your study program and develop your creativity alongside top professionals. 
+                  In 2017 the institution was founded by Late Thiru. Aladi Aruna M.A., 
+                  B.L former Tamilnadu Law Minister, with the sole purpose of providing cutting edge education that is both accessible and affordable.
                   </p>
                 </div>
                 <div className="h7_about-content">
@@ -450,8 +453,8 @@ const Home = () => {
                       <img src={admin} alt="" />
                     </div>
                     <div className="h7_about-admin-info">
-                      <h5>Hugh Millie-Yate</h5>
-                      <span>Vice Principal</span>
+                      <h5>The Einstein College Of Arts & Science is located in the heart of Tirunelveli, Tamil Nadu 627012.</h5>
+                      <span>Come visit our campus.</span>
                     </div>
                   </div>
                   <div className="h7_about-signature">
@@ -533,7 +536,7 @@ const Home = () => {
               <div className="h2_about-rating d-none d-sm-block">
                 <span>
                   <i className="fa-solid fa-star" />
-                  4.5 (3.4k Reviews)
+                  4.3 (50 Reviews)
                 </span>
                 <h5>Congratulations</h5>
               </div>
@@ -559,17 +562,14 @@ const Home = () => {
           <div className="col-xl-6 col-lg-6 col-md-10 mb-50">
             <div className="section-area-2 mb-35">
               <h2 className="section-title mb-20">
-                Education Instructors Play Crucial Role in Shaping The Lives of
-                Their{" "}
+              Build lifelong friendships with students who share your interests, passions, and {" "}
                 <span>
-                  Students <img src={line} alt="" />
+                perspectives <img src={line} alt="" />
                 </span>
               </h2>
               <p className="section-text">
-                Maecenas Felis Tellus, dictum sed fermentum vel, various
-                condiment dolour. Donec aliquot, denim ut auctor molestee, era
-                elite pharetra masa, at impediment eros qualm sed libero. Sed
-                arco lorem, rut rum.
+              Our college had hosted university level zonal volleyball match twice. With all its unique qualities and values,
+              the students of Einstein College of Arts and Science shaped in such a way that they excel in all their endeavours
               </p>
             </div>
             <div className="h2_about-button">
@@ -812,11 +812,12 @@ const Home = () => {
             <div className="row g-0">
               <div className="col-xl-4 col-lg-4">
                 <div className="h7_program-item">
-                  <h3 className="h7_program-item-title">undergraduate</h3>
+                  <h3 className="h7_program-item-title">Quality Education</h3>
                   <p>
-                    Our undergraduate programs tailored meet the unique needs of
-                    adult learners. Whether seeking to advance in your current
-                    career,
+                  Our institution has multistory building and endowed with state-of-art training facilities.
+                   Einstein Arts and Science college rightfully boasts of a well equipped library with an excellent collection of reference books. 
+                   Experienced faculty with proven reputation and dedication are on the rolls of the institution.. 
+                  Our Institution Commits To Offer The Best and Quality Professional Education In Pace With Latest Technology.
                   </p>
                   <div className="h7_program-item-list">
                     <a href="#">
@@ -833,18 +834,20 @@ const Home = () => {
               </div>
               <div className="col-xl-4 col-lg-4">
                 <div className="h7_program-item h7_program-item2">
-                  <h3 className="h7_program-item-title">Graduate</h3>
+                  <h3 className="h7_program-item-title">UG Departments</h3>
                   <p>
-                    Our undergraduate programs tailored meet the unique needs of
-                    adult learners. Whether seeking to advance in your current
-                    career,
+                  We prepare you to launch your career by providing a supportive, 
+                  creative, and professional environment.
                   </p>
                   <ul className="h7_program-item-list2">
-                    <li>Business &amp; Administration</li>
-                    <li>Biotechnology</li>
-                    <li>Corporate Finance</li>
-                    <li>Major in Economics</li>
-                    <li>Public Administration</li>
+                    <li>B.A (English)</li>
+                    <li>BBA</li>
+                    <li>B.Sc (Mathematics)</li>
+                    <li>B.Sc (Physics)</li>
+                    <li>B.Sc (Chemistry)</li>
+                    <li>B.Sc (Computer Science)</li>
+                    <li>B.Com</li>
+                    <li>B.Com (Corporate Secretary)</li>
                   </ul>
                   <span className="h7_program-item-time">
                     <i className="fa-light fa-clock" /> Online + Onsite
@@ -855,9 +858,10 @@ const Home = () => {
                 <div className="h7_program-item">
                   <h3 className="h7_program-item-title">Online Education</h3>
                   <p>
-                    Our undergraduate programs tailored meet the unique needs of
-                    adult learners. Whether seeking to advance in your current
-                    career,
+                  Skill classes (Managerial and Communicative) are arranged for all students of the college. 
+                  Entrepreneurship development and Time Management classes are specially arranged for the benefit of the students. 
+                  On the whole, every effort is taken to give the students wider educational opportunities. 
+                  Flexible access online education from anywhere in the world engage with forward-thinking community.
                   </p>
                   <div className="h7_program-item-list">
                     <a href="#">
@@ -871,13 +875,13 @@ const Home = () => {
                   <span className="h7_program-item-time">
                     <i className="fa-light fa-clock" /> Online + Onsite
                   </span>
-                  {/* <a href="#" class="h7_program-more-icon">
+                  <a href="#" class="h7_program-more-icon">
                                     More
                                     <span>
                                         <i class="fa-light fa-arrow-up"></i>
                                         <i class="fa-light fa-arrow-up"></i>
                                     </span>                      
-                                </a> */}
+                                </a>
                 </div>
               </div>
             </div>
@@ -899,8 +903,8 @@ const Home = () => {
             <div className="section-area-6 text-center mb-55">
               <h2 className="section-title mb-15">Academics Program</h2>
               <p className="section-text">
-                Preparing students to make meaningful contributions to society
-                as <br /> engaged citizens and leaders in a complex world
+              At Einstein College Of Arts & Science, We prepare you to launch your career by providing a supportive, creative, and professional. Our goal is to prepare students to understand, contribute to, and succeed in a rapidly changing society, 
+              thus making the world a better and more just place. Choose your study program and develop your creativity alongside top professionals.
               </p>
             </div>
           </div>
@@ -1089,7 +1093,44 @@ const Home = () => {
         </div>
       </div>
     </section>
-    {/* teacher area start */}
+    <section className="h7_scholarship-area fix" style={{marginTop:150}}>
+      <div className="container">
+      <div className="section-area-6 mb-55 text-center">
+            <span className="section-subtitle" style={{fontSize:43, fontWeight:'bold',marginTop:20}}>Leadership - Scholarship Programs</span>
+            </div>
+        <div className="h7_scholarship-img">
+          <img src={scholarshipimage} alt="" />
+        </div>
+      </div>
+      <div className="h7_scholarship-wrap">
+        <div className="container p-relative">
+          <div className="h7_scholarship-title">
+            <h1>
+              <span className="wow slideInLeft" data-wow-duration="2s">
+                Scholarship
+              </span>
+              <span
+                className="wow slideInRight scholar-bottom"
+                data-wow-duration="2s"
+                data-wow-delay=".1s"
+              >
+                Programs
+              </span>
+            </h1>
+          </div>
+          <div className="h7_scholarship-content">
+            <p>
+            Promising leaders at Einstein College Of Arts & Science, 
+            set to unveil a more dynamic future with great dexterity.
+            </p>
+            <a href="#">
+              Financial Aid <i className="fa-light fa-arrow-right" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+      {/* teacher area start */}
     <section className="h2_teacher-area pb-80" style={{marginTop:150}}>
       <div className="container">
         <div className="row">
@@ -1195,45 +1236,6 @@ const Home = () => {
       </div>
     </section>
     {/* teacher area end */}
-
-    <section className="h7_scholarship-area fix" style={{marginTop:150}}>
-      <div className="container">
-      <div className="section-area-6 mb-55 text-center">
-            <span className="section-subtitle" style={{fontSize:43, fontWeight:'bold',marginTop:20}}>Leadership - Scholarship Programs</span>
-            </div>
-        <div className="h7_scholarship-img">
-          <img src={scholarshipimage} alt="" />
-        </div>
-      </div>
-      <div className="h7_scholarship-wrap">
-        <div className="container p-relative">
-          <div className="h7_scholarship-title">
-            <h1>
-              <span className="wow slideInLeft" data-wow-duration="2s">
-                Scholarship
-              </span>
-              <span
-                className="wow slideInRight scholar-bottom"
-                data-wow-duration="2s"
-                data-wow-delay=".1s"
-              >
-                Programs
-              </span>
-            </h1>
-          </div>
-          <div className="h7_scholarship-content">
-            <p>
-              At Kempbelle University, we prepare you to launch your career by
-              providing a supportive, creative, and professional environment
-            </p>
-            <a href="#">
-              Financial Aid <i className="fa-light fa-arrow-right" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
       {/* about area end */}
       <section className="h6_about-area pt-120 pb-80 fix">
       <div className="container">
@@ -1279,9 +1281,11 @@ const Home = () => {
       </div>
       <div className="about-text-wrap mb-15">
   <div className="about-text-ticker" id="about-text-ticker">
+    <marquee>
     <h1 className="h6_about-bottom-title">
       Endless friendships, unforgettable memories
     </h1>
+    </marquee>
   </div>
 </div>
     </section>
@@ -1341,34 +1345,47 @@ const Home = () => {
         <div className="row align-items-center">
           <div className="col-xl-6 col-lg-6">
             <div className="h4_about-img mb-50 w_img">
-              <img src={StudentForr} alt="" />
+              <img src={StudentForr} alt="" style={{marginTop:25}} />
             </div>
           </div>
           <div className="col-xl-6 col-lg-6 col-md-10">
             <div className="h4_about-wrap mr-65 mb-50">
               <div className="section-area-4 mb-25">
                 <h2 className="section-title mb-10">
-                  Experience World Best e-Learning System
+                Shape The Students To Shape The Society
                 </h2>
                 <p className="section-text">
-                  Maecenas Felis Tellus, dictum sed fermentum vel, various
-                  condiment dolour donec aliquot, denim ut auctor molestee, era
-                  elite pharetra masa.
+                The Department of Placement and Training of Einstein College of Engineering has been successful, 
+                right from the day it was incepted in 2006. It is headed by Mr.A.Ezhilvanan, 
+                the Managing Trustee and Principal takes the creative ideas to make a 
+                promising career for every student of Einstein College of Engineering.
                 </p>
               </div>
               <div className="h4_about-content mb-25">
                 <ul>
                   <li>
                     <i className="fa-regular fa-check" />
-                    Track your daily activity.
+                    A good liaison with industry.
                   </li>
                   <li>
                     <i className="fa-regular fa-check" />
-                    Multiply global marketing strategy
+                    Watch on the job requirements in the industries.
                   </li>
                   <li>
                     <i className="fa-regular fa-check" />
-                    Virtual support team
+                    Contact with information experts in respective fields from industries.
+                  </li>
+                  <li>
+                    <i className="fa-regular fa-check" />
+                    Special lectures for the benefit of the students and as well the staffs.
+                  </li>
+                  <li>
+                    <i className="fa-regular fa-check" />
+                    Training for teachers and staff.
+                  </li>
+                  <li>
+                    <i className="fa-regular fa-check" />
+                    A good data bank of the alumni
                   </li>
                 </ul>
               </div>
@@ -1388,13 +1405,13 @@ const Home = () => {
     </section>
     <section
         className="h6_testimonial-area pt-120 pb-120 bg-default pt-215 pb-100 fix"
-        style={{ backgroundImage: `url(${bg})`,marginTop:100}}
+        style={{ backgroundImage: `url(${StudentForTraing})`,marginTop:100}}
         
       >
         <div className="testimonial-text-wrap mb-80">
           <div className="testimonial-text-ticker" id="testimonial-text-ticker">
             <marquee>
-            <h1 className="h6_testimonial-title">Outstanding Clients care</h1>
+            <h1 className="h6_testimonial-title">Our Center Assure</h1>
             </marquee>
           </div>
         </div>
@@ -1455,18 +1472,17 @@ const Home = () => {
                       <div className="h6_testimonial-item">
                         <blockquote>
                           <p>
-                            One aspect that truly stood out for me was the
-                            research opportunities. Eduan University has
-                            state-of-the-art labs and facilities, and I had the
-                            chance to work on cutting-edge research projects
-                            alongside professors.
+                            
+Industrial training and field/industrial visits for the students. 
+Assistance to students in getting apprenticeship training. 
+Campus recruitment and in-plant training.
                           </p>
-                          <div className="quote-admin">
+                          {/* <div className="quote-admin">
                             <div className="quote-admin-inner">
                               <h5>William Board</h5>
                               <span>Student Eduan Univesity</span>
                             </div>
-                          </div>
+                          </div> */}
                         </blockquote>
                       </div>
                     </div>
@@ -1476,18 +1492,17 @@ const Home = () => {
                       <div className="h6_testimonial-item">
                         <blockquote>
                           <p>
-                            One aspect that truly stood out for me was the
-                            research opportunities. Eduan University has
-                            state-of-the-art labs and facilities, and I had the
-                            chance to work on cutting-edge research projects
-                            alongside professors.
+                          The Department of Placement and Training of Einstein College of Engineering has been successful, 
+                          right from the day it was incepted in 2006. It is headed by Mr.A.Ezhilvanan, 
+                          the Managing Trustee and Principal takes the creative ideas to make a
+                           promising career for every student of Einstein College of Engineering.
                           </p>
-                          <div className="quote-admin">
+                          {/* <div className="quote-admin">
                             <div className="quote-admin-inner">
                               <h5>William Board</h5>
                               <span>Student Eduan Univesity</span>
                             </div>
-                          </div>
+                          </div> */}
                         </blockquote>
                       </div>
                     </div>
@@ -1497,18 +1512,17 @@ const Home = () => {
                       <div className="h6_testimonial-item">
                         <blockquote>
                           <p>
-                            One aspect that truly stood out for me was the
-                            research opportunities. Eduan University has
-                            state-of-the-art labs and facilities, and I had the
-                            chance to work on cutting-edge research projects
-                            alongside professors.
+                            
+Industrial training and field/industrial visits for the students. 
+Assistance to students in getting apprenticeship training. 
+Campus recruitment and in-plant training.
                           </p>
-                          <div className="quote-admin">
+                          {/* <div className="quote-admin">
                             <div className="quote-admin-inner">
                               <h5>William Board</h5>
                               <span>Student Eduan Univesity</span>
                             </div>
-                          </div>
+                          </div> */}
                         </blockquote>
                       </div>
                     </div>
@@ -1552,12 +1566,14 @@ const Home = () => {
                   Learn Your Best Education Culture with....
                 </h2>
                 <p className="section-text">
-                  Maecenas Felis Tellus, dictum sed fermentum vel, various
-                  condiment dolour donec aliquot, denim ut auctor molestee, era
-                  elite pharetra masa.
+                Our rich history is the foundation for our values. Join us to make your college experience unforgettable.
+                The college is established and managed by Aladipatti Vaithiyalinga Nadar Pathirakali Ammal Educational and Charitable Trust.
+                 About 15 KM away from Tirunelveli towards the well-known coutralam, the college is situated in Sir. C.V. Raman Nagar. 
+                 The Institution is spread over an area of about 7acres. The college maintains a royal existence with 
+                its marvelous infrastructure and widely acclaimed for its meticulous planning, resource scheduling and institutional management.
                 </p>
               </div>
-              <div className="h4_education-content">
+              {/* <div className="h4_education-content">
                 <div className="row">
                   <div className="col-lg-6 col-sm-6">
                     <div className="h4_education-item">
@@ -1624,7 +1640,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
