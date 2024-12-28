@@ -12,12 +12,13 @@ const Home = () => {
             <div className="h6_footer-widget mb-40 mr-80">
               <div className="footer-logo">
                 <a href="index.html">
-                  <img src="assets/img/logo/logo-red.png" alt="" />
+                  <img src={logoImage} alt="" />
                 </a>
               </div>
               <p className="h6_footer-widget-text">
-                Maurus herderite egret orca ac incident. Viramas at deque eu
-                ipsum consenter commode egret t dam celestas beget mi.
+              Sir C.V.Raman Nagar, Seethaparpanallur,
+near MS University, Tirunelveli,
+Tamil Nadu 627012
               </p>
               <div className="h6_footer-social">
                 <ul>
@@ -47,25 +48,25 @@ const Home = () => {
                 <div className="h6_footer-widget-list">
                   <ul>
                     <li>
-                      <a href="#">About Us</a>
+                      <a >About Us</a>
                     </li>
                     <li>
-                      <a href="#">Courses</a>
+                      <a >Home</a>
                     </li>
                     <li>
-                      <a href="#">Help Centre</a>
+                      <a> UG Programmes</a>
                     </li>
                     <li>
-                      <a href="#">News</a>
+                      <a>Training & Placement</a>
                     </li>
                     <li>
-                      <a href="#">Contact</a>
+                      <a>Contact</a>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div className="h6_footer-inner">
+            {/* <div className="h6_footer-inner">
               <div className="h6_footer-widget mb-40">
                 <h5 className="h6_footer-widget-title">Class</h5>
                 <div className="h6_footer-widget-list">
@@ -88,26 +89,26 @@ const Home = () => {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="h6_footer-inner">
               <div className="h6_footer-widget mb-40">
-                <h5 className="h6_footer-widget-title">Support</h5>
+                <h5 className="h6_footer-widget-title">Our Campus</h5>
                 <div className="h6_footer-widget-list">
                   <ul>
                     <li>
-                      <a href="#">Help Centre</a>
+                      <a>Campus</a>
                     </li>
                     <li>
-                      <a href="#">FAQ</a>
+                      <a>Events</a>
                     </li>
                     <li>
-                      <a href="#">Contacts</a>
+                      <a>Our Leadership</a>
                     </li>
                     <li>
-                      <a href="#">Security</a>
+                      <a>Alumni</a>
                     </li>
                     <li>
-                      <a href="#">Privacy Policy</a>
+                      <a>Gallery</a>
                     </li>
                   </ul>
                 </div>
@@ -144,7 +145,7 @@ const Home = () => {
         <div className="row">
           <div className="col-12">
             <div className="h6_copyright-text">
-              <p>Copyright © 2023 All Rights Reserved by Eduan</p>
+              <p>Copyright © 2025 All Rights Reserved by ECAS</p>
             </div>
           </div>
         </div>

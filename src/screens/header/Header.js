@@ -38,11 +38,11 @@ const Home = () => {
           <div className="col-xl-3 col-sm-7 col-6">
             <div className="h2_header-left">
               <div className="h2_header-logo">
-                <a href="index.html">
+                <a href="/Home">
                   <img src={logoImage} alt="" />
                 </a>
               </div>
-              <div className="h2_header-category d-none d-sm-block">
+              {/* <div className="h2_header-category d-none d-sm-block">
                 <a href="#">
                   <i className="fa-solid fa-grid" />
                   <span>Category</span>
@@ -64,16 +64,16 @@ const Home = () => {
                     <a href="#">Marketing</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="col-xl-6 d-none d-xl-block">
             <div className="h2_header-middle">
               <nav className="h2_main-menu mobile-menu" id="mobile-menu">
                 <ul>
-                  <li className="menu-has-child">
-                    <a href="index.html">Home</a>
-                    <ul className="submenu">
+                  <li>
+                    <a href="/Home">Home</a>
+                    {/* <ul className="submenu">
                       <li>
                         <a href="index.html">Education Main</a>
                       </li>
@@ -104,9 +104,9 @@ const Home = () => {
                       <li>
                         <a href="index-10.html">Preschool Program</a>
                       </li>
-                    </ul>
+                    </ul> */}
                   </li>
-                  <li className="menu-has-child">
+                  {/* <li className="menu-has-child">
                     <a href="course.html">Courses</a>
                     <ul className="submenu">
                       <li>
@@ -119,8 +119,8 @@ const Home = () => {
                         <a href="course-details.html">Course Details</a>
                       </li>
                     </ul>
-                  </li>
-                  <li className="menu-has-child">
+                  </li> */}
+                  {/* <li className="menu-has-child">
                     <a href="#">Pages</a>
                     <ul className="submenu">
                       <li>
@@ -154,8 +154,8 @@ const Home = () => {
                         <a href="404.html">404</a>
                       </li>
                     </ul>
-                  </li>
-                  <li className="menu-has-child">
+                  </li> */}
+                  {/* <li className="menu-has-child">
                     <a href="blog.html">Blog</a>
                     <ul className="submenu">
                       <li>
@@ -165,10 +165,10 @@ const Home = () => {
                         <a href="blog-details.html">Blog Details</a>
                       </li>
                     </ul>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <a href="contact.html">Contact</a>
-                  </li>
+                  </li> */}
                 </ul>
               </nav>
             </div>
@@ -176,7 +176,7 @@ const Home = () => {
           <div className="col-xl-3 col-sm-5 col-6">
             <div className="h2_header-right">
               <div className="h2_header-btn d-none d-sm-block">
-                <a href="#" className="header-btn theme-btn theme-btn-medium">
+                <a className="header-btn theme-btn theme-btn-medium">
                   Sign Up
                 </a>
               </div>

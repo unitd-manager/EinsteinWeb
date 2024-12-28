@@ -45,6 +45,9 @@ import '../src/assets/fonts/fa-v4compatibility.ttf'
 import '../src/assets/fonts/fa-v4compatibility.woff2'
 import '../src/assets/fonts/fa-thin-100.woff2'
 
+import '../src/assets/scss/abstracts/_common.scss'
+import '../src/assets/scss/components/_about.scss'
+
 function App() {
   
   return (
