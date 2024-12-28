@@ -47,6 +47,7 @@ import '../src/assets/fonts/fa-thin-100.woff2'
 
 import '../src/assets/scss/abstracts/_common.scss'
 import '../src/assets/scss/components/_about.scss'
+import '../src/assets/scss/components/_section.scss'
 
 function App() {
   

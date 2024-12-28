@@ -18,8 +18,10 @@ const Home = () => {
               <p className="h6_footer-widget-text">
               Sir C.V.Raman Nagar, Seethaparpanallur,
 near MS University, Tirunelveli,
-Tamil Nadu 627012
+Tamil Nadu 627012 
               </p>
+            
+              
               <div className="h6_footer-social">
                 <ul>
                   <li>

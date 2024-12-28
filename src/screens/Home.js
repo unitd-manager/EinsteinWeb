@@ -10,11 +10,11 @@ import "swiper/css/navigation";
 import ourleaderBanner from "../assets/img/ourleader-banner.webp";
 import bannerImge from "../assets/img/banner-img.png";
 import bannerImge1 from "../assets/img/bannerImage1.png";
-import Founder from "../assets/img/founder-of-einstein-college.webp";
+import Founder from "../assets/img/ImageforFounder@025.jpg";
 import Student from "../assets/img/Student.png";
 import image2 from "../assets/img/1.png";
 import image3 from "../assets/img/sports6.png";
-import image1 from "../assets/img/pageAbout1.png";
+import image1 from "../assets/img/pageAbout3.jpg";
 import admin from "../assets/img/admin.jpg";
 import shape1 from "../assets/img/shape-1.png";
 import shape2 from "../assets/img/shape-2.png";
@@ -33,11 +33,12 @@ import bg from "../assets/img/bg.jpg";
 import bg3 from "../assets/img/infrastructure-1.png";
 import scholarshipimage from "../assets/img/ECAS PLACEMENT.jpeg";
 import aboutFor from "../assets/img/DSC.jpg";
-import StudentForr from "../assets/img/StudentForrr.png";
+import StudentForr from "../assets/img/StudentForrr.jpg";
 import StudentForTraing from "../assets/img/training-placement.webp";
 import shapeStu from "../assets/img/shape-2Stu.png";
 import shapeStu1 from "../assets/img/shapeStu1.png";
 import bgStu from "../assets/img/h2.webp";
+import HappyNewYear from "../assets/img/HappyNewYear.jpg"
 
 const Home = () => {
 
@@ -46,7 +47,25 @@ const Home = () => {
     const match = url.match(regex);
     return match ? match[1] || match[2] : null;
   }
-  
+
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Image and URL
+  const imageUrl = HappyNewYear
+  const websiteUrl = "https://example.com";
+
+  // Function to open the website
+  const handleImageClick = () => {
+    window.open(websiteUrl, "_blank");
+  };
+
+  // Automatically open modal on component mount
+  useEffect(() => {
+    setIsOpen(true);
+  }, []);
+
+ 
   
 
   const [modalVideo, setModalVideo] = useState(null);
@@ -91,6 +110,27 @@ const Home = () => {
 
   return (
     <>
+     
+     <div>
+        {/* Modal */}
+        {isOpen && (
+          <div style={modalStyles}>
+            <div style={overlayStyles} onClick={() => setIsOpen(false)}></div>
+            <div style={contentStyles}>
+              <img
+                src={imageUrl}
+                alt="Preview"
+                style={imageStyles}
+                onClick={handleImageClick}
+              />
+              <button onClick={() => setIsOpen(false)}>Close</button>
+            </div>
+          </div>
+        )}
+      </div>
+    
+
+
       {/* <div className="bannerImage"> */}
       {/* Main Banner Slider */}
       {/* <Slider
@@ -1352,8 +1392,8 @@ const Home = () => {
                     src={Founder}
                     alt="Founder-Image"
                     style={{
-                      width: "90%",
-                      objectFit: "cover",
+                      width: "100%",
+                      // objectFit: "cover",
                     }}
                   />
                   {/* <div className="h6_about-img-content">
@@ -1506,7 +1546,7 @@ const Home = () => {
                     </ul>
                   </div>
                   <div className="h4_about-button">
-                    <a href="#" className="theme-btn h4_about-btn theme-btn-4">
+                    <a  className="theme-btn h4_about-btn theme-btn-4">
                       More Details
                     </a>
                     <a
@@ -1514,7 +1554,7 @@ const Home = () => {
                       className="h4_about-button-call"
                     >
                       <i className="fa-solid fa-phone" />
-                      (00) 245 545 6978
+                      (+91) 9489903808
                     </a>
                   </div>
                 </div>
@@ -1813,5 +1853,42 @@ const Home = () => {
     </>
   );
 };
+
+// Styles
+const modalStyles = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  zIndex: 1000,
+};
+
+const overlayStyles = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+};
+
+const contentStyles = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  backgroundColor: "white",
+  padding: "20px",
+  borderRadius: "8px",
+  textAlign: "center",
+};
+
+const imageStyles = {
+  maxWidth: "100%",
+  height: "auto",
+  cursor: "pointer",
+};
+
 
 export default Home;
