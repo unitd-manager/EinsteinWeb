@@ -963,6 +963,7 @@ const Home = () => {
                     <ul className="h7_program-item-list2">
                       <li>B.A (English)</li>
                       <li>BBA</li>
+                      <li>BCA</li>
                       <li>B.Sc (Mathematics)</li>
                       <li>B.Sc (Physics)</li>
                       <li>B.Sc (Chemistry)</li>
