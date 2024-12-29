@@ -608,5 +608,22 @@
       transform: translateX(-100%);
     }
   }
+
+/* Mobile view styles (screen width <= 768px) */
+@media screen and (max-width: 768px) {
+    .h2_about-inner1-img2 img {
+        width: 60%; /* Adjusted for mobile */
+        margin-left: 10px; /* Reduce margin */
+        border-radius: 5px; /* Smaller border radius */
+    }
+}
+@media screen and (max-width: 400px) {
+  .h2_about-inner1-img2 img {
+      width: 60%; /* Adjusted for mobile */
+     
+      border-radius: 5px; /* Smaller border radius */
+  }
+}
+
   
     

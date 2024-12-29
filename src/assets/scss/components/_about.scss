@@ -159,6 +159,7 @@
       box-shadow: 0px 2px 0px #A5A6A9;
       @media #{$xs}{
         width: 50px;
+        left: 300px;
         height: 50px;
         line-height: 50px;
         font-size: 16px;
@@ -194,8 +195,9 @@
       @media #{$xs}{
         right: 0;
         top: auto;
-        bottom: 0;
-        margin-left: 20%;
+        bottom: 15px;
+        width: 396px;
+        margin-left: -15%
       }
       @media #{$sm}{
         right: 0;

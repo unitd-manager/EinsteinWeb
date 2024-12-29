@@ -24,7 +24,7 @@ import imagea3 from "../assets/img/a1.webp";
 import teacher1 from "../assets/img/Management/Prof.A.AmudhavananChairman.png";
 import teacher2 from "../assets/img/Management/Prof.A.EzhilvananSeceretary.png";
 import teacher3 from "../assets/img/Management/Mr.A.MathivananManagingTrustee.png";
-import teacher4 from "../assets/img/Management/Mr.A.AnbuvananTrustee.png";
+import teacher4 from "../assets/img/Management/Mr.A.AnbuvananTrustee.jpg";
 import teacher5 from "../assets/img/Management/Mr.A.TamilvananTrustee.png";
 import Academic1 from "../assets/img/aboutpage.webp";
 import Academic2 from "../assets/img/facilities-3.webp";
@@ -1314,7 +1314,7 @@ const Home = () => {
                     <h5 className="h2_teacher-content-title">
                       <a href="#">Prof.A.Ezhilvanan</a>
                     </h5>
-                    <span>Seceretary</span>
+                    <span>Secretary</span>
                   </div>
                 </div>
               </div>
@@ -1402,17 +1402,22 @@ const Home = () => {
                   </div> */}
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-6" style={{ marginTop: 150 }}>
+              <div className="col-xl-6 col-lg-6" style={{ marginTop: 50 }}>
                 <div className="h6_about-content ml-30 mb-30 mb-md-0 pb-30">
-                  <h3 className="h6_about-content-title">
+                  {/* <h3 className="h6_about-content-title">
                     Tribute to Our Founder
-                  </h3>
+                  </h3> */}
                   <p>
                     Our Founder, Thiru. AladiAruna M.A., B.L son of the soil, a
                     great prolific reader and an orator, was one of the
-                    senior-most politicians of Tamilnadu, started the
-                    institution for providing high-quality technical education
-                    to the rural and the weaker section.
+                    senior-most politicians of Tamilnadu,He had a great vision of 
+                    providing high-quality technical education in rural areas.He was the
+                    former Law Minister of Tamil Nadu from 1996 to 2001, a great Parliamentarian,
+                    and a Member of Legislative Assembly (MLA) for more than a decade. He wrote seven
+                    books, mostly in the areas of Constitution, state Autonomy, Tamil Movement, and a
+                    biography on Kamaraj. Being a dedicated educationist, he started this technical
+                    institution with a healthy campus environment, modern amenities, the latest infrastructure, and well
+                    qualified staff. The vision of Trustees is to fulfill the dreams of the founder.
                   </p>
                   <a
                     href="#"
