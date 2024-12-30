@@ -296,7 +296,7 @@ const Home = () => {
                     Welcome - About Us
                   </span>
                   <h2 className="section-title mb-15">
-                    “SCIENCE IS THE RELIGION FOR ALL”
+                    “யாதும் ஊரே யாவரும் கேளிர்”
                   </h2>
                   <p className="section-text">
                     We Offer The Best Quality Professional Education In Pace
@@ -1339,7 +1339,7 @@ const Home = () => {
                   </div>
                   <div className="h2_teacher-content">
                     <h5 className="h2_teacher-content-title">
-                      <a href="#">Mr.A.Anbuvanan</a>
+                      <a href="#">Dr.A.Anbuvanan</a>
                     </h5>
                     <span>Trustee</span>
                   </div>
@@ -1474,7 +1474,7 @@ const Home = () => {
                     }}
                   />
                   <div className="h6_about-img-content">
-                    <h2>2010</h2>
+                    <h2>2017</h2>
                     <span>Since Einstein</span>
                   </div>
                 </div>
