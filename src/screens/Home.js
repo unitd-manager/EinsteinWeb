@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import api from "../constants/api";
+
 
 import ourleaderBanner from "../assets/img/ourleader-banner.webp";
 import bannerImge from "../assets/img/banner-img.png";
@@ -50,6 +52,29 @@ const Home = () => {
 
 
   const [isOpen, setIsOpen] = useState(false);
+  const [content, setContent] = useState([]);
+  const [aboutHome, setAboutHome] = useState([]);
+  const [aboutHomeTop, setAboutHomeTop] = useState([]);
+  const [compusHomeTop, setCompusHomeTop] = useState([]);
+  const [compusHome, setCompusHome] = useState([]);
+  const [compusHome1, setCompusHome1] = useState([]);
+  const [academicsProgramHome, setAcademicsProgramHome] = useState([]);
+  const [ourFounder, setourFounderHome] = useState([]);
+  const [OurPhilosophy, setOurPhilosophyHome] = useState([]); 
+  const [StudentLife, setStudentLifeHome] = useState([]); 
+  const [CampusExperience, setCampusExperienceHome] = useState([]); 
+  const [QualityEducation, setQualityEducationHome] = useState([]); 
+  const [UGDepartments, setUGDepartmentsHome] = useState([]);
+  const [OnlineEducation, setOnlineEducationHome] = useState([]);
+  const [ugCourse, setUgCourseHome] = useState([]);
+  const [Scholarship, setScholarshipHome] = useState([]);
+  const [OurManagement, setOurManagement] = useState([]); 
+  const [AcademicsProgramList, setAcademicsProgramList] = useState([]);
+  const [AcademicsProgramListone, setAcademicsProgramListone] = useState([]);
+  const [AcademicsProgramListtwo, setAcademicsProgramListtwo] = useState([]); 
+  const [StudentLifeList, setStudentLifeList] = useState([]); 
+  const [StudentLifeSlider, setStudentLifeSlider] = useState([]);
+
 
   // Image and URL
   const imageUrl = HappyNewYear
@@ -107,6 +132,191 @@ const Home = () => {
       }, 500); // Delay for smooth rendering
     });
   }, []);
+
+  useEffect(() => {
+    api
+      .get("/content/getBannerHome")
+      .then((res) => {
+        setContent(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+     
+      api
+      .get("/content/getAboutHomePanelTop")
+      .then((res) => {
+        setAboutHomeTop(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      
+      api
+      .get("/content/getAboutHomePanel")
+      .then((res) => {
+        setAboutHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+
+      api
+      .get("/content/getCampusHomePanelTop")
+      .then((res) => {
+        setCompusHomeTop(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      
+      api
+      .get("/content/getCampusHomePanel")
+      .then((res) => {
+        setCompusHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getCampusHomePanel1")
+      .then((res) => {
+        setCompusHome1(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getAcademicsProgramHomePanel")
+      .then((res) => {
+        setAcademicsProgramHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getTributeFounderHomePanel")
+      .then((res) => {
+        setourFounderHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getOurPhilosophyHomePanel")
+      .then((res) => {
+        setOurPhilosophyHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getStudentLifeHomePanel")
+      .then((res) => {
+        setStudentLifeHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/geCampusexperienceHomePanel")
+      .then((res) => {
+        setCampusExperienceHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getQualityEducationHomePanel")
+      .then((res) => {
+        setQualityEducationHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getUGDepartmentsHomePanel")
+      .then((res) => {
+        setUGDepartmentsHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      }); 
+      api
+      .get("/content/getOnlineEducationHomePanel")
+      .then((res) => {
+        setOnlineEducationHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      }); 
+      api
+      .get("/content/getUGDepartmentscourseHomePanel")
+      .then((res) => {
+        setUgCourseHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      }); 
+      api
+      .get("/content/getScholarshipProgramsHomePanel")
+      .then((res) => {
+        setScholarshipHome(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getAboutOurManagement")
+      .then((res) => {
+        setOurManagement(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getAcademicsProgramList")
+      .then((res) => {
+        setAcademicsProgramList(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getAcademicsProgramListone")
+      .then((res) => {
+        setAcademicsProgramListone(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getAcademicsProgramListtwo")
+      .then((res) => {
+        setAcademicsProgramListtwo(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      }); 
+      api
+      .get("/content/getStudentLifeList")
+      .then((res) => {
+        setStudentLifeList(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getStudentLifeSlider")
+      .then((res) => {
+        setStudentLifeSlider(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+
+ 
+}, []);
 
   return (
     <>
@@ -197,7 +407,8 @@ const Home = () => {
                         </span>
                         Platform.
                       </h1>
-                      <p className="section-text">
+                      <p className="section-text"  dangerouslySetInnerHTML={{ __html: content[0]?.description }}>
+                      {/* {content[0].description}
                         We are creating an extraordinary and unique college.
                         Einstein College Arts and Science named after the
                         renowned scientist Albert Einstein deserves its
@@ -206,7 +417,7 @@ const Home = () => {
                         world of Science. The college maintains a royal
                         existence with its marvelous infrastructure and is
                         widely acclaimed for its meticulous planning, resource
-                        scheduling, and institutional management.
+                        scheduling, and institutional management. */}
                       </p>
                     </div>
                     {/* <form action="#" className="h2_banner-form">
@@ -296,12 +507,10 @@ const Home = () => {
                     Welcome - About Us
                   </span>
                   <h2 className="section-title mb-15">
-                    “யாதும் ஊரே யாவரும் கேளிர்”
+                    {aboutHomeTop[0]?.title}
                   </h2>
-                  <p className="section-text">
-                    We Offer The Best Quality Professional Education In Pace
-                    With Latest Technology. Our Institution Aims At Academic
-                    Excellence And The Overall Development Of Students.
+                  <p className="section-text" dangerouslySetInnerHTML={{ __html: aboutHomeTop[0]?.description }}>
+                   
                   </p>
                 </div>
               </div>
@@ -309,30 +518,23 @@ const Home = () => {
             <div className="row">
               <div className="col-xxl-7 col-xl-6 col-lg-6">
                 <div className="h6_research-img w_img mb-50">
-                  <img src={aboutFor} alt="" />
+                  <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${aboutHome[0]?.file_name}`} alt="" />
                 </div>
               </div>
               <div className="col-xxl-5 col-xl-6 col-lg-6">
                 <div className="h6_research-wrap mb-50">
                   <div className="h6_research-content">
-                    <h4>About Einstein College Of Arts &amp; Science</h4>
-                    <p>
-                      Greetings from Einstein Family! To keep up the tradition
-                      of 100 years of excellence in education and maintain the
-                      legacy of our visionary founder Thiru. AladiAruna M.A.,
-                      B.L. We as Einstein Family sustain a home of excellence
-                      with values. The prime of youth is shaped by the
-                      alma-mater and we in Einstein Family provide a conducive
-                      atmosphere where learning nurtures one to be ethical and
-                      responsible oriented
+                    <h4>{aboutHome[0]?.title}</h4>
+                    <p  dangerouslySetInnerHTML={{ __html: aboutHome[0]?.description }}>
+                    {/* {aboutHome[0]?.title} */}
                     </p>
-                    <p>
+                    {/* <p>
                       We foster our students to become better personalities to
                       confront the world. Along with academic and technical
                       skills, we kindle our students’ interest in research,
                       sports, cultural, co-curricular, and naturally to be a
                       social being incorporated with values.
-                    </p>
+                    </p> */}
                     <div className="h6_research-content-bottom">
                       <div className="h6_research-content-left">
                         <h2>$1b</h2>
@@ -518,21 +720,15 @@ const Home = () => {
                       CAMPUS
                     </span>
                     <h2 className="section-title mb-15">
-                      The Einstein College Of Arts & Science
+                      {compusHomeTop[0]?.title}
                     </h2>
-                    <p className="section-text">
-                      At Einstein College Of Arts & Science, Choose your study
-                      program and develop your creativity alongside top
-                      professionals. In 2017 the institution was founded by Late
-                      Thiru. Aladi Aruna M.A., B.L former Tamilnadu Law
-                      Minister, with the sole purpose of providing cutting edge
-                      education that is both accessible and affordable.
+                    <p className="section-text" dangerouslySetInnerHTML={{ __html: compusHomeTop[0]?.description }}>
                     </p>
                   </div>
                   <div className="h7_about-content">
                     <div className="h7_about-admin">
                       <div className="h7_about-admin-img">
-                        <img src={admin} alt="" />
+                        <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${compusHomeTop[0]?.file_name}`} alt="" />
                       </div>
                       <div className="h7_about-admin-info">
                         <h5>
@@ -596,10 +792,10 @@ const Home = () => {
                 <div className="h2_about-img mb-50">
                   <div className="h2_about-inner-img">
                     <img src={image2} alt="" className="h2_inner-img" />
-                    <img src={imagea3} alt="" style={{width:'60%',borderRadius:8}} className="h2_inner-img-shape" />
+                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${compusHome[0]?.file_name}`} alt="" style={{width:'60%',borderRadius:8}} className="h2_inner-img-shape" />
                   </div>
                   <div className="h2_about-inner-img2">
-                    <img src={image3} alt=""  style={{width:'60%',marginLeft:200,borderRadius:8}} />
+                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${compusHome1[0]?.file_name}`} alt=""  style={{width:'60%',marginLeft:200,borderRadius:8}} />
                     <div className="h2_about-img-button" >
                       <a
 
@@ -635,17 +831,12 @@ const Home = () => {
               <div className="col-xl-6 col-lg-6 col-md-10 mb-50">
                 <div className="section-area-2 mb-35">
                   <h2 className="section-title mb-20">
-                    Build lifelong friendships with students who share your
-                    interests, passions, and{" "}
+                  {compusHome[0]?.title}
                     <span>
                       perspectives <img src={line} alt="" />
                     </span>
                   </h2>
-                  <p className="section-text">
-                    Our college had hosted university level zonal volleyball
-                    match twice. With all its unique qualities and values, the
-                    students of Einstein College of Arts and Science shaped in
-                    such a way that they excel in all their endeavours
+                  <p className="section-text" dangerouslySetInnerHTML={{ __html: compusHome1[0]?.description }}>
                   </p>
                 </div>
                 <div className="h2_about-button">
@@ -929,16 +1120,8 @@ const Home = () => {
               <div className="row g-0">
                 <div className="col-xl-4 col-lg-4">
                   <div className="h7_program-item">
-                    <h3 className="h7_program-item-title">Quality Education</h3>
-                    <p>
-                      Our institution has multistory building and endowed with
-                      state-of-art training facilities. Einstein Arts and
-                      Science college rightfully boasts of a well equipped
-                      library with an excellent collection of reference books.
-                      Experienced faculty with proven reputation and dedication
-                      are on the rolls of the institution.. Our Institution
-                      Commits To Offer The Best and Quality Professional
-                      Education In Pace With Latest Technology.
+                    <h3 className="h7_program-item-title">{QualityEducation[0]?.title}</h3>
+                    <p dangerouslySetInnerHTML={{ __html: QualityEducation[0]?.description }}>
                     </p>
                     <div className="h7_program-item-list">
                       <a >
@@ -955,21 +1138,13 @@ const Home = () => {
                 </div>
                 <div className="col-xl-4 col-lg-4">
                   <div className="h7_program-item h7_program-item2">
-                    <h3 className="h7_program-item-title">UG Departments</h3>
-                    <p>
-                      We prepare you to launch your career by providing a
-                      supportive, creative, and professional environment.
+                    <h3 className="h7_program-item-title">{UGDepartments[0]?.title}</h3>
+                    <p dangerouslySetInnerHTML={{ __html: UGDepartments[0]?.description }}>
                     </p>
                     <ul className="h7_program-item-list2">
-                      <li>B.A (English)</li>
-                      <li>BBA</li>
-                      <li>BCA</li>
-                      <li>B.Sc (Mathematics)</li>
-                      <li>B.Sc (Physics)</li>
-                      <li>B.Sc (Chemistry)</li>
-                      <li>B.Sc (Computer Science)</li>
-                      <li>B.Com</li>
-                      <li>B.Com (Corporate Secretary)</li>
+                    {ugCourse.map((item, index) => ( 
+                      <li>{item.title}</li>
+                    ))}
                     </ul>
                     <span className="h7_program-item-time">
                       <i className="fa-light fa-clock" /> Online + Onsite
@@ -978,16 +1153,8 @@ const Home = () => {
                 </div>
                 <div className="col-xl-4 col-lg-4">
                   <div className="h7_program-item">
-                    <h3 className="h7_program-item-title">Online Education</h3>
-                    <p>
-                      Skill classes (Managerial and Communicative) are arranged
-                      for all students of the college. Entrepreneurship
-                      development and Time Management classes are specially
-                      arranged for the benefit of the students. On the whole,
-                      every effort is taken to give the students wider
-                      educational opportunities. Flexible access online
-                      education from anywhere in the world engage with
-                      forward-thinking community.
+                    <h3 className="h7_program-item-title">{OnlineEducation[0]?.title}</h3>
+                    <p dangerouslySetInnerHTML={{ __html: OnlineEducation[0]?.description }}>
                     </p>
                     <div className="h7_program-item-list">
                       <a>
@@ -1028,15 +1195,8 @@ const Home = () => {
             <div className="row">
               <div className="col-12">
                 <div className="section-area-6 text-center mb-55">
-                  <h2 className="section-title mb-15">Academics Program</h2>
-                  <p className="section-text">
-                    At Einstein College Of Arts & Science, We prepare you to
-                    launch your career by providing a supportive, creative, and
-                    professional. Our goal is to prepare students to understand,
-                    contribute to, and succeed in a rapidly changing society,
-                    thus making the world a better and more just place. Choose
-                    your study program and develop your creativity alongside top
-                    professionals.
+                  <h2 className="section-title mb-15">{academicsProgramHome[0]?.title}</h2>
+                  <p className="section-text" dangerouslySetInnerHTML={{ __html: academicsProgramHome[0]?.description }}>
                   </p>
                 </div>
               </div>
@@ -1045,12 +1205,12 @@ const Home = () => {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={Academic1} alt="" style={{hieght:"120%"}} />
+                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${AcademicsProgramList[0]?.file_name}`} alt="" style={{hieght:"120%"}} />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
                       <h4 className="h6_program-item-content-info-title">
-                        <a>Underground Studies</a>
+                        <a>{AcademicsProgramList[0]?.title}</a>
                       </h4>
                       <a className="h6_program-item-content-info-link">
                         Read More
@@ -1153,12 +1313,12 @@ const Home = () => {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={Academic2} alt="" />
+                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${AcademicsProgramListone[0]?.file_name}`} alt="" />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
                       <h4 className="h6_program-item-content-info-title">
-                        <a>Graduate Studies</a>
+                        <a>{AcademicsProgramListone[0]?.title}</a>
                       </h4>
                       <a  className="h6_program-item-content-info-link">
                         Read More
@@ -1185,12 +1345,12 @@ const Home = () => {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={Academic3} alt="" />
+                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${AcademicsProgramListtwo[0]?.file_name}`} alt="" />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
                       <h4 className="h6_program-item-content-info-title">
-                        <a>Lifelong Learning</a>
+                        <a>{AcademicsProgramListtwo[0]?.title}</a>
                       </h4>
                       <a className="h6_program-item-content-info-link">
                         Read More
@@ -1236,7 +1396,7 @@ const Home = () => {
               </span>
             </div>
             <div className="h7_scholarship-img">
-              <img src={scholarshipimage} alt="" />
+              <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${Scholarship[0]?.file_name}`} alt="" />
             </div>
           </div>
           <div className="h7_scholarship-wrap">
@@ -1256,9 +1416,7 @@ const Home = () => {
                 </h1>
               </div>
               <div className="h7_scholarship-content">
-                <p>
-                  Promising leaders at Einstein College Of Arts & Science, set
-                  to unveil a more dynamic future with great dexterity.
+                <p dangerouslySetInnerHTML={{ __html: Scholarship[0]?.description }}>
                 </p>
                 <a>
                   Financial Aid <i className="fa-light fa-arrow-right" />
@@ -1293,84 +1451,20 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+              {OurManagement.map((item, index) => ( 
               <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="h2_teacher-item mb-30">
                   <div className="h2_teacher-img">
-                    <img src={teacher1} alt=""  style={{marginBottom:50}}/>
+                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${item?.file_name}`} alt=""  style={{marginBottom:50}}/>
                   </div>
                   <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">Prof.A.Amudhavanan</a>
+                    <h5 dangerouslySetInnerHTML={{ __html: item?.description }}>
                     </h5>
-                    <span>Chairman</span>
+                    <span>{item.title}</span>
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher2} alt="" style={{marginBottom:50}}/>
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">Prof.A.Ezhilvanan</a>
-                    </h5>
-                    <span>Secretary</span>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher3} alt="" style={{marginBottom:50}} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">Mr.A.Mathivanan</a>
-                    </h5>
-                    <span>Managing Trustee</span>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher4} alt="" style={{marginBottom:50}}/>
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">Dr.A.Anbuvanan</a>
-                    </h5>
-                    <span>Trustee</span>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher5} alt="" style={{marginBottom:50}}/>
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">Mr.A.Tamilvanan</a>
-                    </h5>
-                    <span>Trustee</span>
-                  </div>
-                </div>
-              </div>
-              {/* <div className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher5} alt="" />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">Parsley Montana</a>
-                    </h5>
-                    <span>Lead Teacher</span>
-                  </div>
-                </div>
-              </div> */}
+              ))}
             </div>
           </div>
         </section>
@@ -1383,14 +1477,14 @@ const Home = () => {
                 className="section-subtitle"
                 style={{ fontSize: 43, fontWeight: "bold", marginBottom: 23 }}
               >
-                Tribute to Our Founder
+               {ourFounder[0]?.title}
               </span>
             </div>
             <div className="row">
               <div className="col-xl-6 col-lg-6">
                 <div className="h6_about-img w_img">
                   <img
-                    src={Founder}
+                    src={`https://ecas.unitdtechnologies.com/storage/uploads/${ourFounder[0]?.file_name}`}
                     alt="Founder-Image"
                     style={{
                       width: "100%",
@@ -1408,17 +1502,7 @@ const Home = () => {
                   {/* <h3 className="h6_about-content-title">
                     Tribute to Our Founder
                   </h3> */}
-                  <p>
-                    Our Founder, Thiru. AladiAruna M.A., B.L son of the soil, a
-                    great prolific reader and an orator, was one of the
-                    senior-most politicians of Tamilnadu,He had a great vision of 
-                    providing high-quality technical education in rural areas.He was the
-                    former Law Minister of Tamil Nadu from 1996 to 2001, a great Parliamentarian,
-                    and a Member of Legislative Assembly (MLA) for more than a decade. He wrote seven
-                    books, mostly in the areas of Constitution, state Autonomy, Tamil Movement, and a
-                    biography on Kamaraj. Being a dedicated educationist, he started this technical
-                    institution with a healthy campus environment, modern amenities, the latest infrastructure, and well
-                    qualified staff. The vision of Trustees is to fulfill the dreams of the founder.
+                  <p dangerouslySetInnerHTML={{ __html: ourFounder[0]?.description }}>
                   </p>
                   <a
                     href="#"
@@ -1446,12 +1530,8 @@ const Home = () => {
             <div className="row">
               <div className="col-xl-6 col-lg-6" style={{ marginTop: 100 }}>
                 <div className="h6_about-content ml-30 mb-30 mb-md-0 pb-30">
-                  <h3 className="h6_about-content-title">Our Philosophy</h3>
-                  <p>
-                    To serve humanity through Academic Excellence & Research
-                    with values. To enlighten students to become proficient
-                    Engineers of exceptional caliber and acquire novel research
-                    capabilities that gives them industrial recognition.
+                  <h3 className="h6_about-content-title">{OurPhilosophy[0]?.title}</h3>
+                  <p dangerouslySetInnerHTML={{ __html: OurPhilosophy[0]?.description }}>
                   </p>
                   <a
                     href="#"
@@ -1465,7 +1545,7 @@ const Home = () => {
               <div className="col-xl-6 col-lg-6">
                 <div className="h6_about-img w_img">
                   <img
-                    src={Student}
+                    src={`https://ecas.unitdtechnologies.com/storage/uploads/${OurPhilosophy[0]?.file_name}`}
                     alt="Founder-Image"
                     style={{
                       width: "100%",
@@ -1503,52 +1583,26 @@ const Home = () => {
             <div className="row align-items-center">
               <div className="col-xl-6 col-lg-6">
                 <div className="h4_about-img mb-50 w_img">
-                  <img src={StudentForr} alt="" style={{ marginTop: 25 }} />
+                  <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${StudentLife[0]?.file_name}`} alt="" style={{ marginTop: 25 }} />
                 </div>
               </div>
               <div className="col-xl-6 col-lg-6 col-md-10">
                 <div className="h4_about-wrap mr-65 mb-50">
                   <div className="section-area-4 mb-25">
                     <h2 className="section-title mb-10">
-                      Shape The Students To Shape The Society
+                    {StudentLife[0]?.title}
                     </h2>
-                    <p className="section-text">
-                      The Department of Placement and Training of Einstein
-                      College of Engineering has been successful, right from the
-                      day it was incepted in 2006. It is headed by
-                      Mr.A.Ezhilvanan, the Managing Trustee and Principal takes
-                      the creative ideas to make a promising career for every
-                      student of Einstein College of Engineering.
+                    <p className="section-text" dangerouslySetInnerHTML={{ __html: StudentLife[0]?.description }}>
                     </p>
                   </div>
                   <div className="h4_about-content mb-25">
                     <ul>
-                      <li>
-                        <i className="fa-regular fa-check" />A good liaison with
-                        industry.
-                      </li>
+                    {StudentLifeList.map((item, index) => ( 
                       <li>
                         <i className="fa-regular fa-check" />
-                        Watch on the job requirements in the industries.
+                        {item.title}
                       </li>
-                      <li>
-                        <i className="fa-regular fa-check" />
-                        Contact with information experts in respective fields
-                        from industries.
-                      </li>
-                      <li>
-                        <i className="fa-regular fa-check" />
-                        Special lectures for the benefit of the students and as
-                        well the staffs.
-                      </li>
-                      <li>
-                        <i className="fa-regular fa-check" />
-                        Training for teachers and staff.
-                      </li>
-                      <li>
-                        <i className="fa-regular fa-check" />A good data bank of
-                        the alumni
-                      </li>
+                    ))}
                     </ul>
                   </div>
                   <div className="h4_about-button">
@@ -1637,15 +1691,12 @@ const Home = () => {
                       className="h6_testimonial-active"
                     >
                       <div className="swiper-wrapper">
+                      {StudentLifeSlider.map((item, index) => ( 
                         <SwiperSlide>
                           <div className="swiper-slide">
                             <div className="h6_testimonial-item">
                               <blockquote>
-                                <p>
-                                  Industrial training and field/industrial
-                                  visits for the students. Assistance to
-                                  students in getting apprenticeship training.
-                                  Campus recruitment and in-plant training.
+                                <p dangerouslySetInnerHTML={{ __html: item?.description }}>
                                 </p>
                                 {/* <div className="quote-admin">
                             <div className="quote-admin-inner">
@@ -1657,50 +1708,7 @@ const Home = () => {
                             </div>
                           </div>
                         </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <div className="h6_testimonial-item">
-                              <blockquote>
-                                <p>
-                                  The Department of Placement and Training of
-                                  Einstein College of Engineering has been
-                                  successful, right from the day it was incepted
-                                  in 2006. It is headed by Mr.A.Ezhilvanan, the
-                                  Managing Trustee and Principal takes the
-                                  creative ideas to make a promising career for
-                                  every student of Einstein College of
-                                  Engineering.
-                                </p>
-                                {/* <div className="quote-admin">
-                            <div className="quote-admin-inner">
-                              <h5>William Board</h5>
-                              <span>Student Eduan Univesity</span>
-                            </div>
-                          </div> */}
-                              </blockquote>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <div className="h6_testimonial-item">
-                              <blockquote>
-                                <p>
-                                  Industrial training and field/industrial
-                                  visits for the students. Assistance to
-                                  students in getting apprenticeship training.
-                                  Campus recruitment and in-plant training.
-                                </p>
-                                {/* <div className="quote-admin">
-                            <div className="quote-admin-inner">
-                              <h5>William Board</h5>
-                              <span>Student Eduan Univesity</span>
-                            </div>
-                          </div> */}
-                              </blockquote>
-                            </div>
-                          </div>
-                        </SwiperSlide>
+                      ))}
                       </div>
                     </Swiper>
                   </div>
@@ -1729,27 +1737,16 @@ const Home = () => {
         >
           <img src={shapeStu1} alt="" className="h4_education-shape-1" />
           <img src={shapeStu} alt="" className="h4_education-shape-2" />
-          <img src={bgStu} alt="" className="h4_education-img" />
+          <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${CampusExperience[0]?.file_name}`} alt="" className="h4_education-img" />
           <div className="container">
             <div className="row">
               <div className="col-xl-6 col-lg-7 col-md-12">
                 <div className="h4_education-wrap mr-50">
-                  <div className="section-area-4 mb-60 section-white-4">
+                  <div className="section-area-4 mb-60 section-white-4"> 
                     <h2 className="section-title mb-15">
-                      Learn Your Best Education Culture with....
+                    {CampusExperience[0]?.title}
                     </h2>
-                    <p className="section-text">
-                      Our rich history is the foundation for our values. Join us
-                      to make your college experience unforgettable. The college
-                      is established and managed by Aladipatti Vaithiyalinga
-                      Nadar Pathirakali Ammal Educational and Charitable Trust.
-                      About 15 KM away from Tirunelveli towards the well-known
-                      coutralam, the college is situated in Sir. C.V. Raman
-                      Nagar. The Institution is spread over an area of about
-                      7acres. The college maintains a royal existence with its
-                      marvelous infrastructure and widely acclaimed for its
-                      meticulous planning, resource scheduling and institutional
-                      management.
+                    <p className="section-text" dangerouslySetInnerHTML={{ __html: CampusExperience[0]?.description }}>
                     </p>
                   </div>
                   {/* <div className="h4_education-content">

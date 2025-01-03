@@ -1,5 +1,6 @@
 import React from 'react';
 import logoImage from "../../assets/img/logoImage.webp"
+import Navbar from './NavMenu';
 
 const Home = () => {
   return (
@@ -67,112 +68,66 @@ const Home = () => {
               </div> */}
             </div>
           </div>
-          <div className="col-xl-6 d-none d-xl-block">
+          <Navbar/>
+          {/* <div className="col-xl-6 d-none d-xl-block">
             <div className="h2_header-middle">
               <nav className="h2_main-menu mobile-menu" id="mobile-menu">
                 <ul>
                   <li>
                     <a href="/Home">Home</a>
-                    {/* <ul className="submenu">
+                                     </li>
+                  <li className="menu-has-child">
+                    <a href="/About">About</a>
+                    <ul className="submenu">
                       <li>
-                        <a href="index.html">Education Main</a>
+                        <a href="/">About Us</a>
                       </li>
                       <li>
-                        <a href="index-2.html">Online Education</a>
+                        <a href="/">Campus</a>
                       </li>
                       <li>
-                        <a href="index-3.html">Classic LMS</a>
+                        <a href="/">Our Leadership</a>
                       </li>
                       <li>
-                        <a href="index-4.html">Elearning Education</a>
+                        <a href="/">Facilities</a>
                       </li>
-                      <li>
-                        <a href="index-5.html">College Status</a>
-                      </li>
-                      <li>
-                        <a href="index-6.html">University Campus</a>
-                      </li>
-                      <li>
-                        <a href="index-7.html">Academic Education</a>
-                      </li>
-                      <li>
-                        <a href="index-8.html">Online Courses</a>
-                      </li>
-                      <li>
-                        <a href="index-9.html">Kids Education</a>
-                      </li>
-                      <li>
-                        <a href="index-10.html">Preschool Program</a>
-                      </li>
-                    </ul> */}
+                    </ul>
                   </li>
-                  {/* <li className="menu-has-child">
-                    <a href="course.html">Courses</a>
+                  <li className="menu-has-child">
+                    <a href="#">Academics</a>
                     <ul className="submenu">
                       <li>
-                        <a href="course.html">Courses 1</a>
+                        <a href="/">UG Programmes</a>
                       </li>
                       <li>
-                        <a href="course-2.html">Courses 2</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Course Details</a>
+                        <a href="/">Faculty</a>
                       </li>
                     </ul>
-                  </li> */}
-                  {/* <li className="menu-has-child">
-                    <a href="#">Pages</a>
+                  </li>
+                  <li className="menu-has-child">
+                    <a href="/">Student Life</a>
                     <ul className="submenu">
                       <li>
-                        <a href="about.html">About</a>
+                        <a href="/">Event</a>
                       </li>
                       <li>
-                        <a href="team.html">Teacher</a>
+                        <a href="/">Training & Placement</a>
                       </li>
                       <li>
-                        <a href="team-details.html">Teacher Details</a>
+                        <a href="/">Alumni</a>
                       </li>
                       <li>
-                        <a href="event.html">Events</a>
-                      </li>
-                      <li>
-                        <a href="event-details.html">Event Details</a>
-                      </li>
-                      <li>
-                        <a href="price.html">Price</a>
-                      </li>
-                      <li>
-                        <a href="gallery.html">Gallery</a>
-                      </li>
-                      <li>
-                        <a href="sign-up.html">Sign Up</a>
-                      </li>
-                      <li>
-                        <a href="sign-in.html">Sign In</a>
-                      </li>
-                      <li>
-                        <a href="404.html">404</a>
+                        <a href="/">Gallery</a>
                       </li>
                     </ul>
-                  </li> */}
-                  {/* <li className="menu-has-child">
-                    <a href="blog.html">Blog</a>
-                    <ul className="submenu">
-                      <li>
-                        <a href="blog.html">Blog</a>
-                      </li>
-                      <li>
-                        <a href="blog-details.html">Blog Details</a>
-                      </li>
-                    </ul>
-                  </li> */}
-                  {/* <li>
-                    <a href="contact.html">Contact</a>
-                  </li> */}
+                  </li>
+                  <li>
+                    <a href="/Contact">Contact</a>
+                  </li>
                 </ul>
               </nav>
             </div>
-          </div>
+          </div> */}
           <div className="col-xl-3 col-sm-5 col-6">
             <div className="h2_header-right">
               <div className="h2_header-btn d-none d-sm-block">
