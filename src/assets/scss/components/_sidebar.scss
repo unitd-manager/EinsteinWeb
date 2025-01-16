@@ -39,7 +39,7 @@
     opacity: 0;
     visibility: hidden;
     @include transition(.4s);
-    cursor: url(../../assets/img/bg/close.png), auto;
+    // cursor: url(../../assets/img/bg/close.png), auto;
   }
   
   .offcanvas-overlay:is(.overlay-open) {

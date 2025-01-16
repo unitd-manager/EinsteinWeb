@@ -49,6 +49,15 @@ import '../src/assets/scss/abstracts/_common.scss'
 import '../src/assets/scss/components/_about.scss'
 import '../src/assets/scss/components/_section.scss'
 import '../src/assets/scss/components/_teacher.scss'
+import '../src/assets/scss/components/_course-details.scss'
+import '../src/assets/scss/components/_course.scss'
+import '../src/assets/scss/components/_faq.scss'
+import '../src/assets/scss/components/_sidebar.scss'
+import '../src/assets/scss/components/_apply.scss'
+import '../src/assets/scss/components/_banner.scss'
+import '../src/assets/scss/components/_admission.scss'
+import '../src/assets/scss/components/_button.scss'
+
 
 function App() {
   
