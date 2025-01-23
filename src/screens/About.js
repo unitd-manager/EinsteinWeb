@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import api from "../constants/api";
 import "swiper/css";
+import "../assets/css/modal.css"
 import "swiper/css/navigation";
 import Slider from "react-slick";
 import "../assets/css/event.css";
@@ -29,6 +30,12 @@ import Imagesactive from "../assets/img/about/Imagesactive.jpg";
 import IMG1 from "../assets/img/about/image 11.png";
 import IMG2 from "../assets/img/about/image 2.png";
 import IMG3 from "../assets/img/about/image 3.png";
+import HappyNewYear from "../assets/img/HappyNewYear.jpg"
+
+import Modal from "react-modal"; // You can use any modal library or create your own
+
+// Ensure the modal is attached to the root element
+Modal.setAppElement("#root");
 
 function removeHtmlTags(str) {
   return str.replace(/<\/?[^>]+(>|$)/g, ""); // Removes all HTML tags
@@ -37,6 +44,8 @@ function removeHtmlTags(str) {
 }
 
 const Home = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
   const [OurManagement, setOurManagement] = useState([]);
   const [OurPhilosophy, setOurPhilosophyHome] = useState([]);
   const [slides, setslides] = useState([]);
@@ -51,6 +60,22 @@ const Home = () => {
   const [Facilities1, setFacilities1] = useState([]);
   const [Facilities2, setFacilities2] = useState([]);
   const [Facilities3, setFacilities3] = useState([]);
+
+
+
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleOpenModal = (item) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null);
+  };
 
 
   useEffect(() => {
@@ -182,6 +207,7 @@ const Home = () => {
 
   return (
     <>
+        
       <main>
         {/* banner area start */}
         <section className="slider-area fix">
@@ -446,83 +472,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="h10_about-area pt-50 pb-50" style={{ marginTop: 100 }}>
-          {/* <div className="apply-text-wrap mb-20">
-            <div className="apply-text-ticker">
-              <h1 className="h7_apply-title animate-charcter">Founder</h1>
-            </div>
-          </div> */}
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-6 col-lg-6">
-                <div className="h10_about-img mr-25">
-                  <img
-                    src={imgShape}
-                    alt=""
-                    className="h10_about-img-shape d-none d-md-block"
-                  />
-                  <img
-                    src={shape1}
-                    alt=""
-                    className="h10_about-img-shape-1 d-none d-md-block"
-                  />
-                  <img
-                    src={`https://ecas.unitdtechnologies.com/storage/uploads/${founder[0]?.file_name}`}
-                    alt=""
-                    className="wow fadeInLeftBig"
-                    data-wow-delay="0.3s"
-                  />
-                </div>
-              </div>
-              <div className="col-xl-6 col-lg-6">
-                <div className="h10_about-content ml-35">
-                  <img src={shape2} alt="" className="h10_about-shape-2" />
-                  <h2 className="h10_about-content-title">
-                    {founder[0]?.title}
-                  </h2>
-                  <div className="h10_about-content-inner">
-                    <h5>Thiru. AladiAruna M.A., B.L</h5>
-                    <p  dangerouslySetInnerHTML={{
-                      __html: founder[0]?.description,
-                    }}>
-                    </p>
-                  </div>
-                  {/* <div className="h10_about-count">
-            <div className="h10_about-count-item">
-              <h3>06+</h3>
-              <span>Years experience</span>
-            </div>
-            <div className="h10_about-count-item">
-              <h3>7k+</h3>
-              <span>Students each year</span>
-            </div>
-            <div className="h10_about-count-item">
-              <h3>24+</h3>
-              <span>Award Wining</span>
-            </div>
-          </div> */}
-                  <div className="h10_about-bottom">
-                    {/* <div className="h10_about-admin">
-              <img src={admin} alt="" />
-              <div className="h10_about-admin-info">
-                <h5>Hugh Millie-Yate</h5>
-                <span>Vice Principal</span>
-              </div>
-            </div> */}
-                    <div className="h10_about-bottom-btn">
-                      <a href="#">
-                        <span className="inner-btn">
-                          <i className="fa-light fa-arrow-up" />
-                        </span>
-                        <span className="inner-text">More About Us</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+  
 
         <section className="h2_teacher-area pb-80">
           <div className="container">
@@ -554,13 +504,15 @@ const Home = () => {
                       <img
                         src={`https://ecas.unitdtechnologies.com/storage/uploads/${item?.file_name}`}
                         alt=""
-                        style={{ marginBottom: 50 }}
+                        style={{ marginBottom: 50,cursor: "pointer" }}
+                        onClick={() => handleOpenModal(item)}
                       />
                     </div>
                     <div className="h2_teacher-content">
                       <h5
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></h5>
+                      style={{ cursor: "pointer"}}
+                        onClick={() => handleOpenModal(item)}
+                      > {item.description_short}</h5>
                       <span>{item.title}</span>
                     </div>
                   </div>
@@ -568,8 +520,38 @@ const Home = () => {
               ))}
             </div>
           </div>
+          <div>
+        {/* Modal */}
+        {selectedItem && (
+          <div style={modalStyles}>
+            <div style={overlayStyles} onClick={() => handleCloseModal()}></div>
+           
+            <div style={contentStyles}>
+            <button onClick={handleCloseModal} className="close-button">
+              &times;
+            </button>
+            {/* <img src={shape2} alt="" className="h10_about-shape-2" /> */}
+            {/* <img
+                    src={shape2}
+                    alt=""
+                    className="h10_about-img-shape-1 d-none d-md-block"
+                  /> */}
+              <img
+                src={`https://ecas.unitdtechnologies.com/storage/uploads/${selectedItem?.file_name}`}
+                alt="Preview"
+                style={imageStyles}
+                // onClick={handleImageClick}
+              />
+              
+              <h5  >{selectedItem.description_short}</h5>
+              <p> {selectedItem.title}</p>
+            <p dangerouslySetInnerHTML={{ __html: selectedItem.description }}></p>
+           
+            </div>
+          </div>
+        )}
+      </div>
         </section>
-
         <section className="h10_testimonial-area pt-90 pb-120 fix">
           <div className="section-area-6 text-center mb-60">
             <span className="section-subtitle">Our Principal</span>
@@ -875,9 +857,7 @@ const Home = () => {
         <section className="h7_apply-area pt-10 pb-95 fix">
           <div className="container">
             <div className="h7_apply-wrap">
-            <div className="section-area-6 text-center mb-60"style={{marginTop:25}}>
-          <span className="section-subtitle">{Campus1[0]?.title}</span>
-           </div>
+            
               <div className="h7_apply-item">
                 {/* <div className="h7_apply-item-number">
                   <span>01</span>
@@ -892,6 +872,9 @@ const Home = () => {
                  />
                 </div>
                 <div className="h7_apply-item-text">
+                <div className="section-area-7 text-center mb-60">
+          <span className="section-subtitle">{Campus1[0]?.title}</span>
+           </div>
                   <p  dangerouslySetInnerHTML={{ __html: Campus1[0]?.description }}>
                   </p>
                 </div>
@@ -899,9 +882,7 @@ const Home = () => {
                 {/* <img src={IMG1} alt="" /> */}
                 </div>
               </div>
-              <div className="section-area-6 text-center mb-60" style={{marginTop:25}}>
-          <span className="section-subtitle">{Campus2[0]?.title}</span>
-           </div>
+            
               <div className="h7_apply-item">
                 {/* <div className="h7_apply-item-number">
                   <span>02</span>
@@ -915,6 +896,9 @@ const Home = () => {
                  }}/>
                 </div>
                 <div className="h7_apply-item-text">
+                    <div className="section-area-7 text-center mb-60" >
+          <span className="section-subtitle">{Campus2[0]?.title}</span>
+           </div>
                   <p  dangerouslySetInnerHTML={{ __html: Campus2[0]?.description }}>
                   </p>
                 </div>
@@ -922,9 +906,7 @@ const Home = () => {
                   <img src="assets/img/apply/7/2.png" alt="" />
                 </div>
               </div>
-              <div className="section-area-6 text-center mb-60" style={{marginTop:25}}>
-          <span className="section-subtitle">{Campus3[0]?.title}</span>
-           </div>
+             
               <div className="h7_apply-item">
                 {/* <div className="h7_apply-item-number">
                   <span>03</span>
@@ -939,6 +921,9 @@ const Home = () => {
                 />
                 </div>
                 <div className="h7_apply-item-text">
+                <div className="section-area-7 text-center mb-60" >
+          <span className="section-subtitle">{Campus3[0]?.title}</span>
+           </div>
                   <p  dangerouslySetInnerHTML={{ __html: Campus3[0]?.description }}>
                   </p>
                 </div>
@@ -1007,76 +992,8 @@ const Home = () => {
           </div>
         </section>
 
-        {/* apply area end */}
-        {/* counter area start */}
-        <div className="h7_counter-area pb-105" style={{ marginTop: 150 }}>
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div className="h7_counter-item justify-content-xl-start justify-content-center mb-10">
-                  <div className="h7_counter-info">
-                    <h3 className="h7_counter-info-title">
-                      <span className="odometer count_one" data-count={83}>
-                        00
-                      </span>
-                      <span>%</span>
-                    </h3>
-                    <span className="h7_counter-info-text">
-                      OF RECENT GRADUATES <br /> STARTED NEW JOB
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div className="h7_counter-item justify-content-center mb-10">
-                  <div className="h7_counter-info">
-                    <h3 className="h7_counter-info-title">
-                      <span className="odometer count_one" data-count={125}>
-                        00
-                      </span>
-                      <span>+</span>
-                    </h3>
-                    <span className="h7_counter-info-text">
-                      University DEGREE PROGRAMS
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div className="h7_counter-item justify-content-center mb-10">
-                  <div className="h7_counter-info">
-                    <h3 className="h7_counter-info-title">
-                      <span className="odometer count_one" data-count={30}>
-                        00
-                      </span>
-                      <span>+</span>
-                    </h3>
-                    <span className="h7_counter-info-text">
-                      YEARS OF HISTORY
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div className="h7_counter-item justify-content-xl-end justify-content-center mb-10">
-                  <div className="h7_counter-info">
-                    <h3 className="h7_counter-info-title">
-                      <span className="odometer count_one" data-count={345}>
-                        00
-                      </span>
-                      <span>+</span>
-                    </h3>
-                    <span className="h7_counter-info-text">
-                      Our University Lecture
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <section className="h10_event-area pt-110 pb-90">
+        <section className="h10_event-area1 pt-110 pb-90">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-12">
@@ -1099,12 +1016,12 @@ const Home = () => {
                       />
                     </a>
                   </div>
-                  <div className="h10_event-content">
+                  <div className="h10_event-content1">
                     <span className="h10_event-content-meta">
                       <i className="fa-light fa-location-dot" />
                       {Facilities1[0]?.title}
                     </span>
-                    <h5 className="h10_event-content-title">
+                    <h5 className="h10_event-content1-title">
                       <a dangerouslySetInnerHTML={{ __html: Facilities1[0]?.description }}>
                       </a>
                     </h5>
@@ -1131,7 +1048,7 @@ const Home = () => {
                     </a>
                     {/* <span className="h10_event-date">24 Th Dec 2023</span> */}
                   </div>
-                  <div className="h10_event-content">
+                  <div className="h10_event-content1">
                     <span className="h10_event-content-meta">
                       <i className="fa-light fa-location-dot" />
                       {Facilities2[0]?.title}
@@ -1162,7 +1079,7 @@ const Home = () => {
                     </a>
                     {/* <span className="h10_event-date">08 Th Dec 2023</span> */}
                   </div>
-                  <div className="h10_event-content">
+                  <div className="h10_event-content1">
                     <span className="h10_event-content-meta">
                       <i className="fa-light fa-location-dot" />
                       {Facilities3[0]?.title}
@@ -1255,5 +1172,48 @@ const Home = () => {
     </>
   );
 };
+
+const modalStyles = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  zIndex: 1000,
+};
+
+const overlayStyles = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+};
+
+const contentStyles = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  backgroundColor: "white",
+  padding: "20px",
+  borderRadius: "8px",
+  textAlign: "center",
+  width: "100%", // Adjusts to 80% of the parent container width
+  maxWidth: "1000px", // Ensures it doesn't exceed 500px
+  height: "auto", // Adapts height based on content
+  maxHeight: "600px", // Ensures it doesn't exceed 300px
+  overflowY: "auto", // Adds scroll if content overflows vertically
+};
+
+
+const imageStyles = {
+  maxWidth: "30%",
+  height: "25%",
+  objectFit: "cover",
+  cursor: "pointer",
+};
+
 
 export default Home;

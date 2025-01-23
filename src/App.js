@@ -2,9 +2,11 @@ import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/screens/Home.js";
 import About from "../src/screens/About.js";
+import Student from "../src/screens/Student.js"
 import Header from "../src/screens/header/Header.js";
 import Footer from "../src/screens/header/Footer.js";
-
+import Login from "../src/auth/Login.js"
+import SignUp from "../src/auth/SignUp.js"
 
 
 import '../src/assets/css/style.css'
@@ -57,6 +59,7 @@ import '../src/assets/scss/components/_apply.scss'
 import '../src/assets/scss/components/_banner.scss'
 import '../src/assets/scss/components/_admission.scss'
 import '../src/assets/scss/components/_button.scss'
+import '../src/assets/scss/components/_event.scss'
 
 
 function App() {
@@ -69,6 +72,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} /> 
+          <Route path="/Student" element={<Student />} /> 
+
+          {/* Login */}
+          
+          <Route path="/Login" element={<Login />} />
+          <Route path="/SignUp" element={<SignUp />} /> 
+
        </Routes>
         <Footer />
       </HashRouter>

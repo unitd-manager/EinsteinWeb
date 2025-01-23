@@ -1,49 +1,62 @@
-import React from 'react';
-import logoImage from "../../assets/img/logoImage.webp"
-import Navbar from './NavMenu';
+import React from "react";
+import { Link } from "react-router-dom";
+import logoImage from "../../assets/img/logoImage.webp";
+import Navbar from "./NavMenu";
+import { getUser } from "../../auth/user";
 
 const Home = () => {
+  const user = getUser();
+
+  console.log('user',user)
+
+  const logout = () => {
+    localStorage.clear();
+    setTimeout(() => {
+      window.location.reload();
+    }, 200);
+  };
+
   return (
     <>
-  {/* sidebar-information-area-start */}
-  <div className="sidebar-info side-info">
-    <div className="sidebar-logo-wrapper mb-25">
-      <div className="row align-items-center">
-        <div className="col-xl-6 col-8">
-          <div className="sidebar-logo">
-            <a href="index.html">
-              <img src={logoImage} alt="logo-img" />
-            </a>
-          </div>
-        </div>
-        <div className="col-xl-6 col-4">
-          <div className="sidebar-close-wrapper text-end">
-            <button className="sidebar-close side-info-close">
-              <i className="fal fa-times" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="sidebar-menu-wrapper fix">
-      <div className="mobile-menu" />
-    </div>
-  </div>
-  <div className="offcanvas-overlay" />
-  {/* sidebar-information-area-end */}
-  {/* header area start */}
-  <header>
-    <div className="h2_header-area header-sticky">
-      <div className="container">
-        <div className="row align-items-center">
-          <div className="col-xl-3 col-sm-7 col-6">
-            <div className="h2_header-left">
-              <div className="h2_header-logo">
-                <a href="/Home">
-                  <img src={logoImage} alt="" />
+      {/* sidebar-information-area-start */}
+      <div className="sidebar-info side-info">
+        <div className="sidebar-logo-wrapper mb-25">
+          <div className="row align-items-center">
+            <div className="col-xl-6 col-8">
+              <div className="sidebar-logo">
+                <a href="index.html">
+                  <img src={logoImage} alt="logo-img" />
                 </a>
               </div>
-              {/* <div className="h2_header-category d-none d-sm-block">
+            </div>
+            <div className="col-xl-6 col-4">
+              <div className="sidebar-close-wrapper text-end">
+                <button className="sidebar-close side-info-close">
+                  <i className="fal fa-times" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="sidebar-menu-wrapper fix">
+          <div className="mobile-menu" />
+        </div>
+      </div>
+      <div className="offcanvas-overlay" />
+      {/* sidebar-information-area-end */}
+      {/* header area start */}
+      <header>
+        <div className="h2_header-area header-sticky">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-xl-3 col-sm-7 col-6">
+                <div className="h2_header-left">
+                  <div className="h2_header-logo">
+                    <a href="/Home">
+                      <img src={logoImage} alt="" />
+                    </a>
+                  </div>
+                  {/* <div className="h2_header-category d-none d-sm-block">
                 <a href="#">
                   <i className="fa-solid fa-grid" />
                   <span>Category</span>
@@ -66,10 +79,10 @@ const Home = () => {
                   </li>
                 </ul>
               </div> */}
-            </div>
-          </div>
-          <Navbar/>
-          {/* <div className="col-xl-6 d-none d-xl-block">
+                </div>
+              </div>
+              <Navbar />
+              {/* <div className="col-xl-6 d-none d-xl-block">
             <div className="h2_header-middle">
               <nav className="h2_main-menu mobile-menu" id="mobile-menu">
                 <ul>
@@ -128,26 +141,50 @@ const Home = () => {
               </nav>
             </div>
           </div> */}
-          <div className="col-xl-3 col-sm-5 col-6">
-            <div className="h2_header-right">
-              <div className="h2_header-btn d-none d-sm-block">
-                <a className="header-btn theme-btn theme-btn-medium">
-                  Sign Up
-                </a>
-              </div>
-              <div className="header-menu-bar d-xl-none ml-10">
-                <span className="header-menu-bar-icon side-toggle">
-                  <i className="fa-light fa-bars" />
-                </span>
-              </div>
+
+              {!user ? (
+                <div className="col-xl-3 col-sm-5 col-6">
+                  <div className="h2_header-right">
+                    <div className="h2_header-btn d-none d-sm-block">
+                      <Link
+                        to="/Login"
+                        className="header-btn theme-btn theme-btn-medium"
+                      >
+                        Login
+                      </Link>
+                    </div>
+                    <div className="header-menu-bar d-xl-none ml-10">
+                      <span className="header-menu-bar-icon side-toggle">
+                        <i className="fa-light fa-bars" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="col-xl-3 col-sm-5 col-6">
+                  <div className="h2_header-right">
+                    <div className="h2_header-btn d-none d-sm-block">
+                      <Link
+                        to="#"
+                        onClick={logout}
+                        className="header-btn theme-btn theme-btn-medium"
+                      >
+                        LogOut
+                      </Link>
+                    </div>
+                    <div className="header-menu-bar d-xl-none ml-10">
+                      <span className="header-menu-bar-icon side-toggle">
+                        <i className="fa-light fa-bars" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </header>
-</>
-
+      </header>
+    </>
   );
 };
 
