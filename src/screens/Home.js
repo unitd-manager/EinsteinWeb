@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "../assets/css/event.css";
 import "odometer/themes/odometer-theme-default.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { useNavigate } from 'react-router-dom';
 import "swiper/css";
 import "swiper/css/navigation";
 import api from "../constants/api";
-
+import { getUser } from "../../src/auth/user";
 
 import ourleaderBanner from "../assets/img/ourleader-banner.webp";
 import bannerImge from "../assets/img/banner-img.png";
@@ -50,6 +52,9 @@ const Home = () => {
     return match ? match[1] || match[2] : null;
   }
 
+  const user = getUser();
+
+  const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState([]);
@@ -317,6 +322,59 @@ const Home = () => {
 
  
 }, []);
+
+const handlePaymentSuccess = (data) => {
+  console.log("Payment Successful:", data);
+
+  navigate('/Application');
+  // history('/order-success');
+};
+
+const handlePaymentFailure = (error) => {
+  console.error("Payment Failed:", error);
+
+};
+
+const onPaymentPress = () => {
+  
+  if (!user) {
+    setTimeout(() => {
+      navigate('/Login');
+    }, 0);
+    console.log("mmsmsmsm")
+    return;
+  }
+
+  const totalAmount = 200;
+  const amountInPaise = totalAmount * 100;
+
+  const options = {
+    key: "rzp_test_yE3jJN90A3ObCp", // Replace with your Razorpay test/live key
+    key_secret: "tt8BnBOG7yRvYZ6TSB28RXJy",
+    amount: amountInPaise,
+    currency: "INR",
+    name: "United",
+    description: "Application Fee",
+    image: "",
+    handler: handlePaymentSuccess,
+    prefill: {
+      name:"Mohammed Navab",
+      email:"rafi@unitdtechnologies.com",
+      contact:"9750792020",
+    },
+    notes: {
+      address: "Corporate Office",
+    },
+    theme: {
+      color: "#532C6D",
+    },
+  };
+
+  const rzp = new window.Razorpay(options);
+  rzp.open();
+  rzp.on("payment.failed", handlePaymentFailure);
+};
+
 
   return (
     <>
@@ -1843,10 +1901,10 @@ const Home = () => {
                 </h2>
               </div>
               <div className="h6_cta-button">
-                <a href="#" className="h6_cta-btn">
+                <Link onClick={onPaymentPress} className="h6_cta-btn">
                   Application Form
                   <i className="fa-light fa-arrow-up-right" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

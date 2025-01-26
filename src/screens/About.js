@@ -15,6 +15,7 @@ import Student from "../assets/img/Student.png";
 import line from "../assets/img/line.png";
 import imageForAbout from "../assets/img/about/Image for About.png";
 import principal from "../assets/img/about/principal.jpg";
+import viceprincipal from "../assets/img/DSC_1491.JPG";
 import admin from "../assets/img/about/admin.jpg";
 import Founder1 from "../assets/img/about/1.png";
 import founder from "../assets/img/about/founder.png";
@@ -655,7 +656,7 @@ const Home = () => {
         <section className="h10_testimonial-area pt-90 pb-120 fix">
           <div className="section-area-6 text-center mb-60">
             <span className="section-subtitle">Our Vice Principal</span>
-            <h2 className="section-title mb-0">Mr.rajam</h2>
+            <h2 className="section-title mb-0">Mr.</h2>
           </div>
           <div className="container">
             <div className="row">
@@ -691,7 +692,7 @@ const Home = () => {
               <div className="col-xl-5 col-lg-5 col-md-5">
                 <div className="h10_testimonial-img ml-10 w_img">
                   <img
-                    src={principal}
+                    src={viceprincipal}
                     alt=""
                     className="wow fadeInRight"
                     data-wow-delay="0.3s"

@@ -10,6 +10,15 @@ export const getUser = () => {
     return userInfo
   };
 
+  export const getTeacherUser = () => {
+   
+    const userData = localStorage.getItem('teacheruser')
+    ? localStorage.getItem('teacheruser')
+    : null
+    const userTeacherInfo=userData?JSON.parse(userData):null
+    return userTeacherInfo
+  };
+
   export const getToken = () => {
     const userToken = localStorage.getItem('token')
     ? localStorage.getItem('token')
@@ -21,7 +30,7 @@ export const getUser = () => {
 
   export const getLogin = async (signinData) => {
     try {
-      const response = await api.post("/api/login", signinData);
+      const response = await api.post("/api/loginStudent", signinData);
   
       // Check for the response status
       if (response.status === 400) {

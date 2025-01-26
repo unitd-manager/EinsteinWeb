@@ -3,9 +3,11 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/screens/Home.js";
 import About from "../src/screens/About.js";
 import Student from "../src/screens/Student.js"
+import Application from "../src/screens/Application.js"
 import Header from "../src/screens/header/Header.js";
 import Footer from "../src/screens/header/Footer.js";
 import Login from "../src/auth/Login.js"
+import TeacherLogin from "../src/auth/TeacherLogin.js"
 import SignUp from "../src/auth/SignUp.js"
 
 
@@ -60,6 +62,8 @@ import '../src/assets/scss/components/_banner.scss'
 import '../src/assets/scss/components/_admission.scss'
 import '../src/assets/scss/components/_button.scss'
 import '../src/assets/scss/components/_event.scss'
+import '../src/assets/scss/components/_contact.scss'
+import '../src/assets/scss/components/_header.scss'
 
 
 function App() {
@@ -73,10 +77,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} /> 
           <Route path="/Student" element={<Student />} /> 
+          <Route path="/Application" element={<Application />} /> 
 
           {/* Login */}
           
           <Route path="/Login" element={<Login />} />
+          <Route path="/TeacherLogin" element={<TeacherLogin />} />
           <Route path="/SignUp" element={<SignUp />} /> 
 
        </Routes>

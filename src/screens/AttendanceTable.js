@@ -1,56 +1,82 @@
-import React from 'react';
-import { Table } from 'reactstrap'; // For Bootstrap table, or use <table> directly if not using Reactstrap
-import { FaCheckCircle, FaTimesCircle, FaClock } from 'react-icons/fa'; // Icons for status
+import React, {useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Table } from 'reactstrap';
+import api from '../constants/api';
+import { getUser } from "../../src/auth/user";
+import { FaCheckCircle, FaTimesCircle, FaClock } from 'react-icons/fa'; 
 
-const AttendanceTable = () => {
-    const attendanceData = [
-        { date: '2024-09-01', status: 'Present', subject: 'MPMC', remarks: 'On time' },
-        { date: '2024-09-02', status: 'Absent', subject: 'Electronic Device', remarks: 'Sick' },
-        { date: '2024-09-03', status: 'Late', subject: 'EVS', remarks: 'Late by 10 minutes' },
-        { date: '2024-09-04', status: 'Present', subject: 'OOPS', remarks: 'On time' },
-        { date: '2024-09-05', status: 'Absent', subject: 'CT', remarks: 'Family emergency' },
-    ];
+export default function AttendanceTable({ studentDetails }) {
+    AttendanceTable.propTypes = {
+        studentDetails: PropTypes.object,
+    };
+
+  const [attendanceData, setAttendanceModals] = useState([]);
+
+  const user = getUser();
+    const getAttendanceById = () => {
+        api
+          .post('/student/getStudentAttendanceById', { student_id: studentDetails?.student_id })
+          .then((res) => {
+            setAttendanceModals(res.data.data);
+           
+          })
+          .catch(() => {
+          
+          });
+      };
+
+      useEffect(() => {
+        getAttendanceById()
+      }, []);
+
 
     // Function to return an icon and color based on status
-    const getStatusIcon = (status) => {
-        switch (status) {
-            case 'Present':
-                return <FaCheckCircle style={{ color: 'green' }} />;
-            case 'Absent':
+    const getStatusIcon = (percentage) => {
+        switch (percentage) {
+            // case 'Present':
+            //     return <FaCheckCircle style={{ color: 'green' }} />;
+            case '75%':
                 return <FaTimesCircle style={{ color: 'red' }} />;
-            case 'Late':
-                return <FaClock style={{ color: 'orange' }} />;
+            // case 'Late':
+            //     return <FaClock style={{ color: 'orange' }} />;
             default:
                 return null;
         }
     };
 
     return (
-        <div>
-            <Table striped bordered hover responsive>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Subject</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {attendanceData.map((attendance, index) => (
+      <div>
+        <Table striped bordered hover responsive>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>No of working days</th>
+                    <th>No of Absent</th>
+                    <th>Attendance Percentage</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                {attendanceData.length > 0 ? (
+                    attendanceData.map((attendance, index) => (
                         <tr key={index}>
-                            <td>{attendance.date}</td>
-                            <td>
-                                {getStatusIcon(attendance.status)} <span style={{ marginLeft: '10px' }}>{attendance.status}</span>
-                            </td>
-                            <td>{attendance.subject}</td>
-                            <td>{attendance.remarks}</td>
+                            <td>{attendance.month}</td>
+                            <td>{attendance.no_of_working_days}</td>
+                            <td>{attendance.no_of_absent}</td>
+                            <td>{getStatusIcon(attendance.attendance_percentage)} 
+                                <span>{attendance.attendance_percentage}</span></td>
+                          
                         </tr>
-                    ))}
-                </tbody>
-            </Table>
-        </div>
+                    ))
+                ) : (
+                    <tr>
+                        <td colSpan="6" style={{ textAlign: 'center' }}>No records found</td>
+                    </tr>
+                )}
+            </tbody>
+        </Table>
+    </div>
     );
 };
 
-export default AttendanceTable;
+
