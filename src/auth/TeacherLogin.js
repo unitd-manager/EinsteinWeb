@@ -67,7 +67,7 @@ const Login = () => {
           } else {
             localStorage.setItem("teacheruser", JSON.stringify(res.data.data));
             localStorage.setItem("teachertoken", JSON.stringify(res.data.token));
-            navigate("/");
+            navigate("/StudentList");
           }
         })
         .catch(() => {

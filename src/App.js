@@ -3,11 +3,14 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/screens/Home.js";
 import About from "../src/screens/About.js";
 import Student from "../src/screens/Student.js"
+import StudentList from "../src/screens/StudentList.js"
+import StudentDetails from "../src/screens/StudentDetails.js"
 import Application from "../src/screens/Application.js"
 import Header from "../src/screens/header/Header.js";
 import Footer from "../src/screens/header/Footer.js";
 import Login from "../src/auth/Login.js"
 import TeacherLogin from "../src/auth/TeacherLogin.js"
+import StudentLogin from "../src/auth/StudentLogin.js"
 import SignUp from "../src/auth/SignUp.js"
 
 
@@ -30,7 +33,7 @@ import '../src/assets/css/slick.css'
 import '../src/assets/css/swiper-bundle.min.css'
 import '../src/assets/css/swipper.css'
 import '../src/assets/css/ui-range-slider.css'
-
+import "../src/assets/css/searchfilter.css";
 
 
 
@@ -75,13 +78,17 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/About" element={<About />} /> 
           <Route path="/Student" element={<Student />} /> 
+          <Route path="/StudentDetails/:id" element={<StudentDetails />} />
+          <Route path="/StudentList" element={<StudentList />} /> 
           <Route path="/Application" element={<Application />} /> 
 
           {/* Login */}
           
           <Route path="/Login" element={<Login />} />
+          <Route path="/StudentLogin" element={<StudentLogin />} />
           <Route path="/TeacherLogin" element={<TeacherLogin />} />
           <Route path="/SignUp" element={<SignUp />} /> 
 

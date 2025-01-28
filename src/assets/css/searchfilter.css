@@ -73,3 +73,145 @@
     padding: 8px 15px;
   }
 }
+/* Ensure the table and search bar fit on smaller screens */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .table th, .table td {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Custom button styling */
+button.rounded-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+/* For larger screens */
+.table-col-name {
+  width: 25%;
+}
+
+.table-col-action {
+  width: 15%;
+}
+
+.table-col-course {
+  width: 20%;
+}
+
+.table-col-gender {
+  width: 15%;
+}
+
+.table-col-regno {
+  width: 25%;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+ 
+  .table-col-action {
+    width: 10%;
+  }
+
+  .table-col-name {
+    width: 5%;
+  }
+
+  .table-col-course {
+    width: 25%;
+  }
+
+  .table-col-regno {
+    width: 20%;
+  }
+  .table-col-gender {
+    width: 20%;
+  }
+}
+
+@media (max-width: 400px) {
+ 
+  .table-col-action {
+    width: 10%;
+  }
+
+  .table-col-name {
+    width: 5%;
+  }
+
+  .table-col-course {
+    width: 25%;
+  }
+
+  .table-col-regno {
+    width: 20%;
+  }
+  .table-col-gender {
+    width: 20%;
+  }
+}
+
+/* Base table styling */
+.table-row td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+  .table-responsive table,
+  .table-responsive thead,
+  .table-responsive tbody,
+  .table-responsive th,
+  .table-responsive td,
+  .table-responsive tr {
+    display: block;
+  }
+
+  .table-responsive thead tr {
+    display: none; /* Hide the header row */
+  }
+
+  .table-responsive .table-row {
+    margin-bottom: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .table-responsive td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .table-responsive td::before {
+    content: attr(data-label); /* Add the column header as a label */
+    font-weight: bold;
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .table-col-action,
+  .table-col-gender {
+    display: none; /* Optional: Hide less important columns */
+  }
+}

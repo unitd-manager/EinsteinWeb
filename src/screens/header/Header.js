@@ -37,6 +37,18 @@ console.log('teacherUser',teacherUser)
       window.location.reload();
     }, 200);
   };
+  const StudentDetails = () => {
+      if(user){
+        setTimeout(() => {
+          navigate('/Student');
+        }, 200);
+        
+      }else{
+        setTimeout(() => {
+          navigate('/StudentList');
+        }, 200);
+      }
+  };
 
   const editstudentAppicationPaid = () => {
 
@@ -335,6 +347,7 @@ console.log('teacherUser',teacherUser)
                         <a href="#"><i class="fa-solid fa-grid"></i><span>Login</span></a>
                         <ul class="h2_header-category-submenu">
                             <li><Link to="/Login">Login</Link></li>
+                            <li><Link to="/StudentLogin">Student Login</Link></li>
                             <li><Link to="/TeacherLogin">Teacher Login</Link></li>
                         </ul>
                     </div>
@@ -351,6 +364,15 @@ console.log('teacherUser',teacherUser)
                         className="header-btn theme-btn theme-btn-medium"
                       >
                         Application
+                      </Link>
+                    </div>
+                    <div className="h2_header-btn d-none d-sm-block">
+                      <Link
+                        to="#"
+                        onClick={StudentDetails}
+                        className="header-btn theme-btn theme-btn-medium"
+                      >
+                        Student
                       </Link>
                     </div>
                     <div className="h2_header-btn d-none d-sm-block">
