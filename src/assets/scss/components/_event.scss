@@ -284,6 +284,9 @@
   &-area {
     background-color: #E1EEDA;
   }
+  &-area1 {
+    background-color: #fff;
+  }
   &-item {
     background-color: #fff;
   }
@@ -308,6 +311,34 @@
   }
   &-content {
     padding: 35px 30px 40px;
+    
+    &-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(44, 44, 44, 0.7);
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      i {
+        color: var(--clr-theme-primary-10);
+      }
+    }
+    &-title {
+      color: #2C2C2C;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+    .h10_event-btn {
+      border-radius: 0;
+    }
+  }
+  &-content1 {
+    padding: 35px 30px 40px;
+    background-color: #E1EEDA;
+    
     &-meta {
       display: flex;
       align-items: center;

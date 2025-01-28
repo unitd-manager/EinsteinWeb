@@ -446,6 +446,39 @@
     }
   }
 }
+.section-area-7 {
+  .section-subtitle {
+    color: var(--clr-theme-primary-6);
+    font-size: 25px;
+    margin-bottom: -32px;
+    line-height: 50px;
+    text-align: left;
+    display: block;
+
+  }
+  .section-title {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1.2;
+    @media #{$xs}{
+      font-size: 33px;
+    }
+    @media #{$sm}{
+      font-size: 44px;
+    }
+  }
+  .section-text {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 0;
+    color: #666;
+    @media #{$xs}{
+      br {
+        display: none;
+      }
+    }
+  }
+}
 .section-area-6-admin {
   position: relative;
   z-index: 1;
