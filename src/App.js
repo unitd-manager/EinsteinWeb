@@ -2,6 +2,10 @@ import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/screens/Home.js";
 import About from "../src/screens/About.js";
+import UgProgrammes from "../src/screens/UgProgrammes.js";
+import CourseDetails from "../src/screens/CourseDetails.js";
+import Events from "../src/screens/Events.js";
+import Team from "../src/screens/Team.js";
 import Header from "../src/screens/header/Header.js";
 import Footer from "../src/screens/header/Footer.js";
 
@@ -69,6 +73,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} /> 
+          <Route path="/UgProgrammes" element={<UgProgrammes />} /> 
+          <Route path="/CourseDetails" element={<CourseDetails />} /> 
+          <Route path="/Events" element={<Events />} /> 
+          <Route path="/Team" element={<Team />} /> 
        </Routes>
         <Footer />
       </HashRouter>

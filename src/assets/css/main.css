@@ -10913,10 +10913,15 @@ input:focus::placeholder, textarea:focus::placeholder {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 20px 40px rgba(30, 30, 30, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .event-img {
   border-radius: 10px 10px 0 0;
   overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16/9; /* Maintain a consistent aspect ratio */
 }
 .event-img img {
   width: 100%;
@@ -10925,6 +10930,8 @@ input:focus::placeholder, textarea:focus::placeholder {
   -ms-transition: all 0.6s linear 0s;
   -o-transition: all 0.6s linear 0s;
   transition: all 0.6s linear 0s;
+  height: 100%;
+  object-fit: cover;
 }
 .event-content-title {
   font-size: 20px;
@@ -10955,6 +10962,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 
 .event-content {
   padding: 25px 0 10px;
+  flex-grow: 1;
 }
 .event-navigation {
   display: flex;
@@ -20116,6 +20124,129 @@ input:focus::placeholder, textarea:focus::placeholder {
 
 .h10_footer-area .h6_footer-subscribe-form button {
   background-color: var(--clr-theme-primary-10);
+} 
+
+.breadcrumb-description {
+  font-size: 1.2rem; /* Adjust for better readability */
+  color: #555; /* Neutral color */
+  line-height: 1.8; /* Increase line spacing */
+  margin-top: 15px; /* Add space between text and preceding elements */
+  background-color: #f9f9f9; /* Light background to make it stand out */
+  padding: 15px; /* Add padding around the text */
+  border-left: 5px solid #007bff; /* Add an accent border */
+  border-radius: 5px; /* Smooth edges */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
+
+.breadcrumb-description1 {
+  font-size: 1.1rem; /* Readable font size */
+  color: #333; /* Darker text for better contrast */
+  line-height: 1.6; /* Comfortable line spacing */
+  margin-top: 20px; /* Space from above elements */
+  text-align: center; /* Center-align the text */
+  background: linear-gradient(to right, #f9f9f9, #ffffff); /* Subtle gradient background */
+  padding: 20px 15px; /* Padding around the text */
+  border-radius: 8px; /* Smooth rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  max-width: 800px; /* Limit the width */
+  margin-left: auto; /* Center align horizontally */
+  margin-right: auto; /* Center align horizontally */
+} 
+.course-details {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container1 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.overview-panel {
+  margin-bottom: 40px;
+  text-align: left;
+  background-color: #eaf4ff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tab-buttons button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-buttons button.active {
+  border-color: #007bff;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.panel-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.panel-box h4 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.panel-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.panel-box li {
+  margin-bottom: 8px;
+} 
+.tab-buttons1 {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab-buttons1 button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ff7e5f;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tab-buttons1 button:hover {
+  background-color: #feb47b;
+}
+
+.tab-buttons1 .active {
+  background-color: #feb47b;
+  color: #fff;
+} 
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-center {
+  text-align: center;
+}
+
 
 /*# sourceMappingURL=main.css.map */
