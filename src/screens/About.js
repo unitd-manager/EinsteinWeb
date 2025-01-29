@@ -61,8 +61,9 @@ const Home = () => {
   const [Facilities1, setFacilities1] = useState([]);
   const [Facilities2, setFacilities2] = useState([]);
   const [Facilities3, setFacilities3] = useState([]);
-
-
+  const [principal, setPrincipal] = useState([]);
+  const [principalDetails, setPrincipalDetails] = useState([]);
+  const [vicePrincipal, setVicePrincipal] = useState([]);
 
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -199,6 +200,30 @@ const Home = () => {
       .get("/content/getAboutFacilities3")
       .then((res) => {
         setFacilities3(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getPrincipal")
+      .then((res) => {
+        setPrincipal(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getPrincipalDetails")
+      .then((res) => {
+        setPrincipalDetails(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getVicePrincipal")
+      .then((res) => {
+        setVicePrincipal(res.data.data);
       })
       .catch((err) => {
         console.error("Error fetching magazine data", err);
@@ -556,7 +581,7 @@ const Home = () => {
         <section className="h10_testimonial-area pt-90 pb-120 fix">
           <div className="section-area-6 text-center mb-60">
             <span className="section-subtitle">Our Principal</span>
-            <h2 className="section-title mb-0">Dr.Sudalai</h2>
+            <h2 className="section-title mb-0"> {principal[0]?.title}</h2>
           </div>
           <div className="container">
             <div className="row">
@@ -578,32 +603,30 @@ const Home = () => {
                     <SwiperSlide>
                       <div className="h10_testimonial-item">
                         <blockquote>
-                          <p>
-                            One aspect that truly stood out for me was the
-                            research. Eduan University has state-of-the-art labs
-                            and facilities, and I had the chance to work on
-                            cutting-edge research projects alongside professors.
+                          <p   dangerouslySetInnerHTML={{
+                      __html: principal[0]?.description,
+                    }}>
+                          
                           </p>
-                          <div className="quote-admin-inner">
+                          {/* <div className="quote-admin-inner">
                             <h5>William Board</h5>
                             <span>Student Eduan University</span>
-                          </div>
+                          </div> */}
                         </blockquote>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="h10_testimonial-item">
                         <blockquote>
-                          <p>
-                            One aspect that truly stood out for me was the
-                            research. Eduan University has state-of-the-art labs
-                            and facilities, and I had the chance to work on
-                            cutting-edge research projects alongside professors.
+                          <p dangerouslySetInnerHTML={{
+                      __html: principalDetails[0]?.description,
+                    }}>
+                          
                           </p>
-                          <div className="quote-admin-inner">
+                          {/* <div className="quote-admin-inner">
                             <h5>Jane Doe</h5>
                             <span>Student Eduan University</span>
-                          </div>
+                          </div> */}
                         </blockquote>
                       </div>
                     </SwiperSlide>
