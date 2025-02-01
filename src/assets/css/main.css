@@ -12343,7 +12343,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 }
 .h10_testimonial-item blockquote p {
   color: #666;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 32px;
   margin-bottom: 55px;

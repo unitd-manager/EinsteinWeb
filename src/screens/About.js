@@ -61,8 +61,10 @@ const Home = () => {
   const [Facilities1, setFacilities1] = useState([]);
   const [Facilities2, setFacilities2] = useState([]);
   const [Facilities3, setFacilities3] = useState([]);
-
-
+  const [principal, setPrincipal] = useState([]);
+  const [principalDetails, setPrincipalDetails] = useState([]);
+  const [vicePrincipal, setVicePrincipal] = useState([]);
+  const [vicePrincipalDetails, setVicePrincipalDetails] = useState([]);
 
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -203,6 +205,38 @@ const Home = () => {
       .catch((err) => {
         console.error("Error fetching magazine data", err);
       });
+      api
+      .get("/content/getPrincipal")
+      .then((res) => {
+        setPrincipal(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getPrincipalDetails")
+      .then((res) => {
+        setPrincipalDetails(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getVicePrincipal")
+      .then((res) => {
+        setVicePrincipal(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getVicePrincipalDetails")
+      .then((res) => {
+        setVicePrincipalDetails(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
 
   }, []);
 
@@ -227,7 +261,7 @@ const Home = () => {
                 <div
                   className="h7_single-banner bg-default"
                   style={{
-                    backgroundImage: `url(https://ecas.unitdtechnologies.com/storage/uploads/${slide?.file_name})`,
+                    backgroundImage: `url(https://ecas.unitdtechnologies.com/storages/${slide?.file_name})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -291,7 +325,7 @@ const Home = () => {
             <div className="row align-items-center">
               <div className="col-xl-6 col-lg-6">
                 <div className="about-img mb-50">
-                  <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${about1[0]?.file_name}`} alt="" />
+                  <img src={`https://ecas.unitdtechnologies.com/storages/${about1[0]?.file_name}`} alt="" />
                 </div>
               </div>
               <div className="col-xl-6 col-lg-6 col-md-10">
@@ -314,14 +348,14 @@ const Home = () => {
                     ))}
                     </ul>
                   </div>
-                  <div className="about-content-button">
+                  {/* <div className="about-content-button">
                     <a
                       href="about.html"
                       className="theme-btn about-btn theme-btn-medium"
                     >
                       More Details
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -377,7 +411,7 @@ const Home = () => {
                     className="h10_about-img-shape-1 d-none d-md-block"
                   />
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storage/uploads/${OurPhilosophy[0]?.file_name}`}
+                    src={`https://ecas.unitdtechnologies.com/storages/${OurPhilosophy[0]?.file_name}`}
                     alt=""
                     className="wow fadeInLeftBig"
                     style={{
@@ -409,7 +443,7 @@ const Home = () => {
                     className="h10_about-img-shape-1 d-none d-md-block"
                   />
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storage/uploads/${mission[0]?.file_name}`}
+                    src={`https://ecas.unitdtechnologies.com/storages/${mission[0]?.file_name}`}
                     alt=""
                     className="wow fadeInLeftBig"
                     style={{
@@ -503,7 +537,7 @@ const Home = () => {
                   <div className="h2_teacher-item mb-30">
                     <div className="h2_teacher-img">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storage/uploads/${item?.file_name}`}
+                        src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`}
                         alt=""
                         style={{ marginBottom: 50,cursor: "pointer" }}
                         onClick={() => handleOpenModal(item)}
@@ -538,7 +572,7 @@ const Home = () => {
                     className="h10_about-img-shape-1 d-none d-md-block"
                   /> */}
               <img
-                src={`https://ecas.unitdtechnologies.com/storage/uploads/${selectedItem?.file_name}`}
+                src={`https://ecas.unitdtechnologies.com/storages/${selectedItem?.file_name}`}
                 alt="Preview"
                 style={imageStyles}
                 // onClick={handleImageClick}
@@ -555,8 +589,8 @@ const Home = () => {
         </section>
         <section className="h10_testimonial-area pt-90 pb-120 fix">
           <div className="section-area-6 text-center mb-60">
-            <span className="section-subtitle">Our Principal</span>
-            <h2 className="section-title mb-0">Dr.Sudalai</h2>
+            <span className="section-subtitle">{principal[0]?.description_short}</span>
+            <h2 className="section-title mb-0"> {principal[0]?.title}</h2>
           </div>
           <div className="container">
             <div className="row">
@@ -578,33 +612,31 @@ const Home = () => {
                     <SwiperSlide>
                       <div className="h10_testimonial-item">
                         <blockquote>
-                          <p>
-                            One aspect that truly stood out for me was the
-                            research. Eduan University has state-of-the-art labs
-                            and facilities, and I had the chance to work on
-                            cutting-edge research projects alongside professors.
-                          </p>
-                          <div className="quote-admin-inner">
+                          <p   dangerouslySetInnerHTML={{
+                      __html: principal[0]?.description,
+                    }}>
+                          
+                          </p >
+                          {/* <div className="quote-admin-inner">
                             <h5>William Board</h5>
                             <span>Student Eduan University</span>
-                          </div>
+                          </div> */}
                         </blockquote>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="h10_testimonial-item">
-                        <blockquote>
-                          <p>
-                            One aspect that truly stood out for me was the
-                            research. Eduan University has state-of-the-art labs
-                            and facilities, and I had the chance to work on
-                            cutting-edge research projects alongside professors.
+                        {/* <blockquote> */}
+                          <p dangerouslySetInnerHTML={{
+                      __html: principalDetails[0]?.description,
+                    }}>
+                          
                           </p>
-                          <div className="quote-admin-inner">
+                          {/* <div className="quote-admin-inner">
                             <h5>Jane Doe</h5>
                             <span>Student Eduan University</span>
-                          </div>
-                        </blockquote>
+                          </div> */}
+                        {/* </blockquote> */}
                       </div>
                     </SwiperSlide>
                   </Swiper>
@@ -643,7 +675,7 @@ const Home = () => {
               <div className="col-xl-5 col-lg-5 col-md-5">
                 <div className="h10_testimonial-img ml-10 w_img">
                   <img
-                    src={principal}
+                    src={`https://ecas.unitdtechnologies.com/storages/${principal[0]?.file_name}`}
                     alt=""
                     className="wow fadeInRight"
                     data-wow-delay="0.3s"
@@ -655,44 +687,18 @@ const Home = () => {
         </section>
         <section className="h10_testimonial-area pt-90 pb-120 fix">
           <div className="section-area-6 text-center mb-60">
-            <span className="section-subtitle">Our Vice Principal</span>
-            <h2 className="section-title mb-0">Mr.</h2>
+            <span className="section-subtitle">{vicePrincipal[0]?.description_short}</span>
+            <h2 className="section-title mb-0">{vicePrincipal[0]?.title}</h2>
           </div>
           <div className="container">
             <div className="row">
-              {/* <div className="col-12 text-center">
-            <h1 className="h10_testimonial-title mb-35">
-              <span>
-                <img src="assets/img/testimonial/10/shape-1.png" alt="shape" />
-                O
-              </span>
-              <strong className="waviy">
-                <span style={{ '--i': 1 }}>u</span>
-                <span style={{ '--i': 2 }}>r</span>
-                <span style={{ '--i': 3 }}> </span>
-                <span style={{ '--i': 4 }}>S</span>
-                <span style={{ '--i': 5 }}>t</span>
-                <span style={{ '--i': 6 }}>u</span>
-                <span style={{ '--i': 7 }}>d</span>
-                <span style={{ '--i': 8 }}>e</span>
-                <span style={{ '--i': 9 }}>n</span>
-                <span style={{ '--i': 10 }}>t</span>
-                <span style={{ '--i': 11 }}> </span>
-                <span style={{ '--i': 12 }}>S</span>
-                <span style={{ '--i': 13 }}>a</span>
-                <span style={{ '--i': 14 }}>y</span>
-                <span style={{ '--i': 15 }}>i</span>
-                <span style={{ '--i': 16 }}>n</span>
-                <span style={{ '--i': 16 }}>g</span>
-              </strong>
-            </h1>
-          </div> */}
+            
             </div>
             <div className="row align-items-center justify-content-between">
               <div className="col-xl-5 col-lg-5 col-md-5">
                 <div className="h10_testimonial-img ml-10 w_img">
                   <img
-                    src={viceprincipal}
+                    src={`https://ecas.unitdtechnologies.com/storages/${vicePrincipal[0]?.file_name}`}
                     alt=""
                     className="wow fadeInRight"
                     data-wow-delay="0.3s"
@@ -715,32 +721,21 @@ const Home = () => {
                     <SwiperSlide>
                       <div className="h10_testimonial-item">
                         <blockquote>
-                          <p>
-                            One aspect that truly stood out for me was the
-                            research. Eduan University has state-of-the-art labs
-                            and facilities, and I had the chance to work on
-                            cutting-edge research projects alongside professors.
+                          <p dangerouslySetInnerHTML={{
+                      __html: vicePrincipal[0]?.description,
+                    }}>
                           </p>
-                          <div className="quote-admin-inner">
-                            <h5>William Board</h5>
-                            <span>Student Eduan University</span>
-                          </div>
                         </blockquote>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="h10_testimonial-item">
                         <blockquote>
-                          <p>
-                            One aspect that truly stood out for me was the
-                            research. Eduan University has state-of-the-art labs
-                            and facilities, and I had the chance to work on
-                            cutting-edge research projects alongside professors.
+                          <p dangerouslySetInnerHTML={{
+                      __html: vicePrincipalDetails[0]?.description,
+                    }}>
                           </p>
-                          <div className="quote-admin-inner">
-                            <h5>Jane Doe</h5>
-                            <span>Student Eduan University</span>
-                          </div>
+                        
                         </blockquote>
                       </div>
                     </SwiperSlide>
@@ -864,7 +859,7 @@ const Home = () => {
                   <span>01</span>
                 </div> */}
                 <div className="h7_apply-item-title">
-                <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${Campus1[0]?.file_name}`} alt=""  
+                <img src={`https://ecas.unitdtechnologies.com/storages/${Campus1[0]?.file_name}`} alt=""  
                   style={{
                   width:"100%",
                   backgroundSize: "cover",
@@ -889,7 +884,7 @@ const Home = () => {
                   <span>02</span>
                 </div> */}
                 <div className="h7_apply-item-title">
-                <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${Campus2[0]?.file_name}`} alt="" 
+                <img src={`https://ecas.unitdtechnologies.com/storages/${Campus2[0]?.file_name}`} alt="" 
                  style={{
                   width:"100%",
                   backgroundSize: "cover",
@@ -913,7 +908,7 @@ const Home = () => {
                   <span>03</span>
                 </div> */}
                 <div className="h7_apply-item-title">
-                <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${Campus3[0]?.file_name}`}  alt="" 
+                <img src={`https://ecas.unitdtechnologies.com/storages/${Campus3[0]?.file_name}`}  alt="" 
                  style={{
                   width:"100%",
                   backgroundSize: "cover",
@@ -953,7 +948,7 @@ const Home = () => {
                 <SwiperSlide key={index}>
                   <div className="h3_teacher-item mb-25">
                     <div className="h3_teacher-img w_img">
-                      <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${teacher?.file_name}`}  alt={teacher?.title} />
+                      <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`}  alt={teacher?.title} />
                       {/* <div className="h3_teacher-social">
                         <ul>
                           <li>
@@ -1011,7 +1006,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a>
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storage/uploads/${Facilities1[0]?.file_name}`}
+                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities1[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1042,7 +1037,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a href="h10_event.html">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storage/uploads/${Facilities2[0]?.file_name}`}
+                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities2[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1073,7 +1068,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a href="h10_event.html">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storage/uploads/${Facilities3[0]?.file_name}`}
+                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities3[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1131,7 +1126,7 @@ const Home = () => {
                   <div className="h3_teacher-item mb-25">
                     <div className="h3_teacher-img w_img">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storage/uploads/${teacher?.file_name}`}
+                        src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`}
                         alt={teacher?.title}
                       />
                       <div className="h3_teacher-social">
