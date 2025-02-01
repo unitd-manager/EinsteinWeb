@@ -4,7 +4,8 @@ import pongal from "../assets/img/event/PongalCele1.webp";
 import sport from "../assets/img/event/Sports1.webp";
 import sportsday from "../assets/img/event/sportsd1.webp";
 import collage from "../assets/img/event/CollageDay Clelb.webp";
-
+import breadCrumb from "../assets/img/breadcrumb/breadcrumb-bg.jpg";
+import shape from "../assets/img/breadcrumb/shape-1.png";
 
 const events = [
   {
@@ -47,9 +48,9 @@ const events = [
 const Breadcrumb = () => (
   <section
     className="breadcrumb-area bg-default"
-    style={{ backgroundImage: "url('assets/img/breadcrumb/breadcrumb-bg.jpg')" }}
-  >
-    <img src="assets/img/breadcrumb/shape-1.png" alt="" className="breadcrumb-shape" />
+    style={{ backgroundImage: `url(${breadCrumb})` }}
+    >
+    <img src={(shape)} alt="" className="breadcrumb-shape" />
     <div className="container">
       <div className="row">
         <div className="col-12">

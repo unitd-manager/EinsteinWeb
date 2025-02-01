@@ -16,6 +16,8 @@ import Login from "../src/auth/Login.js"
 import TeacherLogin from "../src/auth/TeacherLogin.js"
 import StudentLogin from "../src/auth/StudentLogin.js"
 import SignUp from "../src/auth/SignUp.js"
+import EventDetails from "../src/screens/EventDetails.js";
+
 
 
 import '../src/assets/css/style.css'
@@ -87,6 +89,7 @@ function App() {
           <Route path="/UgProgrammes" element={<UgProgrammes />} /> 
           <Route path="/CourseDetails" element={<CourseDetails />} /> 
           <Route path="/Events" element={<Events />} /> 
+          <Route path="/EventDetails" element={<EventDetails />} /> 
           <Route path="/Team" element={<Team />} /> 
           <Route path="/Student" element={<Student />} /> 
           <Route path="/StudentDetails/:id" element={<StudentDetails />} />
