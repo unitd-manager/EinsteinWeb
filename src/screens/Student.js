@@ -56,7 +56,7 @@ const Aboutus = () => {
                           <div className="h3_about-inner-img w_img mr-50">
                             {studentDetails?.file_name ? (
                               <img
-                                src={`https://ecas.unitdtechnologies.com/storage/uploads/${studentDetails.file_name}`}
+                                src={`https://ecas.unitdtechnologies.com/storages/${studentDetails.file_name}`}
                                 alt="Student"
                               />
                             ) : (
@@ -189,7 +189,7 @@ const Aboutus = () => {
                     )}
                     {activeTab === "reviews" && (
                       <div className="tab-pane fade show active">
-                        <h4>Advice</h4>
+                        <h4>Remark</h4>
                         <AttendanceAdvice studentDetails={studentDetails} />
                       </div>
                     )}

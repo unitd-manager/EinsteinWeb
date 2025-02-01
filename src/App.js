@@ -16,9 +16,13 @@ import Login from "../src/auth/Login.js"
 import TeacherLogin from "../src/auth/TeacherLogin.js"
 import StudentLogin from "../src/auth/StudentLogin.js"
 import SignUp from "../src/auth/SignUp.js"
+import Gallery from "../src/screens/Gallery"
+import ContactUs from "../src/screens/ContactUs"
+import Alumni from "../src/screens/Alumni"
 
 
 import '../src/assets/css/style.css'
+import '../src/assets/css/AlumniPage.css'
 import '../src/assets/css/animate-headline.css'
 import '../src/assets/css/animate.min.css'
 import '../src/assets/css/animated-circle.css'
@@ -87,11 +91,14 @@ function App() {
           <Route path="/UgProgrammes" element={<UgProgrammes />} /> 
           <Route path="/CourseDetails" element={<CourseDetails />} /> 
           <Route path="/Events" element={<Events />} /> 
+          <Route path="/Gallery" element={<Gallery />} /> 
+          <Route path="/ContactUs" element={<ContactUs />} /> 
           <Route path="/Team" element={<Team />} /> 
           <Route path="/Student" element={<Student />} /> 
           <Route path="/StudentDetails/:id" element={<StudentDetails />} />
           <Route path="/StudentList" element={<StudentList />} /> 
           <Route path="/Application" element={<Application />} /> 
+          <Route path="/Alumni" element={<Alumni />} /> 
 
           {/* Login */}
           

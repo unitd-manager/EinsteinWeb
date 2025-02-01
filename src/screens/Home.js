@@ -576,7 +576,7 @@ const onPaymentPress = () => {
             <div className="row">
               <div className="col-xxl-7 col-xl-6 col-lg-6">
                 <div className="h6_research-img w_img mb-50">
-                  <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${aboutHome[0]?.file_name}`} alt="" />
+                  <img src={`https://ecas.unitdtechnologies.com/storages/${aboutHome[0]?.file_name}`} alt="" />
                 </div>
               </div>
               <div className="col-xxl-5 col-xl-6 col-lg-6">
@@ -786,7 +786,7 @@ const onPaymentPress = () => {
                   <div className="h7_about-content">
                     <div className="h7_about-admin">
                       <div className="h7_about-admin-img">
-                        <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${compusHomeTop[0]?.file_name}`} alt="" />
+                        <img src={`https://ecas.unitdtechnologies.com/storages/${compusHomeTop[0]?.file_name}`} alt="" />
                       </div>
                       <div className="h7_about-admin-info">
                         <h5>
@@ -850,10 +850,10 @@ const onPaymentPress = () => {
                 <div className="h2_about-img mb-50">
                   <div className="h2_about-inner-img">
                     <img src={image2} alt="" className="h2_inner-img" />
-                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${compusHome[0]?.file_name}`} alt="" style={{width:'60%',borderRadius:8}} className="h2_inner-img-shape" />
+                    <img src={`https://ecas.unitdtechnologies.com/storages/${compusHome[0]?.file_name}`} alt="" style={{width:'60%',borderRadius:8}} className="h2_inner-img-shape" />
                   </div>
                   <div className="h2_about-inner-img2">
-                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${compusHome1[0]?.file_name}`} alt=""  style={{width:'60%',marginLeft:200,borderRadius:8}} />
+                    <img src={`https://ecas.unitdtechnologies.com/storages/${compusHome1[0]?.file_name}`} alt=""  style={{width:'60%',marginLeft:200,borderRadius:8}} />
                     <div className="h2_about-img-button" >
                       <a
 
@@ -1263,7 +1263,7 @@ const onPaymentPress = () => {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${AcademicsProgramList[0]?.file_name}`} alt="" style={{hieght:"120%"}} />
+                    <img src={`https://ecas.unitdtechnologies.com/storages/${AcademicsProgramList[0]?.file_name}`} alt="" style={{hieght:"120%"}} />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
@@ -1371,7 +1371,7 @@ const onPaymentPress = () => {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${AcademicsProgramListone[0]?.file_name}`} alt="" />
+                    <img src={`https://ecas.unitdtechnologies.com/storages/${AcademicsProgramListone[0]?.file_name}`} alt="" />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
@@ -1403,7 +1403,7 @@ const onPaymentPress = () => {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${AcademicsProgramListtwo[0]?.file_name}`} alt="" />
+                    <img src={`https://ecas.unitdtechnologies.com/storages/${AcademicsProgramListtwo[0]?.file_name}`} alt="" />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
@@ -1454,7 +1454,7 @@ const onPaymentPress = () => {
               </span>
             </div>
             <div className="h7_scholarship-img">
-              <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${Scholarship[0]?.file_name}`} alt="" />
+              <img src={`https://ecas.unitdtechnologies.com/storages/${Scholarship[0]?.file_name}`} alt="" />
             </div>
           </div>
           <div className="h7_scholarship-wrap">
@@ -1513,7 +1513,7 @@ const onPaymentPress = () => {
               <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="h2_teacher-item mb-30">
                   <div className="h2_teacher-img">
-                    <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${item?.file_name}`} alt=""  style={{marginBottom:50}}/>
+                    <img src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`} alt=""  style={{marginBottom:50}}/>
                   </div>
                   <div className="h2_teacher-content">
                     <h5 dangerouslySetInnerHTML={{ __html: item?.description }}>
@@ -1542,7 +1542,7 @@ const onPaymentPress = () => {
               <div className="col-xl-6 col-lg-6">
                 <div className="h6_about-img w_img">
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storage/uploads/${ourFounder[0]?.file_name}`}
+                    src={`https://ecas.unitdtechnologies.com/storages/${ourFounder[0]?.file_name}`}
                     alt="Founder-Image"
                     style={{
                       width: "100%",
@@ -1603,7 +1603,7 @@ const onPaymentPress = () => {
               <div className="col-xl-6 col-lg-6">
                 <div className="h6_about-img w_img">
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storage/uploads/${OurPhilosophy[0]?.file_name}`}
+                    src={`https://ecas.unitdtechnologies.com/storages/${OurPhilosophy[0]?.file_name}`}
                     alt="Founder-Image"
                     style={{
                       width: "100%",
@@ -1641,7 +1641,7 @@ const onPaymentPress = () => {
             <div className="row align-items-center">
               <div className="col-xl-6 col-lg-6">
                 <div className="h4_about-img mb-50 w_img">
-                  <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${StudentLife[0]?.file_name}`} alt="" style={{ marginTop: 25 }} />
+                  <img src={`https://ecas.unitdtechnologies.com/storages/${StudentLife[0]?.file_name}`} alt="" style={{ marginTop: 25 }} />
                 </div>
               </div>
               <div className="col-xl-6 col-lg-6 col-md-10">
@@ -1795,7 +1795,7 @@ const onPaymentPress = () => {
         >
           <img src={shapeStu1} alt="" className="h4_education-shape-1" />
           <img src={shapeStu} alt="" className="h4_education-shape-2" />
-          <img src={`https://ecas.unitdtechnologies.com/storage/uploads/${CampusExperience[0]?.file_name}`} alt="" className="h4_education-img" />
+          <img src={`https://ecas.unitdtechnologies.com/storages/${CampusExperience[0]?.file_name}`} alt="" className="h4_education-img" />
           <div className="container">
             <div className="row">
               <div className="col-xl-6 col-lg-7 col-md-12">

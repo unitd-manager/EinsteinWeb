@@ -654,5 +654,17 @@
 .submit-button:hover {
   background-color: #0056b3;
 }
+.react-select__control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.react-select__menu {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
 
     

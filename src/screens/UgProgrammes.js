@@ -189,11 +189,11 @@ const CourseSection = () => {
                       </a>
                     </div>
                   </div>
-                  <h5 className="h2_course-content-title">
+                  <h6 className="h2_course-content-title">
                     <a href="course-details.html">
                       B.A -Bachelor Of Arts(English)
                     </a>
-                  </h5>
+                  </h6>
                   <div className="h2_course-content-info">
                     <span>
                       <i className="fa fa-book"></i>Course Duration :
@@ -251,11 +251,11 @@ const CourseSection = () => {
                       </a>
                     </div>
                   </div>
-                  <h5 className="h2_course-content-title">
+                  <h6 className="h2_course-content-title">
                     <a href="course-details.html">
                       B.B.A -Bachelor Of Business Administration
                     </a>
-                  </h5>
+                  </h6>
                   <div className="h2_course-content-info">
                     <span>
                       <i className="fa fa-book"></i>Course Duration :
