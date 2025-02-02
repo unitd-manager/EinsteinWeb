@@ -2,7 +2,7 @@ import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/screens/Home.js";
 import About from "../src/screens/About.js";
-import UgProgrammes from "../src/screens/UgProgrammes.js";
+import UgProgrammes from "./screens/UgProgram.js";
 import CourseDetails from "../src/screens/CourseDetails.js";
 import Events from "../src/screens/Events.js";
 import Team from "../src/screens/Team.js";
@@ -17,6 +17,8 @@ import TeacherLogin from "../src/auth/TeacherLogin.js"
 import StudentLogin from "../src/auth/StudentLogin.js"
 import SignUp from "../src/auth/SignUp.js"
 import EventDetails from "../src/screens/EventDetails.js";
+import TeamDetails from "../src/screens/TeamDetails.js";
+import UGProgramDetails from "../src/screens/UGProgramDetails.js";
 
 import Gallery from "../src/screens/Gallery"
 import ContactUs from "../src/screens/ContactUs"
@@ -90,13 +92,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/About" element={<About />} /> 
-          <Route path="/UgProgrammes" element={<UgProgrammes />} /> 
+          <Route path="/UgProgram" element={<UgProgrammes />} /> 
           <Route path="/CourseDetails" element={<CourseDetails />} /> 
           <Route path="/Events" element={<Events />} /> 
-          <Route path="/EventDetails" element={<EventDetails />} /> 
+          <Route path="/EventDetails/:id" element={<EventDetails />} /> 
           <Route path="/Gallery" element={<Gallery />} /> 
           <Route path="/ContactUs" element={<ContactUs />} /> 
           <Route path="/Team" element={<Team />} /> 
+          <Route path="/TeamDetails/:id" element={<TeamDetails />} />
+          <Route path="/UGProgramDetails/:id" element={<UGProgramDetails />} />
           <Route path="/Student" element={<Student />} /> 
           <Route path="/StudentDetails/:id" element={<StudentDetails />} />
           <Route path="/StudentList" element={<StudentList />} /> 

@@ -61,7 +61,7 @@ const Aboutus = () => {
                           <div className="h3_about-inner-img w_img mr-50">
                             {studentDetails?.file_name ? (
                               <img
-                                src={`https://ecas.unitdtechnologies.com/storage/uploads/${studentDetails.file_name}`}
+                                src={`https://ecas.unitdtechnologies.com/storages/${studentDetails.file_name}`}
                                 alt="Student"
                               />
                             ) : (

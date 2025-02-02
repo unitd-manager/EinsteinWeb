@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import api from "../constants/api";
 // import './TeacherArea.css'; // Assuming CSS is in the same directory
 import Web from "../assets/img/Faculty/EinsteinWebsite.jpg";
 import Line from "../assets/img/line.png";
@@ -39,6 +40,7 @@ import Thambiran from "../assets/img/Faculty/Mr.-K.-Thambiran-AP-Tamil.webp";
 import Prema from "../assets/img/Faculty/Dr.-C.-Prema-AP-Physics.webp";
 import Kumar from "../assets/img/Faculty/Mr.-S.-Kumaran-HOD-Physics.webp";
 import Nagu from "../assets/img/Faculty/Mr.-E.Nagarajan-Physical-Director.webp";
+import { Link } from "react-router-dom";
 
 const teachers = [
   { id: 1, name: 'Dr.R.Sugirtha Malar', role: 'HOD', imgSrc: SugirthaMalar },
@@ -100,6 +102,97 @@ const teachers1 = [
   ];
   
 const TeacherArea = () => {
+
+  const [BAEnglish, setBAEnglish] = useState([]);
+  const [BBA, setBBA] = useState([]);
+  const [BCOM, setBCOM] = useState([]);
+  const [BCOMBCorporateSecretary, setBCOMBCorporateSecretary] = useState([]);
+  const [BscChemistry, setBscChemistry] = useState([]);
+  const [BscComputerScience, setBscComputerScience] = useState([]);
+  const [BscTamil, setBscTamil] = useState([]);
+  const [BscMathematics, setBscMathematics] = useState([]);
+  const [BscPhysics, setBscPhysics] = useState([]);
+
+
+
+  console.log('BAEnglish',BAEnglish)
+
+      useEffect(() => {
+      api
+      .get("/teachers/getBAEnglish")
+      .then((res) => {
+          setBAEnglish(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+      api
+      .get("/teachers/getBBA")
+      .then((res) => {
+        setBBA(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+      api
+      .get("/teachers/getBCOM")
+      .then((res) => {
+        setBCOM(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+      api
+      .get("/teachers/getBCOMBCorporateSecretary")
+      .then((res) => {
+        setBCOMBCorporateSecretary(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+      api
+      .get("/teachers/getBscChemistry")
+      .then((res) => {
+        setBscChemistry(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+      api
+      .get("/teachers/getBscComputerScience")
+      .then((res) => {
+        setBscComputerScience(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+      api
+      .get("/teachers/getBscMathematics")
+      .then((res) => {
+        setBscMathematics(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+      api
+      .get("/teachers/getBscTamil")
+      .then((res) => {
+        setBscTamil(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+      api
+      .get("/teachers/getBscPhysics")
+      .then((res) => {
+        setBscPhysics(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching student details:", err);
+      });
+
+    }, []);
+
   return ( 
     <>
       <section
@@ -130,20 +223,20 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
-                    </h5>
-                    <span>{teacher.role}</span>
-                  </div>
-                </div>
-              </div>
+            {BBA.map(teacher => (
+           <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
+           <div className="h2_teacher-item mb-30">
+             <div className="h2_teacher-img">
+               <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+             </div>
+             <div className="h2_teacher-content">
+               <h5 className="h2_teacher-content-title">
+                 <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
+               </h5>
+               <span>{teacher.department}</span>
+             </div>
+           </div>
+         </div>
             ))}
           </div>
         </div>
@@ -161,20 +254,20 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers1.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
-                    </h5>
-                    <span>{teacher.role}</span>
-                  </div>
-                </div>
-              </div>
+            {BCOM.map(teacher => (
+               <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
+               <div className="h2_teacher-item mb-30">
+                 <div className="h2_teacher-img">
+                   <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                 </div>
+                 <div className="h2_teacher-content">
+                   <h5 className="h2_teacher-content-title">
+                   <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
+                   </h5>
+                   <span>{teacher.department}</span>
+                 </div>
+               </div>
+             </div>
             ))}
           </div>
         </div>
@@ -192,20 +285,20 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers2.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
-                    </h5>
-                    <span>{teacher.role}</span>
-                  </div>
-                </div>
-              </div>
+            {BCOMBCorporateSecretary.map(teacher => (
+               <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
+               <div className="h2_teacher-item mb-30">
+                 <div className="h2_teacher-img">
+                   <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                 </div>
+                 <div className="h2_teacher-content">
+                   <h5 className="h2_teacher-content-title">
+                   <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
+                   </h5>
+                   <span>{teacher.department}</span>
+                 </div>
+               </div>
+             </div>
             ))}
           </div>
         </div>
@@ -223,20 +316,20 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers3.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
-                    </h5>
-                    <span>{teacher.role}</span>
-                  </div>
-                </div>
-              </div>
+            {BscChemistry.map(teacher => (
+             <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
+             <div className="h2_teacher-item mb-30">
+               <div className="h2_teacher-img">
+                 <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+               </div>
+               <div className="h2_teacher-content">
+                 <h5 className="h2_teacher-content-title">
+                 <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
+                 </h5>
+                 <span>{teacher.department}</span>
+               </div>
+             </div>
+           </div>
             ))}
           </div>
         </div>
@@ -254,20 +347,20 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers4.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
-                    </h5>
-                    <span>{teacher.role}</span>
-                  </div>
-                </div>
-              </div>
+            {BscComputerScience.map(teacher => (
+             <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
+             <div className="h2_teacher-item mb-30">
+               <div className="h2_teacher-img">
+                 <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+               </div>
+               <div className="h2_teacher-content">
+                 <h5 className="h2_teacher-content-title">
+                 <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
+                 </h5>
+                 <span>{teacher.department}</span>
+               </div>
+             </div>
+           </div>
             ))}
           </div>
         </div>
@@ -285,17 +378,17 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers5.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
+            {BAEnglish.map(teacher => (
+              <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="h2_teacher-item mb-30">
                   <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
+                    <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                   </div>
                   <div className="h2_teacher-content">
                     <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
+                    <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
                     </h5>
-                    <span>{teacher.role}</span>
+                    <span>{teacher.department}</span>
                   </div>
                 </div>
               </div>
@@ -316,20 +409,20 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers6.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
-                    </h5>
-                    <span>{teacher.role}</span>
-                  </div>
+            {BscMathematics.map(teacher => (
+              <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
+              <div className="h2_teacher-item mb-30">
+                <div className="h2_teacher-img">
+                  <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                </div>
+                <div className="h2_teacher-content">
+                  <h5 className="h2_teacher-content-title">
+                  <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
+                  </h5>
+                  <span>{teacher.department}</span>
                 </div>
               </div>
+            </div>
             ))}
           </div>
         </div>
@@ -347,20 +440,20 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers7.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
-                    </h5>
-                    <span>{teacher.role}</span>
-                  </div>
+            {BscTamil.map(teacher => (
+              <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
+              <div className="h2_teacher-item mb-30">
+                <div className="h2_teacher-img">
+                  <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                </div>
+                <div className="h2_teacher-content">
+                  <h5 className="h2_teacher-content-title">
+                  <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
+                  </h5>
+                  <span>{teacher.department}</span>
                 </div>
               </div>
+            </div>
             ))}
           </div>
         </div>
@@ -378,20 +471,20 @@ const TeacherArea = () => {
                 </div>
               </div>
             </div>
-            {teachers8.map(teacher => (
-              <div key={teacher.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <div className="h2_teacher-item mb-30">
-                  <div className="h2_teacher-img">
-                    <img src={teacher.imgSrc} alt={teacher.name} />
-                  </div>
-                  <div className="h2_teacher-content">
-                    <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
-                    </h5>
-                    <span>{teacher.role}</span>
-                  </div>
-                </div>
-              </div>
+            {BscPhysics.map(teacher => (
+             <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
+             <div className="h2_teacher-item mb-30">
+               <div className="h2_teacher-img">
+                 <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+               </div>
+               <div className="h2_teacher-content">
+                 <h5 className="h2_teacher-content-title">
+                 <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
+                 </h5>
+                 <span>{teacher.department}</span>
+               </div>
+             </div>
+           </div>
             ))}
           </div>
         </div>
@@ -417,7 +510,7 @@ const TeacherArea = () => {
                   </div>
                   <div className="h2_teacher-content">
                     <h5 className="h2_teacher-content-title">
-                      <a href="#">{teacher.name}</a>
+                    <Link to={`/TeamDetails/${teacher.teachers_id}`}>{teacher?.teachers_name}</Link>
                     </h5>
                     <span>{teacher.role}</span>
                   </div>
