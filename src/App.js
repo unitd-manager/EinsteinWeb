@@ -23,6 +23,7 @@ import UGProgramDetails from "../src/screens/UGProgramDetails.js";
 import Gallery from "../src/screens/Gallery"
 import ContactUs from "../src/screens/ContactUs"
 import Alumni from "../src/screens/Alumni"
+import Training from "../src/screens/Training"
 
 
 import '../src/assets/css/style.css'
@@ -99,6 +100,7 @@ function App() {
           <Route path="/Gallery" element={<Gallery />} /> 
           <Route path="/ContactUs" element={<ContactUs />} /> 
           <Route path="/Team" element={<Team />} /> 
+          <Route path="/Training" element={<Training />} /> 
           <Route path="/TeamDetails/:id" element={<TeamDetails />} />
           <Route path="/UGProgramDetails/:id" element={<UGProgramDetails />} />
           <Route path="/Student" element={<Student />} /> 

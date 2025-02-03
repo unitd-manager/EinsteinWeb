@@ -1516,7 +1516,7 @@ const onPaymentPress = () => {
                     <img src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`} alt=""  style={{marginBottom:50}}/>
                   </div>
                   <div className="h2_teacher-content">
-                    <h5 dangerouslySetInnerHTML={{ __html: item?.description }}>
+                    <h5 dangerouslySetInnerHTML={{ __html: item?.description_short }}>
                     </h5>
                     <span>{item.title}</span>
                   </div>
