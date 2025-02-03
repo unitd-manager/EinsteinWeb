@@ -1,116 +1,182 @@
-import React from 'react';
-import women from "../assets/img/event/womens_day.webp";
-import pongal from "../assets/img/event/PongalCele1.webp";
-import sport from "../assets/img/event/Sports1.webp";
-import sportsday from "../assets/img/event/sportsd1.webp";
-import collage from "../assets/img/event/CollageDay Clelb.webp";
-import breadCrumb from "../assets/img/breadcrumb/breadcrumb-bg.jpg";
-import shape from "../assets/img/breadcrumb/shape-1.png";
+import React, { useState, useEffect } from "react";
+import moment from "moment";
+import { Link } from "react-router-dom";
+import api from "../constants/api";
+import Web from "../assets/img/Faculty/EinsteinWebsite.jpg";
 
-const events = [
-  {
-    id: 1,
-    imgSrc: women,
-    location: 'Einstein Arts And Science Collage',
-    // time: '8.00 am - 6.00 pm',
-    title: 'International Womens Day ',
-  },
-  {
-    id: 2,
-    imgSrc: pongal,
-    location: 'Einstein Arts And Science Collage',
-    // time: '8.00 am - 6.00 pm',
-    title: 'Pongal Celebration-2021',
-  },
-  {
-    id: 3,
-    imgSrc:sport,
-    location: 'Einstein Arts And Science Collage',
-    // time: '8.00 am - 6.00 pm',
-    title: 'Sports Day Celebration',
-  },
-  {
-    id: 4,
-    imgSrc: sportsday,
-    location: 'Einstein Arts And Science Collage',
-    // time: '8.00 am - 6.00 pm',
-    title: 'Sports Day',
-  },
-  {
-    id: 5,
-    imgSrc: collage,
-    location: 'Einstein Arts And Science Collage',
-    // time: '8.00 am - 6.00 pm',
-    title: 'Collage Day Celebration',
-  },
-];
+const Event = () => {
+  const [event, setEvent] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6; // Display 6 items per page
 
-const Breadcrumb = () => (
-  <section
-    className="breadcrumb-area bg-default"
-    style={{ backgroundImage: `url(${breadCrumb})` }}
-    >
-    <img src={(shape)} alt="" className="breadcrumb-shape" />
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <div className="breadcrumb-content">
-            <h2 className="breadcrumb-title">Upcoming Events</h2>
-            <div className="breadcrumb-list">
-              <a href="index.html">Home</a>
-              <span>Upcoming Events</span>
+  useEffect(() => {
+    api
+      .get("/content/getEventsFile")
+      .then((res) => {
+        setEvent(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching details:", err);
+      });
+  }, []);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const applyFilters = () => {
+    let filteredData = [...event];
+
+    if (searchQuery !== "") {
+      filteredData = filteredData.filter(
+        (item) =>
+          (item.search_keyword &&
+            item.search_keyword.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
+    }
+
+    return filteredData;
+  };
+
+  const filteredGallery = applyFilters();
+  const totalPages = Math.ceil(filteredGallery.length / itemsPerPage);
+
+  // Pagination Logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const paginatedEvents = filteredGallery.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Handle page click
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  return (
+    <>
+      <main>
+        <section className="breadcrumb-area bg-default" style={{ backgroundImage: `url(${Web})` }}>
+          <img src="assets/img/breadcrumb/shape-1.png" alt="" className="breadcrumb-shape" />
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <div className="breadcrumb-content">
+                  <h2 className="breadcrumb-title">Upcoming Events</h2>
+                  <div className="breadcrumb-list">
+                    <Link to="/Home">Home</Link>
+                    <span>Upcoming Events</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
+        </section>
 
-const EventCard = ({ event }) => (
-  <div className="col-xl-4 col-lg-4 col-md-6">
-    <div className="event-item mb-30">
-      <div className="event-img">
-        <img src={event.imgSrc} alt="" />
-      </div>
-      <div className="event-content">
-        <div className="event-content-meta">
-          <span><i className="fa-thin fa-location-dot"></i>{event.location}</span>
-          {/* <span><i className="fa-thin fa-clock"></i>{event.time}</span> */}
-        </div>
-        <h5 className="event-content-title">
-          <a href="#">{event.title}</a>
-        </h5>
-        {/* <a href="#" className="t-theme-btn theme-btn event-btn">Get Ticket</a> */}
-      </div>
-    </div>
-  </div>
-);
+        <section className="innerPage_event-area pt-120 pb-90">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-xl-6">
+                <div className="section-area mb-50 section-area-top text-center">
+                  <span className="section-subtitle">Conference on Education</span>
+                  <h2 className="section-title mb-20">Upcoming Events</h2>
+                </div>
+              </div>
+            </div>
 
-const EventsSection = () => (
-  <section className="innerPage_event-area pt-120 pb-90">
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-xl-6">
-          <div className="section-area mb-50 section-area-top text-center">
-            <h2 className="section-title mb-20"> Events</h2>
+            <div className="innerPage_course-top mb-30">
+              <div className="row justify-content-between align-items-center">
+                <div className="col-xl-4 col-md-4">
+                  <p>Showing {paginatedEvents.length} of {filteredGallery.length} results</p>
+                </div>
+                <div className="col-xl-8 col-md-8">
+                  <div className="innerPage_course-right">
+                    <div className="innerPage_course-search">
+                      <input type="text" placeholder="Search Events" value={searchQuery} onChange={handleSearchChange} />
+                      <button type="button" className="innerPage_course-search-btn">
+                        <i className="fa-thin fa-magnifying-glass" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              {paginatedEvents.map((item, index) => (
+                <div className="col-xl-4 col-lg-4 col-md-6" style={{ marginBottom: 52 }} key={index}>
+                  <div className="event-item mb-30">
+                    <div className="event-img">
+                      <img
+                        src={`https://ecas.unitdtechnologies.com/storages/${item.event_image}`}
+                        alt=""
+                        style={{
+                          width: "100%",
+                          height: "250px",
+                          objectFit: "cover",
+                          borderRadius: "10px",
+                        }}
+                      />
+                    </div>
+                    <div className="event-content">
+                      <div className="event-content-meta">
+                        <span><i className="fa-thin fa-location-dot" /> {item.upload_country}</span>
+                        <span><i className="fa-thin fa-clock" /> {moment(item.content_date).format("DD-MM-YYYY")}</span>
+                      </div>
+                      <h5 className="event-content-title">
+                        <Link to={`/EventDetails/${item.content_id}`}>{item?.title}</Link>
+                      </h5>
+                      <Link to={`/EventDetails/${item.content_id}`} className="t-theme-btn theme-btn event-btn">
+                        More Details
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Pagination UI (Maintaining Same Structure) */}
+            <div className="row">
+              <div className="col-12">
+                <div className="pagination-area mt-20 mb-30">
+                  <ul>
+                    {[...Array(totalPages)].map((_, index) => (
+                      <li key={index}>
+                        <a
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handlePageClick(index + 1);
+                          }}
+                          className={currentPage === index + 1 ? "active-page" : ""}
+                        >
+                          {index + 1}
+                        </a>
+                      </li>
+                    ))}
+                    {currentPage < totalPages && (
+                      <li>
+                        <a
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handlePageClick(currentPage + 1);
+                          }}
+                        >
+                          <i className="fa-light fa-angle-right" />
+                        </a>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </div>
-      </div>
-      <div className="row">
-        {events.map(event => (
-          <EventCard key={event.id} event={event} />
-        ))}
-      </div>
-    </div>
-  </section>
-);
+        </section>
+      </main>
+    </>
+  );
+};
 
-const UpcomingEventsPage = () => (
-  <>
-    <Breadcrumb />
-    <EventsSection />
-  </>
-);
-
-export default UpcomingEventsPage;
+export default Event;

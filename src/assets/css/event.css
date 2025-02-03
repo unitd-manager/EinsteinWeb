@@ -667,4 +667,27 @@
   border-radius: 5px;
 }
 
-    
+.innerPage_course-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.contact-form-input .react-select__control,
+.innerPage_course-search input {
+  width: 250px; /* Make them same width */
+  height: 45px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.innerPage_course-search-btn {
+  height: 45px;
+  width: 50px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
