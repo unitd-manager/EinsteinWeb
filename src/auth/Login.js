@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import shape1 from "../assets/img/breadcrumb/shape-1.png";
 import breadcrumb from "../assets/img/breadcrumb/breadcrumb-bg.jpg";
 import api from "../constants/api";
-import { getLogin } from "../../src/auth/user";
+import { getLogin } from "./user";
 
 const Login = () => {
   const [signinData, setSigninData] = useState({
@@ -55,25 +55,28 @@ const Login = () => {
         pass_word: password, // Ensure the correct field name as expected by the backend
       };
      
-      getLogin(credentials);
+      // getLogin(credentials);
      
-      navigate("/");
+      // navigate("/");
       
   
-      // api
-      //   .post("/api/loginStudent", credentials)
-      //   .then((res) => {
-      //     if (res && res.status === 400) {
-      //       alert("Invalid Username or Password");
-      //     } else {
-      //       localStorage.setItem("user", JSON.stringify(res.data.data));
-      //       localStorage.setItem("token", JSON.stringify(res.data.token));
-      //       navigate("/");
-      //     }
-      //   })
-      //   .catch(() => {
-      //     alert("Invalid Username or Password");
-      //   });
+      api
+        .post("/api/loginStudent", credentials)
+        .then((res) => {
+          if (res && res.status === 400) {
+            alert("Invalid Username or Password");
+          } else {
+            localStorage.setItem("user", JSON.stringify(res.data.data));
+            localStorage.setItem("token", JSON.stringify(res.data.token));
+            navigate("/");
+            setTimeout(() => {
+              window.location.reload();
+            }, 200);
+          }
+        })
+        .catch(() => {
+          alert("Invalid Username or Password");
+        });
     }
   };
 
@@ -93,7 +96,7 @@ const Login = () => {
                   <h2 className="breadcrumb-title">Sign In</h2>
                   <div className="breadcrumb-list">
                     <Link to="/Home">Home</Link>
-                    <span>Sign In</span>
+                    <span>Student Login</span>
                   </div>
                 </div>
               </div>

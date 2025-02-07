@@ -42,61 +42,7 @@ import Kumar from "../assets/img/Faculty/Mr.-S.-Kumaran-HOD-Physics.webp";
 import Nagu from "../assets/img/Faculty/Mr.-E.Nagarajan-Physical-Director.webp";
 import { Link } from "react-router-dom";
 
-const teachers = [
-  { id: 1, name: 'Dr.R.Sugirtha Malar', role: 'HOD', imgSrc: SugirthaMalar },
-  { id: 2, name: 'Samuel Saravanan', role: 'Assistant Professor', imgSrc: Assis },
-  { id: 3, name: 'Mr.R.Thirumalai', role: 'Assistant Professor', imgSrc: Thiru },
-  { id: 4, name: 'Mr.Sivaratheesh', role: 'Assistant Professor', imgSrc: Sivara },
-];
 
-const teachers1 = [
-    { id: 1, name: 'Dr.A.Arul Kamraj', role: 'HOD', imgSrc: Arul },
-    { id: 2, name: 'Dr.M.Kayal Vizhi', role: 'Assistant Professor', imgSrc: Kayal },
-    { id: 3, name: 'Dr.M.Ranjith Kumar', role: 'Assistant Professor', imgSrc: Ranjith },
-    { id: 4, name: 'Dr.P.Nayagam', role: 'Assistant Professor', imgSrc: Nayagam },
-  ];
-  const teachers2 = [
-    { id: 1, name: 'Dr.M.Thirumalai Kumar', role: 'HOD', imgSrc: Thirumalai },
-    { id: 2, name: 'Mr.M.Murugan', role: 'Assistant Professor', imgSrc: Murugan },
-    { id: 3, name: 'Mr.S.Iyappan', role: 'Assistant Professor', imgSrc: Iyappan },
-    { id: 4, name: 'Mrs. M. Oliver Josephin Mary', role: 'Assistant Professor', imgSrc: Oliver },
-  ];
-  const teachers3 = [
-    { id: 1, name: 'Dr.G.Vignesh', role: 'HOD', imgSrc: Vignesh },
-    { id: 2, name: 'Dr.M.A.Mary Thangam', role: 'Assistant Professor', imgSrc: Mary },
-    { id: 3, name: 'Dr.S.BalaSubramanium', role: 'Assistant Professor', imgSrc: Balasubramanian },
-  ];
-  const teachers4 = [
-    { id: 1, name: 'Dr. M. Deepa Lakshmi', role: 'Assistant Professor', imgSrc: DeepaLakshmi },
-    { id: 2, name: 'Mr. M. Ramkumar', role: 'Assistant Professor', imgSrc: Ramkumar },
-    { id: 3, name: 'Mr. M. Varusai Mohamed', role: 'Assistant Professor', imgSrc: VarusaiMohammed },
-    { id: 4, name: 'Mrs. G. Baby Joice', role: 'Assistant Professor', imgSrc: BabyJoice },
-    { id: 5, name: 'Mrs. P. Shenbagapriya', role: 'Assistant Professor', imgSrc: Shenbagam },
-  ];
-  const teachers5 = [
-    { id: 1, name: 'Mr. A. Sheik Mohamed', role: 'HOD', imgSrc: Sheik },
-    { id: 2, name: 'Mr. D.B. Jebin Joseph', role: 'Assistant Professor', imgSrc: Jebin },
-    { id: 3, name: 'Mr. S. Ahil Kannan', role: 'Assistant Professor', imgSrc: Ahil },
-    { id: 4, name: 'Mrs. G. Macky Annal Mary', role: 'Assistant Professor', imgSrc: Macky },
-    { id: 5, name: 'Ms. M. Renuka ', role: 'Assistant Professor', imgSrc: Renuka },
-    { id: 6, name: 'Ms. V. Meenakshi', role: 'Assistant Professor', imgSrc: Menakshi },
-
-  ];
-  const teachers6 = [
-    { id: 1, name: 'Mr. R. Sundar Rajan', role: 'HOD', imgSrc: Sundar },
-    { id: 2, name: 'Mr. G.R. Sivaprakash', role: 'Assistant Professor', imgSrc: Siva },
-    { id: 3, name: 'Mr. Antony Aravinth', role: 'Assistant Professor', imgSrc: Antony },
-    { id: 4, name: 'Mrs. S. Christia Soniya ', role: 'Assistant Professor', imgSrc: Christia },
-  ];
-  const teachers7 = [
-    { id: 1, name: 'Dr. S. Murugan @ Sudalai', role: 'HOD', imgSrc: Sudalai },
-    { id: 2, name: 'Dr. B. Surya Laxme', role: 'Assistant Professor', imgSrc: Laxme },
-    { id: 3, name: 'Mr. K. Thambiran', role: 'Assistant Professor', imgSrc: Thambiran },
-  ];
-  const teachers8 = [
-    { id: 1, name: 'Dr. C. Prema', role: 'Assistant Professor', imgSrc: Prema },
-    { id: 2, name: 'Mr. S. Kumaran', role: 'HOD', imgSrc: Kumar },
-  ];
   const teachers9 = [
     { id: 1, name: 'Mr. E.Nagarajan', role: 'HOD', imgSrc: Nagu },
   ];
@@ -217,8 +163,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                    B.B.A Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                    B.B.A 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>
@@ -248,8 +194,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Com Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                  B.Com 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>
@@ -279,8 +225,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Com (CS) Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                  B.Com (CS) 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>
@@ -310,8 +256,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Sc.(Chemistry) Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                  B.Sc.(Chemistry) 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>
@@ -341,8 +287,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Sc.(Computer Science) Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                  B.Sc.(Computer Science) 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>
@@ -372,8 +318,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.A (English) Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                  B.A (English) 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>
@@ -403,8 +349,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Sc (Mathematics) Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                  B.Sc (Mathematics) 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>
@@ -434,8 +380,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.A (Tamil) Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                  B.A (Tamil) 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>
@@ -465,8 +411,8 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Sc (Physics) Faculties
-                    <span>Professor <img src={Line} alt="" /></span>
+                  B.Sc (Physics) 
+                    <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
               </div>

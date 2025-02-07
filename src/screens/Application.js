@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import api from "../constants/api";
 import { getUser } from "../../src/auth/user";
 
 const SignUp = () => {
   const user = getUser();
+  const navigate = useNavigate();
 
   console.log("user", user);
 
@@ -12,6 +13,14 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
 
   const getStudentById = () => {
+
+    if (!user) {
+      setTimeout(() => {
+        navigate('/Login');
+      }, 0);
+      console.log("mmsmsmsm")
+      return;
+    }
     api
       .post("/student/getStudentById", { student_id: user?.student_id })
       .then((res) => {
@@ -149,7 +158,7 @@ const SignUp = () => {
                               type="text"
                               name="father_mobile_number"
                               placeholder="Enter Your Mobile Number"
-                              value={studentEdit.father_mobile_number}
+                              value={studentEdit?.father_mobile_number}
                               onChange={handleInputs}
                             />
                           </div>

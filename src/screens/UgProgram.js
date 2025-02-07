@@ -11,7 +11,7 @@ const CourseSection = () => {
 
   useEffect(() => {
     api
-      .get("/content/getUGDepartmentscourseHomePanel") // Replace with actual API
+      .get("/content/getUGDepartmentscourseHomePanels") // Replace with actual API
       .then((res) => {
         setUgProgram(res.data.data); // Assuming API returns a list of images with categories
       })
@@ -20,7 +20,7 @@ const CourseSection = () => {
 
   useEffect(() => {
     api
-      .get("/category/getCategoryUgType") // Replace with actual API
+      .get("/content/getCategoryUg") // Replace with actual API
       .then((res) => {
         setCategory(res.data.data); // Assuming API returns a list of images with categories
       })
@@ -30,9 +30,9 @@ const CourseSection = () => {
   console.log("category", category);
 
   const filteredGallery = UgProgram.filter((item) =>
-    activeTab === "all" ? true : item.category_title === activeTab
+    activeTab === "all" ? true : item.department === activeTab
   );
-
+console.log('filteredGallery',filteredGallery)
   return (
     <>
       <section
@@ -189,14 +189,14 @@ const CourseSection = () => {
                   <div className="h3_course-tab mb-40">
                     <ul className="nav nav-pills">
                       {category.map((tab) => (
-                        <li key={tab.category_id} className="nav-item">
+                        <li key={tab.course_id} className="nav-item">
                           <button
                             className={`nav-link ${
-                              activeTab === tab.category_title ? "active" : ""
+                              activeTab === tab.department ? "active" : ""
                             }`}
-                            onClick={() => setActiveTab(tab.category_title)}
+                            onClick={() => setActiveTab(tab.department)}
                           >
-                            {tab.category_title}
+                            {tab.department}
                           </button>
                         </li>
                       ))}
@@ -220,8 +220,8 @@ const CourseSection = () => {
                     <div key={index} className="col-xl-4 col-lg-6 col-md-6">
                       <div className="h2_course-item mb-30">
                         <div className="h2_course-item-img">
-                          <Link to={`/UGProgramDetails/${item.content_id}`}>
-                            <img src={`https://ecas.unitdtechnologies.com/storages/${item.file_name}`} alt="Course Thumbnail"
+                          <Link to={`/UGProgramDetails/${item?.course_id}`}>
+                            <img src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`} alt="Course Thumbnail"
                              style={{
                               width: "100%", // Make it responsive
                               height: "250px", // Fixed height for uniformity
@@ -243,28 +243,28 @@ const CourseSection = () => {
                               </ul>
                             </div>
                             <div className="h2_course-save">
-                              <Link to={`/UGProgramDetails/${item.content_id}`}>
+                              <Link to={`/UGProgramDetails/${item.course_id}`}>
                                 <i className="fa fa-bookmark"></i>
                               </Link>
                             </div>
                           </div>
                           <h6 className="h2_course-content-title">
-                            <Link to={`/UGProgramDetails/${item.content_id}`}>{item.title}</Link>
+                            <Link to={`/UGProgramDetails/${item.course_id}`}>{item.course_name}</Link>
                           </h6>
                           <div className="h2_course-content-info">
                             <span>
                               <i className="fa fa-book"></i> Course Duration:
                             </span>
-                            <span>3.0 years</span>
+                            {item.course_duration}
                           </div>
                           <p className="h2_course-content-text">
-                            Level: Under Graduate
+                            Level:  {item.level}
                           </p>
-                          <p>Mode: Regular</p>
+                          <p>Mode:  {item.mode}</p>
                         </div>
                         <div className="h2_course-content-bottom">
                           <div className="h2_course-bottom-btn">
-                            <Link to={`/UGProgramDetails/${item.content_id}`}>
+                            <Link to={`/UGProgramDetails/${item.course_id}`}>
                               More Details <i className="fa fa-arrow-right"></i>
                             </Link>
                           </div>

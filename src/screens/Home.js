@@ -56,6 +56,8 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const [student, setStudent] = useState([]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState([]);
   const [aboutHome, setAboutHome] = useState([]);
@@ -256,7 +258,7 @@ const Home = () => {
         console.error("Error fetching magazine data", err);
       }); 
       api
-      .get("/content/getUGDepartmentscourseHomePanel")
+      .get("/content/getUGDepartmentscourseHomePanels")
       .then((res) => {
         setUgCourseHome(res.data.data);
       })
@@ -322,12 +324,27 @@ const Home = () => {
 
  
 }, []);
+console.log('student',student[0]?.payment_status)
+
+useEffect(() =>{
+  api
+      .post("/student/getStudentById",{student_id:user?.student_id})
+      .then((res) => {
+        setStudent(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+}, []);
 
 const handlePaymentSuccess = (data) => {
   console.log("Payment Successful:", data);
+  setTimeout(() => {
+    window.location.reload()
+  },300);
 
   navigate('/Application');
-  // history('/order-success');
+     
 };
 
 const handlePaymentFailure = (error) => {
@@ -340,6 +357,14 @@ const onPaymentPress = () => {
   if (!user) {
     setTimeout(() => {
       navigate('/Login');
+    }, 0);
+    console.log("mmsmsmsm")
+    return;
+  }
+
+  if (student[0]?.payment_status === "payment_status") {
+    setTimeout(() => {
+      navigate('/Application');
     }, 0);
     console.log("mmsmsmsm")
     return;
@@ -1201,7 +1226,7 @@ const onPaymentPress = () => {
                     </p>
                     <ul className="h7_program-item-list2">
                     {ugCourse.map((item, index) => ( 
-                      <li>{item.title}</li>
+                      <li>{item.course_name}</li>
                     ))}
                     </ul>
                     <span className="h7_program-item-time">

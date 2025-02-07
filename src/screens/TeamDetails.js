@@ -104,12 +104,12 @@ const TeacherArea = () => {
                           {teacherDetails.email}
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <span>Phone:</span>
                         <Link to={`tel:${teacherDetails.phone}`}> {teacherDetails.phone}</Link>
-                      </li>
+                      </li> */}
                     </ul>
-                    <div className="teacher_details-social">
+                    {/* <div className="teacher_details-social">
                       <a href="#">
                         <i className="fa-brands fa-twitter" />
                       </a>
@@ -122,7 +122,7 @@ const TeacherArea = () => {
                       <a href="#">
                         <i className="fa-brands fa-linkedin-in" />
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

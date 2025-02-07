@@ -61,6 +61,9 @@ const Home = () => {
   const [Facilities1, setFacilities1] = useState([]);
   const [Facilities2, setFacilities2] = useState([]);
   const [Facilities3, setFacilities3] = useState([]);
+  const [Facilities4, setFacilities4] = useState([]);
+  const [Facilities5, setFacilities5] = useState([]);
+  const [Facilities6, setFacilities6] = useState([]);
   const [principal, setPrincipal] = useState([]);
   const [principalDetails, setPrincipalDetails] = useState([]);
   const [vicePrincipal, setVicePrincipal] = useState([]);
@@ -201,6 +204,30 @@ const Home = () => {
       .get("/content/getAboutFacilities3")
       .then((res) => {
         setFacilities3(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getAboutFacilities4")
+      .then((res) => {
+        setFacilities4(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getAboutFacilities5")
+      .then((res) => {
+        setFacilities5(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching magazine data", err);
+      });
+      api
+      .get("/content/getAboutFacilities6")
+      .then((res) => {
+        setFacilities6(res.data.data);
       })
       .catch((err) => {
         console.error("Error fetching magazine data", err);
@@ -1082,6 +1109,102 @@ const Home = () => {
                     </span>
                     <h5 className="h10_event-content-title">
                       <a dangerouslySetInnerHTML={{ __html: Facilities3[0]?.description }}>
+                       
+                      </a>
+                    </h5>
+                    <a
+                      href="#"
+                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
+                    >
+                      Read more
+                      <i className="fa-light fa-arrow-right" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xl-4 col-lg-4 col-md-3">
+                <div className="h10_event-item mb-30">
+                  <div className="h10_event-img w_img">
+                    <a>
+                      <img
+                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities4[0]?.file_name}`}
+                        alt=""
+                        style={{ height: "300px", objectFit: "cover" }}
+                      />
+                    </a>
+                  </div>
+                  <div className="h10_event-content1">
+                    <span className="h10_event-content-meta">
+                      <i className="fa-light fa-location-dot" />
+                      {Facilities4[0]?.title}
+                    </span>
+                    <h5 className="h10_event-content1-title">
+                      <a dangerouslySetInnerHTML={{ __html: Facilities4[0]?.description }}>
+                      </a>
+                    </h5>
+                    <a
+                      href="#"
+                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
+                    >
+                      Read more
+                      <i className="fa-light fa-arrow-right" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-xl-4 col-lg-4 col-md-6">
+                <div className="h10_event-item mb-30">
+                  <div className="h10_event-img w_img">
+                    <a href="h10_event.html">
+                      <img
+                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities5[0]?.file_name}`}
+                        alt=""
+                        style={{ height: "300px", objectFit: "cover" }}
+                      />
+                    </a>
+                    {/* <span className="h10_event-date">24 Th Dec 2023</span> */}
+                  </div>
+                  <div className="h10_event-content1">
+                    <span className="h10_event-content-meta">
+                      <i className="fa-light fa-location-dot" />
+                      {Facilities5[0]?.title}
+                    </span>
+                    <h5 className="h10_event-content-title">
+                      <a dangerouslySetInnerHTML={{ __html: Facilities5[0]?.description }}>
+                      </a>
+                    </h5>
+                    <a
+                      href="#"
+                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
+                    >
+                      Read more
+                      <i className="fa-light fa-arrow-right" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xl-4 col-lg-4 col-md-6">
+                <div className="h10_event-item mb-30">
+                  <div className="h10_event-img w_img">
+                    <a href="h10_event.html">
+                      <img
+                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities6[0]?.file_name}`}
+                        alt=""
+                        style={{ height: "300px", objectFit: "cover" }}
+                      />
+                    </a>
+                    {/* <span className="h10_event-date">08 Th Dec 2023</span> */}
+                  </div>
+                  <div className="h10_event-content1">
+                    <span className="h10_event-content-meta">
+                      <i className="fa-light fa-location-dot" />
+                      {Facilities6[0]?.title}
+                    </span>
+                    <h5 className="h10_event-content-title">
+                      <a dangerouslySetInnerHTML={{ __html: Facilities6[0]?.description }}>
                        
                       </a>
                     </h5>

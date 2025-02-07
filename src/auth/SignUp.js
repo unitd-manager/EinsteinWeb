@@ -82,34 +82,30 @@ const SignUp = () => {
       console.log("Registration successful:", res.data.data);
 
       // Send email to the user
-      await api.post("/commonApi/sendUseremail", {
+      await api.post("/commonApi/sendUseremailSignUp", {
         to: signupData.email,
         subject: "Registration",
         
       });
+      
       setTimeout(() => {
         navigate("/Login");
       }, 300);
-
-      // Send a copy to the admin
-      await api.post("/commonApi/sendregisteremail", {
-        to: mailId,
-        text: JSON.stringify(signupData),
-        subject: "New User Registration",
-        dynamic_template_data: {
-          student_name: signupData.student_name,
-          email: signupData.email,
-          pass_word: signupData.pass_word,
-        },
-      });
-
-      // // Navigate to verification page
-      // navigate(`/register-verification/${signupData.email}`, {
-      //   state: { otpNo: signupData.otp_no },
+      // // Send a copy to the admin
+      // await api.post("/commonApi/sendUseremailSignUp", {
+      //   to: mailId,
+      //   text: JSON.stringify(signupData),
+      //   subject: "New User Registration",
+      //   dynamic_template_data: {
+      //     student_name: signupData.student_name,
+      //     email: signupData.email,
+      //     pass_word: signupData.pass_word,
+      //   },
       // });
-      setTimeout(() => {
-        navigate("/");
-      }, 300);
+
+      // setTimeout(() => {
+      //   navigate("/");
+      // }, 300);
     } catch (err) {
       console.error("Error during registration:", err);
       setErrors({ email: "This email is already registered." });
