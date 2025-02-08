@@ -163,7 +163,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                    B.B.A 
+                  <span>  B.B.A  </span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
@@ -194,7 +194,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Com 
+                <span>  B.Com  </span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
@@ -225,7 +225,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Com (CS) 
+               <span>   B.Com (CS)  </span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
@@ -256,7 +256,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Sc.(Chemistry) 
+                <span>  B.Sc.(Chemistry)  </span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
@@ -287,7 +287,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Sc.(Computer Science) 
+                <span>  B.Sc.(Computer Science)  </span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
@@ -318,7 +318,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.A (English) 
+              <span> B.A (English) </span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
@@ -349,7 +349,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Sc (Mathematics) 
+                 <span>B.Sc (Mathematics)</span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
@@ -380,7 +380,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.A (Tamil) 
+                 <span> B.A (Tamil) </span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>
@@ -411,7 +411,7 @@ const TeacherArea = () => {
               <div className="h2_teacher-section bg-default" style={{ backgroundImage: `url(${Blu})` }}>
                 <div className="section-area-2">
                   <h2 className="section-title mb-30">
-                  B.Sc (Physics) 
+                <span>  B.Sc (Physics) </span> <br></br>
                     <span>Faculties <img src={Line} alt="" /></span>
                   </h2>
                 </div>

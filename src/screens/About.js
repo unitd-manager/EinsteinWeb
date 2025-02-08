@@ -520,12 +520,12 @@ const Home = () => {
               </div>
             </div> */}
                     <div className="h10_about-bottom-btn">
-                      <a href="#">
+                      {/* <a href="#">
                         <span className="inner-btn">
                           <i className="fa-light fa-arrow-up" />
                         </span>
                         <span className="inner-text">Explore our history</span>
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>

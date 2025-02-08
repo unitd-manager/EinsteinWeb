@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Table, Input, Row, Col, Button } from "reactstrap";
 import api from "../constants/api";
+import { getTeacherUser } from "../../src/auth/user";
 import * as Icon from "react-feather";
 import "../assets/css/searchfilter.css";
 
 const Aboutus = () => {
-  const { id } = useParams();
-
+  // const { id } = useParams();
+  const user = getTeacherUser();
   const [students, setStudents] = useState([]);
   const [regNo, setRegNo] = useState("");
 
@@ -33,11 +34,11 @@ const Aboutus = () => {
   const filteredRefNo = applyFilters();
   const studentId = filteredRefNo.length > 0 ? filteredRefNo[0].student_id : null;
 
-  console.log("studentId", studentId);
+  console.log("user", user);
 
   const getStudent = () => {
     api
-      .get("/student/getStudent")
+      .post("/student/getStudentDepartment",{department:user?.department})
       .then((res) => {
         setStudents(res.data.data || []);
       })
@@ -48,7 +49,7 @@ const Aboutus = () => {
 
   useEffect(() => {
     getStudent();
-  }, [id]);
+  }, []);
 
   return (
     <div className="p-3">

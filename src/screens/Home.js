@@ -922,11 +922,11 @@ const onPaymentPress = () => {
                   <p className="section-text" dangerouslySetInnerHTML={{ __html: compusHome1[0]?.description }}>
                   </p>
                 </div>
-                <div className="h2_about-button">
+                {/* <div className="h2_about-button">
                   <a  className="theme-btn theme-btn-medium">
                     More Details
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -1295,10 +1295,10 @@ const onPaymentPress = () => {
                       <h4 className="h6_program-item-content-info-title">
                         <a>{AcademicsProgramList[0]?.title}</a>
                       </h4>
-                      <a className="h6_program-item-content-info-link">
+                      {/* <a className="h6_program-item-content-info-link">
                         Read More
                         <i className="fa-light fa-arrow-up-right" />
-                      </a>
+                      </a> */}
                     </div>
                     <div className="h6_program-item-content-icon">
                       <svg
@@ -1403,10 +1403,10 @@ const onPaymentPress = () => {
                       <h4 className="h6_program-item-content-info-title">
                         <a>{AcademicsProgramListone[0]?.title}</a>
                       </h4>
-                      <a  className="h6_program-item-content-info-link">
+                      {/* <a  className="h6_program-item-content-info-link">
                         Read More
                         <i className="fa-light fa-arrow-up-right" />
-                      </a>
+                      </a> */}
                     </div>
                     <div className="h6_program-item-content-icon">
                       <svg
@@ -1435,10 +1435,10 @@ const onPaymentPress = () => {
                       <h4 className="h6_program-item-content-info-title">
                         <a>{AcademicsProgramListtwo[0]?.title}</a>
                       </h4>
-                      <a className="h6_program-item-content-info-link">
+                      {/* <a className="h6_program-item-content-info-link">
                         Read More
                         <i className="fa-light fa-arrow-up-right" />
-                      </a>
+                      </a> */}
                     </div>
                     <div className="h6_program-item-content-icon">
                       <svg
@@ -1587,13 +1587,13 @@ const onPaymentPress = () => {
                   </h3> */}
                   <p dangerouslySetInnerHTML={{ __html: ourFounder[0]?.description }}>
                   </p>
-                  <a
+                  {/* <a
                     href="#"
                     className="h6_about-btn theme-btn theme-btn-medium theme-btn-6"
                   >
                     Learn More
                     <i className="fa-light fa-arrow-up-right" />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -1616,13 +1616,13 @@ const onPaymentPress = () => {
                   <h3 className="h6_about-content-title">{OurPhilosophy[0]?.title}</h3>
                   <p dangerouslySetInnerHTML={{ __html: OurPhilosophy[0]?.description }}>
                   </p>
-                  <a
+                  {/* <a
                     href="#"
                     className="h6_about-btn theme-btn theme-btn-medium theme-btn-6"
                   >
                     Explore our History
                     <i className="fa-light fa-arrow-up-right" />
-                  </a>
+                  </a> */}
                 </div>
               </div>
               <div className="col-xl-6 col-lg-6">
@@ -1689,9 +1689,9 @@ const onPaymentPress = () => {
                     </ul>
                   </div>
                   <div className="h4_about-button">
-                    <a  className="theme-btn h4_about-btn theme-btn-4">
+                    {/* <a  className="theme-btn h4_about-btn theme-btn-4">
                       More Details
-                    </a>
+                    </a> */}
                     <a
                       href="tel:+002455456978"
                       className="h4_about-button-call"
@@ -1906,7 +1906,7 @@ const onPaymentPress = () => {
           </div>
         </section>
 
-        <div className="h6_cta-area pt-120" style={{ marginTop: 100 }}>
+        {/* <div className="h6_cta-area pt-120" style={{ marginTop: 100 }}>
           <div className="container">
             <div
               className="h6_cta-wrapper"
@@ -1933,7 +1933,7 @@ const onPaymentPress = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* cta area end */}
       </main>
     </>

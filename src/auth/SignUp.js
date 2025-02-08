@@ -14,7 +14,7 @@ const SignUp = () => {
     email: "",
     pass_word: "",
     father_mobile_number:"",
-    // alternate_number:"",
+    payment_status:"Register",
     // address1: "",
     // address_city: "",
     // address_state: "",
@@ -75,7 +75,7 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!validateForm()) return;
-
+    signupData.payment_status = "Register"
     setLoading(true);
     try {
       const res = await api.post("/api/registerStudent", signupData);

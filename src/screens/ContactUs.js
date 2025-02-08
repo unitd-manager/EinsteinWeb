@@ -227,7 +227,7 @@ const Home = () => {
                           {errors.phone && <div className="error-message">{errors.phone}</div>}
                         </div>
                       </div>
-                      <div className="col-xl-6 col-lg-6 col-md-12 col-sm-6">
+                      {/* <div className="col-xl-6 col-lg-6 col-md-12 col-sm-6">
                         <div className="contact-form-input">
                           <Select
                             options={options}
@@ -237,7 +237,7 @@ const Home = () => {
                             classNamePrefix="react-select" // Helps with custom styling
                           />
                         </div>
-                      </div>
+                      </div> */}
                       <div className="col-12">
                         <div className="contact-form-input mb-50 contact-form-textarea">
                           <textarea

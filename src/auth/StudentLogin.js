@@ -67,8 +67,11 @@ const Login = () => {
             alert("Invalid Username or Password");
           } else {
             localStorage.setItem("user", JSON.stringify(res.data.data));
-            localStorage.setItem("token", JSON.stringify(res.data.token));
-            navigate("/Student");
+            localStorage.setItem("token", JSON.stringify(res.data.token));      
+            setTimeout(() => {
+              navigate("/Student");
+              window.location.reload();
+            }, 0);
           }
         })
         .catch(() => {
@@ -108,9 +111,9 @@ const Login = () => {
               <div className="col-xl-7 col-lg-8 col-md-10">
                 <div className="account-wrap">
                   <div className="account-top">
-                    <div className="account-top-link">
+                    {/* <div className="account-top-link">
                       <Link to="/SignUp">Sign Up</Link>
-                    </div>
+                    </div> */}
                     <div className="account-top-current">
                       <span>Sign In</span>
                     </div>
@@ -163,11 +166,11 @@ const Login = () => {
                         )}
                       </div>
                       <div className="account-form-condition">
-                        <label className="condition_label">
+                        {/* <label className="condition_label">
                           Remember Me
                           <input type="checkbox" />
                           <span className="check_mark" />
-                        </label>
+                        </label> */}
                       </div>
                       <div className="account-form-button">
                         <button

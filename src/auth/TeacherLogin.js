@@ -158,13 +158,13 @@ const Login = () => {
                           <span className="error">{passwordError}</span>
                         )}
                       </div>
-                      {/* <div className="account-form-condition">
-                        <label className="condition_label">
+                      <div className="account-form-condition">
+                        {/* <label className="condition_label">
                           Remember Me
                           <input type="checkbox" />
                           <span className="check_mark" />
-                        </label>
-                      </div> */}
+                        </label> */}
+                      </div>
                       <div className="account-form-button">
                         <button
                           type="submit"

@@ -12,7 +12,7 @@ const Home = () => {
   const [ApplicationPaid, setPaid] = useState();
 
 
-console.log('teacherUser',teacherUser)
+console.log('ApplicationPaid',ApplicationPaid)
  
 
   const navigate = useNavigate();
@@ -344,9 +344,9 @@ console.log('teacherUser',teacherUser)
                       </Link>
                     </div>
                     <div className ="h2_header-category d-none d-sm-block" style={{marginLeft:43}}>
-                        <a href="#"><i class="fa-solid fa-grid"></i><span>Login</span></a>
+                        <a><i class="fa-solid fa-grid"></i><span>Login</span></a>
                         <ul class="h2_header-category-submenu">
-                            <li><Link to="/Login">Login</Link></li>
+                            <li><Link to="/Login">Application Form</Link></li>
                             <li><Link to="/StudentLogin">Student Login</Link></li>
                             <li><Link to="/TeacherLogin">Teacher Login</Link></li>
                         </ul>
@@ -357,6 +357,7 @@ console.log('teacherUser',teacherUser)
               ) : (
                 <div className="col-xl-3 col-sm-5 col-6">
                   <div className="h2_header-right">
+                    {ApplicationPaid !== "Selected" && !teacherUser &&
                   <div className="h2_header-btn d-none d-sm-block">
                       <Link
                         to="#"
@@ -366,6 +367,8 @@ console.log('teacherUser',teacherUser)
                         Application
                       </Link>
                     </div>
+                    }
+                     {ApplicationPaid === "Selected" &&
                     <div className="h2_header-btn d-none d-sm-block">
                       <Link
                         to="#"
@@ -375,6 +378,18 @@ console.log('teacherUser',teacherUser)
                         Student
                       </Link>
                     </div>
+                         }
+                          {teacherUser &&
+                    <div className="h2_header-btn d-none d-sm-block">
+                      <Link
+                        to="#"
+                        onClick={StudentDetails}
+                        className="header-btn theme-btn theme-btn-medium"
+                      >
+                        Student
+                      </Link>
+                    </div>
+                         }
                     <div className="h2_header-btn d-none d-sm-block">
                       <Link
                         to="#"

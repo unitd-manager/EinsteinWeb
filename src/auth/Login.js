@@ -68,10 +68,11 @@ const Login = () => {
           } else {
             localStorage.setItem("user", JSON.stringify(res.data.data));
             localStorage.setItem("token", JSON.stringify(res.data.token));
-            navigate("/");
+            
             setTimeout(() => {
+              navigate("/");
               window.location.reload();
-            }, 200);
+            }, 0);
           }
         })
         .catch(() => {
@@ -96,7 +97,7 @@ const Login = () => {
                   <h2 className="breadcrumb-title">Sign In</h2>
                   <div className="breadcrumb-list">
                     <Link to="/Home">Home</Link>
-                    <span>Student Login</span>
+                    <span>Login</span>
                   </div>
                 </div>
               </div>
@@ -166,11 +167,11 @@ const Login = () => {
                         )}
                       </div>
                       <div className="account-form-condition">
-                        <label className="condition_label">
+                        {/* <label className="condition_label">
                           Remember Me
                           <input type="checkbox" />
                           <span className="check_mark" />
-                        </label>
+                        </label> */}
                       </div>
                       <div className="account-form-button">
                         <button
