@@ -15968,7 +15968,6 @@ input:focus::placeholder, textarea:focus::placeholder {
 .account-wrap {
   background: #fff;
   box-shadow: 0px 10px 50px rgba(30, 30, 30, 0.1);
-  max-width: 690px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
