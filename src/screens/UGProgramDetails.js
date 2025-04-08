@@ -106,6 +106,19 @@ const CourseSection = () => {
                           onClick={() => setActiveTab("overview")}
                           type="button"
                           role="tab"
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "8px",
+                            padding: "10px 16px",
+                            fontSize: "14px",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            width: "100%",
+                            maxWidth: "200px",
+                          }}
                         >
                           <i className="fa-solid fa-bookmark"></i>
                           <span>Overview</span>
@@ -119,6 +132,19 @@ const CourseSection = () => {
                           onClick={() => setActiveTab("AttendanceDetails")}
                           type="button"
                           role="tab"
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "8px",
+                            padding: "10px 16px",
+                            fontSize: "14px",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            width: "100%",
+                            maxWidth: "200px",
+                          }}
                         >
                           <i className="fa-thin fa-box"></i>
                           <span>Curriculum</span>
@@ -132,11 +158,74 @@ const CourseSection = () => {
                           onClick={() => setActiveTab("bestmonth")}
                           type="button"
                           role="tab"
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "8px",
+                            padding: "10px 16px",
+                            fontSize: "14px",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            width: "100%",
+                            maxWidth: "200px",
+                          }}
                         >
                           <i className="fa-thin fa-user"></i>
                           <span>Career Opportunities</span>
                         </button>
                       </li>
+                      <li className="nav-item" role="presentation">
+  <button
+    className={`nav-link ${activeTab === "skills" ? "active" : ""}`}
+    onClick={() => setActiveTab("skills")}
+    type="button"
+    role="tab"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "8px",
+      padding: "10px 16px",
+      fontSize: "14px",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      width: "100%",
+      maxWidth: "200px",
+    }}
+  >
+    <i className="fa-thin fa-lightbulb-on"></i>
+    <span>Skills & Development</span>
+  </button>
+</li>
+
+<li className="nav-item" role="presentation">
+  <button
+    className={`nav-link ${activeTab === "valueAdded" ? "active" : ""}`}
+    onClick={() => setActiveTab("valueAdded")}
+    type="button"
+    role="tab"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "8px",
+      padding: "10px 16px",
+      fontSize: "14px",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      width: "100%",
+      maxWidth: "200px",
+    }}
+  >
+    <i className="fa-thin fa-award"></i>
+    <span>Value Added Courses</span>
+  </button>
+</li>
+
                       {/* <li className="nav-item" role="presentation">
                       <button
                         className={`nav-link ${activeTab === "reviews" ? "active" : ""}`}
@@ -199,6 +288,38 @@ const CourseSection = () => {
                           </div>
                         </div>
                       )}
+                     {activeTab === "skills" && (
+  <div className="tab-pane fade show active">
+    <div className="course_details-curriculum">
+      <h4 className="course_details-content-title mb-15">
+        Skills & Development
+      </h4>
+      <p
+        className="mb-25"
+        dangerouslySetInnerHTML={{
+          __html: UgProgram?.skills_development_description,
+        }}
+      ></p>
+    </div>
+  </div>
+)}
+
+{activeTab === "valueAdded" && (
+  <div className="tab-pane fade show active">
+    <div className="course_details-curriculum">
+      <h4 className="course_details-content-title mb-15">
+        Value Added Courses
+      </h4>
+      <p
+        className="mb-25"
+        dangerouslySetInnerHTML={{
+          __html: UgProgram?.value_added_courses_description,
+        }}
+      ></p>
+    </div>
+  </div>
+)}
+
                       {/* {activeTab === "reviews" && (
                       <div className="tab-pane fade show active">
                            <div className="course_details-review">
