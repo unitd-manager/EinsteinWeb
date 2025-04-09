@@ -24,6 +24,10 @@ import Gallery from "../src/screens/Gallery"
 import ContactUs from "../src/screens/ContactUs"
 import Alumni from "../src/screens/Alumni"
 import Training from "../src/screens/Training"
+import VicePrincipal from "../src/screens/VicePrincipal.js";
+import Principal from "../src/screens/Principal.js";
+import ManagingTrustee from "../src/screens/ManagingTrustee.js";
+import Founder from "../src/screens/Founder.js";
 
 
 import '../src/assets/css/style.css'
@@ -108,6 +112,10 @@ function App() {
           <Route path="/StudentList" element={<StudentList />} /> 
           <Route path="/Application" element={<Application />} /> 
           <Route path="/Alumni" element={<Alumni />} /> 
+          <Route path="/VicePrincipal" element={<VicePrincipal />} /> 
+          <Route path="/Principal" element={<Principal />} /> 
+          <Route path="/ManagingTrustee" element={<ManagingTrustee />} /> 
+          <Route path="/Founder" element={<Founder />} /> 
 
           {/* Login */}
           
@@ -115,6 +123,7 @@ function App() {
           <Route path="/StudentLogin" element={<StudentLogin />} />
           <Route path="/TeacherLogin" element={<TeacherLogin />} />
           <Route path="/SignUp" element={<SignUp />} /> 
+          
 
        </Routes>
         <Footer />
