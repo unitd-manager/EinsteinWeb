@@ -29,6 +29,22 @@ const SignUp = () => {
       .catch(() => {});
   };
 
+  const handleMarksInput = (e, index) => {
+    const { name, value } = e.target;
+    const field = name.match(/marks\[\d+\]\.(.*)/)?.[1];
+  
+    const updatedMarks = [...(studentEdit.marks || [])];
+    updatedMarks[index] = {
+      ...(updatedMarks[index] || {}),
+      [field]: value,
+    };
+  
+    setStudentEdit({
+      ...studentEdit,
+      marks: updatedMarks,
+    });
+  };
+  
   const handleInputs = (e) => {
     setStudentEdit({ ...studentEdit, [e.target.name]: e.target.value });
   };
@@ -523,6 +539,87 @@ const SignUp = () => {
                           </div>
                         </div>
 
+                        <div className="table-responsive mb-4">
+                          <table className="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Subject</th>
+                                <th>Marks Obtained</th>
+                                <th>Maximum</th>
+                                <th>Month & Year of Passing</th>
+                                <th>HSC Reg. No</th>
+                                <th>No. of Attempt(s)</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {Array.from({ length: 5 }).map((_, index) => (
+                                <tr key={index}>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      name={`marks[${index}].subject`}
+                                      value={studentEdit?.marks?.[index]?.subject || ""}
+                                      onChange={(e) => handleMarksInput(e, index)}
+                                      placeholder="Subject"
+                                    />
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="number"
+                                      className="form-control"
+                                      name={`marks[${index}].mark`}
+                                      value={studentEdit?.marks?.[index]?.mark || ""}
+                                      onChange={(e) => handleMarksInput(e, index)}
+                                      placeholder="Mark"
+                                    />
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="number"
+                                      className="form-control"
+                                      name={`marks[${index}].max_mark`}
+                                      value={studentEdit?.marks?.[index]?.max_mark || ""}
+                                      onChange={(e) => handleMarksInput(e, index)}
+                                      placeholder="Max Mark"
+                                    />
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      name={`marks[${index}].month_year`}
+                                      value={studentEdit?.marks?.[index]?.month_year || ""}
+                                      onChange={(e) => handleMarksInput(e, index)}
+                                      placeholder="MM/YYYY"
+                                    />
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      name={`marks[${index}].hsc_reg_no`}
+                                      value={studentEdit?.marks?.[index]?.hsc_reg_no || ""}
+                                      onChange={(e) => handleMarksInput(e, index)}
+                                      placeholder="Reg. No"
+                                    />
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="number"
+                                      className="form-control"
+                                      name={`marks[${index}].attempts`}
+                                      value={studentEdit?.marks?.[index]?.attempts || ""}
+                                      onChange={(e) => handleMarksInput(e, index)}
+                                      placeholder="Attempts"
+                                    />
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                        
                         <hr />
                         <h4 className="mb-3 mt-4">Other Details</h4>
                         <div className="col-md-6">
