@@ -3,15 +3,18 @@ import { Link,useNavigate } from "react-router-dom";
 import api from "../constants/api";
 import { getUser } from "../../src/auth/user";
 import StudentMarks from "./StudentMarks";
+import StudentMarksEdit from "./StudentMarksEdit";
+import { Button } from "reactstrap";
 
 const SignUp = () => {
   const user = getUser();
   const navigate = useNavigate();
-
+  const [showStudentMarks, setShowStudentMarks] = useState(false);
   console.log("user", user);
 
   const [studentEdit, setStudentEdit] = useState({});
   const [loading, setLoading] = useState(false);
+  console.log("studentEdit", studentEdit);
 
   const [marksData, setMarksData] = useState({
     student_id: "",
@@ -616,10 +619,13 @@ const SignUp = () => {
                             </div>
                           </div>
                         </div>
+                        {showStudentMarks && (
+                          <StudentMarks studentId={studentEdit?.student_id} setShowStudentMarks={setShowStudentMarks} showStudentMarks={showStudentMarks}/>
+                        )}
 
-                        <StudentMarks></StudentMarks>
+                        <StudentMarksEdit studentId={studentEdit?.student_id} setShowStudentMarks={setShowStudentMarks}></StudentMarksEdit>
 
-                        <div className="table-responsive mb-4">
+                        {/* <div className="table-responsive mb-4">
                           <table className="table table-bordered">
                             <thead>
                               <tr>
@@ -698,9 +704,7 @@ const SignUp = () => {
                               ))}
                             </tbody>
                           </table>
-                        </div>
-                        
-                        <hr />
+                        </div> */}
                         <h4 className="mb-3 mt-4">Other Details</h4>
                         <div className="col-md-6">
                           <div className="account-form-item mb-20">
@@ -723,13 +727,13 @@ const SignUp = () => {
                             <div className="account-form-label">
                               <label>Are you differently abled?</label>
                             </div>
-                            <div className="account-form-input d-flex gap-3">
+                            <div className="account-form-input radio radio d-flex gap-3">
                               <label>
                                 <input
                                   type="radio"
                                   name="differently_abled"
-                                  value="Yes"
-                                  checked={studentEdit?.differently_abled === "Yes"}
+                                  value="1"
+                                  checked={studentEdit?.differently_abled === "1"}
                                   onChange={handleInputs}
                                 />{" "}
                                 Yes
@@ -738,8 +742,8 @@ const SignUp = () => {
                                 <input
                                   type="radio"
                                   name="differently_abled"
-                                  value="No"
-                                  checked={studentEdit?.differently_abled === "No"}
+                                  value="0"
+                                  checked={studentEdit?.differently_abled === "0"}
                                   onChange={handleInputs}
                                 />{" "}
                                 No
@@ -753,13 +757,13 @@ const SignUp = () => {
                             <div className="account-form-label">
                               <label>Are you son / daughter of Ex-Service man of Tamil Nadu Origin?</label>
                             </div>
-                            <div className="account-form-input d-flex gap-3">
+                            <div className="account-form-input radio d-flex gap-3">
                               <label>
                                 <input
                                   type="radio"
                                   name="exservice_man_child"
-                                  value="Yes"
-                                  checked={studentEdit?.exservice_man_child === "Yes"}
+                                  value="1"
+                                  checked={studentEdit?.exservice_man_child === "1"}
                                   onChange={handleInputs}
                                 />{" "}
                                 Yes
@@ -768,8 +772,8 @@ const SignUp = () => {
                                 <input
                                   type="radio"
                                   name="exservice_man_child"
-                                  value="No"
-                                  checked={studentEdit?.exservice_man_child === "No"}
+                                  value="0"
+                                  checked={studentEdit?.exservice_man_child === "0"}
                                   onChange={handleInputs}
                                 />{" "}
                                 No
@@ -783,13 +787,13 @@ const SignUp = () => {
                             <div className="account-form-label">
                               <label>Are you of Tamil Nadu orgin from Andaman Nicobar Islands?</label>
                             </div>
-                            <div className="account-form-input d-flex gap-3">
+                            <div className="account-form-input radio d-flex gap-3">
                               <label>
                                 <input
                                   type="radio"
                                   name="origin_from_andaman_nicobar_island"
-                                  value="Yes"
-                                  checked={studentEdit?.origin_from_andaman_nicobar_island === "Yes"}
+                                  value="1"
+                                  checked={studentEdit?.origin_from_andaman_nicobar_island === "1"}
                                   onChange={handleInputs}
                                 />{" "}
                                 Yes
@@ -798,8 +802,8 @@ const SignUp = () => {
                                 <input
                                   type="radio"
                                   name="origin_from_andaman_nicobar_island"
-                                  value="No"
-                                  checked={studentEdit?.origin_from_andaman_nicobar_island === "No"}
+                                  value="0"
+                                  checked={studentEdit?.origin_from_andaman_nicobar_island === "0"}
                                   onChange={handleInputs}
                                 />{" "}
                                 No
@@ -813,13 +817,13 @@ const SignUp = () => {
                             <div className="account-form-label">
                               <label>Are you the first graduate of your family?</label>
                             </div>
-                            <div className="account-form-input d-flex gap-3">
+                            <div className="account-form-input radio d-flex gap-3">
                               <label>
                                 <input
                                   type="radio"
                                   name="first_graduate_of_family"
-                                  value="Yes"
-                                  checked={studentEdit?.first_graduate_of_family === "Yes"}
+                                  value="1"
+                                  checked={studentEdit?.first_graduate_of_family === "1"}
                                   onChange={handleInputs}
                                 />{" "}
                                 Yes
@@ -828,8 +832,8 @@ const SignUp = () => {
                                 <input
                                   type="radio"
                                   name="first_graduate_of_family"
-                                  value="No"
-                                  checked={studentEdit?.first_graduate_of_family === "No"}
+                                  value="0"
+                                  checked={studentEdit?.first_graduate_of_family === "0"}
                                   onChange={handleInputs}
                                 />{" "}
                                 No
@@ -843,13 +847,13 @@ const SignUp = () => {
                             <div className="account-form-label">
                               <label>Do you have below poverty line card / certificate?</label>
                             </div>
-                            <div className="account-form-input d-flex gap-3">
+                            <div className="account-form-input radio d-flex gap-3">
                               <label>
                                 <input
                                   type="radio"
                                   name="below_proverty_card"
-                                  value="Yes"
-                                  checked={studentEdit?.below_proverty_card === "Yes"}
+                                  value="1"
+                                  checked={studentEdit?.below_proverty_card === "1"}
                                   onChange={handleInputs}
                                 />{" "}
                                 Yes
@@ -858,8 +862,8 @@ const SignUp = () => {
                                 <input
                                   type="radio"
                                   name="below_proverty_card"
-                                  value="No"
-                                  checked={studentEdit?.below_proverty_card === "No"}
+                                  value="0"
+                                  checked={studentEdit?.below_proverty_card === "0"}
                                   onChange={handleInputs}
                                 />{" "}
                                 No
@@ -957,13 +961,13 @@ const SignUp = () => {
                               <div className="account-form-label">
                                 <label>Has the applicant been subjected to any disciplinary action?</label>
                               </div>
-                              <div className="account-form-input d-flex gap-3">
+                              <div className="account-form-input radio d-flex gap-3">
                                 <label>
                                   <input
                                     type="radio"
                                     name="disciplinary_action"
-                                    value="Yes"
-                                    checked={studentEdit?.disciplinary_action === "Yes"}
+                                    value="1"
+                                    checked={studentEdit?.disciplinary_action === "1"}
                                     onChange={handleInputs}
                                   />{" "}
                                   Yes
@@ -972,8 +976,8 @@ const SignUp = () => {
                                   <input
                                     type="radio"
                                     name="disciplinary_action"
-                                    value="No"
-                                    checked={studentEdit?.disciplinary_action === "No"}
+                                    value="0"
+                                    checked={studentEdit?.disciplinary_action === "0"}
                                     onChange={handleInputs}
                                   />{" "}
                                   No
@@ -987,13 +991,13 @@ const SignUp = () => {
                               <div className="account-form-label">
                                 <label>Does the applicant need accommodation in the Hostel?</label>
                               </div>
-                              <div className="account-form-input d-flex gap-3">
+                              <div className="account-form-input radio d-flex gap-3">
                                 <label>
                                   <input
                                     type="radio"
                                     name="need_hostel"
-                                    value="Yes"
-                                    checked={studentEdit?.need_hostel === "Yes"}
+                                    value="1"
+                                    checked={studentEdit?.need_hostel === "1"}
                                     onChange={handleInputs}
                                   />{" "}
                                   Yes
@@ -1002,8 +1006,8 @@ const SignUp = () => {
                                   <input
                                     type="radio"
                                     name="need_hostel"
-                                    value="No"
-                                    checked={studentEdit?.need_hostel === "No"}
+                                    value="0"
+                                    checked={studentEdit?.need_hostel === "0"}
                                     onChange={handleInputs}
                                   />{" "}
                                   No

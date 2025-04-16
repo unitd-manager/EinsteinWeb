@@ -691,3 +691,43 @@
   border: none;
   cursor: pointer;
 }
+
+/* Responsive Table Wrapper */
+.lineitemedit-wrapper {
+  overflow-x: auto;
+}
+
+/* For smaller screens - stack the table rows */
+@media screen and (max-width: 768px) {
+  .lineitemedit {
+    width: 100%;
+    border-collapse: collapse;
+    display: block;
+  }
+
+  .lineitemedit thead {
+    display: none;
+  }
+
+  .lineitemedit tbody,
+  .lineitemedit tr,
+  .lineitemedit td {
+    display: block;
+    width: 100%;
+  }
+
+  .lineitemedit td {
+    padding: 10px;
+    position: relative;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .lineitemedit td::before {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+}

@@ -67,7 +67,7 @@ function Navbar() {
   };
 
   return (
-    <div className="col-xl-6 d-none d-xl-block">
+    <div className="col-xl-8 d-none d-xl-block">
     <div className="h2_header-middle">
       <nav className="h2_main-menu mobile-menu">
         <div
