@@ -6,8 +6,12 @@ import Web from "../assets/img/Faculty/EinsteinWebsite.jpg";
 
 const Event = () => {
   const [event, setEvent] = useState([]);
+  const [events, setEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [category, setCategory] = useState([]);
+  const [activeTab, setActiveTab] = useState("all"); // Default to 'See All'
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const itemsPerPage = 6; // Display 6 items per page
 
   useEffect(() => {
@@ -20,6 +24,20 @@ const Event = () => {
         console.error("Error fetching details:", err);
       });
   }, []);
+
+  useEffect(() => {
+      api
+        .get("/category/getEventsFromCategoryType") // Replace with actual API
+        .then((res) => {
+          setCategory(res.data.data); // Assuming API returns a list of images with categories
+        })
+        .catch((err) => console.error("Error fetching gallery data", err));
+    }, []);
+
+    const filteredEvents = event.filter((item) =>
+      activeTab === "all" ? true : item.category_title === activeTab
+    );
+    console.log("event", filteredEvents)
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -47,12 +65,23 @@ const Event = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const paginatedEvents = filteredGallery.slice(indexOfFirstItem, indexOfLastItem);
+  const paginatedEventsByCategoryType = filteredEvents.slice(indexOfFirstItem, indexOfLastItem);
 
   // Handle page click
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+ // Open Modal & Set Image
+ const openModal = (imageUrl) => {
+  setEvent(imageUrl);
+  setModalIsOpen(true);
+};
 
+// Close Modal
+const closeModal = () => {
+  setModalIsOpen(false);
+  setEvent(null);
+};
   return (
     <>
       <main>
@@ -72,6 +101,8 @@ const Event = () => {
             </div>
           </div>
         </section>
+          
+        
 
         <section className="innerPage_event-area pt-120 pb-90">
           <div className="container">
@@ -84,12 +115,15 @@ const Event = () => {
               </div>
             </div>
 
+                      
+
+
             <div className="innerPage_course-top mb-30">
               <div className="row justify-content-between align-items-center">
                 <div className="col-xl-4 col-md-4">
-                  <p>Showing {paginatedEvents.length} of {filteredGallery.length} results</p>
+                  <p>Showing {paginatedEventsByCategoryType.length} of {filteredEvents.length} results</p>
                 </div>
-                <div className="col-xl-8 col-md-8">
+                {/* <div className="col-xl-8 col-md-8">
                   <div className="innerPage_course-right">
                     <div className="innerPage_course-search">
                       <input type="text" placeholder="Search Events" value={searchQuery} onChange={handleSearchChange} />
@@ -98,12 +132,41 @@ const Event = () => {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> */}
+                <div className="col-xl-7 col-lg-6">
+                          <div className="innerPage_gallery-tab mb-40">
+                            <ul className="nav nav-pills">
+                              {category.map((tab) => (
+                                <li className="nav-item" key={tab.category_id}>
+                                  <button
+                                    className={`nav-link ${
+                                      activeTab === tab.category_title ? "active" : ""
+                                    }`}
+                                    onClick={() => setActiveTab(tab.category_title)}
+                                  >
+                                    {tab.category_title}
+                                  </button>
+                                </li>
+                              ))}
+                              <li>
+                                <Link
+                                  className={`nav-link ${
+                                    activeTab === "all" ? "active" : ""
+                                  }`}
+                                  onClick={() => setActiveTab("all")}
+                                >
+                                  See All
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+             
               </div>
             </div>
 
             <div className="row">
-              {paginatedEvents.map((item, index) => (
+              {paginatedEventsByCategoryType.map((item, index) => (
                 <div className="col-xl-4 col-lg-4 col-md-6" style={{ marginBottom: 52 }} key={index}>
                   <div className="event-item mb-30">
                     <div className="event-img">
@@ -171,7 +234,7 @@ const Event = () => {
                 </div>
               </div>
             </div>
-
+            
           </div>
         </section>
       </main>
