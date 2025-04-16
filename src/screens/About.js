@@ -4,7 +4,7 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import api from "../constants/api";
 import "swiper/css";
 import "../assets/css/modal.css"
-import "swiper/css/navigation";
+import "swiper/css/navigation"; 
 import Slider from "react-slick";
 import "../assets/css/event.css";
 import "odometer/themes/odometer-theme-default.css";
