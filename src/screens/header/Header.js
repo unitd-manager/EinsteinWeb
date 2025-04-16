@@ -130,45 +130,7 @@ console.log('ApplicationPaid',ApplicationPaid)
     };
   }
   
-  // const onPaymentPress = () => {
-    
-  //   if (!user) {
-  //     setTimeout(() => {
-  //       navigate('/Login');
-  //     }, 0);
-  //     console.log("mmsmsmsm")
-  //     return;
-  //   }
   
-  //   const totalAmount = 200;
-  //   const amountInPaise = totalAmount * 100;
-  
-  //   const options = {
-  //     key: "rzp_test_yE3jJN90A3ObCp", // Replace with your Razorpay test/live key
-  //     key_secret: "tt8BnBOG7yRvYZ6TSB28RXJy",
-  //     amount: amountInPaise,
-  //     currency: "INR",
-  //     name: "United",
-  //     description: "Application Fee",
-  //     image: "",
-  //     handler: handlePaymentSuccess,
-  //     prefill: {
-  //       name:"Mohammed Navab",
-  //       email:"rafi@unitdtechnologies.com",
-  //       contact:"9750792020",
-  //     },
-  //     notes: {
-  //       address: "Corporate Office",
-  //     },
-  //     theme: {
-  //       color: "#532C6D",
-  //     },
-  //   };
-  
-  //   const rzp = new window.Razorpay(options);
-  //   rzp.open();
-  //   rzp.on("payment.failed", handlePaymentFailure);
-  // };
 
   return (
     <>
@@ -210,128 +172,14 @@ console.log('ApplicationPaid',ApplicationPaid)
                       <img src={logoImage} alt="" />
                     </a>
                   </div>
-                  {/* <div className="h2_header-category d-none d-sm-block">
-                <a href="#">
-                  <i className="fa-solid fa-grid" />
-                  <span>Category</span>
-                </a>
-                <ul className="h2_header-category-submenu">
-                  <li>
-                    <a href="#">Design</a>
-                  </li>
-                  <li>
-                    <a href="#">Development</a>
-                  </li>
-                  <li>
-                    <a href="#">Architecture</a>
-                  </li>
-                  <li>
-                    <a href="#">Data Science</a>
-                  </li>
-                  <li>
-                    <a href="#">Marketing</a>
-                  </li>
-                </ul>
-              </div> */}
+                
                 </div>
               </div>
               <Navbar />
-              {/* <div className="col-xl-6 d-none d-xl-block">
-            <div className="h2_header-middle">
-              <nav className="h2_main-menu mobile-menu" id="mobile-menu">
-                <ul>
-                  <li>
-                    <a href="/Home">Home</a>
-                                     </li>
-                  <li className="menu-has-child">
-                    <a href="/About">About</a>
-                    <ul className="submenu">
-                      <li>
-                        <a href="/">About Us</a>
-                      </li>
-                      <li>
-                        <a href="/">Campus</a>
-                      </li>
-                      <li>
-                        <a href="/">Our Leadership</a>
-                      </li>
-                      <li>
-                        <a href="/">Facilities</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="menu-has-child">
-                    <a href="#">Academics</a>
-                    <ul className="submenu">
-                      <li>
-                        <a href="/">UG Programmes</a>
-                      </li>
-                      <li>
-                        <a href="/">Faculty</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="menu-has-child">
-                    <a href="/">Student Life</a>
-                    <ul className="submenu">
-                      <li>
-                        <a href="/">Event</a>
-                      </li>
-                      <li>
-                        <a href="/">Training & Placement</a>
-                      </li>
-                      <li>
-                        <a href="/">Alumni</a>
-                      </li>
-                      <li>
-                        <a href="/">Gallery</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="/Contact">Contact</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div> */}
-      
+          
                       
               {!user && !teacherUser ? (
-                // <div className="col-xl-3 col-sm-5 col-6">
-                //   <div className="h2_header-right">
-                //   <div className="h2_header-btn d-none d-sm-block">
-                //       <Link
-                //         to="#"
-                //         onClick={onPaymentPress}
-                //         className="header-btn theme-btn theme-btn-medium"
-                //       >
-                //         Application
-                //       </Link>
-                //     </div>
-                //     <div className="h2_header-btn d-none d-sm-block">
-                //       <Link
-                //         to="/TeacherLogin"
-                //         className="header-btn theme-btn theme-btn-medium"
-                //       >
-                //         Teacher Login
-                //       </Link>
-                //     </div>
-                //     <div className="h2_header-btn d-none d-sm-block">
-                //       <Link
-                //         to="/Login"
-                //         className="header-btn theme-btn theme-btn-medium"
-                //       >
-                //         Login
-                //       </Link>
-                //     </div>
-                //     <div className="header-menu-bar d-xl-none ml-10">
-                //       <span className="header-menu-bar-icon side-toggle">
-                //         <i className="fa-light fa-bars" />
-                //       </span>
-                //     </div>
-                //   </div>
-                // </div>
+               
                 <div class="col-xl-3 col-sm-7 col-6">
                 <div class="h2_header-left">
                 <div className="h2_header-btn d-none d-sm-block">

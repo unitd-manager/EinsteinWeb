@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "../assets/css/event.css";
 import "odometer/themes/odometer-theme-default.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation,Autoplay } from "swiper/modules";
 import { useNavigate } from 'react-router-dom';
 import "swiper/css";
 import "swiper/css/navigation";
@@ -129,6 +129,9 @@ const Home = () => {
     { id: 2, image: { ourleaderBanner } },
   ];
 
+    const [slides, setslides] = useState([]);
+  
+
   useEffect(() => {
     // Trigger counter animation on mount
     const counters = document.querySelectorAll(".count_one");
@@ -149,6 +152,15 @@ const Home = () => {
       .catch((err) => {
         console.error("Error fetching magazine data", err);
       });
+
+        api
+            .get("/content/getBannerAbout")
+            .then((res) => {
+              setslides(res.data.data);
+            })
+            .catch((err) => {
+              console.error("Error fetching magazine data", err);
+            });
      
       api
       .get("/content/getAboutHomePanelTop")
@@ -400,7 +412,11 @@ const onPaymentPress = () => {
   rzp.on("payment.failed", handlePaymentFailure);
 };
 
+function removeHtmlTags(str) {
+  return str.replace(/<\/?[^>]+(>|$)/g, ""); // Removes all HTML tags
 
+  
+}
   return (
     <>
      
@@ -476,6 +492,83 @@ const onPaymentPress = () => {
       <div className="offcanvas-overlay" />
       <main>
         {/* banner area start */}
+        <section className="slider-area fix">
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            navigation={{
+              nextEl: ".h7_slider-next",
+              prevEl: ".h7_slider-prev",
+            }}
+            autoplay={{ delay: 5000 }}
+            loop={true}
+            className="h7_slider-active"
+          >
+            {slides.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  className="h7_single-banner bg-default"
+                  style={{
+                    backgroundImage: `url(https://ecas.unitdtechnologies.com/storages/${slide?.file_name})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    height: "600px",
+                  }}
+                >
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-xl-7 col-lg-8 col-md-11">
+                        <div className="h7_banner-content">
+                          <h1
+                            className="h7_banner-content-title"
+                            data-animation="fadeInUp"
+                            data-delay="0.3s"
+                          >
+                            {slide.title}
+                          </h1>
+                          <p
+                            className="h7_banner-content-text"
+                            data-animation="fadeInUp"
+                            data-delay="0.5s"
+                          >
+                            {removeHtmlTags(slide.description)}
+                          </p>
+
+                          <div
+                            className="h7_banner-content-btn"
+                            data-animation="fadeInUp"
+                            data-delay="0.7s"
+                          >
+                            <a href="#" className="theme-btn theme-btn-7">
+                              Apply Now
+                              <i className="fa-light fa-arrow-right" />
+                            </a>
+                            <a
+                              href="#"
+                              className="theme-btn theme-btn-7 theme-btn-7-yellow"
+                            >
+                              Learn More
+                              <i className="fa-light fa-arrow-right" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          
+          <div className="h7_slider-navigation d-none d-md-grid">
+            <div className="h7_slider-prev">
+              <i className="fa-regular fa-arrow-down-left" />
+            </div>
+            <div className="h7_slider-next">
+              <i className="fa-regular fa-arrow-up-right" />
+            </div>
+          </div>
+        </section>
+
         <section className="h2_banner-area">
           <div className="h2_single-banner">
             <div className="container">

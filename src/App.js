@@ -23,6 +23,12 @@ import UGProgramDetails from "../src/screens/UGProgramDetails.js";
 import Gallery from "../src/screens/Gallery"
 import ContactUs from "../src/screens/ContactUs"
 import Alumni from "../src/screens/Alumni"
+import WomenCell from "./screens/WomenCell"
+import AntiDrugCommittee from "./screens/AntiDrugCommittee"
+import AntiRaggingCommittee from "./screens/AntiRaggingCommittee"
+import DisciplineCommittee from "./screens/DisciplineCommittee"
+import CampusMonitoringCommittee from "./screens/CampusMonitoringCommittee"
+import GrievanceRedressalCommittee from "./screens/GrievanceRedressalCommittee"
 import Training from "../src/screens/Training"
 import VicePrincipal from "../src/screens/VicePrincipal.js";
 import Principal from "../src/screens/Principal.js";
@@ -112,6 +118,13 @@ function App() {
           <Route path="/StudentList" element={<StudentList />} /> 
           <Route path="/Application" element={<Application />} /> 
           <Route path="/Alumni" element={<Alumni />} /> 
+
+          <Route path="/WomenCell" element={<WomenCell />} /> 1
+          <Route path="/AntiDrugCommittee" element={<AntiDrugCommittee />} /> 
+          <Route path="/AntiRaggingCommittee" element={<AntiRaggingCommittee/>} /> 
+          <Route path="/GrievanceRedressalCommittee" element={<GrievanceRedressalCommittee/>} /> 
+          <Route path="/CampusMonitoringCommittee" element={<CampusMonitoringCommittee/>} /> 
+          <Route path="/DisciplineCommittee" element={<DisciplineCommittee/>} /> 
           <Route path="/VicePrincipal" element={<VicePrincipal />} /> 
           <Route path="/Principal" element={<Principal />} /> 
           <Route path="/ManagingTrustee" element={<ManagingTrustee />} /> 
