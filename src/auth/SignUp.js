@@ -6,7 +6,6 @@ import breadcrumb from '../assets/img/breadcrumb/breadcrumb-bg.jpg'
 
 const SignUp = () => {
 
-
   const navigate = useNavigate();
 
   const [signupData, setSignupData] = useState({

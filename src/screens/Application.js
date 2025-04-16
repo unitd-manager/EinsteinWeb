@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import api from "../constants/api";
 import { getUser } from "../../src/auth/user";
+import StudentMarks from "./StudentMarks";
 
 const SignUp = () => {
   const user = getUser();
@@ -11,6 +12,21 @@ const SignUp = () => {
 
   const [studentEdit, setStudentEdit] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const [marksData, setMarksData] = useState({
+    student_id: "",
+    marks: [], // this should contain all marks entries (each with subject, mark, etc.)
+  });
+  
+  // const [marksData, setMarksData] = useState({
+  //   student_id: "",
+  //   subject: "",
+  //   marks: "",
+  //   maximum:"",
+  //   month_year_passing:"",
+  //   hsc_reg_no:"",
+  //   no_of_attempt:"",
+  // });
 
   const getStudentById = () => {
 
@@ -29,21 +45,67 @@ const SignUp = () => {
       .catch(() => {});
   };
 
-  const handleMarksInput = (e, index) => {
+  const handleStudentMark = (e, index) => {
     const { name, value } = e.target;
     const field = name.match(/marks\[\d+\]\.(.*)/)?.[1];
   
-    const updatedMarks = [...(studentEdit.marks || [])];
+    const updatedMarks = [...(marksData.marks || [])];
     updatedMarks[index] = {
       ...(updatedMarks[index] || {}),
       [field]: value,
     };
   
-    setStudentEdit({
-      ...studentEdit,
+    setMarksData({
+      ...marksData,
       marks: updatedMarks,
     });
   };
+
+  const AddStudentMark = () => {
+    const { student_id, marks } = marksData;
+  
+    // if (!student_id) {
+    //   alert('Student ID is required.', 'info');
+    //   return;
+    // }
+  
+    if (!marks || marks.length === 0) {
+      alert('Please enter at least one subject mark.', 'info');
+      return;
+    }
+  
+    const filteredMarks = marks.filter(
+      (m) =>
+        m.subject &&
+        m.marks &&
+        m.maximum &&
+        m.month_year_passing &&
+        m.hsc_reg_no &&
+        m.no_of_attempt
+    );
+  
+    // if (filteredMarks.length === 0) {
+    //   alert('All fields are required for each subject.', 'info');
+    //   return;
+    // }
+  
+    // Send each mark entry one by one
+    const requests = filteredMarks.map((mark) => {
+      api.post('/student/insertStudentmarks', {
+        student_id,
+        ...mark,
+      });
+    });
+  
+    Promise.all(requests)
+      .then(() => {
+        alert('Marks Inserted Successfully', 'success');
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Failed to insert one or more marks.', 'error');
+      });
+  };    
   
   const handleInputs = (e) => {
     setStudentEdit({ ...studentEdit, [e.target.name]: e.target.value });
@@ -56,6 +118,22 @@ const SignUp = () => {
       api
         .post("/student/editStudent", studentEdit)
         .then(() => {
+          const { student_id, marks } = marksData;
+          const filteredMarks = marks.filter(
+            (m) =>
+              m.subject &&
+              m.marks &&
+              m.maximum &&
+              m.month_year_passing &&
+              m.hsc_reg_no &&
+              m.no_of_attempt
+          );
+          filteredMarks.map((mark) => {
+            api.post('/student/insertStudentmarks', {
+              student_id,
+              ...mark,
+            });
+          });
           alert("Record edited successfully", "success");
         })
         .catch(() => {
@@ -184,7 +262,7 @@ const SignUp = () => {
                             </div>
                             <div className="account-form-input">
                               <input
-                                type="text"
+                                type="date"
                                 name="date_of_birth"
                                 placeholder="Enter Your date of birth"
                                 value={studentEdit?.date_of_birth}
@@ -539,6 +617,8 @@ const SignUp = () => {
                           </div>
                         </div>
 
+                        <StudentMarks></StudentMarks>
+
                         <div className="table-responsive mb-4">
                           <table className="table table-bordered">
                             <thead>
@@ -559,8 +639,8 @@ const SignUp = () => {
                                       type="text"
                                       className="form-control"
                                       name={`marks[${index}].subject`}
-                                      value={studentEdit?.marks?.[index]?.subject || ""}
-                                      onChange={(e) => handleMarksInput(e, index)}
+                                      value={marksData.marks?.[index]?.subject || ""}
+                                      onChange={(e) => handleStudentMark(e, index)}
                                       placeholder="Subject"
                                     />
                                   </td>
@@ -568,9 +648,9 @@ const SignUp = () => {
                                     <input
                                       type="number"
                                       className="form-control"
-                                      name={`marks[${index}].mark`}
-                                      value={studentEdit?.marks?.[index]?.mark || ""}
-                                      onChange={(e) => handleMarksInput(e, index)}
+                                      name={`marks[${index}].marks`}
+                                      value={marksData.marks?.[index]?.marks || ""}
+                                      onChange={(e) => handleStudentMark(e, index)}
                                       placeholder="Mark"
                                     />
                                   </td>
@@ -578,9 +658,9 @@ const SignUp = () => {
                                     <input
                                       type="number"
                                       className="form-control"
-                                      name={`marks[${index}].max_mark`}
-                                      value={studentEdit?.marks?.[index]?.max_mark || ""}
-                                      onChange={(e) => handleMarksInput(e, index)}
+                                      name={`marks[${index}].maximum`}
+                                      value={marksData.marks?.[index]?.maximum || ""}
+                                      onChange={(e) => handleStudentMark(e, index)}
                                       placeholder="Max Mark"
                                     />
                                   </td>
@@ -588,9 +668,9 @@ const SignUp = () => {
                                     <input
                                       type="text"
                                       className="form-control"
-                                      name={`marks[${index}].month_year`}
-                                      value={studentEdit?.marks?.[index]?.month_year || ""}
-                                      onChange={(e) => handleMarksInput(e, index)}
+                                      name={`marks[${index}].month_year_passing`}
+                                      value={marksData.marks?.[index]?.month_year_passing || ""}
+                                      onChange={(e) => handleStudentMark(e, index)}
                                       placeholder="MM/YYYY"
                                     />
                                   </td>
@@ -599,8 +679,8 @@ const SignUp = () => {
                                       type="text"
                                       className="form-control"
                                       name={`marks[${index}].hsc_reg_no`}
-                                      value={studentEdit?.marks?.[index]?.hsc_reg_no || ""}
-                                      onChange={(e) => handleMarksInput(e, index)}
+                                      value={marksData.marks?.[index]?.hsc_reg_no || ""}
+                                      onChange={(e) => handleStudentMark(e, index)}
                                       placeholder="Reg. No"
                                     />
                                   </td>
@@ -608,9 +688,9 @@ const SignUp = () => {
                                     <input
                                       type="number"
                                       className="form-control"
-                                      name={`marks[${index}].attempts`}
-                                      value={studentEdit?.marks?.[index]?.attempts || ""}
-                                      onChange={(e) => handleMarksInput(e, index)}
+                                      name={`marks[${index}].no_of_attempt`}
+                                      value={marksData.marks?.[index]?.no_of_attempt || ""}
+                                      onChange={(e) => handleStudentMark(e, index)}
                                       placeholder="Attempts"
                                     />
                                   </td>
