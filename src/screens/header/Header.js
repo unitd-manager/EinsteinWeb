@@ -163,9 +163,9 @@ console.log('ApplicationPaid',ApplicationPaid)
       {/* header area start */}
       <header>
         <div className="h2_header-area header-sticky">
-          <div className="container">
+          <div className="">
             <div className="row align-items-center">
-              <div className="col-xl-3 col-sm-7 col-6">
+              <div className="col-xl-2 col-sm-7 col-6" >
                 <div className="h2_header-left">
                   <div className="h2_header-logo">
                     <a href="/Home">
@@ -180,9 +180,17 @@ console.log('ApplicationPaid',ApplicationPaid)
                       
               {!user && !teacherUser ? (
                
-                <div class="col-xl-3 col-sm-7 col-6">
+                <div class="col-xl-2 col-sm-7 col-6">
                 <div class="h2_header-left">
-                <div className="h2_header-btn d-none d-sm-block">
+                <div className ="h2_header-category d-none d-sm-block" >
+                        <a><i class="fa-solid fa-grid"></i><span>Login</span></a>
+                        <ul class="h2_header-category-submenu">
+                            <li><Link to="/Login">Application Form</Link></li>
+                            <li><Link to="/StudentLogin">Student Login</Link></li>
+                            <li><Link to="/TeacherLogin">Teacher Login</Link></li>
+                        </ul>
+                    </div>
+                <div className="h2_header-btn d-none d-sm-block"style={{marginLeft:13}}>
                     <Link
                         to="#"
                         onClick={onPaymentPress}
@@ -191,22 +199,16 @@ console.log('ApplicationPaid',ApplicationPaid)
                         Application
                       </Link>
                     </div>
-                    <div className ="h2_header-category d-none d-sm-block" style={{marginLeft:43}}>
-                        <a><i class="fa-solid fa-grid"></i><span>Login</span></a>
-                        <ul class="h2_header-category-submenu">
-                            <li><Link to="/Login">Application Form</Link></li>
-                            <li><Link to="/StudentLogin">Student Login</Link></li>
-                            <li><Link to="/TeacherLogin">Teacher Login</Link></li>
-                        </ul>
-                    </div>
+                   
                 </div>
             </div>
 
               ) : (
-                <div className="col-xl-3 col-sm-5 col-6">
+                <div className="col-xl-2 col-sm-5 col-6">
                   <div className="h2_header-right">
+            
                     {ApplicationPaid !== "Selected" && !teacherUser &&
-                  <div className="h2_header-btn d-none d-sm-block">
+                  <div className="h2_header-btn d-none d-sm-block" style={{marginRight:23}}>
                       <Link
                         to="#"
                         onClick={onPaymentPress}
@@ -217,7 +219,7 @@ console.log('ApplicationPaid',ApplicationPaid)
                     </div>
                     }
                      {ApplicationPaid === "Selected" &&
-                    <div className="h2_header-btn d-none d-sm-block">
+                    <div className="h2_header-btn d-none d-sm-block" style={{marginRight:23}}>
                       <Link
                         to="#"
                         onClick={StudentDetails}
@@ -228,7 +230,7 @@ console.log('ApplicationPaid',ApplicationPaid)
                     </div>
                          }
                           {teacherUser &&
-                    <div className="h2_header-btn d-none d-sm-block">
+                    <div className="h2_header-btn d-none d-sm-block" style={{marginRight:23}}>
                       <Link
                         to="#"
                         onClick={StudentDetails}
@@ -238,7 +240,7 @@ console.log('ApplicationPaid',ApplicationPaid)
                       </Link>
                     </div>
                          }
-                    <div className="h2_header-btn d-none d-sm-block">
+                    {/* <div className="h2_header-btn d-none d-sm-block">
                       <Link
                         to="#"
                         onClick={logout}
@@ -246,7 +248,15 @@ console.log('ApplicationPaid',ApplicationPaid)
                       >
                         LogOut
                       </Link>
-                    </div>
+                    </div> */}
+              
+              <div className="h2_header-btn d-none d-sm-block" title="Logout" style={{marginRight:23}}>
+  <i 
+    className="fas fa-sign-out-alt" 
+    style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }} 
+    onClick={logout}
+  ></i>
+</div>
                     
                     <div className="header-menu-bar d-xl-none ml-10">
                       <span className="header-menu-bar-icon side-toggle">

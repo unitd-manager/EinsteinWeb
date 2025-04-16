@@ -16089,6 +16089,9 @@ input:focus::placeholder, textarea:focus::placeholder {
   font-size: 14px;
   color: rgba(4, 0, 23, 0.6);
 }
+.account-form-input.radio input {
+  height: 20px;
+}
 .account-form-input span {
   position: absolute;
   right: 20px;
