@@ -154,7 +154,7 @@ const Home = () => {
       });
 
         api
-            .get("/content/getBannerAbout")
+            .get("/content/getHomeBanner")
             .then((res) => {
               setslides(res.data.data);
             })
@@ -569,7 +569,7 @@ function removeHtmlTags(str) {
           </div>
         </section>
 
-        <section className="h2_banner-area">
+        {/* <section className="h2_banner-area">
           <div className="h2_single-banner">
             <div className="container">
               <div className="row align-items-center">
@@ -583,49 +583,9 @@ function removeHtmlTags(str) {
                         </span>
                         Platform.
                       </h1>
-                      <p className="section-text"  dangerouslySetInnerHTML={{ __html: content[0]?.description }}>
-                      {/* {content[0].description}
-                        We are creating an extraordinary and unique college.
-                        Einstein College Arts and Science named after the
-                        renowned scientist Albert Einstein deserves its
-                        reputation as an abode of excellence, a pinnacle of
-                        glory whenever there initiates a discussion about the
-                        world of Science. The college maintains a royal
-                        existence with its marvelous infrastructure and is
-                        widely acclaimed for its meticulous planning, resource
-                        scheduling, and institutional management. */}
-                      </p>
-                    </div>
-                    {/* <form action="#" className="h2_banner-form">
-                  <input type="text" placeholder="Search Course" />
-                  <button type="submit">
-                    <i className="fa-thin fa-magnifying-glass" />
-                  </button>
-                </form>
-                <span className="h2_banner-content-text">
-                  Have any questions ? <a href="#">Get Free Example</a>
-                </span> */}
-                    {/* <div className="h2_banner-tutor">
-                  <div className="h2_banner-tutor-img">
-                    <div className="h2_banner-inner-img">
-                      <img src="assets/img/banner/2/tutor-1.png" alt="" />
-                    </div>
-                    <div className="h2_banner-inner-img">
-                      <img src="assets/img/banner/2/tutor-2.png" alt="" />
-                    </div>
-                    <div className="h2_banner-inner-img">
-                      <img src="assets/img/banner/2/tutor-3.png" alt="" />
-                    </div>
-                    <div className="h2_banner-inner-img">
-                      <img src="assets/img/banner/2/tutor-4.png" alt="" />
-                      <span>2k+</span>
-                    </div>
-                  </div>
-                  <div className="h2_banner-tutor-text">
-                    <span>More Than</span>
-                    <span>2k+ Tutors</span>
-                  </div>
-                </div> */}
+                      <p className="section-text"  dangerouslySetInnerHTML={{ __html: content[0]?.description }}> </p>
+                      </div>
+                   
                   </div>
                 </div>
                 <div className="col-xl-6 col-lg-6 d-none d-lg-block">
@@ -665,7 +625,7 @@ function removeHtmlTags(str) {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="h6_research-area pt-110 pb-70 fix">
           <div className="container">
