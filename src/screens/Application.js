@@ -125,24 +125,10 @@ const SignUp = () => {
   };
 
   const handleFileDocChange = (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      if (file.type !== "application/pdf") {
-        alert("Only PDF files are allowed!");
-        e.target.value = "";
-        return;
-      }
-      setReceiptFileDoc(file);
-    }
-  };
+    setReceiptFileDoc(e.target.files[0]);
+  };  
 
   const handleUploadOnDoc = async () => {
-    if (!receiptFileDoc) {
-      alert("Please select a PDF file first.");
-      return;
-    }
-
     const formData = new FormData();
     formData.append("files", receiptFileDoc);
     formData.append("student_id", user?.student_id);
@@ -1125,7 +1111,6 @@ const SignUp = () => {
                             type="file"
                             id="fileInputDoc"
                             className="d-none"
-                            accept="application/pdf"
                             onChange={handleFileDocChange}
                           />
                           <label htmlFor="fileInputDoc" className="btn btn-outline-primary">
@@ -1135,7 +1120,6 @@ const SignUp = () => {
 
                         {receiptFileDoc && (
                           <p className="mt-2 text-success">
-                            <FaFilePdf className="me-2" />
                             {receiptFileDoc.name}
                           </p>
                         )}
@@ -1148,7 +1132,7 @@ const SignUp = () => {
                               {`${uploaded1}% uploaded`}
                           </div>
                         </div>}
-                        {receiptFileDoc && (<button className="btn btn-primary mt-2" onClick={handleUploadOnDoc} disabled={!receiptFileDoc}>
+                        {receiptFileDoc && (<button className="btn btn-primary mt-2" onClick={handleUploadOnDoc}>
                           <FaUpload className="me-2" /> Upload
                         </button>)}
 
