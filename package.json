@@ -25,6 +25,7 @@
     "react-swiper": "^0.1.5",
     "reactstrap": "^9.2.3",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.19.1",
     "swiper": "^11.2.1",
     "web-vitals": "^4.2.4"
   },

@@ -5,6 +5,8 @@ import { getUser } from "../../src/auth/user";
 import StudentMarks from "./StudentMarks";
 import StudentMarksEdit from "./StudentMarksEdit";
 import { Button } from "reactstrap";
+import {  FaUpload, FaFilePdf, FaFileDownload, FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const user = getUser();
@@ -15,6 +17,9 @@ const SignUp = () => {
   const [studentEdit, setStudentEdit] = useState({});
   const [loading, setLoading] = useState(false);
   console.log("studentEdit", studentEdit);
+  const [receiptFileDoc, setReceiptFileDoc] = useState(null);
+  const[uploaded1, setUploaded1]=useState(null);
+  const [receiptUrl1, setReceiptUrl1] = useState("");
 
   const [marksData, setMarksData] = useState({
     student_id: "",
@@ -46,7 +51,12 @@ const SignUp = () => {
         setStudentEdit(res.data.data[0]);
       })
       .catch(() => {});
-  };
+
+      api.post('/file/getListOfFiles', { record_id: user?.student_id, room_name: 'Student' }).then((res) => {
+        setReceiptUrl1(res.data);
+      });
+  
+    };
 
   const handleStudentMark = (e, index) => {
     const { name, value } = e.target;
@@ -114,6 +124,81 @@ const SignUp = () => {
     setStudentEdit({ ...studentEdit, [e.target.name]: e.target.value });
   };
 
+  const handleFileDocChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      if (file.type !== "application/pdf") {
+        alert("Only PDF files are allowed!");
+        e.target.value = "";
+        return;
+      }
+      setReceiptFileDoc(file);
+    }
+  };
+
+  const handleUploadOnDoc = async () => {
+    if (!receiptFileDoc) {
+      alert("Please select a PDF file first.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("files", receiptFileDoc);
+    formData.append("student_id", user?.student_id);
+    formData.append('record_id', user?.student_id)
+    formData.append('room_name', 'Student')
+    formData.append('alt_tag_data', 'StudentRelatedData')
+    formData.append('description', 'StudentRelatedData')
+    api.post('/file/uploadFiles',formData,{onUploadProgress:(filedata)=>{
+      console.log( Math.round((filedata.loaded/filedata.total)*100))
+      setUploaded1( Math.round((filedata.loaded/filedata.total)*100))                 
+    }}).then(()=>{
+      alert("Files Uploaded Successfully", {
+        appearance: "success",
+        autoDismiss: true,
+      })
+      setTimeout(() => {
+          window.location.reload()
+      }, 400);
+    }).catch(()=>{                  
+      alert("Unable to upload file", {
+        appearance: "error",
+        autoDismiss: true,
+      })                                
+    })
+  }; 
+
+  const deleteFile = (fileId) => {
+    Swal.fire({
+      title: `Are you sure?`,
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#124157',
+      cancelButtonColor: 'grey',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        api
+          .post('/file/deleteFile', { media_id: fileId })
+          .then((res) => {
+            console.log(res);
+            Swal.fire('Deleted!', 'Media has been deleted.', 'success');
+            //setViewLineModal(false)
+
+            window.location.reload();
+          })
+          .catch(() => {
+            alert("Unable to Upload file", {
+              appearance: "success",
+              autoDismiss: true,
+            })
+          });
+      }
+    });
+  };
+  
   const editStudent = (e) => {
     e.preventDefault(); // Prevent the form from submitting the default way
     if (studentEdit.student_name !== "") {
@@ -1017,6 +1102,83 @@ const SignUp = () => {
                           </div>
                         </div>
                       </div>
+
+                      <hr />
+                      <h4 className="mb-3 mt-4">Documents To Be Submitted</h4>
+                      <div className="row">
+                        <p>The selected student should produce the following original certificates along with the Xerox copies as detailed below:</p>
+                        <ul className="row list-unstyled ps-3">
+                          <li>1. Original HSC mark statement with 3 Xerox copies</li>
+                          <li>2. Original Transfer certificate</li>
+                          <li>3. Original conduct certificate from the Head of the institution where studied last</li>
+                          <li>4. One Xerox copy of the community certificate in the case of BC, MBC, DNC, SC / ST students</li>
+                          <li>5. Ex-serviceman certificates (Whenever applicable) with one Xerox copy</li>
+                        </ul>
+                      </div>
+
+                      {/* 2. On documents payment Upload Section */}
+                      <div className="card p-4 text-center border-dashed mb-3">
+                        <h6 className="d-flex justify-content-between align-items-center my-2 fw-bold mt-4">Documents Upload</h6>
+
+                        <div className="custom-file-upload">
+                          <input
+                            type="file"
+                            id="fileInputDoc"
+                            className="d-none"
+                            accept="application/pdf"
+                            onChange={handleFileDocChange}
+                          />
+                          <label htmlFor="fileInputDoc" className="btn btn-outline-primary">
+                            <FaUpload className="me-2" /> Choose File
+                          </label>
+                        </div>
+
+                        {receiptFileDoc && (
+                          <p className="mt-2 text-success">
+                            <FaFilePdf className="me-2" />
+                            {receiptFileDoc.name}
+                          </p>
+                        )}
+                        { uploaded1 &&  <div className='progress mt-2'>
+                          <div className="progress-bar h-4" role='progressbar'
+                            aria-valuenow={uploaded1}
+                            aria-valuemin='0'
+                            aria-valuemax='100'
+                            style={{width:`${uploaded1}%`}}>
+                              {`${uploaded1}% uploaded`}
+                          </div>
+                        </div>}
+                        {receiptFileDoc && (<button className="btn btn-primary mt-2" onClick={handleUploadOnDoc} disabled={!receiptFileDoc}>
+                          <FaUpload className="me-2" /> Upload
+                        </button>)}
+
+                        
+                      {receiptUrl1 && receiptUrl1.length > 0 && receiptUrl1.map((res1, index) => (
+                      <div
+                        key={index}
+                        className="d-flex justify-content-between align-items-center my-2"
+                      >
+                        <a
+                          href={`https://smartwave.unitdtechnologies.com:2014/category/download/${res1.name}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-decoration-none d-flex align-items-center text-primary"
+                        >
+                          <FaFileDownload className="me-2" />
+                          {res1.name}
+                        </a>
+                  
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-light shadow-none"
+                          onClick={() => deleteFile(res1.media_id)}
+                        >
+                          <FaTrash />
+                        </button>
+                      </div>
+                      ))}
+                      </div>
+
                       <div className="account-form-button">
                         <button
                           type="submit"
