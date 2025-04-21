@@ -23,7 +23,43 @@ const teachers = [
   { name: "Dianne Russell", role: "Graphic Designer", img: { HappyNewYear3 } },
 ];
 
+
 const Training = () => {
+    const [companies, setCompanies] = useState([]);
+    const [selectedCompany, setSelectedCompany] = useState(null);
+    const [images, setImages] = useState([]);
+  
+    // Fetch companies on mount
+    useEffect(() => {
+      api.get("/student/getcompany")
+      .then((res) => {
+        const data = res.data.data;
+        setCompanies(data);
+        if (data.length > 0) {
+          setSelectedCompany(data[0]);
+        }
+      })
+    
+        .catch((err) => console.error("Error fetching companies:", err));
+    }, []);
+    
+    
+  
+    // Fetch images when selectedCompany changes
+    useEffect(() => {
+      if (selectedCompany) {
+        api.post("/student/getstudentcompanybyid", {
+          placement_company_id: selectedCompany.placement_company_id,
+        })
+        .then((res) => {
+          const data = res.data.data;
+          setImages(data); // Assuming it returns an array of image data
+        })
+        
+          .catch((err) => console.error("Error fetching images:", err));
+      }
+    }, [selectedCompany]);
+  
   return (
     <>
       <main>
@@ -176,7 +212,7 @@ const Training = () => {
             </div>
           </div>
         </section>
-        <section className="h8_teacher-area pt-110 pb-115">
+        {/* <section className="h8_teacher-area pt-110 pb-115">
           <div className="container">
             <div className="row align-items-center mb-30">
               <div className="col-md-8">
@@ -223,7 +259,124 @@ const Training = () => {
               ))}
             </Swiper>
           </div>
+        </section> */}
+         {/* Section 1: Company List */}
+              <section className="pt-110 pb-30">
+          <div className="container">
+            <h2 className="section-title">Placement Company</h2>
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={20}
+              slidesPerView={2}
+              navigation={{
+                nextEl: ".company-next",
+                prevEl: ".company-prev",
+              }}
+              breakpoints={{
+                320: { slidesPerView: 1 },
+                768: { slidesPerView: 1 },
+                1024: { slidesPerView: 1 },
+                1200: { slidesPerView: 2 },
+              }}
+            >
+              {companies.map((company, i) => (
+                <SwiperSlide key={i} onClick={() => setSelectedCompany(company)}>
+                  <div className="h8_teacher-item" style={{ position: "relative", cursor: "pointer" }}>
+                    <div className="h8_teacher-img w_img">
+                      <img
+                        src={`https://ecas.unitdtechnologies.com/storages/${company.images}`} // adjust key if needed
+                        alt={company.company_name}
+                        style={{ width: "90%", borderRadius: "10px" }}
+                      />
+                    </div>
+                    <div
+          className="company-name-overlay"
+          style={{
+            position: "relative",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            backgroundColor: "rgba(242, 60, 60, 0.5)",
+            color: "#fff",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            fontSize: "16px",
+            textAlign: "center",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {company.company_name}
+        </div>
+        
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="h8_teacher-navigation mt-20">
+              <div className="company-prev">&#9665;</div>
+              <div className="company-next">&#9655;</div>
+            </div>
+          </div>
         </section>
+              {/* Section 2: Image Slider */}
+              {images.length > 0 && (
+                <section className="pb-115">
+                  <div className="container">
+                    <h2 className="section-title mb-30">{selectedCompany?.company_name}-</h2>
+                    <Swiper
+                      modules={[Navigation]}
+                      spaceBetween={20}
+                      slidesPerView={4}
+                      navigation={{
+                        nextEl: ".h8_teacher-next",
+                        prevEl: ".h8_teacher-prev",
+                      }}
+                      breakpoints={{
+                        320: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 4 },
+                      }}
+                    >
+                    {images.map((img, i) => (
+          <SwiperSlide key={i}>
+            <div className="h8_teacher-item">
+              <div className="h8_teacher-img w_img">
+                <img src={`https://ecas.unitdtechnologies.com/storages/${img.images}`} alt="" />
+              </div>
+            </div>
+            <div
+          className="company-name-overlay"
+          style={{
+            position: "relative",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            backgroundColor: "rgba(242, 60, 60, 0.5)",
+            color: "#fff",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            fontSize: "16px",
+            textAlign: "center",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {img.student_name}
+        </div>
+          </SwiperSlide>
+        ))}
+        
+        
+                    </Swiper>
+                  
+                    <div className="h8_teacher-navigation mt-20">
+                      <div className="h8_teacher-prev">&#9665;</div>
+                      <div className="h8_teacher-next">&#9655;</div>
+                    </div>
+                  </div>
+                </section>
+              )}
       </main>
     </>
   );
