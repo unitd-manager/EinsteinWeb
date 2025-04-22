@@ -219,11 +219,11 @@ const SignUp = () => {
                       <input type="text" name="pass_word" placeholder="*********" value={signupData.pass_word}
                       onChange={handleChange} />
                       <span>
-                        <i className="fa-thin fa-eye" />
+                        {/* <i className="fa-thin fa-eye" /> */}
                       </span>
                     </div>
                     {errors.pass_word && (
-                      <span className="error">{errors.pass_word}</span>
+                      <span className="error">Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, special character, and one number</span>
                     )}
                   </div>
                   <div className="account-form-item mb-20">

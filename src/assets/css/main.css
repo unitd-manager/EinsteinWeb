@@ -2262,7 +2262,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   left: 0;
   top: 100%;
   background: #fff;
-  width: 240px;
+  width: 270px !important;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.3s linear 0s;

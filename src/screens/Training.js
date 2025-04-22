@@ -49,7 +49,7 @@ const Training = () => {
     useEffect(() => {
       if (selectedCompany) {
         api.post("/student/getstudentcompanybyid", {
-          placement_company_id: selectedCompany.placement_company_id,
+          company_id: selectedCompany.company_id,
         })
         .then((res) => {
           const data = res.data.data;
@@ -286,7 +286,7 @@ const Training = () => {
                       <img
                         src={`https://ecas.unitdtechnologies.com/storages/${company.images}`} // adjust key if needed
                         alt={company.company_name}
-                        style={{ width: "90%", borderRadius: "10px" }}
+                        style={{ width: "100%", borderRadius: "10px" }}
                       />
                     </div>
                     <div
