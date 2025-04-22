@@ -5,6 +5,7 @@ import Navbar from "./NavMenu";
 import { getUser } from "../../auth/user";
 import { getTeacherUser } from "../../auth/user";
 import api from "../../constants/api";
+import Marquee from "../Marquee";
 
 const Home = () => {
   const user = getUser();
@@ -175,6 +176,7 @@ console.log('ApplicationPaid',ApplicationPaid)
                 
                 </div>
               </div>
+             
               <Navbar />
           
                       
@@ -270,6 +272,7 @@ console.log('ApplicationPaid',ApplicationPaid)
           </div>
         </div>
       </header>
+      <Marquee></Marquee>
     </>
   );
 };

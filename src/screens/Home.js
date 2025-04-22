@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import Marquee from "react-fast-marquee";
 import "../assets/css/event.css";
 import "odometer/themes/odometer-theme-default.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -421,6 +422,16 @@ function removeHtmlTags(str) {
     <>
      
      <div>
+     <div style={{ backgroundColor: 'red', color: 'white', }}>
+     {/* <Marquee  speed={50} color={"blue"}>
+     <h5 style={{ color: 'white', }}> 📢 Admissions Open for 2025   
+       |
+      🎓 Explore our B.SC/B.A/B.COM/B.B.A/B.C.A programs for more information! </h5>
+    </Marquee> */}
+    <Marquee gradient={false} speed={50}>
+  📢 Admissions Open for 2025 | 🎓 Enroll Now in B.Sc, B.A, B.Com, B.B.A, B.C.A Programs | 🌐 Industry-Relevant Curriculum | 🏆 Experienced Faculty | 💼 100% Placement Assistance | 📝 Apply Online Today | 📞 Call Now for Counseling & Scholarships!
+</Marquee>
+    </div>
         {/* Modal */}
         {isOpen && (
           <div style={modalStyles}>
@@ -839,8 +850,9 @@ function removeHtmlTags(str) {
           </div>
         </section>
 
-        <section className="h7_about-area pt-50 pb-50">
-          <div className="container">
+        <section className="h7_about-area pt-50 pb-50" style={{ backgroundColor: '#f5f5f5' }}>
+
+          <div className="container" style={{backgroundcolor:'#f5f5f5'}}>
             <div className="row">
               <div className="col-xl-6 col-lg-6">
                 <div className="h7_about-wrap mb-50 mr-70">
@@ -1633,7 +1645,7 @@ function removeHtmlTags(str) {
                   </div> */}
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-6" style={{ marginTop: 50 }}>
+              <div className="col-xl-6 col-lg-6" style={{ marginTop: 50, }}>
                 <div className="h6_about-content ml-30 mb-30 mb-md-0 pb-30">
                   {/* <h3 className="h6_about-content-title">
                     Tribute to Our Founder
