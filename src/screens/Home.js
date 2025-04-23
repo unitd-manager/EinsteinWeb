@@ -422,16 +422,7 @@ function removeHtmlTags(str) {
     <>
      
      <div>
-     <div style={{ backgroundColor: 'red', color: 'white', }}>
-     {/* <Marquee  speed={50} color={"blue"}>
-     <h5 style={{ color: 'white', }}> 📢 Admissions Open for 2025   
-       |
-      🎓 Explore our B.SC/B.A/B.COM/B.B.A/B.C.A programs for more information! </h5>
-    </Marquee> */}
-    <Marquee gradient={false} speed={50}>
-  📢 Admissions Open for 2025 | 🎓 Enroll Now in B.Sc, B.A, B.Com, B.B.A, B.C.A Programs | 🌐 Industry-Relevant Curriculum | 🏆 Experienced Faculty | 💼 100% Placement Assistance | 📝 Apply Online Today | 📞 Call Now for Counseling & Scholarships!
-</Marquee>
-    </div>
+     
         {/* Modal */}
         {isOpen && (
           <div style={modalStyles}>
@@ -682,7 +673,7 @@ function removeHtmlTags(str) {
                       sports, cultural, co-curricular, and naturally to be a
                       social being incorporated with values.
                     </p> */}
-                    <div className="h6_research-content-bottom">
+                    {/* <div className="h6_research-content-bottom">
                       <div className="h6_research-content-left">
                         <h2>$1b</h2>
                         <p>Sponsored research budget</p>
@@ -835,7 +826,7 @@ function removeHtmlTags(str) {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   {/* <div className="research-text-wrap mt-25">
                 <div className="research-text-ticker" id="research-text-ticker">
