@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import logoImage from "../../assets/img/logoImage.webp";
 import Marquee from "react-fast-marquee";
 import Navbar from "./NavMenu";
@@ -7,6 +8,7 @@ import { getUser } from "../../auth/user";
 import { getTeacherUser } from "../../auth/user";
 import api from "../../constants/api";
 import Marquees from "../Marquees";
+import ApplicationAckPdf from "../AcknowledgementPdf ";
 
 const Home = () => {
   const user = getUser();
@@ -15,6 +17,13 @@ const Home = () => {
 
 
 console.log('ApplicationPaid',ApplicationPaid)
+ const application={
+  name: "Mohammed Navab",
+  email: "rafi@unitdtechnologies.com",
+  id: "APP123456",
+  date: new Date().toLocaleDateString(),
+}
+
  
 
   const navigate = useNavigate();
@@ -405,6 +414,14 @@ console.log('ApplicationPaid',ApplicationPaid)
           </div>
         </div>
       </header>
+      <PDFDownloadLink
+    document={<ApplicationAckPdf application={application} />}
+    fileName={`Application_Acknowledgment_${application.id}.pdf`}
+  >
+    {({ loading }) =>
+      loading ? 'Generating PDF...' : 'Download Acknowledgment'
+    }
+  </PDFDownloadLink>
       <Marquees></Marquees>
       <div style={{ backgroundColor: 'red', color: 'white', }}>
      {/* <Marquee  speed={50} color={"blue"}>

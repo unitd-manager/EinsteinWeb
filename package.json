@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-pdf/renderer": "^4.3.0",
     "antd": "^5.23.3",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
