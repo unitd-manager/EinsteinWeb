@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import logoImage from "../../assets/img/logoImage.webp";
 import Marquee from "react-fast-marquee";
 import Navbar from "./NavMenu";
 import { getUser, getTeacherUser } from "../../auth/user";
 import api from "../../constants/api";
 import Marquees from "../Marquees";
+import ApplicationAckPdf from "../AcknowledgementPdf.js";
 
 const Home = () => {
   const user = getUser();
   const teacherUser = getTeacherUser();
   const [ApplicationPaid, setPaid] = useState();
+
   const navigate = useNavigate();
+
+  const application = {
+    name: "Mohammed Navab",
+    email: "rafi@unitdtechnologies.com",
+    id: "APP123456",
+    date: new Date().toLocaleDateString(),
+  };
 
   useEffect(() => {
     if (user?.student_id) {
@@ -78,6 +88,11 @@ const Home = () => {
     const totalAmount = 200;
     const amountInPaise = totalAmount * 100;
 
+    if (!window.Razorpay) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+
     const options = {
       key: "rzp_test_yE3jJN90A3ObCp",
       amount: amountInPaise,
@@ -104,31 +119,29 @@ const Home = () => {
     const sidebar = document.querySelector(".sidebar-info");
     const overlay = document.querySelector(".offcanvas-overlay");
     const closeBtn = document.querySelector(".sidebar-close");
-  
+
     const openSidebar = () => {
       sidebar.classList.add("info-open");
       overlay.classList.add("overlay-open");
     };
-  
+
     const closeSidebar = () => {
       sidebar.classList.remove("info-open");
       overlay.classList.remove("overlay-open");
     };
-  
+
     if (menuToggle && sidebar && overlay && closeBtn) {
       menuToggle.addEventListener("click", openSidebar);
       closeBtn.addEventListener("click", closeSidebar);
       overlay.addEventListener("click", closeSidebar);
-  
-      // Attach event delegation to sidebar itself
+
       const sidebarClickHandler = (e) => {
         if (e.target.closest("a") || e.target.closest("button")) {
           closeSidebar();
         }
       };
       sidebar.addEventListener("click", sidebarClickHandler);
-  
-      // Cleanup on unmount
+
       return () => {
         menuToggle.removeEventListener("click", openSidebar);
         closeBtn.removeEventListener("click", closeSidebar);
@@ -137,12 +150,10 @@ const Home = () => {
       };
     }
   }, []);
-  
-  
 
   return (
     <>
-      {/* Sidebar (Hamburger Menu) */}
+      {/* Sidebar */}
       <div className="sidebar-info side-info">
         <div className="sidebar-logo-wrapper mb-25">
           <div className="row align-items-center">
@@ -162,18 +173,14 @@ const Home = () => {
         </div>
 
         <div className="sidebar-menu-wrapper fix">
-          {/* Navbar Inside Sidebar */}
           <Navbar />
-
-          {/* Sidebar Buttons */}
           <div className="sidebar-links">
-            {!user && !teacherUser && (
+            {!user && !teacherUser ? (
               <>
                 <div className="h2_header-category d-sm-block">
                   <a><i className="fa-solid fa-grid"></i><span>Login</span></a>
                   <ul className="h2_header-category-submenu">
-                  <li><Link to="/StudentLogin">Student Login</Link></li>
-
+                    <li><Link to="/StudentLogin">Student Login</Link></li>
                     <li><Link to="/Login">Application Form</Link></li>
                     <li><Link to="/TeacherLogin">Teacher Login</Link></li>
                   </ul>
@@ -184,9 +191,7 @@ const Home = () => {
                   </Link>
                 </div>
               </>
-            )}
-
-            {(user || teacherUser) && (
+            ) : (
               <>
                 {ApplicationPaid !== "Selected" && !teacherUser && (
                   <div className="h2_header-btn d-sm-block" style={{ marginTop: 15 }}>
@@ -203,89 +208,77 @@ const Home = () => {
                   </div>
                 )}
                 <div className="h2_header-btn d-sm-block" title="Logout" style={{ marginTop: 15 }}>
-                  <i
-                    className="fas fa-sign-out-alt"
-                    style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }}
-                    onClick={logout}
-                  ></i>
+                  <i className="fas fa-sign-out-alt" style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }} onClick={logout}></i>
                 </div>
               </>
             )}
           </div>
         </div>
       </div>
+
       <div className="offcanvas-overlay" />
 
-      {/* Main Header */}
+      {/* Header */}
       <header>
-  <div className="h2_header-area header-sticky">
-    <div className="row align-items-center">
-      <div className="col-6 col-xl-3">
-        <div className="h2_header-left">
-          <div className="h2_header-logo">
-            <a href="/Home">
-              <img src={logoImage} alt="logo" />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Full Navbar and Buttons for Desktop */}
-      <div className="col-xl-6 d-none d-xl-block">
-        <Navbar />
-      </div>
-
-      {/* Buttons like Login/Application/Logout for Desktop */}
-      <div className="col-xl-3 d-none d-xl-block text-end">
-        <div className="h2_header-btns">
-        {!user && !teacherUser && (
-              <>
-                <div className="h2_header-category d-sm-block">
-                  <a><i className="fa-solid fa-grid"></i><span>Login</span></a>
-                  <ul className="h2_header-category-submenu">
-                  <li><Link to="/StudentLogin">Student Login</Link></li>
-
-                    <li><Link to="/Login">Application Form</Link></li>
-                    <li><Link to="/TeacherLogin">Teacher Login</Link></li>
-                  </ul>
+        <div className="h2_header-area header-sticky">
+          <div className="row align-items-center">
+            <div className="col-6 col-xl-3">
+              <div className="h2_header-left">
+                <div className="h2_header-logo">
+                  <a href="/Home">
+                    <img src={logoImage} alt="logo" />
+                  </a>
                 </div>
-                <div className="h2_header-btn d-sm-block" style={{ marginTop: 15 }}>
-                  <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
-                    Application
-                  </Link>
-                </div>
-              </>
-            )}
+              </div>
+            </div>
 
-            {(user || teacherUser) && (
-              <>
-                {ApplicationPaid !== "Selected" && !teacherUser && (
-                  <div className="h2_header-btn d-sm-block" style={{ marginTop: 15 }}>
-                    <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
-                      Application
-                    </Link>
-                  </div>
+            <div className="col-xl-6 d-none d-xl-block">
+              <Navbar />
+            </div>
+
+            <div className="col-xl-3 d-none d-xl-block text-end">
+              <div className="h2_header-btns">
+                {!user && !teacherUser ? (
+                  <>
+                    <div className="h2_header-category d-sm-block">
+                      <a><i className="fa-solid fa-grid"></i><span>Login</span></a>
+                      <ul className="h2_header-category-submenu">
+                        <li><Link to="/StudentLogin">Student Login</Link></li>
+                        <li><Link to="/Login">Application Form</Link></li>
+                        <li><Link to="/TeacherLogin">Teacher Login</Link></li>
+                      </ul>
+                    </div>
+                    <div className="h2_header-btn d-sm-block" style={{ marginTop: 15 }}>
+                      <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
+                        Application
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {ApplicationPaid !== "Selected" && !teacherUser && (
+                      <div className="h2_header-btn d-none d-sm-block" style={{ marginRight: 23 }}>
+                        <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
+                          Application
+                        </Link>
+                      </div>
+                    )}
+                    {(ApplicationPaid === "Selected" || teacherUser) && (
+                      <div className="h2_header-btn d-none d-sm-block" style={{ marginRight: 23 }}>
+                        <Link to="#" onClick={StudentDetails} className="header-btn theme-btn theme-btn-medium">
+                          Student
+                        </Link>
+                      </div>
+                    )}
+                    <div className="h2_header-btn d-none d-sm-block" title="Logout" style={{ marginRight: 23 }}>
+                      <i className="fas fa-sign-out-alt" style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }} onClick={logout}></i>
+                    </div>
+                  </>
                 )}
-                {(ApplicationPaid === "Selected" || teacherUser) && (
-                  <div className="h2_header-btn d-sm-block" style={{ marginTop: 15 }}>
-                    <Link to="#" onClick={StudentDetails} className="header-btn theme-btn theme-btn-medium">
-                      Student
-                    </Link>
-                  </div>
-                )}
-                <div className="h2_header-btn d-sm-block" title="Logout" style={{ marginLeft: 75 }}>
-                  <i
-                    className="fas fa-sign-out-alt"
-                    style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }}
-                    onClick={logout}
-                  ></i>
-                </div>
-              </>
-            )}
-        </div>
-      </div>
+              </div>
+            </div>
 
-      {/* Hamburger Menu for Mobile */}
+             {/* Hamburger Menu for Mobile */}
       <div className="col-6 text-end d-xl-none">
         <div className="header-menu-bar">
           <span className="header-menu-bar-icon side-toggle">
@@ -295,9 +288,17 @@ const Home = () => {
       </div>
     </div>
   </div>
-</header>
+      </header>
 
-      {/* Marquee Announcements */}
+      {/* PDF Download Link */}
+      <PDFDownloadLink
+        document={<ApplicationAckPdf application={application} />}
+        fileName={`Application_Acknowledgment_${application.id}.pdf`}
+      >
+        {({ loading }) => loading ? 'Generating PDF...' : 'Download Acknowledgment'}
+      </PDFDownloadLink>
+
+      {/* Marquees */}
       <Marquees />
       <div style={{ backgroundColor: 'red', color: 'white' }}>
         <Marquee gradient={false} speed={50}>

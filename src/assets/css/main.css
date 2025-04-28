@@ -16081,7 +16081,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   position: relative;
   z-index: 1;
 }
-.account-form-input input {
+.account-form-input input, .account-form-input select {
   width: 100%;
   height: 50px;
   line-height: 50px;
@@ -16090,6 +16090,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   padding: 0 20px;
   font-size: 14px;
   color: rgba(4, 0, 23, 0.6);
+  background-color: aliceblue;
 }
 .account-form-input.radio input {
   height: 20px;

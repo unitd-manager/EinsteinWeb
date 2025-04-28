@@ -21,6 +21,8 @@ const SignUp = () => {
   const[uploaded1, setUploaded1]=useState(null);
   const [receiptUrl1, setReceiptUrl1] = useState("");
 
+  const genderOptions = ["Male", "Female"];
+
   const [marksData, setMarksData] = useState({
     student_id: "",
     marks: [], // this should contain all marks entries (each with subject, mark, etc.)
@@ -121,6 +123,24 @@ const SignUp = () => {
   };    
   
   const handleInputs = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "father_mobile_number" && !/^\d*$/.test(value)) {
+      return; // Block non-numeric input
+    }
+    if (name === "aadhar_no" && !/^\d*$/.test(value)) {
+      return; // Block non-numeric input
+    }
+    if (name === "address_po_code" && !/^\d*$/.test(value)) {
+      return; // Block non-numeric input
+    }
+    if (name === "overall_mark_percentage" && !/^\d*$/.test(value)) {
+      return; // Block non-numeric input
+    }
+    if (name === "account_no" && !/^\d*$/.test(value)) {
+      return; // Block non-numeric input
+    }
+
     setStudentEdit({ ...studentEdit, [e.target.name]: e.target.value });
   };
 
@@ -306,6 +326,8 @@ const SignUp = () => {
                                 placeholder="Enter Your Mobile Number"
                                 value={studentEdit?.father_mobile_number}
                                 onChange={handleInputs}
+                                inputMode="numeric"
+                                pattern="[0-9]*"
                               />
                             </div>
                           </div>
@@ -415,16 +437,22 @@ const SignUp = () => {
                               <label>Gender</label>
                             </div>
                             <div className="account-form-input">
-                              <input
-                                type="text"
+                              <select
                                 name="gender"
-                                placeholder="Enter Your Gender"
-                                value={studentEdit?.gender}
+                                value={studentEdit?.gender || ""}
                                 onChange={handleInputs}
-                              />
+                              >
+                                <option value="">Select Gender</option>
+                                {genderOptions.map((option) => (
+                                  <option key={option} value={option}>
+                                    {option}
+                                  </option>
+                                ))}
+                              </select>
                             </div>
                           </div>
                         </div>
+
                         <hr />
                         <h4 className="mb-3 mt-4">Family Details</h4>
                         <div className="col-md-6">
