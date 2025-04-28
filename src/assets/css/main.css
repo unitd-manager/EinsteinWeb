@@ -2097,6 +2097,8 @@ input:focus::placeholder, textarea:focus::placeholder {
     padding: 12px 0;
   }
 }
+
+
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .h2_header-area {
     padding: 15px 0;

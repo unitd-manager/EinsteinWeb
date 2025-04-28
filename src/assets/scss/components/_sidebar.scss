@@ -9,8 +9,8 @@
 
 .side-info {
     width: 100%;
-    max-width: 400px;
-    background-color: #000;
+    max-width: 300px;
+    background-color: #cfa9a9;
     box-shadow: 0 13px 29px rgba(4, 0, 23, 0.1);
     height: 100%;
     position: fixed;
@@ -20,7 +20,8 @@
     @include transition(.4s);
     padding: 30px 40px 40px 40px;
   }
-  
+
+ 
   .side-info:is(.info-open) {
     right: 0;
     overflow-y: scroll;
