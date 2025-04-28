@@ -290,7 +290,6 @@ const Home = () => {
   </div>
       </header>
 
-      {/* PDF Download Link */}
       <PDFDownloadLink
         document={<ApplicationAckPdf application={application} />}
         fileName={`Application_Acknowledgment_${application.id}.pdf`}

@@ -198,15 +198,15 @@
     width: 940px;
     @media #{$md}{
       text-align: left;
-      width: 240px;
+      width: 220px;
     }
     @media #{$xs}{
       text-align: left;
-      width: 240px;
+      width: 220px;
     }
     @media #{$sm}{
       padding: 15px 0;
-      width: 240px;
+      width: 220px;
     }
   }
   &-right {
@@ -334,7 +334,7 @@
       &:last-child {
         margin-right: 0;
       }
-      &:is(.menu-has-child) > a::after {
+      &.has-category > a::after {
         display: inline-block;
         font-family: "Font Awesome 6 Pro";
         content: "\f107";
