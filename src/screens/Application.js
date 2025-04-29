@@ -229,6 +229,9 @@ const SignUp = () => {
             });
           });
           alert("Record edited successfully", "success");
+          setTimeout(() => {
+            navigate('/ApplicationSuccess', { state: { studentEdit } });
+          }, 200);
         })
         .catch(() => {
           alert("Unable to edit record.", "error");

@@ -55,9 +55,11 @@ const Home = () => {
     }
 };
 
-  const editstudentAppicationPaid = () => {
+  const editstudentAppicationPaid = (code) => {
+    console.log('code1',code)
     const studentAppicationPaid = {
       payment_status: "Application Paid",
+      application_no: code,
       student_id: user?.student_id
     };
     api.post("/student/editStudentApplicationPaid", studentAppicationPaid)
@@ -72,7 +74,16 @@ const Home = () => {
 
   const handlePaymentSuccess = (data) => {
     console.log("Payment Successful:", data);
-    editstudentAppicationPaid();
+    api.post('/commonApi/getCodeValue', { type: 'studentApplication' })
+    .then((res) => {
+      console.log('Full response:', res);
+      console.log('Extracted code:', res.data.data);
+      editstudentAppicationPaid(res.data.data); // Check this value
+    })
+    .catch((err) => {
+      console.error("Error generating code:", err);
+    });
+  
   };
 
   const handlePaymentFailure = (error) => {
@@ -302,12 +313,12 @@ const Home = () => {
   </div>
       </header>
 
-      <PDFDownloadLink
+      {/* <PDFDownloadLink
         document={<ApplicationAckPdf application={application} />}
         fileName={`Application_Acknowledgment_${application.id}.pdf`}
       >
         {({ loading }) => loading ? 'Generating PDF...' : 'Download Acknowledgment'}
-      </PDFDownloadLink>
+      </PDFDownloadLink> */}
 
       {/* Marquees */}
       <Marquees />
