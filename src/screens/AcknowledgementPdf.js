@@ -7,12 +7,12 @@ import {
   StyleSheet,
   Image
 } from '@react-pdf/renderer';
-import logo from '../assets/img/logo/logo-white.png'; // Adjust the path to your logo
+import logo from '../assets/img/about/imagesOur.jpg'; // Adjust the path to your logo
 
-// Styles
+
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 70,
+    paddingTop: 120,
     paddingBottom: 50,
     paddingHorizontal: 30,
     fontSize: 12,
@@ -28,16 +28,22 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   logo: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
   headerText: {
     fontSize: 16,
     fontWeight: 'bold',
     marginLeft: 10,
   },
+  AddressText: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginLeft: 10,
+  },
   section: {
     marginBottom: 10,
+    marginTop:25,
   },
   title: {
     fontSize: 18,
@@ -66,7 +72,11 @@ const ApplicationAckPdf = ({ application }) => (
       {/* Header */}
       <View style={styles.header}>
         <Image style={styles.logo} src={logo} />
+        <View >
         <Text style={styles.headerText}>Einstein Arts & Science College</Text>
+        <Text style={styles.AddressText}>Sir C.V. Raman Nagar, Seethaparpanallur,</Text>
+        <Text style={styles.AddressText}>Tirunelveli, Tamil Nadu 627012.</Text>
+        </View>
       </View>
 
       {/* Main Content */}

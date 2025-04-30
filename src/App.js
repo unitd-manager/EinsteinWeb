@@ -34,6 +34,7 @@ import VicePrincipal from "../src/screens/VicePrincipal.js";
 import Principal from "../src/screens/Principal.js";
 import ManagingTrustee from "../src/screens/ManagingTrustee.js";
 import Founder from "../src/screens/Founder.js";
+import ApplicationSuccess from "../src/screens/ApplicationSuccess.js";
 
 
 import '../src/assets/css/style.css'
@@ -129,6 +130,7 @@ function App() {
           <Route path="/Principal" element={<Principal />} /> 
           <Route path="/ManagingTrustee" element={<ManagingTrustee />} /> 
           <Route path="/Founder" element={<Founder />} /> 
+          <Route path="/ApplicationSuccess" element={<ApplicationSuccess />} /> 
 
           {/* Login */}
           

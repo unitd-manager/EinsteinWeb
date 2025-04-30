@@ -44,8 +44,8 @@ function Navbar() {
     setOpenedCategoryId(openedCategoryId === categoryId ? null : categoryId);
 
   return (
-    <div className="col-xl-8 d-xl-block">
-      <div className="h2_header-middle">
+    <div className="content-center">
+      <div className="">
         <nav className="h2_main-menu mobile-menu">
           <div className="main-menu d-lg-inline-block">
             <ul>

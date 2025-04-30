@@ -21,8 +21,27 @@ const SignUp = () => {
   const[uploaded1, setUploaded1]=useState(null);
   const [receiptUrl1, setReceiptUrl1] = useState("");
 
-  const genderOptions = ["Male", "Female"];
-
+  //const genderOptions = ["Male", "Female"];
+  //const courseOptions = ["B.Sc. (Mathematics)", "B.Sc. (Physics)", "B.Sc. (Chemistry)", "B.Sc. (Computer Science)", "B.Sc. (Statistics)", "B.Com. (Corporate Secretaryship)", "B.A. (English)", "B.A. (Tamil)", "B.Com.", "B.B.A.", "B.C.A"];
+  const [gender, setGender] = useState();
+  const getGender = () => {
+   api.get('/student/getValueGender').then((res) => {
+    setGender(res.data.data);
+   });
+  };
+  const [course, setCourse] = useState();
+  const getCourse = () => {
+    api.get('/teachers/getCourse').then((res) => {
+      setCourse(res.data.data);
+    });
+  };
+  const [bloodGroup, setBloodGroup] = useState();
+  const getBloodGroup = () => {
+    api.get('/student/getValueBloodGroup').then((res) => {
+      setBloodGroup(res.data.data);
+    });
+  };
+ 
   const [marksData, setMarksData] = useState({
     student_id: "",
     marks: [], // this should contain all marks entries (each with subject, mark, etc.)
@@ -204,9 +223,11 @@ const SignUp = () => {
       }
     });
   };
+
   
   const editStudent = (e) => {
     e.preventDefault(); // Prevent the form from submitting the default way
+  
     if (studentEdit.student_name !== "") {
       setLoading(true);
       api
@@ -222,13 +243,22 @@ const SignUp = () => {
               m.hsc_reg_no &&
               m.no_of_attempt
           );
-          filteredMarks.map((mark) => {
-            api.post('/student/insertStudentmarks', {
-              student_id,
-              ...mark,
-            });
-          });
+  
+          // Use Promise.all to ensure all mark insertions complete before navigating
+          return Promise.all(
+            filteredMarks.map((mark) =>
+              api.post("/student/insertStudentmarks", {
+                student_id,
+                ...mark,
+              })
+            )
+          );
+        })
+        .then(() => {
           alert("Record edited successfully", "success");
+          setTimeout(() => {
+            navigate("/ApplicationSuccess", { state: { studentEdit } });
+          }, 200);
         })
         .catch(() => {
           alert("Unable to edit record.", "error");
@@ -240,9 +270,12 @@ const SignUp = () => {
       alert("Please fill all required fields", "warning");
     }
   };
-
+  
   useEffect(() => {
-    getStudentById();
+      getGender()
+      getCourse()
+      getBloodGroup()
+      getStudentById();
   }, []);
 
   return (
@@ -273,7 +306,7 @@ const SignUp = () => {
                 <div className="account-wrap">
                   <div className="account-top sign-up">
                     <div className="account-top-current">
-                      <span>Application Form</span>
+                      <h3>Application Form</h3>
                     </div>
                   </div>
                   <div className="account-main">
@@ -345,6 +378,27 @@ const SignUp = () => {
                                 value={studentEdit?.aadhar_no}
                                 onChange={handleInputs}
                               />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="account-form-item mb-20">
+                            <div className="account-form-label">
+                              <label>Course Applying For</label>
+                            </div>
+                            <div className="account-form-input">
+                              <select
+                                name="course"
+                                value={studentEdit?.course || ""}
+                                onChange={handleInputs}
+                              >
+                                <option value="">Select Course</option>
+                                {course?.map((option) => (
+                                  <option key={option.course_name} value={option.course_name}>
+                                    {option.course_name}
+                                  </option>
+                                ))}
+                              </select>
                             </div>
                           </div>
                         </div>
@@ -443,9 +497,9 @@ const SignUp = () => {
                                 onChange={handleInputs}
                               >
                                 <option value="">Select Gender</option>
-                                {genderOptions.map((option) => (
-                                  <option key={option} value={option}>
-                                    {option}
+                                {gender?.map((option) => (
+                                  <option key={option.value} value={option.value}>
+                                    {option.value}
                                   </option>
                                 ))}
                               </select>
@@ -811,13 +865,18 @@ const SignUp = () => {
                               <label>Blood Group</label>
                             </div>
                             <div className="account-form-input">
-                              <input
-                                type="text"
+                              <select
                                 name="blood_group"
-                                placeholder="Enter Your Blood Group"
-                                value={studentEdit?.blood_group}
+                                value={studentEdit?.blood_group || ""}
                                 onChange={handleInputs}
-                              />
+                              >
+                                <option value="">Select Blood Group</option>
+                                {bloodGroup?.map((option) => (
+                                  <option key={option.value} value={option.value}>
+                                    {option.value}
+                                  </option>
+                                ))}
+                              </select>
                             </div>
                           </div>
                         </div>
