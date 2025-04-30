@@ -134,12 +134,12 @@ const Home = () => {
                   <div className="innerPage_gallery-item mb-30">
                     <div className="innerPage_gallery-img">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${item.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${item.file_name}`}
                         alt={item.title || "Gallery Image"}
                         className="gallery-image"
                         onClick={() =>
                           openModal(
-                            `https://ecas.unitdtechnologies.com/storages/${item.file_name}`
+                            `https://ecasadmin.unitdtechnologies.com/storages/${item.file_name}`
                           )
                         }
                       />
@@ -151,7 +151,7 @@ const Home = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           openModal(
-                            `https://ecas.unitdtechnologies.com/storages/${item.file_name}`
+                            `https://ecasadmin.unitdtechnologies.com/storages/${item.file_name}`
                           );
                         }}
                       >

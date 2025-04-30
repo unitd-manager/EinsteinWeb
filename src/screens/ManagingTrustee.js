@@ -67,7 +67,7 @@ return (
                           <div className="h2_teacher-item mb-30">
                             <div className="h2_teacher-img">
                               <img
-                                src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`}
+                                src={`https://ecasadmin.unitdtechnologies.com/storages/${item?.file_name}`}
                                 alt=""
                                 style={{ marginBottom: 50,cursor: "pointer" }}
                                 onClick={() => handleOpenModal(item)}
@@ -102,7 +102,7 @@ return (
                             className="h10_about-img-shape-1 d-none d-md-block"
                           /> */}
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${selectedItem?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${selectedItem?.file_name}`}
                         alt="Preview"
                         style={imageStyles}
                         // onClick={handleImageClick}

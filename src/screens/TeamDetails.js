@@ -55,7 +55,7 @@ const TeacherArea = () => {
               <div className="col-lg-4 col-md-5">
                 <div className="teacher_details-img w_img mb-50">
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storages/${teacherDetails?.file_name}`}
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${teacherDetails?.file_name}`}
                     alt=""
                   />
                 </div>

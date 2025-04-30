@@ -288,7 +288,7 @@ const Home = () => {
                 <div
                   className="h7_single-banner bg-default"
                   style={{
-                    backgroundImage: `url(https://ecas.unitdtechnologies.com/storages/${slide?.file_name})`,
+                    backgroundImage: `url(https://ecasadmin.unitdtechnologies.com/storages/${slide?.file_name})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -352,7 +352,7 @@ const Home = () => {
             <div className="row align-items-center">
               <div className="col-xl-6 col-lg-6">
                 <div className="about-img mb-50">
-                  <img src={`https://ecas.unitdtechnologies.com/storages/${about1[0]?.file_name}`} alt="" />
+                  <img src={`https://ecasadmin.unitdtechnologies.com/storages/${about1[0]?.file_name}`} alt="" />
                 </div>
               </div>
               <div className="col-xl-6 col-lg-6 col-md-10">
@@ -438,7 +438,7 @@ const Home = () => {
                     className="h10_about-img-shape-1 d-none d-md-block"
                   />
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storages/${OurPhilosophy[0]?.file_name}`}
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${OurPhilosophy[0]?.file_name}`}
                     alt=""
                     className="wow fadeInLeftBig"
                     style={{
@@ -470,7 +470,7 @@ const Home = () => {
                     className="h10_about-img-shape-1 d-none d-md-block"
                   />
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storages/${mission[0]?.file_name}`}
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${mission[0]?.file_name}`}
                     alt=""
                     className="wow fadeInLeftBig"
                     style={{
@@ -564,7 +564,7 @@ const Home = () => {
                   <div className="h2_teacher-item mb-30">
                     <div className="h2_teacher-img">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${item?.file_name}`}
                         alt=""
                         style={{ marginBottom: 50,cursor: "pointer" }}
                         onClick={() => handleOpenModal(item)}
@@ -599,7 +599,7 @@ const Home = () => {
                     className="h10_about-img-shape-1 d-none d-md-block"
                   /> */}
               <img
-                src={`https://ecas.unitdtechnologies.com/storages/${selectedItem?.file_name}`}
+                src={`https://ecasadmin.unitdtechnologies.com/storages/${selectedItem?.file_name}`}
                 alt="Preview"
                 style={imageStyles}
                 // onClick={handleImageClick}
@@ -702,7 +702,7 @@ const Home = () => {
               <div className="col-xl-5 col-lg-5 col-md-5">
                 <div className="h10_testimonial-img ml-10 w_img">
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storages/${principal[0]?.file_name}`}
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${principal[0]?.file_name}`}
                     alt=""
                     className="wow fadeInRight"
                     data-wow-delay="0.3s"
@@ -725,7 +725,7 @@ const Home = () => {
               <div className="col-xl-5 col-lg-5 col-md-5">
                 <div className="h10_testimonial-img ml-10 w_img">
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storages/${vicePrincipal[0]?.file_name}`}
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${vicePrincipal[0]?.file_name}`}
                     alt=""
                     className="wow fadeInRight"
                     data-wow-delay="0.3s"
@@ -886,7 +886,7 @@ const Home = () => {
                   <span>01</span>
                 </div> */}
                 <div className="h7_apply-item-title">
-                <img src={`https://ecas.unitdtechnologies.com/storages/${Campus1[0]?.file_name}`} alt=""  
+                <img src={`https://ecasadmin.unitdtechnologies.com/storages/${Campus1[0]?.file_name}`} alt=""  
                   style={{
                   width:"100%",
                   backgroundSize: "cover",
@@ -911,7 +911,7 @@ const Home = () => {
                   <span>02</span>
                 </div> */}
                 <div className="h7_apply-item-title">
-                <img src={`https://ecas.unitdtechnologies.com/storages/${Campus2[0]?.file_name}`} alt="" 
+                <img src={`https://ecasadmin.unitdtechnologies.com/storages/${Campus2[0]?.file_name}`} alt="" 
                  style={{
                   width:"100%",
                   backgroundSize: "cover",
@@ -935,7 +935,7 @@ const Home = () => {
                   <span>03</span>
                 </div> */}
                 <div className="h7_apply-item-title">
-                <img src={`https://ecas.unitdtechnologies.com/storages/${Campus3[0]?.file_name}`}  alt="" 
+                <img src={`https://ecasadmin.unitdtechnologies.com/storages/${Campus3[0]?.file_name}`}  alt="" 
                  style={{
                   width:"100%",
                   backgroundSize: "cover",
@@ -975,7 +975,7 @@ const Home = () => {
                 <SwiperSlide key={index}>
                   <div className="h3_teacher-item mb-25">
                     <div className="h3_teacher-img w_img">
-                      <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`}  alt={teacher?.title} />
+                      <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`}  alt={teacher?.title} />
                       {/* <div className="h3_teacher-social">
                         <ul>
                           <li>
@@ -1033,7 +1033,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a>
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities1[0]?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${Facilities1[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1064,7 +1064,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a href="h10_event.html">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities2[0]?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${Facilities2[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1095,7 +1095,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a href="h10_event.html">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities3[0]?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${Facilities3[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1129,7 +1129,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a>
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities4[0]?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${Facilities4[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1160,7 +1160,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a href="h10_event.html">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities5[0]?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${Facilities5[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1191,7 +1191,7 @@ const Home = () => {
                   <div className="h10_event-img w_img">
                     <a href="h10_event.html">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${Facilities6[0]?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${Facilities6[0]?.file_name}`}
                         alt=""
                         style={{ height: "300px", objectFit: "cover" }}
                       />
@@ -1249,7 +1249,7 @@ const Home = () => {
                   <div className="h3_teacher-item mb-25">
                     <div className="h3_teacher-img w_img">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`}
                         alt={teacher?.title}
                       />
                       <div className="h3_teacher-social">

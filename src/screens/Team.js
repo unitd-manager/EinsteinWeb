@@ -173,7 +173,7 @@ const TeacherArea = () => {
            <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
            <div className="h2_teacher-item mb-30">
              <div className="h2_teacher-img">
-               <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+               <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
              </div>
              <div className="h2_teacher-content">
                <h5 className="h2_teacher-content-title">
@@ -204,7 +204,7 @@ const TeacherArea = () => {
                <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
                <div className="h2_teacher-item mb-30">
                  <div className="h2_teacher-img">
-                   <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                   <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                  </div>
                  <div className="h2_teacher-content">
                    <h5 className="h2_teacher-content-title">
@@ -235,7 +235,7 @@ const TeacherArea = () => {
                <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
                <div className="h2_teacher-item mb-30">
                  <div className="h2_teacher-img">
-                   <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                   <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                  </div>
                  <div className="h2_teacher-content">
                    <h5 className="h2_teacher-content-title">
@@ -266,7 +266,7 @@ const TeacherArea = () => {
              <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
              <div className="h2_teacher-item mb-30">
                <div className="h2_teacher-img">
-                 <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                 <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                </div>
                <div className="h2_teacher-content">
                  <h5 className="h2_teacher-content-title">
@@ -297,7 +297,7 @@ const TeacherArea = () => {
              <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
              <div className="h2_teacher-item mb-30">
                <div className="h2_teacher-img">
-                 <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                 <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                </div>
                <div className="h2_teacher-content">
                  <h5 className="h2_teacher-content-title">
@@ -328,7 +328,7 @@ const TeacherArea = () => {
               <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="h2_teacher-item mb-30">
                   <div className="h2_teacher-img">
-                    <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                    <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                   </div>
                   <div className="h2_teacher-content">
                     <h5 className="h2_teacher-content-title">
@@ -359,7 +359,7 @@ const TeacherArea = () => {
               <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
               <div className="h2_teacher-item mb-30">
                 <div className="h2_teacher-img">
-                  <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                  <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                 </div>
                 <div className="h2_teacher-content">
                   <h5 className="h2_teacher-content-title">
@@ -390,7 +390,7 @@ const TeacherArea = () => {
               <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
               <div className="h2_teacher-item mb-30">
                 <div className="h2_teacher-img">
-                  <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                  <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                 </div>
                 <div className="h2_teacher-content">
                   <h5 className="h2_teacher-content-title">
@@ -421,7 +421,7 @@ const TeacherArea = () => {
              <div key={teacher.teachers_id} className="col-xl-3 col-lg-4 col-sm-6">
              <div className="h2_teacher-item mb-30">
                <div className="h2_teacher-img">
-                 <img src={`https://ecas.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
+                 <img src={`https://ecasadmin.unitdtechnologies.com/storages/${teacher?.file_name}`} alt={teacher.teachers_name} />
                </div>
                <div className="h2_teacher-content">
                  <h5 className="h2_teacher-content-title">

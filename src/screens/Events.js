@@ -171,7 +171,7 @@ const closeModal = () => {
                   <div className="event-item mb-30">
                     <div className="event-img">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${item.event_image}`}
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${item.event_image}`}
                         alt=""
                         style={{
                           width: "100%",

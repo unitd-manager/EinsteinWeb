@@ -36,7 +36,7 @@ import Academic2 from "../assets/img/facilities-3.webp";
 import Academic3 from "../assets/img/aboutPage1.webp";
 import bg from "../assets/img/bg.jpg";
 import bg3 from "../assets/img/infrastructure-1.png";
-import scholarshipimage from "../assets/img/ECAS PLACEMENT.jpeg";
+// import scholarshipimage from "../assets/img/ecas PLACEMENT.jpeg";
 import aboutFor from "../assets/img/DSC.jpg";
 import StudentForr from "../assets/img/StudentForrr.jpg";
 import StudentForTraing from "../assets/img/training-placement.webp";
@@ -158,6 +158,7 @@ const Home = () => {
             .get("/content/getHomeBanner")
             .then((res) => {
               setslides(res.data.data);
+              console.log('setslides',slides)
             })
             .catch((err) => {
               console.error("Error fetching magazine data", err);
@@ -505,12 +506,12 @@ function removeHtmlTags(str) {
             loop={true}
             className="h7_slider-active"
           >
-            {slides.map((slide, index) => (
+            {slides?.map((slide, index) => (
               <SwiperSlide key={index}>
                 <div
                   className="h7_single-banner bg-default"
                   style={{
-                    backgroundImage: `url(https://ecas.unitdtechnologies.com/storages/${slide?.file_name})`,
+                    backgroundImage: `url(https://ecasadmin.unitdtechnologies.com/storages/${slide.file_name})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     height: "600px",
@@ -535,7 +536,7 @@ function removeHtmlTags(str) {
                             {removeHtmlTags(slide.description)}
                           </p>
 
-                          <div
+                          {/* <div
                             className="h7_banner-content-btn"
                             data-animation="fadeInUp"
                             data-delay="0.7s"
@@ -551,7 +552,7 @@ function removeHtmlTags(str) {
                               Learn More
                               <i className="fa-light fa-arrow-right" />
                             </a>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -656,7 +657,7 @@ function removeHtmlTags(str) {
             <div className="row">
               <div className="col-xxl-7 col-xl-6 col-lg-6">
                 <div className="h6_research-img w_img mb-50">
-                  <img src={`https://ecas.unitdtechnologies.com/storages/${aboutHome[0]?.file_name}`} alt="" />
+                  <img src={`https://ecasadmin.unitdtechnologies.com/storages/${aboutHome[0]?.file_name}`} alt="" />
                 </div>
               </div>
               <div className="col-xxl-5 col-xl-6 col-lg-6">
@@ -867,7 +868,7 @@ function removeHtmlTags(str) {
                   <div className="h7_about-content">
                     <div className="h7_about-admin">
                       <div className="h7_about-admin-img">
-                        <img src={`https://ecas.unitdtechnologies.com/storages/${compusHomeTop[0]?.file_name}`} alt="" />
+                        <img src={`https://ecasadmin.unitdtechnologies.com/storages/${compusHomeTop[0]?.file_name}`} alt="" />
                       </div>
                       <div className="h7_about-admin-info">
                         <h5>
@@ -931,10 +932,10 @@ function removeHtmlTags(str) {
                 <div className="h2_about-img mb-50">
                   <div className="h2_about-inner-img">
                     <img src={image2} alt="" className="h2_inner-img" />
-                    <img src={`https://ecas.unitdtechnologies.com/storages/${compusHome[0]?.file_name}`} alt="" style={{width:'60%',borderRadius:8}} className="h2_inner-img-shape" />
+                    <img src={`https://ecasadmin.unitdtechnologies.com/storages/${compusHome[0]?.file_name}`} alt="" style={{width:'60%',borderRadius:8}} className="h2_inner-img-shape" />
                   </div>
                   <div className="h2_about-inner-img2">
-                    <img src={`https://ecas.unitdtechnologies.com/storages/${compusHome1[0]?.file_name}`} alt=""  style={{width:'60%',marginLeft:200,borderRadius:8}} />
+                    <img src={`https://ecasadmin.unitdtechnologies.com/storages/${compusHome1[0]?.file_name}`} alt=""  style={{width:'60%',marginLeft:200,borderRadius:8}} />
                     <div className="h2_about-img-button" >
                       <a
 
@@ -1344,7 +1345,7 @@ function removeHtmlTags(str) {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={`https://ecas.unitdtechnologies.com/storages/${AcademicsProgramList[0]?.file_name}`} alt="" style={{hieght:"120%"}} />
+                    <img src={`https://ecasadmin.unitdtechnologies.com/storages/${AcademicsProgramList[0]?.file_name}`} alt="" style={{hieght:"120%"}} />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
@@ -1452,7 +1453,7 @@ function removeHtmlTags(str) {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={`https://ecas.unitdtechnologies.com/storages/${AcademicsProgramListone[0]?.file_name}`} alt="" />
+                    <img src={`https://ecasadmin.unitdtechnologies.com/storages/${AcademicsProgramListone[0]?.file_name}`} alt="" />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
@@ -1484,7 +1485,7 @@ function removeHtmlTags(str) {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="h6_program-item mb-30">
                   <div className="h6_program-item-img w_img">
-                    <img src={`https://ecas.unitdtechnologies.com/storages/${AcademicsProgramListtwo[0]?.file_name}`} alt="" />
+                    <img src={`https://ecasadmin.unitdtechnologies.com/storages/${AcademicsProgramListtwo[0]?.file_name}`} alt="" />
                   </div>
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
@@ -1535,7 +1536,7 @@ function removeHtmlTags(str) {
               </span>
             </div>
             <div className="h7_scholarship-img">
-              <img src={`https://ecas.unitdtechnologies.com/storages/${Scholarship[0]?.file_name}`} alt="" />
+              <img src={`https://ecasadmin.unitdtechnologies.com/storages/${Scholarship[0]?.file_name}`} alt="" />
             </div>
           </div>
           <div className="h7_scholarship-wrap">
@@ -1594,7 +1595,7 @@ function removeHtmlTags(str) {
               <div className="col-xl-3 col-lg-4 col-sm-6">
                 <div className="h2_teacher-item mb-30">
                   <div className="h2_teacher-img">
-                    <img src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`} alt=""  style={{marginBottom:50}}/>
+                    <img src={`https://ecasadmin.unitdtechnologies.com/storages/${item?.file_name}`} alt=""  style={{marginBottom:50}}/>
                   </div>
                   <div className="h2_teacher-content">
                     <h5 dangerouslySetInnerHTML={{ __html: item?.description_short }}>
@@ -1623,7 +1624,7 @@ function removeHtmlTags(str) {
               <div className="col-xl-6 col-lg-6">
                 <div className="h6_about-img w_img">
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storages/${ourFounder[0]?.file_name}`}
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${ourFounder[0]?.file_name}`}
                     alt="Founder-Image"
                     style={{
                       width: "100%",
@@ -1684,7 +1685,7 @@ function removeHtmlTags(str) {
               <div className="col-xl-6 col-lg-6">
                 <div className="h6_about-img w_img">
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storages/${OurPhilosophy[0]?.file_name}`}
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${OurPhilosophy[0]?.file_name}`}
                     alt="Founder-Image"
                     style={{
                       width: "100%",
@@ -1722,7 +1723,7 @@ function removeHtmlTags(str) {
             <div className="row align-items-center">
               <div className="col-xl-6 col-lg-6">
                 <div className="h4_about-img mb-50 w_img">
-                  <img src={`https://ecas.unitdtechnologies.com/storages/${StudentLife[0]?.file_name}`} alt="" style={{ marginTop: 25 }} />
+                  <img src={`https://ecasadmin.unitdtechnologies.com/storages/${StudentLife[0]?.file_name}`} alt="" style={{ marginTop: 25 }} />
                 </div>
               </div>
               <div className="col-xl-6 col-lg-6 col-md-10">
@@ -1876,7 +1877,7 @@ function removeHtmlTags(str) {
         >
           <img src={shapeStu1} alt="" className="h4_education-shape-1" />
           <img src={shapeStu} alt="" className="h4_education-shape-2" />
-          <img src={`https://ecas.unitdtechnologies.com/storages/${CampusExperience[0]?.file_name}`} alt="" className="h4_education-img" />
+          <img src={`https://ecasadmin.unitdtechnologies.com/storages/${CampusExperience[0]?.file_name}`} alt="" className="h4_education-img" />
           <div className="container">
             <div className="row">
               <div className="col-xl-6 col-lg-7 col-md-12">

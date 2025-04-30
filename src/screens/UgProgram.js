@@ -221,7 +221,7 @@ console.log('filteredGallery',filteredGallery)
                       <div className="h2_course-item mb-30">
                         <div className="h2_course-item-img">
                           <Link to={`/UGProgramDetails/${item?.course_id}`}>
-                            <img src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`} alt="Course Thumbnail"
+                            <img src={`https://ecasadmin.unitdtechnologies.com/storages/${item?.file_name}`} alt="Course Thumbnail"
                              style={{
                               width: "100%", // Make it responsive
                               height: "250px", // Fixed height for uniformity

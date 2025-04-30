@@ -63,7 +63,7 @@ const CourseSection = () => {
           <div className="container">
             <div className="course_details-img">
               <img
-                src={`https://ecas.unitdtechnologies.com/storages/${UgProgram?.file_name}`}
+                src={`https://ecasadmin.unitdtechnologies.com/storages/${UgProgram?.file_name}`}
                 alt=""
               />
             </div>

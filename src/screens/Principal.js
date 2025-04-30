@@ -125,7 +125,7 @@ return (
                       <div className="col-xl-5 col-lg-5 col-md-5">
                         <div className="h10_testimonial-img ml-10 w_img">
                           <img
-                            src={`https://ecas.unitdtechnologies.com/storages/${principal[0]?.file_name}`}
+                            src={`https://ecasadmin.unitdtechnologies.com/storages/${principal[0]?.file_name}`}
                             alt=""
                             className="wow fadeInRight"
                             data-wow-delay="0.3s"

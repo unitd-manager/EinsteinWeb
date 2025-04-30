@@ -284,7 +284,7 @@ const Training = () => {
                   <div className="h8_teacher-item" style={{ position: "relative", cursor: "pointer" }}>
                     <div className="h8_teacher-img w_img">
                       <img
-                        src={`https://ecas.unitdtechnologies.com/storages/${company.images}`} // adjust key if needed
+                        src={`https://ecasadmin.unitdtechnologies.com/storages/${company.images}`} // adjust key if needed
                         alt={company.company_name}
                         style={{ width: "100%", borderRadius: "10px" }}
                       />
@@ -342,7 +342,7 @@ const Training = () => {
           <SwiperSlide key={i}>
             <div className="h8_teacher-item">
               <div className="h8_teacher-img w_img">
-                <img src={`https://ecas.unitdtechnologies.com/storages/${img.images}`} alt="" />
+                <img src={`https://ecasadmin.unitdtechnologies.com/storages/${img.images}`} alt="" />
               </div>
             </div>
             <div

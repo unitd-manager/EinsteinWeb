@@ -40,7 +40,7 @@ return (
               <div className="col-xl-6 col-lg-6">
                 <div className="h6_about-img w_img">
                   <img
-                    src={`https://ecas.unitdtechnologies.com/storages/${ourFounder[0]?.file_name}`}
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${ourFounder[0]?.file_name}`}
                     alt="Founder-Image"
                     style={{
                       width: "100%",
