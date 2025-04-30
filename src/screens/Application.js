@@ -227,29 +227,39 @@ const SignUp = () => {
   
   const editStudent = (e) => {
     e.preventDefault(); // Prevent the form from submitting the default way
+  
     if (studentEdit.student_name !== "") {
       setLoading(true);
-        api
-          .post("/student/editStudent", studentEdit)
-          .then(() => {
-            const { student_id, marks } = marksData;
-            const filteredMarks = marks.filter(
-              (m) =>
-                m.subject &&
-                m.marks &&
-                m.maximum &&
-                m.month_year_passing &&
-                m.hsc_reg_no &&
-                m.no_of_attempt
-            );
-            filteredMarks.map((mark) => {
-              api.post('/student/insertStudentmarks', {
+      api
+        .post("/student/editStudent", studentEdit)
+        .then(() => {
+          const { student_id, marks } = marksData;
+          const filteredMarks = marks.filter(
+            (m) =>
+              m.subject &&
+              m.marks &&
+              m.maximum &&
+              m.month_year_passing &&
+              m.hsc_reg_no &&
+              m.no_of_attempt
+          );
+  
+          // Use Promise.all to ensure all mark insertions complete before navigating
+          return Promise.all(
+            filteredMarks.map((mark) =>
+              api.post("/student/insertStudentmarks", {
                 student_id,
                 ...mark,
-              });
-            });
-            alert("Record edited successfully", "success");
-          })
+              })
+            )
+          );
+        })
+        .then(() => {
+          alert("Record edited successfully", "success");
+          setTimeout(() => {
+            navigate("/ApplicationSuccess", { state: { studentEdit } });
+          }, 200);
+        })
         .catch(() => {
           alert("Unable to edit record.", "error");
         })
@@ -260,7 +270,7 @@ const SignUp = () => {
       alert("Please fill all required fields", "warning");
     }
   };
-
+  
   useEffect(() => {
       getGender()
       getCourse()

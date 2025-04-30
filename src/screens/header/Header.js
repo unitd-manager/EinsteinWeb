@@ -43,16 +43,23 @@ const Home = () => {
   };
 
   const StudentDetails = () => {
-    if (user) {
-      navigate('/Student');
-    } else {
-      navigate('/StudentList');
-    }
-  };
+    if(user){
+      setTimeout(() => {
+        navigate('/Student');
+      }, 200);
 
-  const editstudentAppicationPaid = () => {
+    }else{
+      setTimeout(() => {
+        navigate('/StudentList');
+      }, 200);
+    }
+};
+
+  const editstudentAppicationPaid = (code) => {
+    console.log('code1',code)
     const studentAppicationPaid = {
       payment_status: "Application Paid",
+      application_no: code,
       student_id: user?.student_id
     };
     api.post("/student/editStudentApplicationPaid", studentAppicationPaid)
@@ -67,7 +74,16 @@ const Home = () => {
 
   const handlePaymentSuccess = (data) => {
     console.log("Payment Successful:", data);
-    editstudentAppicationPaid();
+    api.post('/commonApi/getCodeValue', { type: 'studentApplication' })
+    .then((res) => {
+      console.log('Full response:', res);
+      console.log('Extracted code:', res.data.data);
+      editstudentAppicationPaid(res.data.data); // Check this value
+    })
+    .catch((err) => {
+      console.error("Error generating code:", err);
+    });
+  
   };
 
   const handlePaymentFailure = (error) => {
@@ -75,44 +91,51 @@ const Home = () => {
   };
 
   const onPaymentPress = () => {
-    if (ApplicationPaid === "Application Paid") {
-      navigate('/Application');
-      return;
+    if(ApplicationPaid === "Application Paid"){
+      setTimeout(() => {
+        navigate('/Application');
+      }, 0);
+  
+    }else{
+  
+        if (!user) {
+          setTimeout(() => {
+            navigate('/Login');
+          }, 0);
+          console.log("mmsmsmsm")
+          return;
+        }
+  
+        const totalAmount = 200;
+        const amountInPaise = totalAmount * 100;
+  
+        const options = {
+          key: "rzp_test_yE3jJN90A3ObCp", // Replace with your Razorpay test/live key
+          key_secret: "tt8BnBOG7yRvYZ6TSB28RXJy",
+          amount: amountInPaise,
+          currency: "INR",
+          name: "United",
+          description: "Application Fee",
+          image: "",
+          handler: handlePaymentSuccess,
+          prefill: {
+            name:"Mohammed Navab",
+            email:"rafi@unitdtechnologies.com",
+            contact:"9750792020",
+          },
+          notes: {
+            address: "Corporate Office",
+          },
+          theme: {
+            color: "#532C6D",
+          },
+        };
+  
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+        rzp.on("payment.failed", handlePaymentFailure);
+      };
     }
-
-    if (!user) {
-      navigate('/Login');
-      return;
-    }
-
-    const totalAmount = 200;
-    const amountInPaise = totalAmount * 100;
-
-    if (!window.Razorpay) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
-    }
-
-    const options = {
-      key: "rzp_test_yE3jJN90A3ObCp",
-      amount: amountInPaise,
-      currency: "INR",
-      name: "United",
-      description: "Application Fee",
-      handler: handlePaymentSuccess,
-      prefill: {
-        name: "Mohammed Navab",
-        email: "rafi@unitdtechnologies.com",
-        contact: "9750792020",
-      },
-      notes: { address: "Corporate Office" },
-      theme: { color: "#532C6D" },
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
-    rzp.on("payment.failed", handlePaymentFailure);
-  };
 
   useEffect(() => {
     const menuToggle = document.querySelector(".header-menu-bar-icon");
@@ -290,12 +313,12 @@ const Home = () => {
   </div>
       </header>
 
-      <PDFDownloadLink
+      {/* <PDFDownloadLink
         document={<ApplicationAckPdf application={application} />}
         fileName={`Application_Acknowledgment_${application.id}.pdf`}
       >
         {({ loading }) => loading ? 'Generating PDF...' : 'Download Acknowledgment'}
-      </PDFDownloadLink>
+      </PDFDownloadLink> */}
 
       {/* Marquees */}
       <Marquees />
