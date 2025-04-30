@@ -243,74 +243,77 @@ const Home = () => {
 
       {/* Header */}
       <header>
-        <div className="h2_header-area header-sticky">
-          <div className="row align-items-center">
-            <div className="col-6 col-xl-3">
-              <div className="h2_header-left">
-                <div className="h2_header-logo">
-                  <a href="/Home">
-                    <img src={logoImage} alt="logo" />
-                  </a>
+        <div className="header-sticky">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-6 col-xl-3">
+                <div className="h2_header-left">
+                  <div className="h2_header-logo">
+                    <a href="/Home">
+                      <img src={logoImage} alt="logo" />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="col-xl-6 d-none d-xl-block">
-              <Navbar />
-            </div>
-
-            <div className="col-xl-3 d-none d-xl-block text-end">
-              <div className="h2_header-btns">
-                {!user && !teacherUser ? (
-                  <>
-                    <div className="h2_header-category d-sm-block">
-                      <a><i className="fa-solid fa-grid"></i><span>Login</span></a>
-                      <ul className="h2_header-category-submenu">
-                        <li><Link to="/StudentLogin">Student Login</Link></li>
-                        <li><Link to="/Login">Application Form</Link></li>
-                        <li><Link to="/TeacherLogin">Teacher Login</Link></li>
-                      </ul>
-                    </div>
-                    <div className="h2_header-btn d-sm-block" style={{ marginTop: 15 }}>
-                      <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
-                        Application
-                      </Link>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {ApplicationPaid !== "Selected" && !teacherUser && (
-                      <div className="h2_header-btn d-none d-sm-block" style={{ marginRight: 23 }}>
+              <div className="col-xl-5">
+              </div>
+              <div className="col-xl-4 d-none d-xl-block text-end">
+                <div className="h2_header-btns">
+                  {!user && !teacherUser ? (
+                    <>
+                      <div className="h2_header-category d-sm-block">
+                        <a><i className="fa-solid fa-grid"></i><span>Login</span></a>
+                        <ul className="h2_header-category-submenu">
+                          <li><Link to="/StudentLogin">Student Login</Link></li>
+                          <li><Link to="/Login">Application Form</Link></li>
+                          <li><Link to="/TeacherLogin">Teacher Login</Link></li>
+                        </ul>
+                      </div>
+                      <div className="h2_header-btn d-sm-block" style={{ marginTop: 15 }}>
                         <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
                           Application
                         </Link>
                       </div>
-                    )}
-                    {(ApplicationPaid === "Selected" || teacherUser) && (
-                      <div className="h2_header-btn d-none d-sm-block" style={{ marginRight: 23 }}>
-                        <Link to="#" onClick={StudentDetails} className="header-btn theme-btn theme-btn-medium">
-                          Student
-                        </Link>
+                    </>
+                  ) : (
+                    <>
+                      <div className="h2_header-btn d-none d-sm-block" title="Logout" style={{ marginRight: 23, float:"right" }}>
+                        <i className="fas fa-sign-out-alt" style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }} onClick={logout}></i>
                       </div>
-                    )}
-                    <div className="h2_header-btn d-none d-sm-block" title="Logout" style={{ marginRight: 23 }}>
-                      <i className="fas fa-sign-out-alt" style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }} onClick={logout}></i>
-                    </div>
-                  </>
-                )}
+                      {ApplicationPaid !== "Selected" && !teacherUser && (
+                        <div className="h2_header-btn d-none d-sm-block" style={{ marginRight: 23, float:"right" }}>
+                          <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
+                            Application
+                          </Link>
+                        </div>
+                      )}
+                      {(ApplicationPaid === "Selected" || teacherUser) && (
+                        <div className="h2_header-btn d-none d-sm-block" style={{ marginRight: 23, float:"right" }}>
+                          <Link to="#" onClick={StudentDetails} className="header-btn theme-btn theme-btn-medium">
+                            Student
+                          </Link>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
             </div>
-
-             {/* Hamburger Menu for Mobile */}
-      <div className="col-6 text-end d-xl-none">
-        <div className="header-menu-bar">
-          <span className="header-menu-bar-icon side-toggle">
-            <i className="fa-solid fa-bars" style={{ fontSize: "24px", cursor: "pointer", color: "#333" }} />
-          </span>
+          </div>
+          <div className="row align-items-center">
+            <div className="col-xl-12 d-none d-xl-block content-center">
+              <Navbar />
+            </div>
+            {/* Hamburger Menu for Mobile */}
+            <div className="col-6 text-end d-xl-none">
+              <div className="header-menu-bar">
+                <span className="header-menu-bar-icon side-toggle">
+                  <i className="fa-solid fa-bars" style={{ fontSize: "24px", cursor: "pointer", color: "#333" }} />
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
       </header>
 
       {/* <PDFDownloadLink
@@ -322,7 +325,7 @@ const Home = () => {
 
       {/* Marquees */}
       <Marquees />
-      <div style={{ backgroundColor: 'red', color: 'white' }}>
+      <div style={{ backgroundColor: '#5ab9c1', color: 'white' }}>
         <Marquee gradient={false} speed={50}>
           📢 Admissions Open for 2025 | 🎓 Enroll Now in B.Sc, B.A, B.Com, B.B.A, B.C.A Programs | 🌐 Industry-Relevant Curriculum | 🏆 Experienced Faculty | 💼 100% Placement Assistance | 📝 Apply Online Today | 📞 Call Now for Counseling & Scholarships!
         </Marquee>

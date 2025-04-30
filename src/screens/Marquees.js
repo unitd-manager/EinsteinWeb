@@ -4,7 +4,7 @@ const Marquee = () => {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       width: '100%',
-      background: 'Red',
+      background: '#5ab9c1',
     }}>
       <div style={{
         display: 'inline-block',

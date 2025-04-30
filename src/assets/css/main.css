@@ -2120,8 +2120,8 @@ input:focus::placeholder, textarea:focus::placeholder {
 .h2_header-logo {
   position: relative;
   z-index: 1;
-  padding-right: 21px;
-  margin-right: 20px;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
 }
 .h2_header-logo::after {
   position: absolute;
@@ -2129,13 +2129,16 @@ input:focus::placeholder, textarea:focus::placeholder {
   top: 0;
   right: 0;
   background-color: rgba(30, 30, 30, 0.1);
-  width: 1px;
+  width: 0px !important;
   height: 100%;
+}
+.h2_main-menu{
+  background: #58213F;
 }
 @media (max-width: 767px) {
   .h2_header-logo {
-    margin-right: 10px;
-    padding-right: 11px;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
   }
   .h2_header-logo::after {
     display: none;
@@ -2143,8 +2146,8 @@ input:focus::placeholder, textarea:focus::placeholder {
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .h2_header-logo {
-    margin-right: 15px;
-    padding-right: 16px;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
   }
   .h2_header-logo::after {
     display: block;
@@ -2254,7 +2257,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 } */
 .h2_main-menu ul li a {
   font-size: 16px;
-  color: var(--clr-body-heading);
+  color: #fff !important;
   padding: 10px 0;
   font-weight: 500;
   display: block;
@@ -2263,7 +2266,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   position: absolute;
   left: 0;
   top: 100%;
-  background: #fff;
+  background: #B492A4 !important;
   width: 270px !important;
   opacity: 0;
   visibility: hidden;
@@ -2294,8 +2297,8 @@ input:focus::placeholder, textarea:focus::placeholder {
   top: 0;
 }
 .h2_main-menu ul li .submenu li:hover > a {
-  background-color: var(--clr-theme-primary);
-  color: #fff;
+  background-color: #EAE2E6 !important;
+  color: #000 !important;
 }
 .h2_main-menu ul li .submenu li:not(:last-child) {
   border-bottom: 1px solid #f2f2f2;
@@ -16012,10 +16015,8 @@ input:focus::placeholder, textarea:focus::placeholder {
   line-height: 55px;
   border-top: 2px solid var(--clr-theme-primary);
 }
-.account-top-current span {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--clr-body-heading);
+.account-top-current h3 {
+  color: #58213F;
   width: 100%;
   display: inline-block;
 }
@@ -16059,6 +16060,13 @@ input:focus::placeholder, textarea:focus::placeholder {
   border-radius: 10px 0 10px 0;
 }
 
+.account-area.pt-120.pb-120 {
+  background:#b7e1e4;
+}
+
+.account-form h4{
+  color: #5ab9c1;
+}
 .account-form-label {
   display: flex;
   align-items: center;
@@ -16090,7 +16098,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   padding: 0 20px;
   font-size: 14px;
   color: rgba(4, 0, 23, 0.6);
-  background-color: aliceblue;
+  background-color: #edf8f8;
 }
 .account-form-input.radio input {
   height: 20px;
