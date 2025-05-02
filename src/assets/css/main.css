@@ -9280,6 +9280,10 @@ input:focus::placeholder, textarea:focus::placeholder {
   line-height: 45px !important;
   padding: 0 20px;
 }
+.theme-btn-medium.application {
+ 
+  padding: 0 12px;
+}
 
 .theme-btn-full {
   width: 100%;
@@ -16018,9 +16022,9 @@ input:focus::placeholder, textarea:focus::placeholder {
   text-align: center;
   height: 55px;
   line-height: 55px;
-  border-top: 2px solid var(--clr-theme-primary);
+  border-top: 7px solid #5ab9c1 !important;
 }
-.account-top-current h3 {
+.account-top-current h4 {
   color: #58213F;
   width: 100%;
   display: inline-block;

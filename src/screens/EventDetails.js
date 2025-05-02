@@ -77,7 +77,7 @@ const EventDetails = () => {
         <div className="container">
           <div className="event_details-img">
             <img
-              src={`https://ecas.unitdtechnologies.com/storages/${EventDetails?.file_name}`}
+              src={`https://ecasadmin.unitdtechnologies.com/storages/${EventDetails?.file_name}`}
               alt=""
               style={{
                 width: "100%", // Make it responsive
@@ -112,7 +112,7 @@ const EventDetails = () => {
                   {EventDetailsMedia.map((item, index) => (
                     <img
                       key={index}
-                      src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`}
+                      src={`https://ecasadmin.unitdtechnologies.com/storages/${item?.file_name}`}
                       alt=""
                       style={{
                         width: "100%",

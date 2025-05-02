@@ -64,7 +64,7 @@ const Alumni = () => {
         <div className="container">
           <div className="event_details-img">
             <img
-              src={`https://ecas.unitdtechnologies.com/storages/${AlumniDetails?.file_name}`}
+              src={`https://ecasadmin.unitdtechnologies.com/storages/${AlumniDetails?.file_name}`}
               alt=""
               style={{
                 width: "100%", // Make it responsive
@@ -99,7 +99,7 @@ const Alumni = () => {
                   {AlumniDetailsMedia.map((item, index) => (
                     <img
                       key={index}
-                      src={`https://ecas.unitdtechnologies.com/storages/${item?.file_name}`}
+                      src={`https://ecasadmin.unitdtechnologies.com/storages/${item?.file_name}`}
                       alt=""
                       style={{
                         width: "100%",

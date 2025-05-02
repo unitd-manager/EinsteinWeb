@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import api from "../constants/api";
 import "swiper/css";
+// import "../assets/css/videomodel.css";
 import "../assets/css/modal.css"
 import "swiper/css/navigation"; 
 import Slider from "react-slick";
@@ -35,6 +36,12 @@ import HappyNewYear from "../assets/img/HappyNewYear.jpg"
 
 import Modal from "react-modal"; // You can use any modal library or create your own
 
+function extractYouTubeId(url) {
+  const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/\n\s]+\/\S+\/|\S*?[?&]v=|v%3D|.+?\/)\/?(\S+)|youtu\.be\/(\S+))/;
+  const match = url.match(regex);
+  return match ? match[1] || match[2] : null;
+}
+
 // Ensure the modal is attached to the root element
 Modal.setAppElement("#root");
 
@@ -57,6 +64,7 @@ const Home = () => {
   const [Campus1, setcampus1] = useState([]);
   const [Campus2, setcampus2] = useState([]);
   const [Campus3, setcampus3] = useState([]);
+  const [modalVideo, setModalVideo] = useState(null);
   const [Campusbanner, setcampusBanner] = useState([]);
   const [Facilities1, setFacilities1] = useState([]);
   const [Facilities2, setFacilities2] = useState([]);
@@ -288,7 +296,7 @@ const Home = () => {
                 <div
                   className="h7_single-banner bg-default"
                   style={{
-                    backgroundImage: `url(https://ecasadmin.unitdtechnologies.com/storages/${slide?.file_name})`,
+                    backgroundImage: `url(https://ecasadmin.unitdtechnologies.com/storages/${encodeURIComponent(slide.file_name)})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -317,7 +325,7 @@ const Home = () => {
                             data-animation="fadeInUp"
                             data-delay="0.7s"
                           >
-                            <a href="#" className="theme-btn theme-btn-7">
+                            {/* <a href="#" className="theme-btn theme-btn-7">
                               Apply Now
                               <i className="fa-light fa-arrow-right" />
                             </a>
@@ -327,7 +335,7 @@ const Home = () => {
                             >
                               Learn More
                               <i className="fa-light fa-arrow-right" />
-                            </a>
+                            </a> */}
                           </div>
                         </div>
                       </div>
@@ -869,13 +877,46 @@ const Home = () => {
         >
           <div class="h5_video-content">
             <a
-              href="https://www.youtube.com/watch?v=ifuMTQ-gI-E"
+             onClick={(e) => {    
+              e.preventDefault(); // Prevent the default link behavior
+              setModalVideo({
+         title: "Campus Video",
+        description: "https://www.youtube.com/watch?v=ifuMTQ-gI-E", // The URL or any other description
+            });
+           }}
+              // href="https://www.youtube.com/watch?v=ifuMTQ-gI-E"
               class="h5_video-content-btn h5_play-btn popup-video"
             >
               <i class="fa-solid fa-play"></i>
             </a>
           </div>
         </div>
+        {modalVideo && (
+        <div className="modal5-overlay">
+          <div className="modal5-content">
+            <button className="modal5-close" onClick={() => setModalVideo(null)}>
+              ×
+            </button>
+            {/* <h3>{modalVideo.title || "Untitled Video"}</h3> */}
+            <div className="video-container">
+              {/* Checking if YouTube ID can be extracted and rendered */}
+              {modalVideo.description && extractYouTubeId(modalVideo.description) ? (
+                <iframe
+                  width="100%"
+                  height="400"
+                  src={`https://www.youtube.com/embed/${extractYouTubeId(modalVideo.description)}`}
+                  title={modalVideo.title || "YouTube Video"}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <p>Invalid YouTube URL</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
         <section className="h7_apply-area pt-10 pb-95 fix">
           <div className="container">

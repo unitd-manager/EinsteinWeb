@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import Marquee from "react-fast-marquee";
 import "../assets/css/event.css";
+import "../assets/css/videomodel.css";
 import "odometer/themes/odometer-theme-default.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation,Autoplay } from "swiper/modules";
@@ -360,6 +361,13 @@ const handlePaymentSuccess = (data) => {
   navigate('/Application');
      
 };
+const UgProgram = () => {
+
+  setTimeout(() => {
+    navigate('/UgProgram');
+  },300);
+     
+};
 
 const handlePaymentFailure = (error) => {
   console.error("Payment Failed:", error);
@@ -502,16 +510,16 @@ function removeHtmlTags(str) {
               nextEl: ".h7_slider-next",
               prevEl: ".h7_slider-prev",
             }}
-            autoplay={{ delay: 5000 }}
+            autoplay={{ delay: 10000 }}
             loop={true}
             className="h7_slider-active"
           >
-            {slides?.map((slide, index) => (
+            {slides.map((slide, index) => (
               <SwiperSlide key={index}>
                 <div
                   className="h7_single-banner bg-default"
                   style={{
-                    backgroundImage: `url(https://ecasadmin.unitdtechnologies.com/storages/${slide.file_name})`,
+                    backgroundImage: `url(https://ecasadmin.unitdtechnologies.com/storages/${encodeURIComponent(slide.file_name)})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     height: "600px",
@@ -888,8 +896,15 @@ function removeHtmlTags(str) {
                 <div className="h7_about-img w_img mb-50">
                   <img src={image1} alt="" />
                   <a
-                    href="https://www.youtube.com/watch?v=ifuMTQ-gI-E"
-                    className="popup-video"
+                    onClick={(e) => {    
+                      e.preventDefault(); // Prevent the default link behavior
+                      setModalVideo({
+                 title: "Campus Video Title",
+                description: "https://www.youtube.com/watch?v=ifuMTQ-gI-E", // The URL or any other description
+                    });
+                   }}
+                    // href="https://www.youtube.com/watch?v=ifuMTQ-gI-E"
+                    // className="popup-video"
                   >
                     <svg
                       width={131}
@@ -939,15 +954,15 @@ function removeHtmlTags(str) {
                     <div className="h2_about-img-button" >
                       <a
 
-                    //       onClick={(e) => {
-                    //        e.preventDefault(); // Prevent the default link behavior
-                    //        setModalVideo({
-                    //   title: "Campus Video Title",
-                    //  description: "https://www.youtube.com/watch?v=ifuMTQ-gI-E", // The URL or any other description
-                    //      });
-                    //     }}
-                        href="https://www.youtube.com/watch?v=6PCuMwrhSf8"
-                        className="popup-video"
+                          onClick={(e) => {
+                           e.preventDefault(); // Prevent the default link behavior
+                           setModalVideo({
+                      title: "Campus Video Title",
+                     description: "https://www.youtube.com/watch?v=ifuMTQ-gI-E", // The URL or any other description
+                         });
+                        }}
+                        // href="https://www.youtube.com/watch?v=6PCuMwrhSf8"
+                        // className="popup-video"
                       >
                         <i className="fa-solid fa-play" />
                       </a>
@@ -993,7 +1008,7 @@ function removeHtmlTags(str) {
             <button className="modal-close" onClick={() => setModalVideo(null)}>
               ×
             </button>
-            <h3>{modalVideo.title || "Untitled Video"}</h3>
+            {/* <h3>{modalVideo.title || "Untitled Video"}</h3> */}
             <div className="video-container">
               {/* Checking if YouTube ID can be extracted and rendered */}
               {modalVideo.description && extractYouTubeId(modalVideo.description) ? (
@@ -1015,7 +1030,7 @@ function removeHtmlTags(str) {
       )}
         </section>
 
-        <div className="counter-area pt-120 pb-110" style={{ marginTop: -100 }}>
+        {/* <div className="counter-area pt-120 pb-110" style={{ marginTop: -100 }}>
           <div className="container">
             <div className="counter-wrap">
               <div className="row g-0">
@@ -1055,7 +1070,7 @@ function removeHtmlTags(str) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* cta 2 area start */}
         <div className="h2_cta-area">
           <div className="container">
@@ -1264,12 +1279,12 @@ function removeHtmlTags(str) {
                     <p dangerouslySetInnerHTML={{ __html: QualityEducation[0]?.description }}>
                     </p>
                     <div className="h7_program-item-list">
-                      <a >
+                      {/* <a >
                         Major Program <i className="fa-light fa-arrow-right" />
-                      </a>
-                      <a>
+                      </a> */}
+                      {/* <a>
                         Minors Program <i className="fa-light fa-arrow-right" />
-                      </a>
+                      </a> */}
                     </div>
                     <span className="h7_program-item-time">
                       <i className="fa-light fa-clock" /> Online + Onsite
@@ -1286,9 +1301,9 @@ function removeHtmlTags(str) {
                       <li>{item.course_name}</li>
                     ))}
                     </ul>
-                    <span className="h7_program-item-time">
+                    {/* <span className="h7_program-item-time">
                       <i className="fa-light fa-clock" /> Online + Onsite
-                    </span>
+                    </span> */}
                   </div>
                 </div>
                 <div className="col-xl-4 col-lg-4">
@@ -1297,14 +1312,14 @@ function removeHtmlTags(str) {
                     <p dangerouslySetInnerHTML={{ __html: OnlineEducation[0]?.description }}>
                     </p>
                     <div className="h7_program-item-list">
-                      <a>
+                      {/* <a>
                         Undergraduate Programs{" "}
                         <i className="fa-light fa-arrow-right" />
                       </a>
                       <a>
                         Graduate Programs{" "}
                         <i className="fa-light fa-arrow-right" />
-                      </a>
+                      </a> */}
                     </div>
                     <span className="h7_program-item-time">
                       <i className="fa-light fa-clock" /> Online + Onsite
@@ -1319,7 +1334,7 @@ function removeHtmlTags(str) {
                   </div>
                 </div>
               </div>
-              <a className="h7_program-more-icon">
+              <a className="h7_program-more-icon"  onClick={UgProgram}>
                 More
                 <span>
                   <i className="fa-light fa-arrow-up" />

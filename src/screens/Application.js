@@ -327,7 +327,7 @@ const SignUp = () => {
                 <div className="account-wrap">
                   <div className="account-top sign-up">
                     <div className="account-top-current">
-                      <h3>Application Form</h3>
+                     <h4>  Application No : {studentEdit?.application_no}</h4>
                     </div>
                   </div>
                   <div className="account-main">

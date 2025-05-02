@@ -8,6 +8,7 @@ import Navbar from "./NavMenu";
 import { getUser, getTeacherUser } from "../../auth/user";
 import api from "../../constants/api";
 import Marquees from "../Marquees";
+import "../../assets/css/modal.css"
 import ApplicationAckPdf from "../AcknowledgementPdf.js";
 
 const Home = () => {
@@ -245,12 +246,16 @@ const Home = () => {
       {/* Header */}
       <header>
         <div className="header-sticky">
-            <div className=""  style={{ backgroundColor: '#58213f', color: 'white', textAlign: 'right' }}>
-              <div className="container">
-              <span><i class="fa-thin fa-envelope"></i> Email : info@einstein.com</span>
-              <span style={{ marginLeft: '30px' }}><i class="fa-thin fa-phone-volume"></i> Call Us : +91 99999 99999</span>
-              </div>
-            </div>
+        <div style={{ backgroundColor: '#58213f', color: 'white' }}>
+    <div className="container d-flex justify-content-between align-items-center py-2 flex-wrap">
+      <span className="d-flex align-items-center">
+        <i className="fa-thin fa-envelope me-2"></i> Email: info@einstein.com
+      </span>
+      <span className="d-flex align-items-center mt-2 mt-md-0">
+        <i className="fa-thin fa-phone-volume me-2"></i> Call Us: (+91) 9489903808
+      </span>
+    </div>
+  </div>
           <div className="container">
             <div className="row align-items-center">
               <div className="col-6 col-xl-2">
@@ -284,7 +289,12 @@ const Home = () => {
                 <div className="">
                   {!user && !teacherUser ? (
                     <>
-                      <div className="h2_header-category d-sm-block">
+                      <div className="h2_header-btn d-sm-block" style={{ float:"right" }} >
+                        <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium application">
+                          Application
+                        </Link>
+                      </div>
+                      <div className="h2_header-category d-sm-block" style={{ float:"right" }}>
                         <a><i className="fa-solid fa-grid"></i><span>Login</span></a>
                         <ul className="h2_header-category-submenu">
                           <li><Link to="/StudentLogin">Student Login</Link></li>
@@ -292,11 +302,7 @@ const Home = () => {
                           <li><Link to="/TeacherLogin">Teacher Login</Link></li>
                         </ul>
                       </div>
-                      <div className="h2_header-btn d-sm-block" style={{ marginTop: 15 }}>
-                        <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
-                          Application
-                        </Link>
-                      </div>
+                    
                     </>
                   ) : (
                     <>
