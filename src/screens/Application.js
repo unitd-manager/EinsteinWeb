@@ -164,20 +164,25 @@ const SignUp = () => {
   };
 
   const handleCourseCheckbox = (e) => {
-    const { value, checked } = e.target;
-    let selectedCourses = studentEdit.course || [];
+    const value = e.target.value;
+    let selectedCourses = studentEdit.course?.split(',') || [];
   
-    if (checked) {
-      selectedCourses = [...selectedCourses, value];
+    if (e.target.checked) {
+      // Add course if not already in list
+      if (!selectedCourses.includes(value)) {
+        selectedCourses.push(value);
+      }
     } else {
-      selectedCourses = selectedCourses.filter((course) => course !== value);
+      // Remove course if unchecked
+      selectedCourses = selectedCourses.filter((item) => item !== value);
     }
   
     setStudentEdit({
       ...studentEdit,
-      course: selectedCourses,
+      course: selectedCourses.join(','),
     });
   };
+  
   
   const handleFileDocChange = (e) => {
     setReceiptFileDoc(e.target.files[0]);
@@ -412,7 +417,7 @@ const SignUp = () => {
                                       id={`course_${option.course_name}`}
                                       name="course"
                                       value={option.course_name}
-                                      checked={studentEdit.course?.includes(option.course_name) || false}
+                                      checked={studentEdit.course?.split(',').includes(option.course_name) || false}
                                       onChange={handleCourseCheckbox}
                                     />
                                     <label className="form-check-label" htmlFor={`course_${option.course_name}`}>
