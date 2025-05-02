@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import logoImage from "../../assets/img/logoImage.webp";
+import logoImage from "../../assets/img/Logo.jpg";
+import logoImage2 from "../../assets/img/Logo2.jpg";
 import Marquee from "react-fast-marquee";
 import Navbar from "./NavMenu";
 import { getUser, getTeacherUser } from "../../auth/user";
@@ -244,21 +245,39 @@ const Home = () => {
       {/* Header */}
       <header>
         <div className="header-sticky">
+            <div className=""  style={{ backgroundColor: '#58213f', color: 'white' }}>
+              <div className="container">
+              <span><i class="fa-thin fa-envelope"></i> Email : info@einstein.com</span>
+              <span style={{ marginLeft: '30px' }}><i class="fa-thin fa-phone-volume"></i> Call Us : +91 99999 99999</span>
+              </div>
+            </div>
           <div className="container">
             <div className="row align-items-center">
               <div className="col-6 col-xl-3">
                 <div className="h2_header-left">
-                  <div className="h2_header-logo">
+                  <div className="h2_header-logo" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                     <a href="/Home">
-                      <img src={logoImage} alt="logo" />
+                      <img src={logoImage} alt="logo" height={150}/>
                     </a>
                   </div>
                 </div>
               </div>
               <div className="col-xl-5">
+                <div className=""  style={{ color: '#58213f', fontSize: 30, fontWeight: 'bold' }}>
+                  <span>Einstein College Of Arts & Science</span>
+                </div>
               </div>
-              <div className="col-xl-4 d-none d-xl-block text-end">
-                <div className="h2_header-btns">
+              <div className="col-xl-2 d-none d-xl-block text-end">
+              <div className="h2_header-left">
+                  <div className="h2_header-logo" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+                    <a href="/Home">
+                      <img src={logoImage2} alt="logo" height={150}/>
+                    </a>
+                  </div>
+                </div>
+                </div>
+                <div className="col-xl-2 d-none d-xl-block text-end">
+                <div className="">
                   {!user && !teacherUser ? (
                     <>
                       <div className="h2_header-category d-sm-block">
@@ -325,7 +344,7 @@ const Home = () => {
 
       {/* Marquees */}
       <Marquees />
-      <div style={{ backgroundColor: '#5ab9c1', color: 'white' }}>
+      <div style={{ backgroundColor: '#ebdcf6', color: 'black' }}>
         <Marquee gradient={false} speed={50}>
           📢 Admissions Open for 2025 | 🎓 Enroll Now in B.Sc, B.A, B.Com, B.B.A, B.C.A Programs | 🌐 Industry-Relevant Curriculum | 🏆 Experienced Faculty | 💼 100% Placement Assistance | 📝 Apply Online Today | 📞 Call Now for Counseling & Scholarships!
         </Marquee>

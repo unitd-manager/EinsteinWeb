@@ -2256,9 +2256,9 @@ input:focus::placeholder, textarea:focus::placeholder {
   margin-left: 5px;
 } */
 .h2_main-menu ul li a {
-  font-size: 16px;
+  font-size: 18px !important;
   color: #fff !important;
-  padding: 10px 0;
+  padding: 12px 0 !important;
   font-weight: 500;
   display: block;
 }
@@ -2284,7 +2284,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   z-index: 99;
 }
 .h2_main-menu ul li .submenu li a {
-  padding: 10px 25px;
+  padding: 10px 25px !important;
   color: var(--clr-body-heading);
   -webkit-transition: all 0.4s linear 0s;
   -moz-transition: all 0.4s linear 0s;
