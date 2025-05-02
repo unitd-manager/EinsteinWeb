@@ -163,6 +163,22 @@ const SignUp = () => {
     setStudentEdit({ ...studentEdit, [e.target.name]: e.target.value });
   };
 
+  const handleCourseCheckbox = (e) => {
+    const { value, checked } = e.target;
+    let selectedCourses = studentEdit.course || [];
+  
+    if (checked) {
+      selectedCourses = [...selectedCourses, value];
+    } else {
+      selectedCourses = selectedCourses.filter((course) => course !== value);
+    }
+  
+    setStudentEdit({
+      ...studentEdit,
+      course: selectedCourses,
+    });
+  };
+  
   const handleFileDocChange = (e) => {
     setReceiptFileDoc(e.target.files[0]);
   };  
@@ -381,24 +397,30 @@ const SignUp = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-12">
                           <div className="account-form-item mb-20">
                             <div className="account-form-label">
                               <label>Course Applying For</label>
                             </div>
                             <div className="account-form-input">
-                              <select
-                                name="course"
-                                value={studentEdit?.course || ""}
-                                onChange={handleInputs}
-                              >
-                                <option value="">Select Course</option>
+                              <div className="d-flex flex-wrap gap-2">
                                 {course?.map((option) => (
-                                  <option key={option.course_name} value={option.course_name}>
-                                    {option.course_name}
-                                  </option>
+                                  <div key={option.course_name} className="form-check me-3 small-checkbox">
+                                    <input
+                                      className="form-check-input"
+                                      type="checkbox"
+                                      id={`course_${option.course_name}`}
+                                      name="course"
+                                      value={option.course_name}
+                                      checked={studentEdit.course?.includes(option.course_name) || false}
+                                      onChange={handleCourseCheckbox}
+                                    />
+                                    <label className="form-check-label" htmlFor={`course_${option.course_name}`}>
+                                      {option.course_name}
+                                    </label>
+                                  </div>
                                 ))}
-                              </select>
+                              </div>
                             </div>
                           </div>
                         </div>

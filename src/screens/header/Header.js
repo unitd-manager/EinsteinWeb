@@ -245,7 +245,7 @@ const Home = () => {
       {/* Header */}
       <header>
         <div className="header-sticky">
-            <div className=""  style={{ backgroundColor: '#58213f', color: 'white' }}>
+            <div className=""  style={{ backgroundColor: '#58213f', color: 'white', textAlign: 'right' }}>
               <div className="container">
               <span><i class="fa-thin fa-envelope"></i> Email : info@einstein.com</span>
               <span style={{ marginLeft: '30px' }}><i class="fa-thin fa-phone-volume"></i> Call Us : +91 99999 99999</span>
@@ -253,18 +253,22 @@ const Home = () => {
             </div>
           <div className="container">
             <div className="row align-items-center">
-              <div className="col-6 col-xl-3">
+              <div className="col-6 col-xl-2">
                 <div className="h2_header-left">
                   <div className="h2_header-logo" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                     <a href="/Home">
-                      <img src={logoImage} alt="logo" height={150}/>
+                      <img src={logoImage} alt="logo" />
                     </a>
                   </div>
                 </div>
               </div>
-              <div className="col-xl-5">
+              <div className="col-xl-6 content-center">
                 <div className=""  style={{ color: '#58213f', fontSize: 30, fontWeight: 'bold' }}>
                   <span>Einstein College Of Arts & Science</span>
+                </div>
+                <div className=""  style={{ color: '#58213f' }}>
+                  Sir C.V.Raman Nagar, Seethaparpanallur, <br></br>
+                  Near MS University, Tirunelveli, Tamil Nadu - 627012
                 </div>
               </div>
               <div className="col-xl-2 d-none d-xl-block text-end">
@@ -324,7 +328,7 @@ const Home = () => {
               <Navbar />
             </div>
             {/* Hamburger Menu for Mobile */}
-            <div className="col-6 text-end d-xl-none">
+            <div className="col-12 text-end d-xl-none">
               <div className="header-menu-bar">
                 <span className="header-menu-bar-icon side-toggle">
                   <i className="fa-solid fa-bars" style={{ fontSize: "24px", cursor: "pointer", color: "#333" }} />

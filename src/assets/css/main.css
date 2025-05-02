@@ -3359,6 +3359,11 @@ input:focus::placeholder, textarea:focus::placeholder {
   .banner-top-shape-1 {
     left: 30px;
   }
+
+  .h2_main-menu{
+    text-align: left;
+  }
+  
 }
 .banner-top-shape-2 {
   right: 50px;
@@ -16100,6 +16105,9 @@ input:focus::placeholder, textarea:focus::placeholder {
   color: rgba(4, 0, 23, 0.6);
   background-color: #edf8f8;
 }
+.account-form-input .form-check input {
+  padding: 0 6px;
+}
 .account-form-input.radio input {
   height: 20px;
 }
@@ -20261,5 +20269,14 @@ input:focus::placeholder, textarea:focus::placeholder {
   text-align: center;
 }
 
+.small-checkbox .form-check-input {
+  width: 14px;
+  height: 14px;
+  margin-top: 7px;
+}
 
+.small-checkbox .form-check-label {
+  font-size: 14px;
+  margin-left: 4px;
+}
 /*# sourceMappingURL=main.css.map */
