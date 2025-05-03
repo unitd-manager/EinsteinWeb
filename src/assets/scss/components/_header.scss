@@ -321,6 +321,34 @@
     box-shadow: 0px 6px 50px rgba(30, 30, 30, 0.1);
   }
 }
+@media #{$md}, #{$sm}, #{$xs} {
+  .h2_main-menu {
+    ul {
+      li {
+        display: block;
+        margin-right: 0;
+
+        .submenu {
+          opacity: 1 !important;
+          visibility: visible !important;
+          display: none;
+
+          li {
+            border: none;
+            a {
+              padding: 10px 15px;
+            }
+          }
+        }
+
+        &.open > .submenu {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
 .h2_main-menu {
   ul {
     .menu-has-child {
@@ -351,15 +379,15 @@
       }
       .submenu {
         position: absolute;
-        @media #{$md}{
-          position: relative;
-        }
-        @media #{$xs}{
-          position: relative;
-        }
-        @media #{$sm}{
-          position: relative;
-        }
+        // @media #{$md}{
+        //   position: relative;
+        // }
+        // @media #{$xs}{
+        //   position: relative;
+        // }
+        // @media #{$sm}{
+        //   position: relative;
+        // }
         left: 0;
         top: 100%;
         background: #fff;
@@ -368,6 +396,12 @@
         visibility: hidden;
         @include transition(.3s);
         box-shadow: 0 9px 19px rgba(0,0,0,0.1);
+        
+  @media #{$md}, #{$sm}, #{$xs} {
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+  }
         li {
           display: block;
           margin-right: 0;

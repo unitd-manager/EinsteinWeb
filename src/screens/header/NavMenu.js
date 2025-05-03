@@ -50,6 +50,7 @@ function Navbar() {
           <div className="main-menu d-lg-inline-block">
             <ul>
               {sections.map((section) => {
+
                 const sectionCategories = getCategoriesForSection(section.section_id);
                 const isSectionOpen =
                   (!isMobile && hoveredSectionId === section.section_id) ||
@@ -62,18 +63,28 @@ function Navbar() {
                     onMouseEnter={() => !isMobile && setHoveredSectionId(section.section_id)}
                     onMouseLeave={() => !isMobile && setHoveredSectionId(null)}
                   >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <Link to={`/${section.routes}`} className="nav-link">
-                        {section.section_title}
-                      </Link>
-                      {sectionCategories.length > 0 && (
-                        <span onClick={() => toggleSection(section.section_id)} style={{ cursor: "pointer" }}>
-                          <FontAwesomeIcon
-                            icon={openedSectionId === section.section_id ? faChevronUp : faChevronDown}
-                          />
-                        </span>
-                      )}
-                    </div>
+                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+  <Link to={`/${section.routes}`} className="nav-link">
+    {section.section_title}
+  </Link>
+  {sectionCategories.length > 0 && (
+    <span
+  onClick={(e) => {
+    e.stopPropagation();
+    toggleSection(section.section_id);
+  }}
+  style={{ cursor: "pointer", marginLeft: "8px", color: "#fff" }}
+>
+  
+  <FontAwesomeIcon
+    icon={isSectionOpen ? faChevronUp : faChevronDown}
+    style={{ fontWeight: 900, fontSize: "14px" }}
+  />
+</span>
+
+  )}
+</div>
+
 
                     {sectionCategories.length > 0 && (
                       <ul
@@ -97,19 +108,23 @@ function Navbar() {
                                   {category.category_title}
                                 </Link>
                                 {categorySubCategories.length > 0 && (
-                                <span
-                                onClick={() => toggleCategory(category.category_id)}
-                                style={{
-                                  cursor: categorySubCategories.length > 0 ? "pointer" : "default",
-                                  visibility: categorySubCategories.length > 0 ? "visible" : "hidden",
-                                }}
-                              >
-                                <FontAwesomeIcon
-                                  icon={openedCategoryId === category.category_id ? faChevronUp : faChevronDown}
-                                />
-                              </span>
-                              
-                                )}
+  <span
+    onClick={() => toggleCategory(category.category_id)}
+    style={{
+      cursor: "pointer",
+      marginLeft: "8px",
+    }}
+  >
+    <FontAwesomeIcon
+      icon={
+        openedCategoryId === category.category_id
+          ? faChevronUp
+          : faChevronDown
+      }
+    />
+  </span>
+)}
+
                               </div>
 
                               {categorySubCategories.length > 0 && (

@@ -175,6 +175,7 @@ const Home = () => {
       };
     }
   }, []);
+  const [showLoginDropdown, setShowLoginDropdown] = useState(false);
 
   return (
     <>
@@ -202,14 +203,19 @@ const Home = () => {
           <div className="sidebar-links">
             {!user && !teacherUser ? (
               <>
-                <div className="h2_header-category d-sm-block">
-                  <a><i className="fa-solid fa-grid"></i><span>Login</span></a>
-                  <ul className="h2_header-category-submenu">
-                    <li><Link to="/StudentLogin">Student Login</Link></li>
-                    <li><Link to="/Login">Application Form</Link></li>
-                    <li><Link to="/TeacherLogin">Teacher Login</Link></li>
-                  </ul>
-                </div>
+               <div className="h2_header-category d-sm-block">
+  <a onClick={() => setShowLoginDropdown(!showLoginDropdown)} style={{ cursor: 'pointer' }}>
+    <i className="fa-solid fa-grid"></i><span>Login</span>
+  </a>
+  {showLoginDropdown && (
+    <ul className="h2_header-category-submenu">
+      <li><Link to="/StudentLogin">Student Login</Link></li>
+      <li><Link to="/Login">Application Form</Link></li>
+      <li><Link to="/TeacherLogin">Teacher Login</Link></li>
+    </ul>
+  )}
+</div>
+
                 <div className="h2_header-btn d-sm-block" style={{ marginLeft: 75 }}>
                   <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
                     Application
