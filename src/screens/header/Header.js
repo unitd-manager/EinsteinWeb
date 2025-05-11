@@ -15,6 +15,7 @@ const Home = () => {
   const user = getUser();
   const teacherUser = getTeacherUser();
   const [ApplicationPaid, setPaid] = useState();
+  const [marquee, setMarquee] = useState([]);
 
   const navigate = useNavigate();
 
@@ -24,6 +25,17 @@ const Home = () => {
     id: "APP123456",
     date: new Date().toLocaleDateString(),
   };
+
+  useEffect(() => {
+    api
+      .get("/content/getMarquee")
+      .then((res) => {
+        setMarquee(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.error("Error fetching  details:", err);
+      });
+  }, []);
 
   useEffect(() => {
     if (user?.student_id) {
@@ -107,35 +119,45 @@ const Home = () => {
           console.log("mmsmsmsm")
           return;
         }
+
+        api.post('/commonApi/getCodeValue', { type: 'studentApplication' })
+        .then((res) => {
+          console.log('Full response:', res);
+          console.log('Extracted code:', res.data.data);
+          editstudentAppicationPaid(res.data.data); // Check this value
+        })
+        .catch((err) => {
+          console.error("Error generating code:", err);
+        });
   
-        const totalAmount = 200;
-        const amountInPaise = totalAmount * 100;
+        // const totalAmount = 200;
+        // const amountInPaise = totalAmount * 100;
   
-        const options = {
-          key: "rzp_test_yE3jJN90A3ObCp", // Replace with your Razorpay test/live key
-          key_secret: "tt8BnBOG7yRvYZ6TSB28RXJy",
-          amount: amountInPaise,
-          currency: "INR",
-          name: "United",
-          description: "Application Fee",
-          image: "",
-          handler: handlePaymentSuccess,
-          prefill: {
-            name:"Mohammed Navab",
-            email:"rafi@unitdtechnologies.com",
-            contact:"9750792020",
-          },
-          notes: {
-            address: "Corporate Office",
-          },
-          theme: {
-            color: "#532C6D",
-          },
-        };
+        // const options = {
+        //   key: "rzp_test_yE3jJN90A3ObCp", // Replace with your Razorpay test/live key
+        //   key_secret: "tt8BnBOG7yRvYZ6TSB28RXJy",
+        //   amount: amountInPaise,
+        //   currency: "INR",
+        //   name: "United",
+        //   description: "Application Fee",
+        //   image: "",
+        //   handler: handlePaymentSuccess,
+        //   prefill: {
+        //     name:"Mohammed Navab",
+        //     email:"rafi@unitdtechnologies.com",
+        //     contact:"9750792020",
+        //   },
+        //   notes: {
+        //     address: "Corporate Office",
+        //   },
+        //   theme: {
+        //     color: "#532C6D",
+        //   },
+        // };
   
-        const rzp = new window.Razorpay(options);
-        rzp.open();
-        rzp.on("payment.failed", handlePaymentFailure);
+        // const rzp = new window.Razorpay(options);
+        // rzp.open();
+        // rzp.on("payment.failed", handlePaymentFailure);
       };
     }
 
@@ -239,7 +261,7 @@ const Home = () => {
                   </div>
                 )}
                 <div className="h2_header-btn d-sm-block" title="Logout" style={{ marginTop: 15 }}>
-                  <i className="fas fa-sign-out-alt" style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }} onClick={logout}></i>
+                  <i className="fas fa-sign-out-alt" style={{ fontSize: '14px', cursor: 'pointer', color: 'white' }} onClick={logout}></i>
                 </div>
               </>
             )}
@@ -254,44 +276,25 @@ const Home = () => {
         <div className="header-sticky">
         <div style={{ backgroundColor: '#58213f', color: 'white' }}>
     <div className="container d-flex justify-content-between align-items-center py-2 flex-wrap">
-      <span className="d-flex align-items-center">
-        <i className="fa-thin fa-envelope me-2"></i> Email: info@einstein.com
-      </span>
-      <span className="d-flex align-items-center mt-2 mt-md-0">
-        <i className="fa-thin fa-phone-volume me-2"></i> Call Us: (+91) 9489903808
-      </span>
-    </div>
-  </div>
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-6 col-xl-2">
-                <div className="h2_header-left">
-                  <div className="h2_header-logo" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
-                    <a href="/Home">
-                      <img src={logoImage} alt="logo" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-6 content-center">
-                <div className=""  style={{ color: '#58213f', fontSize: 30, fontWeight: 'bold' }}>
-                  <span>Einstein College Of Arts & Science</span>
-                </div>
-                <div className=""  style={{ color: '#58213f' }}>
-                  Sir C.V.Raman Nagar, Seethaparpanallur, <br></br>
-                  Near MS University, Tirunelveli, Tamil Nadu - 627012
-                </div>
-              </div>
-              <div className="col-xl-2 d-none d-xl-block text-end">
-              <div className="h2_header-left">
-                  <div className="h2_header-logo" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
-                    <a href="/Home">
-                      <img src={logoImage2} alt="logo" height={150}/>
-                    </a>
-                  </div>
-                </div>
-                </div>
-                <div className="col-xl-2 d-none d-xl-block text-end">
+    <div className="d-none d-xl-flex col-xl-8">
+          <span className="me-4">
+            <i className="fa fa-envelope me-2"></i> Email: info@einstein.com
+          </span>
+          <span>
+            <i className="fa fa-phone-volume me-2"></i> Call Us: (+91) 9489903808
+          </span>
+        </div>
+
+        {/* Mobile Contact Info */}
+        <div className="d-flex d-xl-none flex-column w-100 mb-2">
+          <span className="mb-1">
+            <i className="fa fa-envelope me-2"></i> Email: info@einstein.com
+          </span>
+          <span>
+            <i className="fa fa-phone-volume me-2"></i> Call Us: (+91) 9489903808
+          </span>
+        </div>
+      <div className="col-xl-2 d-none d-xl-block text-end">
                 <div className="">
                   {!user && !teacherUser ? (
                     <>
@@ -301,7 +304,7 @@ const Home = () => {
                         </Link>
                       </div>
                       <div className="h2_header-category d-sm-block" style={{ float:"right" }}>
-                        <a><i className="fa-solid fa-grid"></i><span>Login</span></a>
+                        <a><i className="fa-solid fa-grid"></i><span style={{ color:"white" }} >Login</span></a>
                         <ul className="h2_header-category-submenu">
                           <li><Link to="/StudentLogin">Student Login</Link></li>
                           <li><Link to="/Login">Application Form</Link></li>
@@ -313,7 +316,7 @@ const Home = () => {
                   ) : (
                     <>
                       <div className="h2_header-btn d-none d-sm-block" title="Logout" style={{ marginRight: 23, float:"right" }}>
-                        <i className="fas fa-sign-out-alt" style={{ fontSize: '14px', cursor: 'pointer', color: 'red' }} onClick={logout}></i>
+                        <i className="fas fa-sign-out-alt" style={{ fontSize: '14px', cursor: 'pointer', color: 'white' }} onClick={logout}></i>
                       </div>
                       {ApplicationPaid !== "Selected" && !teacherUser && (
                         <div className="h2_header-btn d-none d-sm-block" style={{ marginRight: 23, float:"right" }}>
@@ -332,8 +335,45 @@ const Home = () => {
                     </>
                   )}
                 </div>
+      </div>
+    </div>
+  </div>
+       <div>
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-6 col-xl-2">
+                <div className="h2_header-left">
+                  <div className="h2_header-logo" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+                    <a href="/Home">
+                      <img src={logoImage} alt="logo" />
+                    </a>
+                  </div>
+                </div>
               </div>
+              <div className="col-xl-8 content-center">
+              <div className=""  style={{ color: '#58213f', fontSize: 15, fontWeight: 'bold' ,marginBottom:10,color:'#f7951e'}}>
+                  <span>“யாதும் ஊரே யாவரும் கேளிர்”</span>
+                </div>
+                <div className=""  style={{ color: '#58213f', fontSize: 30, fontWeight: 'bold',marginBottom:10 }} >
+                  <span>Einstein College Of Arts & Science</span>
+                </div>
+                <div className=""  style={{ color: '#58213f' }}>
+                  Sir C.V.Raman Nagar, Tirunelveli - 627012, <br></br>
+                  (Affiliated to Manonmaniam Sundaranar University) 
+                </div>
+              </div>
+              <div className="col-xl-2 d-none d-xl-block text-end">
+              <div className="h2_header-left">
+                  <div className="h2_header-logo" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+                    <a href="/Home">
+                      <img src={logoImage2} alt="logo" height={150}/>
+                    </a>
+                  </div>
+                </div>
+                </div>
+            
             </div>
+          </div>
           </div>
           <div className="row align-items-center">
             <div className="col-xl-12 d-none d-xl-block content-center">
@@ -359,12 +399,13 @@ const Home = () => {
       </PDFDownloadLink> */}
 
       {/* Marquees */}
-      <Marquees />
-      <div style={{ backgroundColor: '#ebdcf6', color: 'black' }}>
+      {/* <Marquees /> */}
+      {/* <div style={{ backgroundColor: '#58213f', color: 'white' }}>
         <Marquee gradient={false} speed={50}>
-          📢 Admissions Open for 2025 | 🎓 Enroll Now in B.Sc, B.A, B.Com, B.B.A, B.C.A Programs | 🌐 Industry-Relevant Curriculum | 🏆 Experienced Faculty | 💼 100% Placement Assistance | 📝 Apply Online Today | 📞 Call Now for Counseling & Scholarships!
+          <Link to="/Application"> {marquee?.description_short}</Link>
+       
         </Marquee>
-      </div>
+      </div> */}
     </>
   );
 };

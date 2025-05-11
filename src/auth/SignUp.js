@@ -10,6 +10,7 @@ const SignUp = () => {
 
   const [signupData, setSignupData] = useState({
     student_name: "",
+    last_name: "",
     email: "",
     pass_word: "",
     father_mobile_number:"",
@@ -81,15 +82,11 @@ const SignUp = () => {
       console.log("Registration successful:", res.data.data);
 
       // Send email to the user
-      await api.post("/commonApi/sendUseremailSignUp", {
-        to: signupData.email,
-        subject: "Registration",
-        
-      });
+    
       
-      setTimeout(() => {
-        navigate("/Login");
-      }, 300);
+      // setTimeout(() => {
+      //   navigate("/Login");
+      // }, 300);
       // // Send a copy to the admin
       // await api.post("/commonApi/sendUseremailSignUp", {
       //   to: mailId,
@@ -107,8 +104,19 @@ const SignUp = () => {
       // }, 300);
     } catch (err) {
       console.error("Error during registration:", err);
-      setErrors({ email: "This email is already registered." });
-    } finally {
+      if (err.response?.data?.errorCode === 'DUPLICATE_EMAIL') {
+        setErrors({ email: "This email is already registered." });
+      } else {
+        await api.post("/commonApi/sendUseremailSignUp", {
+          to: signupData.email,
+          subject: "Registration",
+          
+        });
+        setTimeout(() => {
+          navigate("/Login");
+        }, 300);
+      }
+    }finally {
       setLoading(false);
     }
   };
@@ -179,14 +187,26 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit} className="account-form">
                   <div className="account-form-item mb-20">
                     <div className="account-form-label">
-                      <label>Student Name</label>
+                      <label>First Name</label>
                     </div>
                     <div className="account-form-input">
-                      <input type="text" name="student_name" placeholder="Student Name"  value={signupData.student_name}
+                      <input type="text" name="student_name" placeholder="First Name"  value={signupData.student_name}
                       onChange={handleChange}/>
                     </div>
                     {errors.student_name && (
                       <span className="error">{errors.student_name}</span>
+                    )}
+                  </div>
+                  <div className="account-form-item mb-20">
+                    <div className="account-form-label">
+                      <label>Last Name</label>
+                    </div>
+                    <div className="account-form-input">
+                      <input type="text" name="last_name" placeholder="Last Name"  value={signupData.last_name}
+                      onChange={handleChange}/>
+                    </div>
+                    {errors.student_name && (
+                      <span className="error">{errors.last_name}</span>
                     )}
                   </div>
                   {/* <div className="account-form-item mb-20">

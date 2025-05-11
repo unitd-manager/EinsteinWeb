@@ -33,6 +33,7 @@ import IMG1 from "../assets/img/about/image 11.png";
 import IMG2 from "../assets/img/about/image 2.png";
 import IMG3 from "../assets/img/about/image 3.png";
 import HappyNewYear from "../assets/img/HappyNewYear.jpg"
+import Web from "../assets/img/Faculty/EinsteinWebsite.jpg";
 
 import Modal from "react-modal"; // You can use any modal library or create your own
 
@@ -280,7 +281,7 @@ const Home = () => {
         
       <main>
         {/* banner area start */}
-        <section className="slider-area fix">
+        {/* <section className="slider-area fix">
           <Swiper
             modules={[Navigation, Autoplay]}
             navigation={{
@@ -325,7 +326,7 @@ const Home = () => {
                             data-animation="fadeInUp"
                             data-delay="0.7s"
                           >
-                            {/* <a href="#" className="theme-btn theme-btn-7">
+                            <a href="#" className="theme-btn theme-btn-7">
                               Apply Now
                               <i className="fa-light fa-arrow-right" />
                             </a>
@@ -335,7 +336,7 @@ const Home = () => {
                             >
                               Learn More
                               <i className="fa-light fa-arrow-right" />
-                            </a> */}
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -354,7 +355,22 @@ const Home = () => {
               <i className="fa-regular fa-arrow-up-right" />
             </div>
           </div>
-        </section>
+        </section> */}
+        <section
+        className="breadcrumb-area bg-default"
+        style={{ backgroundImage: `url(${Web})` }}
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div className="breadcrumb-content">
+                <h2 className="breadcrumb-title">About Us</h2>
+                {/* <p>To serve humanity through Academic Excellence & Research with values. To enlighten students to become proficient Engineers of exceptional caliber and acquire novel research capabilities that gives them industrial recognition. </p> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
         <section className="about-area pt-140 pb-90">
           <div className="container">
             <div className="row align-items-center">

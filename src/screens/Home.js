@@ -44,7 +44,9 @@ import StudentForTraing from "../assets/img/training-placement.webp";
 import shapeStu from "../assets/img/shape-2Stu.png";
 import shapeStu1 from "../assets/img/shapeStu1.png";
 import bgStu from "../assets/img/h2.webp";
+import '../assets/css/VerticalMarquees.css';
 import HappyNewYear from "../assets/img/HappyNewYear.jpg"
+import VerticalMarquees from "./VerticalMarquees";
 
 const Home = () => {
 
@@ -430,9 +432,9 @@ function removeHtmlTags(str) {
   return (
     <>
      
-     <div>
+     {/* <div>
      
-        {/* Modal */}
+       
         {isOpen && (
           <div style={modalStyles}>
             <div style={overlayStyles} onClick={() => setIsOpen(false)}></div>
@@ -447,7 +449,7 @@ function removeHtmlTags(str) {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     
 
 
@@ -579,7 +581,9 @@ function removeHtmlTags(str) {
             </div>
           </div>
         </section>
-
+<section>
+  <VerticalMarquees></VerticalMarquees>
+</section>
         {/* <section className="h2_banner-area">
           <div className="h2_single-banner">
             <div className="container">
@@ -1275,8 +1279,8 @@ function removeHtmlTags(str) {
               <div className="row g-0">
                 <div className="col-xl-4 col-lg-4">
                   <div className="h7_program-item">
-                    <h3 className="h7_program-item-title">{QualityEducation[0]?.title}</h3>
-                    <p dangerouslySetInnerHTML={{ __html: QualityEducation[0]?.description }}>
+                    <h3 className="h7_program-item-title" style={{color:'#592140'}}>{QualityEducation[0]?.title}</h3>
+                    <p dangerouslySetInnerHTML={{ __html: QualityEducation[0]?.description }}  style={{color:'red'}}>
                     </p>
                     <div className="h7_program-item-list">
                       {/* <a >
@@ -1286,16 +1290,16 @@ function removeHtmlTags(str) {
                         Minors Program <i className="fa-light fa-arrow-right" />
                       </a> */}
                     </div>
-                    <span className="h7_program-item-time">
+                    <span className="h7_program-item-time"style={{color:'#592140'}}>
                       <i className="fa-light fa-clock" /> Online + Onsite
                     </span>
                   </div>
                 </div>
                 <div className="col-xl-4 col-lg-4">
-                  <div className="h7_program-item h7_program-item2">
+                  <div className="h7_program-item h7_program-item2" style={{background:"#592140"}}>
                     <h3 className="h7_program-item-title">{UGDepartments[0]?.title}</h3>
-                    <p dangerouslySetInnerHTML={{ __html: UGDepartments[0]?.description }}>
-                    </p>
+                    {/* <p dangerouslySetInnerHTML={{ __html: UGDepartments[0]?.description }} style={{color:'red'}}>
+                    </p> */}
                     <ul className="h7_program-item-list2">
                     {ugCourse.map((item, index) => ( 
                       <li>{item.course_name}</li>
@@ -1308,7 +1312,7 @@ function removeHtmlTags(str) {
                 </div>
                 <div className="col-xl-4 col-lg-4">
                   <div className="h7_program-item">
-                    <h3 className="h7_program-item-title">{OnlineEducation[0]?.title}</h3>
+                    <h3 className="h7_program-item-title" style={{color:'#592140'}}>{OnlineEducation[0]?.title}</h3>
                     <p dangerouslySetInnerHTML={{ __html: OnlineEducation[0]?.description }}>
                     </p>
                     <div className="h7_program-item-list">
@@ -1321,7 +1325,7 @@ function removeHtmlTags(str) {
                         <i className="fa-light fa-arrow-right" />
                       </a> */}
                     </div>
-                    <span className="h7_program-item-time">
+                    <span className="h7_program-item-time" style={{color:'#592140'}}>
                       <i className="fa-light fa-clock" /> Online + Onsite
                     </span>
                     <a class="h7_program-more-icon">
@@ -1345,7 +1349,7 @@ function removeHtmlTags(str) {
           </div>
         </section>
 
-        <section className="h6_program-area pt-110 pb-90">
+        {/* <section className="h6_program-area pt-110 pb-90">
           <div className="container">
             <div className="row">
               <div className="col-12">
@@ -1365,13 +1369,13 @@ function removeHtmlTags(str) {
                   <div className="h6_program-item-content">
                     <div className="h6_program-item-content-info">
                       <h4 className="h6_program-item-content-info-title">
-                        <a>{AcademicsProgramList[0]?.title}</a>
-                      </h4>
+                        <a>{AcademicsProgramList[0]?.title}</a> */}
+                      {/* </h4> */}
                       {/* <a className="h6_program-item-content-info-link">
                         Read More
                         <i className="fa-light fa-arrow-up-right" />
                       </a> */}
-                    </div>
+                    {/* </div>
                     <div className="h6_program-item-content-icon">
                       <svg
                         width={50}
@@ -1474,12 +1478,12 @@ function removeHtmlTags(str) {
                     <div className="h6_program-item-content-info">
                       <h4 className="h6_program-item-content-info-title">
                         <a>{AcademicsProgramListone[0]?.title}</a>
-                      </h4>
+                      </h4> */}
                       {/* <a  className="h6_program-item-content-info-link">
                         Read More
                         <i className="fa-light fa-arrow-up-right" />
                       </a> */}
-                    </div>
+                    {/* </div>
                     <div className="h6_program-item-content-icon">
                       <svg
                         width={46}
@@ -1506,12 +1510,12 @@ function removeHtmlTags(str) {
                     <div className="h6_program-item-content-info">
                       <h4 className="h6_program-item-content-info-title">
                         <a>{AcademicsProgramListtwo[0]?.title}</a>
-                      </h4>
+                      </h4> */}
                       {/* <a className="h6_program-item-content-info-link">
                         Read More
                         <i className="fa-light fa-arrow-up-right" />
                       </a> */}
-                    </div>
+                    {/* </div>
                     <div className="h6_program-item-content-icon">
                       <svg
                         width={36}
@@ -1539,7 +1543,7 @@ function removeHtmlTags(str) {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         <section className="h7_scholarship-area fix" style={{ marginTop: 150 }}>
           <div className="container">
             <div className="section-area-6 mb-55 text-center">
@@ -1581,7 +1585,7 @@ function removeHtmlTags(str) {
           </div>
         </section>
         {/* teacher area start */}
-        <section className="h2_teacher-area pb-80" style={{ marginTop: 150 }}>
+        {/* <section className="h2_teacher-area pb-80" style={{ marginTop: 150 }}>
           <div className="container">
             <div className="row">
               <div className="col-xl-9 col-lg-8 col-md-12 mb-30">
@@ -1622,10 +1626,10 @@ function removeHtmlTags(str) {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
         {/* teacher area end */}
         {/* about area end */}
-        <section className="h6_about-area pt-50 pb-80 fix">
+        {/* <section className="h6_about-area pt-50 pb-80 fix">
           <div className="container">
             <div className="section-area-6 mb-55 text-center">
               <span
@@ -1645,20 +1649,20 @@ function removeHtmlTags(str) {
                       width: "100%",
                       // objectFit: "cover",
                     }}
-                  />
+                  /> */}
                   {/* <div className="h6_about-img-content">
                     <h2>2010</h2>
                     <span>Since Einstein</span>
                   </div> */}
-                </div>
+                {/* </div>
               </div>
               <div className="col-xl-6 col-lg-6" style={{ marginTop: 50, }}>
-                <div className="h6_about-content ml-30 mb-30 mb-md-0 pb-30">
+                <div className="h6_about-content ml-30 mb-30 mb-md-0 pb-30"> */}
                   {/* <h3 className="h6_about-content-title">
                     Tribute to Our Founder
                   </h3> */}
-                  <p dangerouslySetInnerHTML={{ __html: ourFounder[0]?.description }}>
-                  </p>
+                  {/* <p dangerouslySetInnerHTML={{ __html: ourFounder[0]?.description }}>
+                  </p> */}
                   {/* <a
                     href="#"
                     className="h6_about-btn theme-btn theme-btn-medium theme-btn-6"
@@ -1666,7 +1670,7 @@ function removeHtmlTags(str) {
                     Learn More
                     <i className="fa-light fa-arrow-up-right" />
                   </a> */}
-                </div>
+                {/* </div>
               </div>
             </div>
           </div>
@@ -1679,15 +1683,15 @@ function removeHtmlTags(str) {
               </marquee>
             </div>
           </div>
-        </section>
-        <section className="h6_about-area pt-50 pb-80 fix">
+        </section> */}
+        {/* <section className="h6_about-area pt-50 pb-80 fix">
           <div className="container">
             <div className="row">
               <div className="col-xl-6 col-lg-6" style={{ marginTop: 100 }}>
                 <div className="h6_about-content ml-30 mb-30 mb-md-0 pb-30">
                   <h3 className="h6_about-content-title">{OurPhilosophy[0]?.title}</h3>
                   <p dangerouslySetInnerHTML={{ __html: OurPhilosophy[0]?.description }}>
-                  </p>
+                  </p> */}
                   {/* <a
                     href="#"
                     className="h6_about-btn theme-btn theme-btn-medium theme-btn-6"
@@ -1695,7 +1699,7 @@ function removeHtmlTags(str) {
                     Explore our History
                     <i className="fa-light fa-arrow-up-right" />
                   </a> */}
-                </div>
+                {/* </div>
               </div>
               <div className="col-xl-6 col-lg-6">
                 <div className="h6_about-img w_img">
@@ -1723,9 +1727,9 @@ function removeHtmlTags(str) {
               </h1>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* counter area start */}
-        <section className="h4_about-area pt-70 pb-90">
+        {/* <section className="h4_about-area pt-70 pb-90">
           <div className="container">
             <div className="section-area-6 mb-55 text-center">
               <span
@@ -1760,11 +1764,11 @@ function removeHtmlTags(str) {
                     ))}
                     </ul>
                   </div>
-                  <div className="h4_about-button">
+                  <div className="h4_about-button"> */}
                     {/* <a  className="theme-btn h4_about-btn theme-btn-4">
                       More Details
                     </a> */}
-                    <a
+                    {/* <a
                       href="tel:+002455456978"
                       className="h4_about-button-call"
                     >
@@ -1776,8 +1780,8 @@ function removeHtmlTags(str) {
               </div>
             </div>
           </div>
-        </section>
-        <section
+        </section> */}
+        {/* <section
           className="h6_testimonial-area pt-120 pb-120 bg-default pt-215 pb-100 fix"
           style={{
             backgroundImage: `url(${StudentForTraing})`,
@@ -1797,7 +1801,7 @@ function removeHtmlTags(str) {
           <div className="container">
             <div className="row">
               <div className="col-xl-9">
-                <div className="h6_testimonial-wrap mr-60">
+                <div className="h6_testimonial-wrap mr-60"> */}
                   {/* <div className="h6_testimonial-navigation mb-50">
                   <div className="h6_testimonial-prev">
                     <svg
@@ -1837,7 +1841,7 @@ function removeHtmlTags(str) {
                     </svg>
                   </div>
                 </div> */}
-                  <div className="h6_testimonial-active swiper">
+                  {/* <div className="h6_testimonial-active swiper">
                     <Swiper
                       modules={[Navigation]}
                       navigation
@@ -1852,14 +1856,14 @@ function removeHtmlTags(str) {
                             <div className="h6_testimonial-item">
                               <blockquote>
                                 <p dangerouslySetInnerHTML={{ __html: item?.description }}>
-                                </p>
+                                </p> */}
                                 {/* <div className="quote-admin">
                             <div className="quote-admin-inner">
                               <h5>William Board</h5>
                               <span>Student Eduan Univesity</span>
                             </div>
                           </div> */}
-                              </blockquote>
+                              {/* </blockquote>
                             </div>
                           </div>
                         </SwiperSlide>
@@ -1871,9 +1875,9 @@ function removeHtmlTags(str) {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <div className="section-area-6 mb-55 text-center">
+        {/* <div className="section-area-6 mb-55 text-center">
           <span
             className="section-subtitle"
             style={{
@@ -1885,8 +1889,8 @@ function removeHtmlTags(str) {
           >
             Campus experience
           </span>
-        </div>
-        <section
+        </div> */}
+        {/* <section
           className="h4_education-area pt-130 pb-110"
           style={{ marginTop: 50 }}
         >
@@ -1903,7 +1907,7 @@ function removeHtmlTags(str) {
                     </h2>
                     <p className="section-text" dangerouslySetInnerHTML={{ __html: CampusExperience[0]?.description }}>
                     </p>
-                  </div>
+                  </div> */}
                   {/* <div className="h4_education-content">
                 <div className="row">
                   <div className="col-lg-6 col-sm-6">
@@ -1972,11 +1976,11 @@ function removeHtmlTags(str) {
                   </div>
                 </div>
               </div> */}
-                </div>
+                {/* </div>
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* <div className="h6_cta-area pt-120" style={{ marginTop: 100 }}>
           <div className="container">

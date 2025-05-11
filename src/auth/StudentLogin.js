@@ -11,6 +11,7 @@ const Login = () => {
     pass_word: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -45,7 +46,7 @@ const Login = () => {
 
     if (!validatePassword(password)) {
       setPasswordError(
-        "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, special character, and one number"
+        "Please check your email and password and try again."
       );
     }
 
@@ -143,28 +144,29 @@ const Login = () => {
                         )}
                       </div>
                       <div className="account-form-item mb-15">
-                        <div className="account-form-label">
-                          <label>Your Password</label>
-                          <a href="#">Forgot Password ?</a>
-                        </div>
-                        <div className="account-form-input account-form-input-pass">
-                          <input
-                            type="password"
-                            name="pass_word"
-                            placeholder="*********"
-                            onChange={(e) => {
-                              handleSigninData(e);
-                              setPassword(e.target.value);
-                            }}
-                          />
-                          <span>
-                            <i className="fa-thin fa-eye" />
-                          </span>
-                        </div>
-                        {passwordError && (
-                          <span className="error">{passwordError}</span>
-                        )}
-                      </div>
+  <div className="account-form-label">
+    <label>Your Password</label>
+    {/* <a href="#">Forgot Password ?</a> */}
+  </div>
+  <div className="account-form-input account-form-input-pass" style={{ position: "relative" }}>
+    <input
+      type={showPassword ? "text" : "password"} // Toggle input type
+      name="pass_word"
+      placeholder="*********"
+      onChange={(e) => {
+        handleSigninData(e);
+        setPassword(e.target.value);
+      }}
+    />
+    <span
+      style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", cursor: "pointer" }}
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      <i className={showPassword ? "fa fa-eye-slash" : "fa fa-eye"} />
+    </span>
+  </div>
+  {passwordError && <span className="error">{passwordError}</span>}
+</div>
                       <div className="account-form-condition">
                         {/* <label className="condition_label">
                           Remember Me

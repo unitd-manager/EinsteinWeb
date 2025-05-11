@@ -2256,9 +2256,9 @@ input:focus::placeholder, textarea:focus::placeholder {
   margin-left: 5px;
 } */
 .h2_main-menu ul li a {
-  font-size: 18px !important;
+  font-size: 15px !important;
   color: #fff !important;
-  padding: 12px 0 !important;
+  padding: 20px 0 !important;
   font-weight: 500;
   display: block;
 }
@@ -17911,7 +17911,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   }
 }
 .h7_program-item {
-  background: #466BB8;
+  background: #eadaf5;
   padding: 46px 50px 80px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -17943,11 +17943,15 @@ input:focus::placeholder, textarea:focus::placeholder {
   }
 }
 .h7_program-item p {
-  color: #FFF;
+  color: #592140;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
   margin-bottom: 0;
+}
+.h7_program-item p p {
+  color: 'white';
+ 
 }
 .h7_program-item-list {
   margin-top: 32px;
@@ -18784,7 +18788,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   transform: scale(1.05);
 }
 .h7_scholarship-wrap {
-  background-color: #4846AB;
+  background-color: #58213f;
   padding-top: 435px;
   padding-bottom: 110px;
   position: relative;

@@ -169,6 +169,11 @@ const SignUp = () => {
   
     if (e.target.checked) {
       // Add course if not already in list
+
+      if (selectedCourses.length >= 3) {
+        alert('You can select a maximum of 3 courses only.');
+        return;
+      }
       if (!selectedCourses.includes(value)) {
         selectedCourses.push(value);
       }
@@ -304,6 +309,7 @@ const SignUp = () => {
       <main>
         {/* breadcrumb area start */}
         <section>
+          <div style={{backgroundColor:'#b6e0e3'}}>
           <div className="container">
             <div className="row">
               <div className="col-12">
@@ -316,6 +322,7 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </section>
         {/* breadcrumb area end */}
@@ -338,20 +345,35 @@ const SignUp = () => {
                         <div className="col-md-6">
                           <div className="account-form-item mb-20">
                             <div className="account-form-label">
-                              <label>Student Name</label>
+                              <label>First Name</label>
                             </div>
                             <div className="account-form-input">
                               <input
                                 type="text"
                                 name="student_name"
-                                placeholder="Student Name"
+                                placeholder="First Name"
                                 value={studentEdit?.student_name || ""}
                                 onChange={handleInputs}
                               />
                             </div>
                           </div>
                         </div>
-
+                        <div className="col-md-6">
+                          <div className="account-form-item mb-20">
+                            <div className="account-form-label">
+                              <label>Last Name</label>
+                            </div>
+                            <div className="account-form-input">
+                              <input
+                                type="text"
+                                name="last_name"
+                                placeholder="Last Name"
+                                value={studentEdit?.last_name || ""}
+                                onChange={handleInputs}
+                              />
+                            </div>
+                          </div>
+                        </div>
                         <div className="col-md-6">
                           <div className="account-form-item mb-20">
                             <div className="account-form-label">
@@ -591,7 +613,7 @@ const SignUp = () => {
                             </div>
                             <div className="account-form-input">
                               <input
-                                type="text"
+                                type="number"
                                 name="father_income"
                                 placeholder="Enter Your Father Income"
                                 value={studentEdit?.father_income}
@@ -656,7 +678,7 @@ const SignUp = () => {
                             </div>
                             <div className="account-form-input">
                               <input
-                                type="text"
+                                type="number"
                                 name="mother_income"
                                 placeholder="Enter Your Mother Income"
                                 value={studentEdit?.mother_income}
@@ -691,7 +713,7 @@ const SignUp = () => {
                             </div>
                             <div className="account-form-input">
                               <input
-                                type="text"
+                                type="number"
                                 name="address_po_code"
                                 placeholder="Enter Your Pin Code"
                                 value={studentEdit?.address_po_code}
@@ -790,7 +812,7 @@ const SignUp = () => {
                             </div>
                             <div className="account-form-input">
                               <input
-                                type="text"
+                                type="number"
                                 name="overall_mark_percentage"
                                 placeholder="Enter Your Overall % Of Marks"
                                 value={studentEdit?.overall_mark_percentage}
@@ -920,7 +942,7 @@ const SignUp = () => {
                                   value="1"
                                   checked={studentEdit?.differently_abled === "1"}
                                   onChange={handleInputs}
-                                />{" "}
+                                />
                                 Yes
                               </label>
                               <label>
@@ -1257,15 +1279,22 @@ const SignUp = () => {
                         className="d-flex justify-content-between align-items-center my-2"
                       >
                         <a
-                          href={`https://smartwave.unitdtechnologies.com:2014/category/download/${res1.name}`}
+                          href={`https://ecasadmin.unitdtechnologies.com/storages/${res1.name}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-decoration-none d-flex align-items-center text-primary"
                         >
                           <FaFileDownload className="me-2" />
-                          {res1.name}
+                          {/* {res1.name} */}
+                          <img
+  src={`https://ecasadmin.unitdtechnologies.com/storages/${res1.name}`} 
+  width={200}
+  height={200}
+  alt={`${res1.name}`}
+  
+/> 
                         </a>
-                  
+                    
                         <button
                           type="button"
                           className="btn btn-sm btn-light shadow-none"

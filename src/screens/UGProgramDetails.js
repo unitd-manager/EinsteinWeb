@@ -20,7 +20,7 @@ const CourseSection = () => {
       .catch((err) => {
         console.error("Error fetching student details:", err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <>

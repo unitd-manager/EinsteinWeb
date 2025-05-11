@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import shape1 from "../assets/img/breadcrumb/shape-1.png";
 import breadcrumb from "../assets/img/breadcrumb/breadcrumb-bg.jpg";
+import "../assets/css/event.css"
 import api from "../constants/api";
 import { getLogin } from "./user";
 
@@ -10,11 +11,16 @@ const Login = () => {
     email: "",
     pass_word: "",
   });
-
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [showForgotModal, setShowForgotModal] = useState(false);
+const [resetEmail, setResetEmail] = useState("");
+const [resetMessage, setResetMessage] = useState("");
+const [resetError, setResetError] = useState("");
+
 
   // const history = useHistory();
   const navigate = useNavigate();
@@ -45,7 +51,7 @@ const Login = () => {
 
     if (!validatePassword(password)) {
       setPasswordError(
-        "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, special character, and one number"
+        "Please check your email and password and try again."
       );
     }
 
@@ -80,6 +86,44 @@ const Login = () => {
         });
     }
   };
+  const handleResetPassword = () => {
+    setResetError("");
+    setResetMessage("");
+  
+    if (!validateEmail(resetEmail)) {
+      setResetError("Please enter a valid email address.");
+      return;
+    }
+  
+    api
+      .post("/api/sendResetLink", { email: resetEmail }) // change to your actual API
+      .then((res) => {
+        setResetMessage("Reset link has been sent to your email.");
+      })
+      .catch((err) => {
+        setResetError("No account found with that email.");
+      });
+  };
+  const modalOverlayStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: "rgba(0,0,0,0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+  };
+  
+  const modalContentStyle = {
+    background: "#fff",
+    padding: "20px",
+    borderRadius: "8px",
+    width: "300px",
+  };
+  
 
   return (
     <>
@@ -144,28 +188,79 @@ const Login = () => {
                         )}
                       </div>
                       <div className="account-form-item mb-15">
-                        <div className="account-form-label">
-                          <label>Your Password</label>
-                          <a href="#">Forgot Password ?</a>
-                        </div>
-                        <div className="account-form-input account-form-input-pass">
-                          <input
-                            type="password"
-                            name="pass_word"
-                            placeholder="*********"
-                            onChange={(e) => {
-                              handleSigninData(e);
-                              setPassword(e.target.value);
-                            }}
-                          />
-                          <span>
-                            <i className="fa-thin fa-eye" />
-                          </span>
-                        </div>
-                        {passwordError && (
-                          <span className="error">{passwordError}</span>
-                        )}
-                      </div>
+  <div className="account-form-label">
+    <label>Your Password</label>
+    <a href="#" onClick={(e) => { e.preventDefault(); setShowForgotModal(true); }}>
+  Forgot Password?
+</a>
+
+  </div>
+  <div className="account-form-input account-form-input-pass" style={{ position: "relative" }}>
+    <input
+      type={showPassword ? "text" : "password"} // Toggle input type
+      name="pass_word"
+      placeholder="*********"
+      onChange={(e) => {
+        handleSigninData(e);
+        setPassword(e.target.value);
+      }}
+    />
+    <span
+      style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", cursor: "pointer" }}
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      <i className={showPassword ? "fa fa-eye-slash" : "fa fa-eye"} />
+    </span>
+  </div>
+  {passwordError && <span className="error">{passwordError}</span>}
+</div>
+{showForgotModal && (
+  <div className="account-wrap" style={{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    zIndex: 1000,
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}>
+    <div className="account-main" style={{
+      background: '#fff',
+      padding: '30px',
+      borderRadius: '10px',
+      width: '90%',
+      maxWidth: '400px',
+      boxShadow: '0px 4px 15px rgba(0,0,0,0.2)',
+    }}>
+      <h3 className="account-title">Forgot Password</h3>
+      <p>Enter your registered email address to receive reset instructions.</p>
+      <div className="account-form-item mb-20 mt-20">
+        <div className="account-form-label">
+          <label>Email Address</label>
+        </div>
+        <div className="account-form-input">
+          <input
+            type="email"
+            placeholder="Enter Your Email"
+            value={resetEmail}
+            onChange={(e) => setResetEmail(e.target.value)}
+          />
+        </div>
+        {resetError && <span className="error" style={{ color: "red" }}>{resetError}</span>}
+        {resetMessage && <span className="success" style={{ color: "green" }}>{resetMessage}</span>}
+      </div>
+      <div className="account-form-button" style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+        <button className="account-btn" onClick={handleResetPassword}>Submit</button>
+        <button className="account-btn" style={{ background: '#ccc', color: '#000' }} onClick={() => setShowForgotModal(false)}>Cancel</button>
+      </div>
+    </div>
+  </div>
+)}
+
+
                       <div className="account-form-condition">
                         {/* <label className="condition_label">
                           Remember Me

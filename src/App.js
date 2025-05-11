@@ -19,6 +19,15 @@ import SignUp from "../src/auth/SignUp.js"
 import EventDetails from "../src/screens/EventDetails.js";
 import TeamDetails from "../src/screens/TeamDetails.js";
 import UGProgramDetails from "../src/screens/UGProgramDetails.js";
+import Scholarship1 from "../src/screens/Scholarship1.js";
+import Scholarship2 from "../src/screens/Scholarship2.js";
+import Scholarship3 from "../src/screens/Scholarship3.js";
+import Scholarship4 from "../src/screens/Scholarship4.js";
+import Scholarship5 from "../src/screens/Scholarship5.js";
+import ExaminationFees from "../src/screens/ExaminationFees.js";
+import ExaminationResult from "../src/screens/ExaminationResult.js";
+import HallTicketDownload from "../src/screens/HallTicketDownload.js";
+import Calender from "../src/screens/Calender.js";
 
 import Gallery from "../src/screens/Gallery"
 import ContactUs from "../src/screens/ContactUs"
@@ -111,6 +120,12 @@ function App() {
           <Route path="/Gallery" element={<Gallery />} /> 
           <Route path="/ContactUs" element={<ContactUs />} /> 
           <Route path="/Team" element={<Team />} /> 
+          <Route path="/Scholarship1" element={<Scholarship1 />} /> 
+          <Route path="/Scholarship2" element={<Scholarship2 />} /> 
+          <Route path="/Scholarship3" element={<Scholarship3 />} /> 
+          <Route path="/Scholarship4" element={<Scholarship4 />} /> 
+          <Route path="/Scholarship5" element={<Scholarship5 />} /> 
+          
           <Route path="/Training" element={<Training />} /> 
           <Route path="/TeamDetails/:id" element={<TeamDetails />} />
           <Route path="/UGProgramDetails/:id" element={<UGProgramDetails />} />
@@ -119,6 +134,10 @@ function App() {
           <Route path="/StudentList" element={<StudentList />} /> 
           <Route path="/Application" element={<Application />} /> 
           <Route path="/Alumni" element={<Alumni />} /> 
+          <Route path="/ExaminationFees" element={<ExaminationFees />} /> 
+          <Route path="/ExaminationResult" element={<ExaminationResult />} /> 
+          <Route path="/HallTicketDownload" element={<HallTicketDownload />} /> 
+          <Route path="/Calender" element={<Calender/>} /> 
 
           <Route path="/WomenCell" element={<WomenCell />} /> 1
           <Route path="/AntiDrugCommittee" element={<AntiDrugCommittee />} /> 
