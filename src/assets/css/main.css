@@ -15788,6 +15788,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   font-size: 50px;
   font-weight: 700;
   margin-bottom: 10px;
+  margin-top: 70px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .breadcrumb-title {

@@ -745,3 +745,19 @@
     opacity: 0;
   }
 }
+/* Menu item hover effect */
+nav.h2_main-menu ul li > .nav-link:hover,
+nav.h2_main-menu ul li > .dropdown-item:hover {
+  background-color: #0056b3; 
+  color: #fff !important;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+/* Submenu links hover */
+.submenu li .dropdown-item:hover,
+.sub-menu li .dropdown-item:hover {
+  background-color: #d63d83;
+  color: white !important;
+  border-radius: 4px;
+}

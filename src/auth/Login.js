@@ -96,7 +96,7 @@ const [resetError, setResetError] = useState("");
     }
   
     api
-      .post("/api/sendResetLink", { email: resetEmail }) // change to your actual API
+      .post("/commonApi/sendUseremailForgetPassword", { to: resetEmail }) // change to your actual API
       .then((res) => {
         setResetMessage("Reset link has been sent to your email.");
       })
@@ -209,7 +209,7 @@ const [resetError, setResetError] = useState("");
       style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", cursor: "pointer" }}
       onClick={() => setShowPassword(!showPassword)}
     >
-      <i className={showPassword ? "fa fa-eye-slash" : "fa fa-eye"} />
+      <i className={showPassword ? "fa fa-eye":"fa fa-eye-slash"} />
     </span>
   </div>
   {passwordError && <span className="error">{passwordError}</span>}

@@ -158,96 +158,25 @@ const CalendarApp = ({ id }) => {
   return (
     <>
 
-      <Card>
-        <CardBody>
-          <Calendar
-            selectable
-            popup
-            events={eventData}
-        startAccessor="start"
-        endAccessor="end"
-            defaultView="month"
-            localizer={localizer}
-            defaultDate={new Date()}
-            style={{ height: 'calc(100vh - 350px)' }}
-            onSelectEvent={editEvent}
-            onSelectSlot={addNewEventAlert}
-            eventPropGetter={eventColors}
-          />
+     <Card className="calendar-card">
+  <CardBody className="p-0">
+    <Calendar
+      className="responsive-calendar"
+      selectable
+      popup
+      events={eventData}
+      startAccessor="start"
+      endAccessor="end"
+      defaultView="month"
+      localizer={localizer}
+      defaultDate={new Date()}
+      onSelectEvent={editEvent}
+      onSelectSlot={addNewEventAlert}
+      eventPropGetter={eventColors}
+    />
+  </CardBody>
+</Card>
 
-          {/* Event Add/Edit Modal */}
-          {/* <Modal isOpen={open}>
-            <ModalHeader toggle={closeModals}>
-              {update ? 'Update Event' : 'Add Event'}
-            </ModalHeader>
-            <Form onSubmit={update ? updateEvent : submitHandler}>
-              <ModalBody>
-                <h6>Event Title</h6>
-                <Input
-                  placeholder="Enter Event Title"
-                  value={title}
-                  onChange={inputChangeHandler}
-                />
-                <br />
-                <h6>Select Event Color</h6>
-                <div className="button-group">
-                  {ColorVariation.map((colorbg) => (
-                    <Button
-                      color={colorbg.value}
-                      key={colorbg.id}
-                      size="sm"
-                      onClick={() => selectinputChangeHandler(colorbg.value)}
-                      className="me-2"
-                    >
-                      {colorbg.value === color ? (
-                        <i className="bi bi-check" />
-                      ) : (
-                        <i className="bi bi-circle" />
-                      )}
-                    </Button>
-                  ))}
-                </div>
-              </ModalBody>
-              <ModalFooter>
-                {update && (
-                  <Button
-                    type="button"
-                    color="danger"
-                    outline
-                    onClick={() => deleteHandler(update)}
-                  >
-                    Delete
-                  </Button>
-                )}
-                <Button type="submit" color="success" disabled={!title}>
-                  {update ? 'Update' : 'Add'}
-                </Button>
-              </ModalFooter>
-            </Form>
-          </Modal> */}
-
-          {/* Date Info Modal */}
-          {/* <Modal isOpen={infoOpen} toggle={closeModals}>
-            <ModalHeader toggle={closeModals}>Events on Selected Date</ModalHeader>
-            <ModalBody>
-              <ListGroup>
-                {selectedDateEvents.map((event, index) => (
-                  <ListGroupItem key={index}>
-                    <strong>{event.title}</strong>
-                    <br />
-                    {moment(event.start).format('LL')} - {moment(event.end).format('LL')}
-                  </ListGroupItem>
-                ))}
-              </ListGroup>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="secondary" onClick={closeModals}>
-                Close
-              </Button>
-            </ModalFooter>
-          </Modal> */}
-        </CardBody>
-      </Card>
     </>
   );
 };

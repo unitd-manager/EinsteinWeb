@@ -73,7 +73,7 @@ const SignUp = () => {
       })
       .catch(() => {});
 
-      api.post('/file/getListOfFiles', { record_id: user?.student_id, room_name: 'Student' }).then((res) => {
+      api.post('/file/getListOfFiles', { record_id: user?.student_id, room_name: 'StudentApplication' }).then((res) => {
         setReceiptUrl1(res.data);
       });
   
@@ -198,9 +198,9 @@ const SignUp = () => {
     formData.append("files", receiptFileDoc);
     formData.append("student_id", user?.student_id);
     formData.append('record_id', user?.student_id)
-    formData.append('room_name', 'Student')
-    formData.append('alt_tag_data', 'StudentRelatedData')
-    formData.append('description', 'StudentRelatedData')
+    formData.append('room_name', 'StudentApplication')
+    formData.append('alt_tag_data', 'StudentApplicationRelatedData')
+    formData.append('description', 'StudentApplicationRelatedData')
     api.post('/file/uploadFiles',formData,{onUploadProgress:(filedata)=>{
       console.log( Math.round((filedata.loaded/filedata.total)*100))
       setUploaded1( Math.round((filedata.loaded/filedata.total)*100))                 
@@ -1279,7 +1279,7 @@ const SignUp = () => {
                         className="d-flex justify-content-between align-items-center my-2"
                       >
                         <a
-                          href={`https://ecasadmin.unitdtechnologies.com/storages/${res1.name}`}
+                          href={`https://ecas.unitdtechnologies.com/storages/${res1.name}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-decoration-none d-flex align-items-center text-primary"
@@ -1287,7 +1287,7 @@ const SignUp = () => {
                           <FaFileDownload className="me-2" />
                           {/* {res1.name} */}
                           <img
-  src={`https://ecasadmin.unitdtechnologies.com/storages/${res1.name}`} 
+  src={`https://ecas.unitdtechnologies.com/storages/${res1.name}`} 
   width={200}
   height={200}
   alt={`${res1.name}`}

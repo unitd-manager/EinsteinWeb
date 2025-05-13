@@ -155,7 +155,7 @@ const Login = () => {
       style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", cursor: "pointer" }}
       onClick={() => setShowPassword(!showPassword)}
     >
-      <i className={showPassword ? "fa fa-eye-slash" : "fa fa-eye"} />
+      <i className={showPassword ? "fa fa-eye":"fa fa-eye-slash"} />
     </span>
   </div>
   {passwordError && <span className="error">{passwordError}</span>}

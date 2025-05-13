@@ -231,7 +231,7 @@ const InfoSection = () => {
       rel="noopener noreferrer"
       className="blink-gradient"
     >
-     <u>Click here to Acadamic Calendar</u>
+     <u> <i className="fa fa-calendar" aria-hidden="true"></i> Click here to Acadamic Calendar</u>
     </Link></div>
   {/* <div className="custom-calendar-wrapper">
     <div className="calendar-header">

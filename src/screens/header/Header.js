@@ -344,7 +344,7 @@ const Home = () => {
               <div className="col-6 col-xl-2">
                 <div className="h2_header-left">
                   <div className="h2_header-logo" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
-                    <a href="/Home">
+                    <a href="/#/">
                       <img src={logoImage} alt="logo" />
                     </a>
                   </div>

@@ -103,13 +103,13 @@
 }
 @keyframes gradient-blink {
   0% {
-    background: linear-gradient(135deg, #ff416c, #58213f);
+    background: linear-gradient(135deg, #58213f, #58213f);
   }
   50% {
-    background: linear-gradient(135deg, #ff4b2b, #58213f);
+    background: linear-gradient(135deg, #58213f, #58213f);
   }
   100% {
-    background: linear-gradient(135deg, #ff416c, #58213f);
+    background: linear-gradient(135deg, #58213f, #58213f);
   }
 }
 

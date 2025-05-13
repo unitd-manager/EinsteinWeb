@@ -59,3 +59,48 @@
 .rbc-calendar {
   min-height: 600px;
 }
+.calendar-card {
+  width: 100%;
+  margin: 0 auto;
+  border: none;
+  box-shadow: none;
+}
+
+.responsive-calendar {
+  height: calc(100vh - 350px);
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .responsive-calendar {
+    height: calc(100vh - 200px); // Less height on mobile
+    padding: 10px;
+    font-size: 12px;
+
+    .rbc-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .rbc-month-view,
+    .rbc-time-view,
+    .rbc-agenda-view {
+      font-size: 12px;
+    }
+
+    .rbc-event {
+      padding: 2px 4px;
+      font-size: 11px;
+    }
+
+    .rbc-toolbar-label {
+      font-size: 16px;
+    }
+
+    .rbc-btn-group button {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+  }
+}

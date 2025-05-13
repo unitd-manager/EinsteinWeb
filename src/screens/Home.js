@@ -44,7 +44,6 @@ import StudentForTraing from "../assets/img/training-placement.webp";
 import shapeStu from "../assets/img/shape-2Stu.png";
 import shapeStu1 from "../assets/img/shapeStu1.png";
 import bgStu from "../assets/img/h2.webp";
-import '../assets/css/VerticalMarquees.css';
 import HappyNewYear from "../assets/img/HappyNewYear.jpg"
 import VerticalMarquees from "./VerticalMarquees";
 

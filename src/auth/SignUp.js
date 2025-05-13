@@ -26,6 +26,7 @@ const SignUp = () => {
   const [errors, setErrors] = useState({});
   const [mailId, setMailId] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const generateOTP = () => {
     const min = 1000;
@@ -75,51 +76,34 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!validateForm()) return;
-    signupData.payment_status = "Register"
+    signupData.payment_status = "Register";
     setLoading(true);
+    
     try {
       const res = await api.post("/api/registerStudent", signupData);
-      console.log("Registration successful:", res.data.data);
-
-      // Send email to the user
-    
-      
-      // setTimeout(() => {
-      //   navigate("/Login");
-      // }, 300);
-      // // Send a copy to the admin
-      // await api.post("/commonApi/sendUseremailSignUp", {
-      //   to: mailId,
-      //   text: JSON.stringify(signupData),
-      //   subject: "New User Registration",
-      //   dynamic_template_data: {
-      //     student_name: signupData.student_name,
-      //     email: signupData.email,
-      //     pass_word: signupData.pass_word,
-      //   },
-      // });
-
-      // setTimeout(() => {
-      //   navigate("/");
-      // }, 300);
+      console.log("Email:", signupData.email);
+  
+      // ✅ Send email to the user (after successful registration)
+      await api.post("/commonApi/sendregisteremail", {
+        to: signupData.email,
+      });
+  
+      // ✅ Redirect
+      setTimeout(() => {
+        navigate("/Login");
+      }, 300);
     } catch (err) {
       console.error("Error during registration:", err);
       if (err.response?.data?.errorCode === 'DUPLICATE_EMAIL') {
         setErrors({ email: "This email is already registered." });
       } else {
-        await api.post("/commonApi/sendUseremailSignUp", {
-          to: signupData.email,
-          subject: "Registration",
-          
-        });
-        setTimeout(() => {
-          navigate("/Login");
-        }, 300);
+        // Optional: Handle other errors
       }
-    }finally {
+    } finally {
       setLoading(false);
     }
   };
+  
   
   const [allcountries, setallCountries] = useState();
   const getAllCountries = () => {
@@ -205,7 +189,7 @@ const SignUp = () => {
                       <input type="text" name="last_name" placeholder="Last Name"  value={signupData.last_name}
                       onChange={handleChange}/>
                     </div>
-                    {errors.student_name && (
+                    {errors.last_name && (
                       <span className="error">{errors.last_name}</span>
                     )}
                   </div>
@@ -232,20 +216,27 @@ const SignUp = () => {
                     {errors.email && <span className="error">{errors.email}</span>}
                   </div>
                   <div className="account-form-item mb-15">
-                    <div className="account-form-label">
-                      <label>Your Password</label>
-                    </div>
-                    <div className="account-form-input account-form-input-pass">
-                      <input type="text" name="pass_word" placeholder="*********" value={signupData.pass_word}
-                      onChange={handleChange} />
-                      <span>
-                        {/* <i className="fa-thin fa-eye" /> */}
-                      </span>
-                    </div>
-                    {errors.pass_word && (
+  <div className="account-form-label">
+    <label>Your Password</label>
+  </div>
+  <div className="account-form-input account-form-input-pass" style={{ position: "relative" }}>
+    <input
+      type={showPassword ? "text" : "password"} // Toggle input type
+      name="pass_word"
+      placeholder="*********"
+      onChange={handleChange}
+    />
+    <span
+      style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", cursor: "pointer" }}
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      <i className={showPassword ? "fa fa-eye":"fa fa-eye-slash"} />
+    </span>
+  </div>
+  {errors.pass_word && (
                       <span className="error">Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, special character, and one number</span>
                     )}
-                  </div>
+</div>
                   <div className="account-form-item mb-20">
                     <div className="account-form-label">
                       <label>Mobile Number</label>
@@ -279,7 +270,7 @@ const SignUp = () => {
     </div>
     {/* sign up area end */}
     {/* cta area start */}
-    <div className="cta-area">
+    {/* <div className="cta-area">
       <div className="container">
         <div className="cta-wrapper">
           <div className="row align-items-center">
@@ -306,7 +297,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
     {/* cta area end */}
   </main>
 
