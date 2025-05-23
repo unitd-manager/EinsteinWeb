@@ -15780,6 +15780,9 @@ input:focus::placeholder, textarea:focus::placeholder {
     min-height: 300px;
   }
 }
+.headerpg{
+  background-color: #eadaf5;
+}
 .breadcrumb-content {
   text-align: center;
 }
@@ -19859,7 +19862,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 }
 
 .h6_footer-area {
-  background-color: #F6F6F6;
+  background-color: #eadaf5;
 }
 .h6_footer-logo {
   margin-bottom: 15px;

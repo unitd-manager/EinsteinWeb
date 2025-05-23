@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import logoImage from "../../assets/img/Logo.jpg";
-import logoImage2 from "../../assets/img/Logo2.jpg";
+import logoImage from "../../assets/img/Logopng.png";
+import logoImage2 from "../../assets/img/founderLogo.png";
 import Marquee from "react-fast-marquee";
 import Navbar from "./NavMenu";
 import { getUser, getTeacherUser } from "../../auth/user";
@@ -338,7 +338,7 @@ const Home = () => {
       </div>
     </div>
   </div>
-       <div>
+       <div className="headerpg">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-6 col-xl-2">
@@ -354,7 +354,7 @@ const Home = () => {
               <div className=""  style={{ color: '#58213f', fontSize: 15, fontWeight: 'bold' ,marginBottom:10,color:'#f7951e'}}>
                   <span>“யாதும் ஊரே யாவரும் கேளிர்”</span>
                 </div>
-                <div className=""  style={{ color: '#58213f', fontSize: 30, fontWeight: 'bold',marginBottom:10 }} >
+                <div className=""  style={{ color: '#58213f', fontSize: 35, fontWeight: 'bold',marginBottom:10, fontFamily:'Georgia'}} >
                   <span>Einstein College Of Arts & Science</span>
                 </div>
                 <div className=""  style={{ color: '#58213f' }}>

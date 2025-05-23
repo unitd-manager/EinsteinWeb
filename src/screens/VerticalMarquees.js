@@ -5,7 +5,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import "../assets/css/modal.css"
 import api from "../constants/api";
+import image1 from "../assets/img/pageAbout3.jpg";
+import HappyNewYear from "../assets/img/HappyNewYear.jpg"
+
+function extractYouTubeId(url) {
+  const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/\n\s]+\/\S+\/|\S*?[?&]v=|v%3D|.+?\/)\/?(\S+)|youtu\.be\/(\S+))/;
+  const match = url.match(regex);
+  return match ? match[1] || match[2] : null;
+}
 
 const InfoSection = () => {
   const [quote, setQuote] = useState([]);
@@ -14,6 +23,7 @@ const InfoSection = () => {
   const [companies, setCompanies] = useState([]);
   const [poleStar, setPoleStar] = useState([]);
   const [rank, SetRank] = useState([]);
+  const [modalVideo, setModalVideo] = useState(null);
 
   useEffect(() => {
     api.get("/content/getPoleStar")
@@ -229,7 +239,7 @@ const InfoSection = () => {
     to="/Calender"
     
       rel="noopener noreferrer"
-      className="blink-gradient"
+      className="blink-gradient2"
     >
      <u> <i className="fa fa-calendar" aria-hidden="true"></i> Click here to Acadamic Calendar</u>
     </Link></div>
@@ -253,6 +263,57 @@ const InfoSection = () => {
       ))}
     </div>
   </div> */}
+</div>
+<div className="cards quote-cards university-ranks-card">
+  <div className="cards-headers1">Placement</div>
+  <div className="container">
+    <Swiper
+      modules={[Navigation, Autoplay]}
+      spaceBetween={20}
+      slidesPerView={1}
+      autoplay={{ delay: 2500, disableOnInteraction: false }}
+      navigation={{
+        nextEl: ".company-next",
+        prevEl: ".company-prev",
+      }}
+    >
+      {rank.map((company, i) => (
+        <SwiperSlide key={i} className="university-ranks-slide">
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <img
+              src={`https://ecasadmin.unitdtechnologies.com/storages/${company.file_name}`}
+              alt={company.title}
+              style={{
+                width: "240px",
+                height: "240px",
+                objectFit: "cover",
+                borderRadius: "8px",
+              }}
+            />
+            <div style={{
+              textAlign: "center",
+              color: "#fff",
+              fontWeight: "bold",
+              fontSize: 13
+            }}>
+              {company.title}
+            </div>
+            <div style={{
+              textAlign: "center",
+              color: "#fff",
+              fontSize: 12
+            }}>
+              {company.description_short}
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+    <div className="h8_teacher-navigation mt-20">
+      <div className="company-prev">&#9665;</div>
+      <div className="company-next">&#9655;</div>
+    </div>
+  </div>
 </div>
 <div className="cards quote-cards university-ranks-card">
   <div className="cards-headers1">University Ranks</div>
@@ -357,7 +418,140 @@ const InfoSection = () => {
     </div>
   </div>
 </div>
-
+<div className="cards quote-cards university-ranks-card">
+      <div className="cards-headers1">Latest Video</div>
+      <div className="container">
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          navigation={{
+            nextEl: ".company-next",
+            prevEl: ".company-prev",
+          }}
+        >
+          {rank.map((company, i) => (
+            <SwiperSlide key={i} className="university-ranks-slide">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                {company ? (
+               <div className="h7_about-img w_img mb-50">
+               <img src={HappyNewYear} alt=""  style={{
+    height: "200px", 
+    borderRadius:8
+  }} />
+               
+               <a
+                 onClick={(e) => {    
+                   e.preventDefault(); // Prevent the default link behavior
+                   setModalVideo({
+              title: "Campus Video Title",
+             description: "https://www.youtube.com/watch?v=ifuMTQ-gI-E", // The URL or any other description
+                 });
+                }}
+                 // href="https://www.youtube.com/watch?v=ifuMTQ-gI-E"
+                 // className="popup-video"
+               >
+                 {/* <svg
+                   width={131}
+                   height={132}
+                   viewBox="0 0 131 132"
+                   fill="none"
+                   xmlns="http://www.w3.org/2000/svg"
+                 >
+                   <circle
+                     cx={65}
+                     cy={66}
+                     r={64}
+                     stroke="white"
+                     strokeOpacity="0.14"
+                     strokeWidth={2}
+                   />
+                   <path
+                     d="M65 131C100.899 131 130 101.899 130 66C130 30.1015 100.899 1 65 1"
+                     stroke="#B1040E"
+                     strokeWidth={2}
+                   />
+                 </svg> */}
+                 <i className="fa-solid fa-play" />
+               </a>
+             </div>
+           
+           
+                ) : (
+                  <img
+                    src={`https://ecasadmin.unitdtechnologies.com/storages/${company.file_name}`}
+                    alt={company.title}
+                    style={{
+                      width: "240px",
+                      height: "240px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                      marginBottom: "10px",
+                    }}
+                  />
+                )}
+                <div
+                  style={{
+                    textAlign: "center",
+                    color: "#fff",
+                    fontWeight: "bold",
+                    fontSize: 13,
+                  }}
+                >
+                  {company.title}
+                </div>
+                <div
+                  style={{
+                    textAlign: "center",
+                    color: "#fff",
+                    fontSize: 12,
+                  }}
+                >
+                  {company.description_short}
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="h8_teacher-navigation mt-20">
+          <div className="company-prev">&#9665;</div>
+          <div className="company-next">&#9655;</div>
+        </div>
+      </div>
+    </div>
+    {modalVideo && (
+        <div className="modal5-overlay">
+          <div className="modal5-content">
+            <button className="modal5-close" onClick={() => setModalVideo(null)}>
+              ×
+            </button>
+            {/* <h3>{modalVideo.title || "Untitled Video"}</h3> */}
+            <div className="video-container">
+              {/* Checking if YouTube ID can be extracted and rendered */}
+              {modalVideo.description && extractYouTubeId(modalVideo.description) ? (
+                <iframe
+                  width="100%"
+                  height="400"
+                  src={`https://www.youtube.com/embed/${extractYouTubeId(modalVideo.description)}`}
+                  title={modalVideo.title || "YouTube Video"}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <p>Invalid YouTube URL</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
     
   );
