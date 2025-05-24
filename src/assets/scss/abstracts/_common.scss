@@ -236,7 +236,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 }
 
 @for $i from 1 through 60 {
-    .pt-#{5 * $i}{padding-top: 5px *$i;}
+    .pt-#{5 * $i}{padding-top: 2px *$i;}
 }
 
 @for $i from 1 through 60 {

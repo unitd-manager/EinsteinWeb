@@ -351,11 +351,11 @@ const Home = () => {
                 </div>
               </div>
               <div className="col-xl-8 content-center">
-              <div className=""  style={{ color: '#58213f', fontSize: 15, fontWeight: 'bold' ,marginBottom:10,color:'#f7951e'}}>
+              <div className=""  style={{ color: '#58213f', fontSize: 20, fontWeight: 'bold' ,marginBottom:10,color:'#f7951e'}}>
                   <span>“யாதும் ஊரே யாவரும் கேளிர்”</span>
                 </div>
                 <div className=""  style={{ color: '#58213f', fontSize: 35, fontWeight: 'bold',marginBottom:10, fontFamily:'Georgia'}} >
-                  <span>Einstein College Of Arts & Science</span>
+                  <span>EINSTEIN COLLEGE OF ARTS & SCIENCE</span>
                 </div>
                 <div className=""  style={{ color: '#58213f' }}>
                   Sir C.V.Raman Nagar, Tirunelveli - 627012, <br></br>

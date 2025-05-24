@@ -19,6 +19,7 @@ import SignUp from "../src/auth/SignUp.js"
 import EventDetails from "../src/screens/EventDetails.js";
 import TeamDetails from "../src/screens/TeamDetails.js";
 import UGProgramDetails from "../src/screens/UGProgramDetails.js";
+import CollegeFee from "../src/screens/CollegeFee.js";
 import Scholarship1 from "../src/screens/Scholarship1.js";
 import Scholarship2 from "../src/screens/Scholarship2.js";
 import Scholarship3 from "../src/screens/Scholarship3.js";
@@ -134,6 +135,7 @@ function App() {
           <Route path="/StudentList" element={<StudentList />} /> 
           <Route path="/Application" element={<Application />} /> 
           <Route path="/Alumni" element={<Alumni />} /> 
+          <Route path="/CollegeFee" element={<CollegeFee />} /> 
           <Route path="/ExaminationFees" element={<ExaminationFees />} /> 
           <Route path="/ExaminationResult" element={<ExaminationResult />} /> 
           <Route path="/HallTicketDownload" element={<HallTicketDownload />} /> 

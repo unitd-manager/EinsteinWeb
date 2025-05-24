@@ -850,10 +850,15 @@ function removeHtmlTags(str) {
                 </div>
               </div>
             </div>
+            <div className="h2_about-img-shape d-none d-sm-block">
+                    <img className="h2_about-shape-1" src={shape1} alt="" />
+                    <img className="h2_about-shape-2" src={shape2} alt="" />
+                    <img className="h2_about-shape-3" src={shape3} alt="" />
+                  </div>
           </div>
         </section>
 
-        <section className="h7_about-area pt-50 pb-50" style={{ backgroundColor: '#f5f5f5' }}>
+        <section className="h7_about-area pt-50 pb-50">
 
           <div className="container" style={{backgroundcolor:'#f5f5f5'}}>
             <div className="row">
@@ -967,7 +972,7 @@ function removeHtmlTags(str) {
                         // href="https://www.youtube.com/watch?v=6PCuMwrhSf8"
                         // className="popup-video"
                       >
-                        <i className="fa-solid fa-play" />
+                        <i className="fa-solid fa-play"  style={{color:'#b0040c'}}/>
                       </a>
                     </div>
       
@@ -990,7 +995,7 @@ function removeHtmlTags(str) {
                 <div className="section-area-2 mb-35">
                   <h2 className="section-title mb-20">
                   {compusHome[0]?.title}
-                    <span>
+                    <span style={{color:"#58213f"}}>
                       perspectives <img src={line} alt="" />
                     </span>
                   </h2>
@@ -1576,9 +1581,18 @@ function removeHtmlTags(str) {
               <div className="h7_scholarship-content">
                 <p dangerouslySetInnerHTML={{ __html: Scholarship[0]?.description }}>
                 </p>
-                <a>
-                  Financial Aid <i className="fa-light fa-arrow-right" />
-                </a>
+                <Link to="/Scholarship1">
+                  Beedi Scholarship <i className="fa-light fa-arrow-right" />
+                </Link>
+                <Link to="Scholarship2">
+                  Center sector Scholarship <i className="fa-light fa-arrow-right" />
+                </Link>
+                <Link to="Scholarship3">
+                  SC/ST Scholarship <i className="fa-light fa-arrow-right" />
+                </Link>
+                <Link to="Scholarship4">
+                  Tamil Pudhalvan Scholarship <i className="fa-light fa-arrow-right" />
+                </Link>
               </div>
             </div>
           </div>
