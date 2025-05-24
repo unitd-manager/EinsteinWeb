@@ -850,11 +850,6 @@ function removeHtmlTags(str) {
                 </div>
               </div>
             </div>
-            <div className="h2_about-img-shape d-none d-sm-block">
-                    <img className="h2_about-shape-1" src={shape1} alt="" />
-                    <img className="h2_about-shape-2" src={shape2} alt="" />
-                    <img className="h2_about-shape-3" src={shape3} alt="" />
-                  </div>
           </div>
         </section>
 
@@ -984,11 +979,11 @@ function removeHtmlTags(str) {
                     </span>
                     <h5>Congratulations</h5>
                   </div> */}
-                  <div className="h2_about-img-shape d-none d-sm-block">
+                  {/* <div className="h2_about-img-shape d-none d-sm-block">
                     <img className="h2_about-shape-1" src={shape1} alt="" />
                     <img className="h2_about-shape-2" src={shape2} alt="" />
                     <img className="h2_about-shape-3" src={shape3} alt="" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="col-xl-6 col-lg-6 col-md-10 mb-50">
