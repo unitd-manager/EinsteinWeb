@@ -86,45 +86,37 @@ const [resetError, setResetError] = useState("");
         });
     }
   };
-  const handleResetPassword = () => {
+
+
+
+  const SendEmail = () => {
     setResetError("");
     setResetMessage("");
   
-    if (!validateEmail(resetEmail)) {
-      setResetError("Please enter a valid email address.");
-      return;
-    }
-  
-    api
-      .post("/commonApi/sendUseremailForgetPassword", { to: resetEmail }) // change to your actual API
+    api.post('/contact/forgotPass', { email: resetEmail })
       .then((res) => {
+        const userEmail = res.data.data[0]?.email;
+        const userPassword = res.data.data[0]?.pass_word;
+  
+        return api.post("/commonApi/sendUseremailForgetPassword", {
+          to: userEmail,
+          password: userPassword,
+        });
+      })
+      .then(() => {
         setResetMessage("Reset link has been sent to your email.");
+        setShowForgotModal(false)
       })
       .catch((err) => {
-        setResetError("No account found with that email.");
+        if (err.response?.status === 404) {
+          setResetError("No account found with that email.");
+        } else {
+          setResetError("Please verify the email address and try again.");
+        }
       });
   };
-  const modalOverlayStyle = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "rgba(0,0,0,0.5)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 1000,
-  };
   
-  const modalContentStyle = {
-    background: "#fff",
-    padding: "20px",
-    borderRadius: "8px",
-    width: "300px",
-  };
   
-
   return (
     <>
       <main>
@@ -214,51 +206,7 @@ const [resetError, setResetError] = useState("");
   </div>
   {passwordError && <span className="error">{passwordError}</span>}
 </div>
-{showForgotModal && (
-  <div className="account-wrap" style={{
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    zIndex: 1000,
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }}>
-    <div className="account-main" style={{
-      background: '#fff',
-      padding: '30px',
-      borderRadius: '10px',
-      width: '90%',
-      maxWidth: '400px',
-      boxShadow: '0px 4px 15px rgba(0,0,0,0.2)',
-    }}>
-      <h3 className="account-title">Forgot Password</h3>
-      <p>Enter your registered email address to receive reset instructions.</p>
-      <div className="account-form-item mb-20 mt-20">
-        <div className="account-form-label">
-          <label>Email Address</label>
-        </div>
-        <div className="account-form-input">
-          <input
-            type="email"
-            placeholder="Enter Your Email"
-            value={resetEmail}
-            onChange={(e) => setResetEmail(e.target.value)}
-          />
-        </div>
-        {resetError && <span className="error" style={{ color: "red" }}>{resetError}</span>}
-        {resetMessage && <span className="success" style={{ color: "green" }}>{resetMessage}</span>}
-      </div>
-      <div className="account-form-button" style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-        <button className="account-btn" onClick={handleResetPassword}>Submit</button>
-        <button className="account-btn" style={{ background: '#ccc', color: '#000' }} onClick={() => setShowForgotModal(false)}>Cancel</button>
-      </div>
-    </div>
-  </div>
-)}
+
 
 
                       <div className="account-form-condition">
@@ -309,6 +257,51 @@ const [resetError, setResetError] = useState("");
             </div>
           </div>
         </div>
+        {showForgotModal && (
+  <div className="account-wrap" style={{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    zIndex: 1000,
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}>
+    <div className="account-main" style={{
+      background: '#fff',
+      padding: '30px',
+      borderRadius: '10px',
+      width: '90%',
+      maxWidth: '400px',
+      boxShadow: '0px 4px 15px rgba(0,0,0,0.2)',
+    }}>
+      <h3 className="account-title">Forgot Password</h3>
+      <p>Enter your registered email address to have your password sent to your email.</p>
+      <div className="account-form-item mb-20 mt-20">
+        <div className="account-form-label">
+          <label>Email Address</label>
+        </div>
+        <div className="account-form-input">
+          <input
+            type="email"
+            placeholder="Enter Your Email"
+            value={resetEmail}
+            onChange={(e) => setResetEmail(e.target.value)}
+          />
+        </div>
+        {resetError && <span className="error" style={{ color: "red" }}>{resetError}</span>}
+        {resetMessage && <span className="success" style={{ color: "green" }}>{resetMessage}</span>}
+      </div>
+      <div className="account-form-button" style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+        <button className="account-btn" onClick={SendEmail}>Submit</button>
+        <button className="account-btn" style={{ background: '#ccc', color: '#000' }} onClick={() => setShowForgotModal(false)}>Cancel</button>
+      </div>
+    </div>
+  </div>
+)}
       </main>
     </>
   );

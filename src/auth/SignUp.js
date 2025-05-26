@@ -84,8 +84,9 @@ const SignUp = () => {
       console.log("Email:", signupData.email);
   
       // ✅ Send email to the user (after successful registration)
-      await api.post("/commonApi/sendregisteremail", {
+      await api.post("/commonApi/sendUseremailSignUp", {
         to: signupData.email,
+        password: signupData.pass_word,
       });
   
       // ✅ Redirect
