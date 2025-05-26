@@ -18848,8 +18848,9 @@ input:focus::placeholder, textarea:focus::placeholder {
   /* border: 1px solid #FFF; */
 }
 .h7_scholarship-content a:hover {
-  background-color: var(--clr-theme-primary-6);
+  background-color: #d63d83;
   border-color: var(--clr-theme-primary-6);
+  color: #fff;
 }
 
 .h7_scholarship-content p {
@@ -20045,7 +20046,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   transform: translateY(-50%);
   height: 40px;
   line-height: 40px;
-  background: var(--clr-theme-primary-6);
+  background: #d63d83;
   color: #fff;
   border: none;
   border-radius: 0;
@@ -20137,7 +20138,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 
 .h6_copyright-area {
   border-top: 1px solid rgba(10, 10, 10, 0.1);
-  padding: 30px 0;
+  padding: 10px 0;
   background-color: #58213f;
 }
 .h6_copyright-text p {
