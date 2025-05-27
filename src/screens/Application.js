@@ -439,7 +439,7 @@ const SignUp = () => {
                                       id={`course_${option.course_name}`}
                                       name="course"
                                       value={option.course_name}
-                                      checked={studentEdit.course?.split(',').includes(option.course_name) || false}
+                                      checked={studentEdit?.course?.split(',').includes(option.course_name) || false}
                                       onChange={handleCourseCheckbox}
                                     />
                                     <label className="form-check-label" htmlFor={`course_${option.course_name}`}>
