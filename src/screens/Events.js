@@ -91,10 +91,10 @@ const closeModal = () => {
             <div className="row">
               <div className="col-12">
                 <div className="breadcrumb-content">
-                  <h2 className="breadcrumb-title">Upcoming Events</h2>
+                  <h2 className="breadcrumb-title">Events</h2>
                   <div className="breadcrumb-list">
                     <Link to="/Home">Home</Link>
-                    <span>Upcoming Events</span>
+                    <span>Events</span>
                   </div>
                 </div>
               </div>
@@ -110,7 +110,7 @@ const closeModal = () => {
               <div className="col-xl-6">
                 <div className="section-area mb-50 section-area-top text-center">
                   <span className="section-subtitle">Conference on Education</span>
-                  <h2 className="section-title mb-20">Upcoming Events</h2>
+                  <h2 className="section-title mb-20">Events</h2>
                 </div>
               </div>
             </div>

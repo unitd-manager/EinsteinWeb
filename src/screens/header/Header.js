@@ -285,16 +285,7 @@ const Home = () => {
           </span>
         </div>
 
-        {/* Mobile Contact Info */}
-        <div className="d-flex d-xl-none flex-column w-100 mb-2">
-          <span className="mb-1">
-            <i className="fa fa-envelope me-2"></i> Email: info@einstein.com
-          </span>
-          <span>
-            <i className="fa fa-phone-volume me-2"></i> Call Us: (+91) 9489903808
-          </span>
-        </div>
-      <div className="col-xl-2 d-none d-xl-block text-end">
+        <div className="col-xl-2 d-none d-xl-block text-end">
                 <div className="">
                   {!user && !teacherUser ? (
                     <>
@@ -336,6 +327,26 @@ const Home = () => {
                   )}
                 </div>
       </div>
+        {/* Mobile Contact Info */}
+        <div className="col-12">
+        <div className="col-9" style={{float:'left'}}>
+            <div className="d-flex d-xl-none flex-column w-100 mb-2">
+              <span className="mb-1">
+                <i className="fa fa-envelope me-2"></i> Email: info@einstein.com
+              </span>
+              <span>
+                <i className="fa fa-phone-volume me-2"></i> Call Us: (+91) 9489903808
+              </span>
+            </div>
+        </div>
+            <div className="col-3 text-end d-xl-none" style={{float:'left'}}>
+              <div className="header-menu-bar">
+                <span className="header-menu-bar-icon side-toggle">
+                  <i className="fa-solid fa-bars" style={{ fontSize: "24px", cursor: "pointer", color: "#fff" }} />
+                </span>
+              </div>
+            </div>
+        </div>
     </div>
   </div>
        <div className="headerpg">
@@ -380,13 +391,6 @@ const Home = () => {
               <Navbar />
             </div>
             {/* Hamburger Menu for Mobile */}
-            <div className="col-12 text-end d-xl-none">
-              <div className="header-menu-bar">
-                <span className="header-menu-bar-icon side-toggle">
-                  <i className="fa-solid fa-bars" style={{ fontSize: "24px", cursor: "pointer", color: "#333" }} />
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </header>
