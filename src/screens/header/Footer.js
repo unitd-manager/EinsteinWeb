@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logoImage from "../../assets/img/logoImage.webp"
+import { getUser } from "../../auth/user";
+import api from "../../constants/api";
 
 const Home = () => {
+  const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const user = getUser();
+    if (!user?.student_id) return;
+
+    api
+      .get('/student/getStudentnewsletter')
+      .then((res) => {
+        const list = res.data?.data || [];
+        const me = list.find((s) => String(s.student_id) === String(user.student_id));
+        if (me && Number(me.newsletter_subscription) === 1) setSubscribed(true);
+      })
+      .catch((err) => {
+        console.error('Error fetching newsletter status:', err);
+      });
+  }, []);
   return (
     <>
   <footer className="h6_footer-area">
@@ -121,22 +140,62 @@ Tamil Nadu 627012
             <div className="h6_footer-widget ml-80 mb-40">
               <h5 className="h6_footer-widget-title">Newsletter</h5>
               <p className="h6_footer-widget-text newsletter-text">
-                Sign up foe our newsletter and get 34% <br /> off your next
+                Sign up for our newsletter and get 34% <br /> off your next
                 course.
               </p>
-              <form action="#">
+              { !subscribed ? (
+              <form action="#" onSubmit={async (e) => {
+                  e.preventDefault();
+                  try {
+                    setLoading(true);
+                    const email = e.target.elements['email'].value;
+                    const user = getUser();
+                    let studentId = user?.student_id;
+
+                    if (!studentId) {
+                      alert('Please login to subscribe to the newsletter.');
+                      setLoading(false);
+                      return;
+                    }
+
+                    const payload = {
+                      student_id: studentId,
+                      newsletter_subscription: 1,
+                    };
+
+                    const updateRes = await api.post('/student/updateNewsletterSubscription', payload);
+                    if (updateRes.status === 200) {
+                      setSubscribed(true);
+                    } else {
+                      alert('Unable to subscribe. Please try again later.');
+                    }
+                  } catch (err) {
+                    console.error(err);
+                    alert('An error occurred. Please try again later.');
+                  } finally {
+                    setLoading(false);
+                  }
+                }}>
                 <div className="h6_footer-subscribe-form">
-                  <input type="email" placeholder="Enter Your Email*" />
-                  <button type="submit">Subscribe</button>
+                  <input name="email" type="email" placeholder="Enter Your Email*" required disabled={loading} />
+                  <button type="submit" disabled={loading}>
+                    {loading ? <><i className="fa fa-spinner fa-spin" style={{marginRight:6}}/> Subscribing...</> : 'Subscribe'}
+                  </button>
                 </div>
                 <div className="h6_footer-subscribe-condition">
                   <label className="condition_label">
                     I agree to the terms of use and privacy policy.
-                    <input type="checkbox" />
+                    <input name="agree" type="checkbox" required disabled={loading} />
                     <span className="check_mark" />
                   </label>
                 </div>
               </form>
+              ) : (
+                <div className="h6_footer-thanks">
+                  <h4>Thank you!</h4>
+                  <p>Welcome — you've been subscribed to our newsletter.</p>
+                </div>
+              ) }
             </div>
           </div>
         </div>

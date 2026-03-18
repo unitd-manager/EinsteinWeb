@@ -24,8 +24,15 @@
  
   .side-info:is(.info-open) {
     right: 0;
-    overflow-y: scroll;
-    scrollbar-width: thin;
+    overflow-y: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .side-info:is(.info-open)::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+    width: 0;
+    height: 0;
   }
   
   .offcanvas-overlay {

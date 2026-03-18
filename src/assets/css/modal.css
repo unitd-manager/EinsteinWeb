@@ -81,6 +81,8 @@
     position: static;
     border: none;
     background-color: transparent;
+    opacity: 1;
+    visibility: visible;
   }
 
   .h2_header-category-submenu li {
@@ -132,6 +134,8 @@
     display: block;
     text-align: center;
     padding: 0;
+    opacity: 1;
+    visibility: visible;
   }
 
   .h2_header-category-submenu li {
@@ -152,6 +156,22 @@
     width: 100%;
     max-width: 200px;
   }
+}
+
+.sidebar-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.sidebar-link-list li {
+  margin-bottom: 10px;
+}
+
+.sidebar-link-list a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 /* For very small devices */

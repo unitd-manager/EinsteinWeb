@@ -137,7 +137,7 @@ const ApplicationAckPdf = ({ application, studentMark }) => (
         <Text style={styles.field}><Text style={styles.label}>Application ID:</Text> {application.id}</Text>
         <Text style={styles.field}><Text style={styles.label}>Date:</Text> {application.date}</Text>
         <Text style={styles.field}><Text style={styles.label}>Course:</Text> {application.course}</Text>
-        <Text style={styles.field}><Text style={styles.label}>Payment Status:</Text> {application.payment_status}</Text>
+        {/* <Text style={styles.field}><Text style={styles.label}>Payment Status:</Text> {application.payment_status}</Text> */}
       </View>
 
       {/* Student Marks Table */}

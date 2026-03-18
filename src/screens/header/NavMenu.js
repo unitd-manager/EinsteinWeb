@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import api from "../../constants/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,10 +12,19 @@ function Navbar() {
   const [hoveredSectionId, setHoveredSectionId] = useState(null);
   const [hoveredCategoryId, setHoveredCategoryId] = useState(null);
 
-  const [openedSectionId, setOpenedSectionId] = useState(null);
-  const [openedCategoryId, setOpenedCategoryId] = useState(null);
+  const [openedSections, setOpenedSections] = useState({});
+  const [openedCategories, setOpenedCategories] = useState({});
+  const sectionRefs = useRef({});
 
-  const isMobile = window.innerWidth <= 768;
+  
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     api.get("/section/getSectionMenu1")
@@ -37,60 +46,85 @@ function Navbar() {
   const getSubCategoriesForCategory = (categoryId) =>
     subCategories.filter((subcategory) => subcategory.category_id === categoryId);
 
-  const toggleSection = (sectionId) =>
-    setOpenedSectionId(openedSectionId === sectionId ? null : sectionId);
+  const toggleSection = (sectionId) => {
+    setOpenedSections((prev) => ({
+      ...prev,
+      [sectionId]: !prev[sectionId],
+    }));
+    setTimeout(() => {
+      sectionRefs.current[sectionId]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }, 0);
+  };
 
-  const toggleCategory = (categoryId) =>
-    setOpenedCategoryId(openedCategoryId === categoryId ? null : categoryId);
+  const toggleCategory = (categoryId) => {
+    setOpenedCategories((prev) => ({
+      ...prev,
+      [categoryId]: !prev[categoryId],
+    }));
+  };
+
+  
 
   return (
     <div className="content-center">
       <nav className="h2_main-menu mobile-menu">
-        <div className="main-menu d-lg-inline-block">
+        <div
+          className="main-menu d-lg-inline-block"
+          style={isMobile ? { maxHeight: "100vh", overflowY: "auto" } : {}}
+        >
           <ul>
             {sections.map((section) => {
               const sectionCategories = getCategoriesForSection(section.section_id);
               const isSectionOpen =
                 (!isMobile && hoveredSectionId === section.section_id) ||
-                (isMobile && openedSectionId === section.section_id);
+                (isMobile && openedSections[section.section_id]);
 
               return (
                 <li
+                  ref={(el) => (sectionRefs.current[section.section_id] = el)}
                   className={`menu-has-child ${sectionCategories.length > 0 ? 'has-category' : ''}`}
                   key={section.section_id}
                   onMouseEnter={() => !isMobile && setHoveredSectionId(section.section_id)}
                   onMouseLeave={() => !isMobile && setHoveredSectionId(null)}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Link to={`/${section.routes}`} className="nav-link">
-                      {section.section_title}
-                    </Link>
-                    {sectionCategories.length > 0 && (
-                      <span
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleSection(section.section_id);
-                        }}
-                        style={{ cursor: "pointer", marginLeft: "8px", color: "#fff" }}
-                      >
-                        <FontAwesomeIcon
-                          icon={isSectionOpen ? faChevronUp : faChevronDown}
-                          style={{ fontWeight: 900, fontSize: "14px" }}
-                        />
-                      </span>
-                    )}
+                  <div
+                    onClick={isMobile ? (e) => {
+                      if (sectionCategories.length > 0) {
+                        e.preventDefault();
+                        toggleSection(section.section_id);
+                      }
+                    } : undefined}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Link to={`/${section.routes}`} className="nav-link">
+                        {section.section_title}
+                      </Link>
+                      {sectionCategories.length > 0 && (
+                        <span
+                          style={{ cursor: "pointer", marginLeft: "8px", color: "#fff" }}
+                        >
+                          <FontAwesomeIcon
+                            icon={isSectionOpen ? faChevronUp : faChevronDown}
+                            style={{ fontWeight: 900, fontSize: "14px" }}
+                          />
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   {sectionCategories.length > 0 && (
                     <ul
                       className="submenu"
-                      style={{ display: isSectionOpen ? "block" : "none" }}
+                      style={isMobile ? { display: isSectionOpen ? "block" : "none" } : {}}
                     >
                       {sectionCategories.map((category) => {
                         const categorySubCategories = getSubCategoriesForCategory(category.category_id);
                         const isCategoryOpen =
                           (!isMobile && hoveredCategoryId === category.category_id) ||
-                          (isMobile && openedCategoryId === category.category_id);
+                          (isMobile && openedCategories[category.category_id]);
 
                         return (
                           <li
@@ -98,18 +132,25 @@ function Navbar() {
                             onMouseEnter={() => !isMobile && setHoveredCategoryId(category.category_id)}
                             onMouseLeave={() => !isMobile && setHoveredCategoryId(null)}
                           >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div
+                              onClick={isMobile ? (e) => {
+                                if (categorySubCategories.length > 0) {
+                                  e.preventDefault();
+                                  toggleCategory(category.category_id);
+                                }
+                              } : undefined}
+                              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                            >
                               <Link to={`/${category.routes}`} className="dropdown-item">
                                 {category.category_title}
                               </Link>
                               {categorySubCategories.length > 0 && (
                                 <span
-                                  onClick={() => toggleCategory(category.category_id)}
                                   style={{ cursor: "pointer", marginLeft: "8px" }}
                                 >
                                   <FontAwesomeIcon
                                     icon={
-                                      openedCategoryId === category.category_id
+                                      openedCategories[category.category_id]
                                         ? faChevronUp
                                         : faChevronDown
                                     }
@@ -120,8 +161,8 @@ function Navbar() {
 
                             {categorySubCategories.length > 0 && (
                               <ul
-                                className="sub-menu"
-                                style={{ display: isCategoryOpen ? "block" : "none" }}
+                                className="submenu"
+                                style={isMobile ? { display: isCategoryOpen ? "block" : "none" } : {}}
                               >
                                 {categorySubCategories.map((subcategory) => (
                                   <li key={subcategory.sub_category_id}>

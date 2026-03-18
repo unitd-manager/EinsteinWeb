@@ -2267,7 +2267,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   left: 0;
   top: 100%;
   background: #B492A4 !important;
-  width: 270px !important;
+  /* width: 270px !important; */
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.3s linear 0s;
@@ -3212,8 +3212,15 @@ input:focus::placeholder, textarea:focus::placeholder {
 
 .side-info:is(.info-open) {
   right: 0;
-  overflow-y: scroll;
-  scrollbar-width: thin;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.side-info:is(.info-open)::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .offcanvas-overlay {

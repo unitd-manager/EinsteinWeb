@@ -897,7 +897,7 @@ const Home = () => {
               e.preventDefault(); // Prevent the default link behavior
               setModalVideo({
          title: "Campus Video",
-        description: "https://www.youtube.com/watch?v=ifuMTQ-gI-E", // The URL or any other description
+        description: "https://www.youtube.com/live/6asDjHnZovE?si=DkeUUXkV4ulyFVEm", // The URL or any other description
             });
            }}
               // href="https://www.youtube.com/watch?v=ifuMTQ-gI-E"
@@ -1105,13 +1105,7 @@ const Home = () => {
                       <a dangerouslySetInnerHTML={{ __html: Facilities1[0]?.description }}>
                       </a>
                     </h5>
-                    <a
-                      href="#"
-                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
-                    >
-                      Read more
-                      <i className="fa-light fa-arrow-right" />
-                    </a>
+                    
                   </div>
                 </div>
               </div>
@@ -1137,13 +1131,7 @@ const Home = () => {
                       <a dangerouslySetInnerHTML={{ __html: Facilities2[0]?.description }}>
                       </a>
                     </h5>
-                    <a
-                      href="#"
-                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
-                    >
-                      Read more
-                      <i className="fa-light fa-arrow-right" />
-                    </a>
+                    
                   </div>
                 </div>
               </div>
@@ -1169,13 +1157,7 @@ const Home = () => {
                        
                       </a>
                     </h5>
-                    <a
-                      href="#"
-                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
-                    >
-                      Read more
-                      <i className="fa-light fa-arrow-right" />
-                    </a>
+                    
                   </div>
                 </div>
               </div>
@@ -1201,13 +1183,7 @@ const Home = () => {
                       <a dangerouslySetInnerHTML={{ __html: Facilities4[0]?.description }}>
                       </a>
                     </h5>
-                    <a
-                      href="#"
-                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
-                    >
-                      Read more
-                      <i className="fa-light fa-arrow-right" />
-                    </a>
+                    
                   </div>
                 </div>
               </div>
@@ -1233,13 +1209,7 @@ const Home = () => {
                       <a dangerouslySetInnerHTML={{ __html: Facilities5[0]?.description }}>
                       </a>
                     </h5>
-                    <a
-                      href="#"
-                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
-                    >
-                      Read more
-                      <i className="fa-light fa-arrow-right" />
-                    </a>
+                    
                   </div>
                 </div>
               </div>
@@ -1265,13 +1235,7 @@ const Home = () => {
                        
                       </a>
                     </h5>
-                    <a
-                      href="#"
-                      className="theme-btn theme-btn-10 theme-btn-medium h10_event-btn"
-                    >
-                      Read more
-                      <i className="fa-light fa-arrow-right" />
-                    </a>
+                    
                   </div>
                 </div>
               </div>

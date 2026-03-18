@@ -52,6 +52,7 @@ const Home = () => {
   const logout = () => {
     localStorage.clear();
     setTimeout(() => {
+      navigate('/');
       window.location.reload();
     }, 200);
   };
@@ -183,6 +184,10 @@ const Home = () => {
       overlay.addEventListener("click", closeSidebar);
 
       const sidebarClickHandler = (e) => {
+        // If clicking on the "Login" link itself, don't close the sidebar
+        if (e.target.closest(".h2_header-category > a")) {
+          return;
+        }
         if (e.target.closest("a") || e.target.closest("button")) {
           closeSidebar();
         }
@@ -221,7 +226,7 @@ const Home = () => {
         </div>
 
         <div className="sidebar-menu-wrapper fix">
-          <Navbar />
+          
           <div className="sidebar-links">
             {!user && !teacherUser ? (
               <>
@@ -238,7 +243,7 @@ const Home = () => {
   )}
 </div>
 
-                <div className="h2_header-btn d-sm-block" style={{ marginLeft: 75 }}>
+                <div className="h2_header-btn d-sm-block" style={{ marginLeft: 45 }}>
                   <Link to="#" onClick={onPaymentPress} className="header-btn theme-btn theme-btn-medium">
                     Application
                   </Link>
@@ -266,6 +271,7 @@ const Home = () => {
               </>
             )}
           </div>
+          <Navbar />
         </div>
       </div>
 
