@@ -109,6 +109,27 @@
     text-align: center;
     margin-top: 10px;
   }
+
+  /* Ensure Login text is white on mobile */
+  .h2_header-category a,
+  .h2_header-category a span,
+  .h2_header-category > a {
+    color: #fff !important;
+  }
+
+  /* Center the Application button on mobile */
+  .h2_header-btn {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .h2_header-btn .header-btn {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+  }
 }
 
 @media (max-width: 991.98px) {
@@ -193,7 +214,7 @@
   }
   .h2_header-btn .header-btn {
     font-size: 14px;
-    padding: 8px 12px;
+   
   }
 
   .content-center span {

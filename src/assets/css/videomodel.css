@@ -24,9 +24,21 @@
   position: absolute;
   top: 10px;
   right: 15px;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
   border: none;
-  font-size: 24px;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   cursor: pointer;
   z-index: 1001;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.modal-close:focus {
+  outline: none;
 }

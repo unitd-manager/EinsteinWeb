@@ -231,8 +231,8 @@ const Home = () => {
             {!user && !teacherUser ? (
               <>
                <div className="h2_header-category d-sm-block">
-  <a onClick={() => setShowLoginDropdown(!showLoginDropdown)} style={{ cursor: 'pointer' }}>
-    <i className="fa-solid fa-grid"></i><span>Login</span>
+  <a onClick={() => setShowLoginDropdown(!showLoginDropdown)} style={{ cursor: 'pointer', color:'white' }}>
+    <i className="fa-solid fa-grid"></i><span style={{  color:'white' }}>Login</span>
   </a>
   {showLoginDropdown && (
     <ul className="h2_header-category-submenu">

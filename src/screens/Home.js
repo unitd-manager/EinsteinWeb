@@ -732,11 +732,11 @@ function removeHtmlTags(str) {
                       e.preventDefault(); // Prevent the default link behavior
                       setModalVideo({
                  title: "Campus Video Title",
-                description: "https://www.youtube.com/watch?v=ifuMTQ-gI-E", // The URL or any other description
+                description: "https://www.youtube.com/live/6asDjHnZovE?si=DkeUUXkV4ulyFVEm", // The URL or any other description
                     });
                    }}
-                    // href="https://www.youtube.com/watch?v=ifuMTQ-gI-E"
-                    // className="popup-video"
+                                  class="h5_video-content-btn h5_play-btn popup-video"
+                    
                   >
                     <svg
                       width={131}
@@ -790,11 +790,12 @@ function removeHtmlTags(str) {
                            e.preventDefault(); // Prevent the default link behavior
                            setModalVideo({
                       title: "Campus Video Title",
-                     description: "https://www.youtube.com/watch?v=ifuMTQ-gI-E", // The URL or any other description
+                     description: "https://www.youtube.com/live/6asDjHnZovE?si=DkeUUXkV4ulyFVEm", // The URL or any other description
                          });
                         }}
-                        // href="https://www.youtube.com/watch?v=6PCuMwrhSf8"
-                        // className="popup-video"
+
+                          class="h5_video-content-btn h5_play-btn popup-video"
+
                       >
                         <i className="fa-solid fa-play"  style={{color:'#b0040c'}}/>
                       </a>
