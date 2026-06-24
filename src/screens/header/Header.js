@@ -284,7 +284,7 @@ const Home = () => {
     <div className="container d-flex justify-content-between align-items-center py-2 flex-wrap">
     <div className="d-none d-xl-flex col-xl-8">
           <span className="me-4">
-            <i className="fa fa-envelope me-2"></i> Email: info@einstein.com
+            <i className="fa fa-envelope me-2"></i> Email: ecarts2017@gmail.com
           </span>
           <span>
             <i className="fa fa-phone-volume me-2"></i> Call Us: (+91) 9489903808
@@ -338,7 +338,7 @@ const Home = () => {
         <div className="col-9" style={{float:'left'}}>
             <div className="d-flex d-xl-none flex-column w-100 mb-2">
               <span className="mb-1">
-                <i className="fa fa-envelope me-2"></i> Email: info@einstein.com
+                <i className="fa fa-envelope me-2"></i> Email: ecarts2017@gmail.com
               </span>
               <span>
                 <i className="fa fa-phone-volume me-2"></i> Call Us: (+91) 9489903808
